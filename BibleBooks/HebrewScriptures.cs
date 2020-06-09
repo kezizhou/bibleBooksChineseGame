@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Speech.Synthesis;
 using System.Windows.Forms;
 
 namespace BibleBooks {
@@ -14,19 +11,24 @@ namespace BibleBooks {
 		private Point previousLocation;
 		private static int intHebrewAnswered = 0;
 		private static int intNumberCorrect = 0;
+		private static TimeSpan tsSecondsElapsed = TimeSpan.FromSeconds(0);
 
 		String[] astrChHebrew = new String[] { "lblChGenesis", "lblChExodus", "lblChLeviticus", "lblChNumbers", "lblChDeuteronomy", "lblChJoshua", "lblChJudges", "lblChRuth", "lblCh1Samuel",
-											"lblCh2Samuel", "lblCh1Kings", "lblCh2Kings", "lblCh1Chronicles" };
+											"lblCh2Samuel", "lblCh1Kings", "lblCh2Kings", "lblCh1Chronicles", "lblCh2Chronicles", "lblChEzra", "lblChNehemiah", "lblChEsther", "lblChJob",
+											"lblChPsalms", "lblChProverbs", "lblChEcclesiastes", "lblChSongofSolomon", "lblChIsaiah", "lblChJeremiah", "lblChLamentations", "lblChEzekiel"};
 
 		String[] astrHebrew = new String[] { "lblGenesis", "lblExodus", "lblLeviticus", "lblNumbers", "lblDeuteronomy", "lblJoshua", "lblJudges", "lblRuth", "lbl1Samuel",
-											"lbl2Samuel", "lbl1Kings", "lbl2Kings", "lbl1Chronicles" };
+											"lbl2Samuel", "lbl1Kings", "lbl2Kings", "lbl1Chronicles", "lbl2Chronicles", "lblEzra", "lblNehemiah", "lblEsther", "lblJob",
+											"lblPsalms", "lblProverbs", "lblEcclesiastes", "lblSongofSolomon", "lblIsaiah", "lblJeremiah", "lblLamentations", "lblEzekiel" };
 
 		public HebrewScriptures() {
 			InitializeComponent();
+			WindowState = FormWindowState.Maximized;
 		}
 
 		private void HebrewScriptures_Load(object sender, EventArgs e) {
 			foreach (String strLbl in astrChHebrew) {
+				// Add draggable label methods
 				Label lbl = this.Controls.Find(strLbl, true).FirstOrDefault() as Label;
 				lbl.MouseDown += new MouseEventHandler(lblMouseDown);
 				lbl.MouseMove += new MouseEventHandler(lblMouseMove);
@@ -53,44 +55,50 @@ namespace BibleBooks {
 		private void lblMouseUp(object sender, MouseEventArgs e) {
 			activeControl = null;
 			Cursor = Cursors.Default;
-			checkLabelsTouching();
+
+			// Check if it has been matched to an English book
+			checkLabelsTouching(sender);
+
+			// Play audio
+			Label lblChineseBook = sender as Label;
+			var synthesizer = new SpeechSynthesizer();
+			synthesizer.SetOutputToDefaultAudioDevice();
+			synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
+			synthesizer.Speak(lblChineseBook.Text);
 		}
 
-		private void checkLabelsTouching() {
+		private void checkLabelsTouching(object sender) {
 			int i = 0;
+			Label lblCh = sender as Label;
 
-			foreach (String strLblCh in astrChHebrew) {
-				foreach (String strLbl in astrHebrew) {
-					// Get the label with the string name
-					Label lblCh = this.Controls.Find(strLblCh, true).FirstOrDefault() as Label;
-					Label lbl = this.Controls.Find(strLbl, true).FirstOrDefault() as Label;
+			// Check each English book to see if touching
+			foreach (String strLbl in astrHebrew) {
+				// Get the label from the string name
+				Label lbl = this.Controls.Find(strLbl, true).FirstOrDefault() as Label;
 
-					// Only check labels that have not been completed
-					if (lblCh.Enabled) {
+				// Only check labels that have not been correctly matched already
+				if (lblCh.Enabled) {
 
-						// Chinese label is touching an English label
-						if (lblCh.Bounds.IntersectsWith(lbl.Bounds)) {
+					// Label is touching an English label
+					if (lblCh.Bounds.IntersectsWith(lbl.Bounds)) {
 
-							// If the correct English label has been matched
-							if (strLbl == astrHebrew[i]) {
-								Program.intHebrewPoints += 1;
-								Program.intTotalPoints += 1;
-								intNumberCorrect += 1;
-								intHebrewAnswered += 1;
-								refreshPoints();
-								lblCh.Location = lbl.Location;
-								lblCh.Enabled = false;
-								lbl.Hide();
-							}
-							else {
-								// Point penalty
-								Program.intHebrewPoints -= 1;
-								Program.intTotalPoints -= 1;
-								intHebrewAnswered += 1;
-								refreshPoints();
-								lblCh.Location = new Point(283, 305);
-							}
-							break;
+						// If the correct English label has been matched
+						if (strLbl == astrHebrew[i]) {
+							Program.intHebrewPoints += 1;
+							Program.intTotalPoints += 1;
+							intNumberCorrect += 1;
+							intHebrewAnswered += 1;
+							refreshPoints();
+							lblCh.Location = lbl.Location;
+							lblCh.Enabled = false;
+							lbl.Hide();
+						} else {
+							// Point penalty
+							Program.intHebrewPoints -= 1;
+							Program.intTotalPoints -= 1;
+							intHebrewAnswered += 1;
+							refreshPoints();
+							lblCh.Location = new Point(283, 305);
 						}
 					}
 				}
@@ -121,6 +129,11 @@ namespace BibleBooks {
 			MainMenu frmMainMenu = new MainMenu();
 			frmMainMenu.ShowDialog();
 			this.Close();
+		}
+
+		private void timer1_Tick(object sender, EventArgs e) {
+			tsSecondsElapsed += TimeSpan.FromSeconds(1);
+			lblTimeElapsed.Text = tsSecondsElapsed.ToString();
 		}
 	}
 }

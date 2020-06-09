@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Speech.Synthesis;
+using System.Globalization;
+using System.Collections.Generic;
 
 namespace BibleBooks {
 	public partial class GreekScriptures : Form {
@@ -15,6 +13,8 @@ namespace BibleBooks {
 		private Point previousLocation;
 		private static int intGreekAnswered = 0;
 		private static int intNumberCorrect = 0;
+		private static TimeSpan tsSecondsElapsed = TimeSpan.FromSeconds(0);
+		List<Point> lpntChLabels = new List<Point>();
 
 		String[] astrChGreek = new String[] { "lblChMatthew", "lblChMark", "lblChLuke", "lblChJohn", "lblChActs", "lblChRomans", "lblCh1Corinthians", "lblCh2Corinthians", "lblChGalatians",
 											"lblChEphesians", "lblChPhilippians", "lblChColossians", "lblCh1Thessalonians", "lblCh2Thessalonians", "lblCh1Timothy", "lblCh2Timothy", "lblChTitus",
@@ -26,14 +26,28 @@ namespace BibleBooks {
 
 		public GreekScriptures() {
 			InitializeComponent();
+			WindowState = FormWindowState.Maximized;
 		}
 
 		private void GreekScriptures_Load(object sender, EventArgs e) {
-			foreach (String strLbl in astrChGreek) {
-				Label lbl = this.Controls.Find(strLbl, true).FirstOrDefault() as Label;
+			Random r = new Random();
+
+			foreach (String strChLbl in astrChGreek) {
+				// Add draggable label methods
+				Label lbl = this.Controls.Find(strChLbl, true).FirstOrDefault() as Label;
 				lbl.MouseDown += new MouseEventHandler(lblMouseDown);
 				lbl.MouseMove += new MouseEventHandler(lblMouseMove);
 				lbl.MouseUp += new MouseEventHandler(lblMouseUp);
+
+				// Add each label's location to a list of points
+				lpntChLabels.Add(lbl.Location);
+			}
+
+			// Randomly shuffle all Chinese label locations
+			foreach (String strChLbl in astrChGreek) {
+				Label lbl = this.Controls.Find(strChLbl, true).FirstOrDefault() as Label;
+				lbl.Location = lpntChLabels[r.Next(0, lpntChLabels.Count)];
+				lpntChLabels.Remove(lbl.Location);
 			}
 		}
 
@@ -56,43 +70,51 @@ namespace BibleBooks {
 		private void lblMouseUp(object sender, MouseEventArgs e) {
 			activeControl = null;
 			Cursor = Cursors.Default;
-			checkLabelsTouching();
+
+			// Check if it has been matched to an English book
+			checkLabelsTouching(sender);
+
+			// Play audio
+			Label lblChineseBook = sender as Label;
+			var synthesizer = new SpeechSynthesizer();
+			synthesizer.SetOutputToDefaultAudioDevice();
+			synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
+			synthesizer.Speak(lblChineseBook.Text);
 		}
 
-		private void checkLabelsTouching() {
+		private void checkLabelsTouching(object sender) {
 			int i = 0;
+			Label lblCh = sender as Label;
 
-			foreach (String strLblCh in astrChGreek) {
-				foreach (String strLbl in astrGreek) {
-					// Get the label with the string name
-					Label lblCh = this.Controls.Find(strLblCh, true).FirstOrDefault() as Label;
-					Label lbl = this.Controls.Find(strLbl, true).FirstOrDefault() as Label;
+			// Check each English book to see if touching
+			foreach (String strLbl in astrGreek) {
+				// Get the label from the string name
+				Label lbl = this.Controls.Find(strLbl, true).FirstOrDefault() as Label;
 
-					// Only check labels that have not been completed
-					if (lblCh.Enabled) {
+				// Only check labels that have not been correctly matched already
+				if (lblCh.Enabled) {
 
-						// Chinese label is touching an English label
-						if (lblCh.Bounds.IntersectsWith(lbl.Bounds)) {
+					// Label is touching an English label
+					if (lblCh.Bounds.IntersectsWith(lbl.Bounds)) {
 
-							// If the correct English label has been matched
-							if (strLbl == astrGreek[i]) {
-								Program.intGreekPoints += 1;
-								Program.intTotalPoints += 1;
-								intNumberCorrect += 1;
-								intGreekAnswered += 1;
-								refreshPoints();
-								lblCh.Location = lbl.Location;
-								lblCh.Enabled = false;
-								lbl.Hide();
-							} else {
-								// Point penalty
-								Program.intGreekPoints -= 1;
-								Program.intTotalPoints -= 1;
-								intGreekAnswered += 1;
-								refreshPoints();
-								lblCh.Location = new Point(283, 305);
-							}
-							break;
+						// If the correct English label has been matched
+						if (strLbl == astrGreek[i]) {
+							Program.intGreekPoints += 1;
+							Program.intTotalPoints += 1;
+							intNumberCorrect += 1;
+							intGreekAnswered += 1;
+							refreshPoints();
+							lblCh.Location = lbl.Location;
+							lblCh.Enabled = false;
+							lbl.Hide();
+						}
+						else {
+							// Point penalty
+							Program.intGreekPoints -= 1;
+							Program.intTotalPoints -= 1;
+							intGreekAnswered += 1;
+							refreshPoints();
+							lblCh.Location = new Point(283, 305);
 						}
 					}
 				}
@@ -123,6 +145,19 @@ namespace BibleBooks {
 			MainMenu frmMainMenu = new MainMenu();
 			frmMainMenu.ShowDialog();
 			this.Close();
+		}
+
+		private void ChineseBook_Click(object sender, EventArgs e) {
+			Label lblChineseBook = sender as Label;
+			var synthesizer = new SpeechSynthesizer();
+			synthesizer.SetOutputToDefaultAudioDevice();
+			synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
+			synthesizer.Speak(lblChineseBook.Text);
+		}
+
+		private void timer1_Tick(object sender, EventArgs e) {
+			tsSecondsElapsed += TimeSpan.FromSeconds(1);
+			lblTimeElapsed.Text = tsSecondsElapsed.ToString();
 		}
 	}
 }
