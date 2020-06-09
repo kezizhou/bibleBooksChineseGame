@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace BibleBooks {
 		private static int intHebrewAnswered = 0;
 		private static int intNumberCorrect = 0;
 		private static TimeSpan tsSecondsElapsed = TimeSpan.FromSeconds(0);
+		List<Point> lpntChLabels = new List<Point>();
 
 		String[] astrChHebrew = new String[] { "lblChGenesis", "lblChExodus", "lblChLeviticus", "lblChNumbers", "lblChDeuteronomy", "lblChJoshua", "lblChJudges", "lblChRuth", "lblCh1Samuel",
 											"lblCh2Samuel", "lblCh1Kings", "lblCh2Kings", "lblCh1Chronicles", "lblCh2Chronicles", "lblChEzra", "lblChNehemiah", "lblChEsther", "lblChJob",
@@ -27,12 +29,24 @@ namespace BibleBooks {
 		}
 
 		private void HebrewScriptures_Load(object sender, EventArgs e) {
+			Random r = new Random();
+
 			foreach (String strLbl in astrChHebrew) {
 				// Add draggable label methods
 				Label lbl = this.Controls.Find(strLbl, true).FirstOrDefault() as Label;
 				lbl.MouseDown += new MouseEventHandler(lblMouseDown);
 				lbl.MouseMove += new MouseEventHandler(lblMouseMove);
 				lbl.MouseUp += new MouseEventHandler(lblMouseUp);
+
+				// Add each label's location to a list of points
+				lpntChLabels.Add(lbl.Location);
+			}
+
+			// Randomly shuffle all Chinese label locations
+			foreach (String strChLbl in astrChHebrew) {
+				Label lbl = this.Controls.Find(strChLbl, true).FirstOrDefault() as Label;
+				lbl.Location = lpntChLabels[r.Next(0, lpntChLabels.Count)];
+				lpntChLabels.Remove(lbl.Location);
 			}
 		}
 
