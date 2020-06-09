@@ -74,6 +74,15 @@ namespace BibleBooks {
 			// Check if it has been matched to an English book
 			checkLabelsTouching(sender);
 
+			// Check audio setting
+			// If on, play audio
+			if (Program.blnAudio) {
+				playChineseAudio(sender);
+			}
+
+		}
+
+		private void playChineseAudio(object sender) {
 			// Play audio
 			Label lblChineseBook = sender as Label;
 			var synthesizer = new SpeechSynthesizer();
@@ -158,6 +167,13 @@ namespace BibleBooks {
 		private void timer1_Tick(object sender, EventArgs e) {
 			tsSecondsElapsed += TimeSpan.FromSeconds(1);
 			lblTimeElapsed.Text = tsSecondsElapsed.ToString();
+		}
+
+		private void settingsToolStripMenuItem_Click(object sender, EventArgs e) {
+			this.Hide();
+			Settings frmSettings = new Settings();
+			frmSettings.ShowDialog();
+			this.Close();
 		}
 	}
 }

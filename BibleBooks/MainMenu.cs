@@ -26,5 +26,12 @@ namespace BibleBooks {
 			frmHebrew.ShowDialog();
 			this.Close();
 		}
+
+		private void settingsToolStripMenuItem_Click(object sender, EventArgs e) {
+			this.Hide();
+			Settings frmSettings = new Settings();
+			frmSettings.ShowDialog();
+			this.Close();
+		}
 	}
 }
