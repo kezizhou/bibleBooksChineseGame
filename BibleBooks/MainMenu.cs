@@ -6,6 +6,7 @@ namespace BibleBooks {
 
 		public MainMenu() {
 			InitializeComponent();
+			WindowState = FormWindowState.Maximized;
 		}
 
 		private void greekScripturesToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -23,6 +24,13 @@ namespace BibleBooks {
 			this.Hide();
 			HebrewScriptures frmHebrew = new HebrewScriptures();
 			frmHebrew.ShowDialog();
+			this.Close();
+		}
+
+		private void settingsToolStripMenuItem_Click(object sender, EventArgs e) {
+			this.Hide();
+			Settings frmSettings = new Settings();
+			frmSettings.ShowDialog();
 			this.Close();
 		}
 	}

@@ -9,6 +9,7 @@ namespace BibleBooks {
 		public static int intTotalPoints = 0;
 		public static int intHebrewPoints = 0;
 		public static int intGreekPoints = 0;
+		public static bool blnAudio = true;
 
 		/// <summary>
 		/// The main entry point for the application.
