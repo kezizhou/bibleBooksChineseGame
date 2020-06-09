@@ -96,6 +96,7 @@
 			this.label12 = new System.Windows.Forms.Label();
 			this.lblTimeElapsed = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pnlStatistics.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.pnlWindowResize.SuspendLayout();
@@ -893,6 +894,7 @@
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainMenuToolStripMenuItem,
             this.greekScripturesToolStripMenuItem,
+            this.settingsToolStripMenuItem,
             this.exitToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
@@ -1020,6 +1022,14 @@
 			this.timer1.Interval = 1000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
+			// settingsToolStripMenuItem
+			// 
+			this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+			this.settingsToolStripMenuItem.Text = "Settings";
+			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+			// 
 			// HebrewScriptures
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1114,5 +1124,6 @@
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label lblTimeElapsed;
 		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
 	}
 }

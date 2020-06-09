@@ -28,7 +28,7 @@
 			this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.hebrewScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.label4 = new System.Windows.Forms.Label();
+			this.lblDecorativeEnBooks = new System.Windows.Forms.Label();
 			this.lblMatthew = new System.Windows.Forms.Label();
 			this.lblMark = new System.Windows.Forms.Label();
 			this.lblLuke = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
 			this.lbl2Peter = new System.Windows.Forms.Label();
 			this.lbl1John = new System.Windows.Forms.Label();
 			this.lbl2John = new System.Windows.Forms.Label();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.pnlStatistics = new System.Windows.Forms.Panel();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.lblGreekAnswered = new System.Windows.Forms.Label();
@@ -91,15 +91,16 @@
 			this.lblRevelation = new System.Windows.Forms.Label();
 			this.lblCh3John = new System.Windows.Forms.Label();
 			this.lblChRevelation = new System.Windows.Forms.Label();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.panel3 = new System.Windows.Forms.Panel();
+			this.pnlWindowResize = new System.Windows.Forms.Panel();
+			this.pnlTimer = new System.Windows.Forms.Panel();
 			this.label12 = new System.Windows.Forms.Label();
 			this.lblTimeElapsed = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.panel3.SuspendLayout();
+			this.pnlStatistics.SuspendLayout();
+			this.pnlWindowResize.SuspendLayout();
+			this.pnlTimer.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -107,6 +108,7 @@
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainMenuToolStripMenuItem,
             this.hebrewScripturesToolStripMenuItem,
+            this.settingsToolStripMenuItem,
             this.exitToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
@@ -138,13 +140,13 @@
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
-			// label4
+			// lblDecorativeEnBooks
 			// 
-			this.label4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-			this.label4.Location = new System.Drawing.Point(485, 1);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(380, 736);
-			this.label4.TabIndex = 89;
+			this.lblDecorativeEnBooks.BackColor = System.Drawing.SystemColors.ActiveCaption;
+			this.lblDecorativeEnBooks.Location = new System.Drawing.Point(485, 1);
+			this.lblDecorativeEnBooks.Name = "lblDecorativeEnBooks";
+			this.lblDecorativeEnBooks.Size = new System.Drawing.Size(380, 736);
+			this.lblDecorativeEnBooks.TabIndex = 89;
 			// 
 			// lblMatthew
 			// 
@@ -458,22 +460,22 @@
 			this.lbl2John.Text = "2 John";
 			this.lbl2John.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// panel1
+			// pnlStatistics
 			// 
-			this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.panel1.Controls.Add(this.label7);
-			this.panel1.Controls.Add(this.label3);
-			this.panel1.Controls.Add(this.lblGreekAnswered);
-			this.panel1.Controls.Add(this.lblPercentageCorrect);
-			this.panel1.Controls.Add(this.label6);
-			this.panel1.Controls.Add(this.label1);
-			this.panel1.Controls.Add(this.lblTotalPoints);
-			this.panel1.Controls.Add(this.lblGreekPoints);
-			this.panel1.Controls.Add(this.label2);
-			this.panel1.Location = new System.Drawing.Point(11, 772);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(655, 102);
-			this.panel1.TabIndex = 17;
+			this.pnlStatistics.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.pnlStatistics.Controls.Add(this.label7);
+			this.pnlStatistics.Controls.Add(this.label3);
+			this.pnlStatistics.Controls.Add(this.lblGreekAnswered);
+			this.pnlStatistics.Controls.Add(this.lblPercentageCorrect);
+			this.pnlStatistics.Controls.Add(this.label6);
+			this.pnlStatistics.Controls.Add(this.label1);
+			this.pnlStatistics.Controls.Add(this.lblTotalPoints);
+			this.pnlStatistics.Controls.Add(this.lblGreekPoints);
+			this.pnlStatistics.Controls.Add(this.label2);
+			this.pnlStatistics.Location = new System.Drawing.Point(11, 772);
+			this.pnlStatistics.Name = "pnlStatistics";
+			this.pnlStatistics.Size = new System.Drawing.Size(655, 102);
+			this.pnlStatistics.TabIndex = 17;
 			// 
 			// label7
 			// 
@@ -922,78 +924,78 @@
 			this.lblChRevelation.Text = "启示录";
 			this.lblChRevelation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// panel2
+			// pnlWindowResize
 			// 
-			this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.panel2.Controls.Add(this.panel3);
-			this.panel2.Controls.Add(this.lblChRevelation);
-			this.panel2.Controls.Add(this.lblCh3John);
-			this.panel2.Controls.Add(this.lblRevelation);
-			this.panel2.Controls.Add(this.lbl3John);
-			this.panel2.Controls.Add(this.lblCh2John);
-			this.panel2.Controls.Add(this.lblCh1John);
-			this.panel2.Controls.Add(this.lblCh2Peter);
-			this.panel2.Controls.Add(this.lblCh1Peter);
-			this.panel2.Controls.Add(this.lblCh1Thessalonians);
-			this.panel2.Controls.Add(this.lblCh2Thessalonians);
-			this.panel2.Controls.Add(this.lblCh1Timothy);
-			this.panel2.Controls.Add(this.lblCh2Timothy);
-			this.panel2.Controls.Add(this.lblChJames);
-			this.panel2.Controls.Add(this.lblChHebrews);
-			this.panel2.Controls.Add(this.lblChPhilemon);
-			this.panel2.Controls.Add(this.lblChTitus);
-			this.panel2.Controls.Add(this.lblChColossians);
-			this.panel2.Controls.Add(this.lblChPhilippians);
-			this.panel2.Controls.Add(this.lblChEphesians);
-			this.panel2.Controls.Add(this.lblChGalatians);
-			this.panel2.Controls.Add(this.lblChMatthew);
-			this.panel2.Controls.Add(this.lblChMark);
-			this.panel2.Controls.Add(this.lblChLuke);
-			this.panel2.Controls.Add(this.lblChJohn);
-			this.panel2.Controls.Add(this.lblCh2Corinthians);
-			this.panel2.Controls.Add(this.lblCh1Corinthians);
-			this.panel2.Controls.Add(this.lblChRomans);
-			this.panel2.Controls.Add(this.lblChActs);
-			this.panel2.Controls.Add(this.panel1);
-			this.panel2.Controls.Add(this.lbl2John);
-			this.panel2.Controls.Add(this.lbl1John);
-			this.panel2.Controls.Add(this.lbl2Peter);
-			this.panel2.Controls.Add(this.lbl1Peter);
-			this.panel2.Controls.Add(this.lblJames);
-			this.panel2.Controls.Add(this.lblHebrews);
-			this.panel2.Controls.Add(this.lblPhilemon);
-			this.panel2.Controls.Add(this.lbl2Timothy);
-			this.panel2.Controls.Add(this.lblTitus);
-			this.panel2.Controls.Add(this.lbl1Timothy);
-			this.panel2.Controls.Add(this.lbl2Thessalonians);
-			this.panel2.Controls.Add(this.lbl1Thessalonians);
-			this.panel2.Controls.Add(this.lblColossians);
-			this.panel2.Controls.Add(this.lblPhilippians);
-			this.panel2.Controls.Add(this.lblEphesians);
-			this.panel2.Controls.Add(this.lblGalatians);
-			this.panel2.Controls.Add(this.lbl2Corinthians);
-			this.panel2.Controls.Add(this.lbl1Corinthians);
-			this.panel2.Controls.Add(this.lblRomans);
-			this.panel2.Controls.Add(this.lblJohn);
-			this.panel2.Controls.Add(this.lblActs);
-			this.panel2.Controls.Add(this.lblLuke);
-			this.panel2.Controls.Add(this.lblMark);
-			this.panel2.Controls.Add(this.lblMatthew);
-			this.panel2.Controls.Add(this.label4);
-			this.panel2.Location = new System.Drawing.Point(1, 28);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(1351, 888);
-			this.panel2.TabIndex = 90;
+			this.pnlWindowResize.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.pnlWindowResize.Controls.Add(this.pnlTimer);
+			this.pnlWindowResize.Controls.Add(this.lblChRevelation);
+			this.pnlWindowResize.Controls.Add(this.lblCh3John);
+			this.pnlWindowResize.Controls.Add(this.lblRevelation);
+			this.pnlWindowResize.Controls.Add(this.lbl3John);
+			this.pnlWindowResize.Controls.Add(this.lblCh2John);
+			this.pnlWindowResize.Controls.Add(this.lblCh1John);
+			this.pnlWindowResize.Controls.Add(this.lblCh2Peter);
+			this.pnlWindowResize.Controls.Add(this.lblCh1Peter);
+			this.pnlWindowResize.Controls.Add(this.lblCh1Thessalonians);
+			this.pnlWindowResize.Controls.Add(this.lblCh2Thessalonians);
+			this.pnlWindowResize.Controls.Add(this.lblCh1Timothy);
+			this.pnlWindowResize.Controls.Add(this.lblCh2Timothy);
+			this.pnlWindowResize.Controls.Add(this.lblChJames);
+			this.pnlWindowResize.Controls.Add(this.lblChHebrews);
+			this.pnlWindowResize.Controls.Add(this.lblChPhilemon);
+			this.pnlWindowResize.Controls.Add(this.lblChTitus);
+			this.pnlWindowResize.Controls.Add(this.lblChColossians);
+			this.pnlWindowResize.Controls.Add(this.lblChPhilippians);
+			this.pnlWindowResize.Controls.Add(this.lblChEphesians);
+			this.pnlWindowResize.Controls.Add(this.lblChGalatians);
+			this.pnlWindowResize.Controls.Add(this.lblChMatthew);
+			this.pnlWindowResize.Controls.Add(this.lblChMark);
+			this.pnlWindowResize.Controls.Add(this.lblChLuke);
+			this.pnlWindowResize.Controls.Add(this.lblChJohn);
+			this.pnlWindowResize.Controls.Add(this.lblCh2Corinthians);
+			this.pnlWindowResize.Controls.Add(this.lblCh1Corinthians);
+			this.pnlWindowResize.Controls.Add(this.lblChRomans);
+			this.pnlWindowResize.Controls.Add(this.lblChActs);
+			this.pnlWindowResize.Controls.Add(this.pnlStatistics);
+			this.pnlWindowResize.Controls.Add(this.lbl2John);
+			this.pnlWindowResize.Controls.Add(this.lbl1John);
+			this.pnlWindowResize.Controls.Add(this.lbl2Peter);
+			this.pnlWindowResize.Controls.Add(this.lbl1Peter);
+			this.pnlWindowResize.Controls.Add(this.lblJames);
+			this.pnlWindowResize.Controls.Add(this.lblHebrews);
+			this.pnlWindowResize.Controls.Add(this.lblPhilemon);
+			this.pnlWindowResize.Controls.Add(this.lbl2Timothy);
+			this.pnlWindowResize.Controls.Add(this.lblTitus);
+			this.pnlWindowResize.Controls.Add(this.lbl1Timothy);
+			this.pnlWindowResize.Controls.Add(this.lbl2Thessalonians);
+			this.pnlWindowResize.Controls.Add(this.lbl1Thessalonians);
+			this.pnlWindowResize.Controls.Add(this.lblColossians);
+			this.pnlWindowResize.Controls.Add(this.lblPhilippians);
+			this.pnlWindowResize.Controls.Add(this.lblEphesians);
+			this.pnlWindowResize.Controls.Add(this.lblGalatians);
+			this.pnlWindowResize.Controls.Add(this.lbl2Corinthians);
+			this.pnlWindowResize.Controls.Add(this.lbl1Corinthians);
+			this.pnlWindowResize.Controls.Add(this.lblRomans);
+			this.pnlWindowResize.Controls.Add(this.lblJohn);
+			this.pnlWindowResize.Controls.Add(this.lblActs);
+			this.pnlWindowResize.Controls.Add(this.lblLuke);
+			this.pnlWindowResize.Controls.Add(this.lblMark);
+			this.pnlWindowResize.Controls.Add(this.lblMatthew);
+			this.pnlWindowResize.Controls.Add(this.lblDecorativeEnBooks);
+			this.pnlWindowResize.Location = new System.Drawing.Point(1, 28);
+			this.pnlWindowResize.Name = "pnlWindowResize";
+			this.pnlWindowResize.Size = new System.Drawing.Size(1351, 888);
+			this.pnlWindowResize.TabIndex = 90;
 			// 
-			// panel3
+			// pnlTimer
 			// 
-			this.panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.panel3.Controls.Add(this.label12);
-			this.panel3.Controls.Add(this.lblTimeElapsed);
-			this.panel3.Location = new System.Drawing.Point(672, 772);
-			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(253, 102);
-			this.panel3.TabIndex = 145;
+			this.pnlTimer.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.pnlTimer.Controls.Add(this.label12);
+			this.pnlTimer.Controls.Add(this.lblTimeElapsed);
+			this.pnlTimer.Location = new System.Drawing.Point(672, 772);
+			this.pnlTimer.Name = "pnlTimer";
+			this.pnlTimer.Size = new System.Drawing.Size(253, 102);
+			this.pnlTimer.TabIndex = 145;
 			// 
 			// label12
 			// 
@@ -1020,12 +1022,20 @@
 			this.timer1.Interval = 1000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
+			// settingsToolStripMenuItem
+			// 
+			this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+			this.settingsToolStripMenuItem.Text = "Settings";
+			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+			// 
 			// GreekScriptures
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1353, 914);
-			this.Controls.Add(this.panel2);
+			this.Controls.Add(this.pnlWindowResize);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "GreekScriptures";
@@ -1033,9 +1043,9 @@
 			this.Load += new System.EventHandler(this.GreekScriptures_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
-			this.panel1.ResumeLayout(false);
-			this.panel2.ResumeLayout(false);
-			this.panel3.ResumeLayout(false);
+			this.pnlStatistics.ResumeLayout(false);
+			this.pnlWindowResize.ResumeLayout(false);
+			this.pnlTimer.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1046,7 +1056,7 @@
 		private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem hebrewScripturesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label lblDecorativeEnBooks;
 		private System.Windows.Forms.Label lblMatthew;
 		private System.Windows.Forms.Label lblMark;
 		private System.Windows.Forms.Label lblLuke;
@@ -1071,7 +1081,7 @@
 		private System.Windows.Forms.Label lbl2Peter;
 		private System.Windows.Forms.Label lbl1John;
 		private System.Windows.Forms.Label lbl2John;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel pnlStatistics;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label lblGreekAnswered;
@@ -1109,10 +1119,11 @@
 		private System.Windows.Forms.Label lblRevelation;
 		private System.Windows.Forms.Label lblCh3John;
 		private System.Windows.Forms.Label lblChRevelation;
-		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.Panel panel3;
+		private System.Windows.Forms.Panel pnlWindowResize;
+		private System.Windows.Forms.Panel pnlTimer;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label lblTimeElapsed;
 		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
 	}
 }
