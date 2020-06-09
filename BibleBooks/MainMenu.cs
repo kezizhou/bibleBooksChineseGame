@@ -6,6 +6,7 @@ namespace BibleBooks {
 
 		public MainMenu() {
 			InitializeComponent();
+			WindowState = FormWindowState.Maximized;
 		}
 
 		private void greekScripturesToolStripMenuItem_Click(object sender, EventArgs e) {
