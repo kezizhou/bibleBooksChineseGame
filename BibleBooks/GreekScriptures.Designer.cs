@@ -27,8 +27,8 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.hebrewScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.lblDecorativeEnBooks = new System.Windows.Forms.Label();
 			this.lblMatthew = new System.Windows.Forms.Label();
 			this.lblMark = new System.Windows.Forms.Label();
 			this.lblLuke = new System.Windows.Forms.Label();
@@ -95,8 +95,8 @@
 			this.pnlTimer = new System.Windows.Forms.Panel();
 			this.label12 = new System.Windows.Forms.Label();
 			this.lblTimeElapsed = new System.Windows.Forms.Label();
+			this.lblDecorativeEnBooks = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.pnlStatistics.SuspendLayout();
 			this.pnlWindowResize.SuspendLayout();
@@ -112,7 +112,7 @@
             this.exitToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1353, 28);
+			this.menuStrip1.Size = new System.Drawing.Size(1352, 28);
 			this.menuStrip1.TabIndex = 88;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -132,6 +132,14 @@
 			this.hebrewScripturesToolStripMenuItem.Text = "Hebrew Scriptures";
 			this.hebrewScripturesToolStripMenuItem.Click += new System.EventHandler(this.hebrewScripturesToolStripMenuItem_Click);
 			// 
+			// settingsToolStripMenuItem
+			// 
+			this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+			this.settingsToolStripMenuItem.Text = "Settings";
+			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -140,21 +148,13 @@
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
-			// lblDecorativeEnBooks
-			// 
-			this.lblDecorativeEnBooks.BackColor = System.Drawing.SystemColors.ActiveCaption;
-			this.lblDecorativeEnBooks.Location = new System.Drawing.Point(485, 1);
-			this.lblDecorativeEnBooks.Name = "lblDecorativeEnBooks";
-			this.lblDecorativeEnBooks.Size = new System.Drawing.Size(380, 736);
-			this.lblDecorativeEnBooks.TabIndex = 89;
-			// 
 			// lblMatthew
 			// 
 			this.lblMatthew.BackColor = System.Drawing.SystemColors.Window;
 			this.lblMatthew.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblMatthew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblMatthew.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblMatthew.Location = new System.Drawing.Point(502, 22);
+			this.lblMatthew.Location = new System.Drawing.Point(424, 17);
 			this.lblMatthew.Name = "lblMatthew";
 			this.lblMatthew.Size = new System.Drawing.Size(142, 26);
 			this.lblMatthew.TabIndex = 60;
@@ -167,7 +167,7 @@
 			this.lblMark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblMark.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblMark.Location = new System.Drawing.Point(502, 78);
+			this.lblMark.Location = new System.Drawing.Point(424, 73);
 			this.lblMark.Name = "lblMark";
 			this.lblMark.Size = new System.Drawing.Size(142, 26);
 			this.lblMark.TabIndex = 61;
@@ -180,7 +180,7 @@
 			this.lblLuke.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblLuke.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblLuke.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblLuke.Location = new System.Drawing.Point(502, 134);
+			this.lblLuke.Location = new System.Drawing.Point(424, 129);
 			this.lblLuke.Name = "lblLuke";
 			this.lblLuke.Size = new System.Drawing.Size(142, 26);
 			this.lblLuke.TabIndex = 62;
@@ -193,7 +193,7 @@
 			this.lblActs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblActs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblActs.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblActs.Location = new System.Drawing.Point(502, 246);
+			this.lblActs.Location = new System.Drawing.Point(424, 241);
 			this.lblActs.Name = "lblActs";
 			this.lblActs.Size = new System.Drawing.Size(142, 26);
 			this.lblActs.TabIndex = 63;
@@ -206,7 +206,7 @@
 			this.lblJohn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblJohn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblJohn.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblJohn.Location = new System.Drawing.Point(502, 190);
+			this.lblJohn.Location = new System.Drawing.Point(424, 185);
 			this.lblJohn.Name = "lblJohn";
 			this.lblJohn.Size = new System.Drawing.Size(142, 26);
 			this.lblJohn.TabIndex = 64;
@@ -219,7 +219,7 @@
 			this.lblRomans.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblRomans.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblRomans.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblRomans.Location = new System.Drawing.Point(502, 302);
+			this.lblRomans.Location = new System.Drawing.Point(424, 297);
 			this.lblRomans.Name = "lblRomans";
 			this.lblRomans.Size = new System.Drawing.Size(142, 26);
 			this.lblRomans.TabIndex = 65;
@@ -232,7 +232,7 @@
 			this.lbl1Corinthians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbl1Corinthians.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl1Corinthians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lbl1Corinthians.Location = new System.Drawing.Point(502, 358);
+			this.lbl1Corinthians.Location = new System.Drawing.Point(424, 353);
 			this.lbl1Corinthians.Name = "lbl1Corinthians";
 			this.lbl1Corinthians.Size = new System.Drawing.Size(142, 26);
 			this.lbl1Corinthians.TabIndex = 66;
@@ -245,7 +245,7 @@
 			this.lbl2Corinthians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbl2Corinthians.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl2Corinthians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lbl2Corinthians.Location = new System.Drawing.Point(502, 414);
+			this.lbl2Corinthians.Location = new System.Drawing.Point(424, 409);
 			this.lbl2Corinthians.Name = "lbl2Corinthians";
 			this.lbl2Corinthians.Size = new System.Drawing.Size(142, 26);
 			this.lbl2Corinthians.TabIndex = 67;
@@ -258,7 +258,7 @@
 			this.lblGalatians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblGalatians.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblGalatians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblGalatians.Location = new System.Drawing.Point(502, 470);
+			this.lblGalatians.Location = new System.Drawing.Point(424, 465);
 			this.lblGalatians.Name = "lblGalatians";
 			this.lblGalatians.Size = new System.Drawing.Size(142, 26);
 			this.lblGalatians.TabIndex = 68;
@@ -271,7 +271,7 @@
 			this.lblEphesians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblEphesians.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblEphesians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblEphesians.Location = new System.Drawing.Point(502, 526);
+			this.lblEphesians.Location = new System.Drawing.Point(592, 17);
 			this.lblEphesians.Name = "lblEphesians";
 			this.lblEphesians.Size = new System.Drawing.Size(142, 26);
 			this.lblEphesians.TabIndex = 69;
@@ -284,7 +284,7 @@
 			this.lblPhilippians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblPhilippians.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblPhilippians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblPhilippians.Location = new System.Drawing.Point(502, 582);
+			this.lblPhilippians.Location = new System.Drawing.Point(592, 73);
 			this.lblPhilippians.Name = "lblPhilippians";
 			this.lblPhilippians.Size = new System.Drawing.Size(142, 26);
 			this.lblPhilippians.TabIndex = 70;
@@ -297,7 +297,7 @@
 			this.lblColossians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblColossians.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblColossians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblColossians.Location = new System.Drawing.Point(502, 638);
+			this.lblColossians.Location = new System.Drawing.Point(592, 129);
 			this.lblColossians.Name = "lblColossians";
 			this.lblColossians.Size = new System.Drawing.Size(142, 26);
 			this.lblColossians.TabIndex = 71;
@@ -310,7 +310,7 @@
 			this.lbl1Thessalonians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbl1Thessalonians.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl1Thessalonians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lbl1Thessalonians.Location = new System.Drawing.Point(502, 694);
+			this.lbl1Thessalonians.Location = new System.Drawing.Point(592, 185);
 			this.lbl1Thessalonians.Name = "lbl1Thessalonians";
 			this.lbl1Thessalonians.Size = new System.Drawing.Size(142, 26);
 			this.lbl1Thessalonians.TabIndex = 72;
@@ -323,7 +323,7 @@
 			this.lbl2Thessalonians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbl2Thessalonians.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl2Thessalonians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lbl2Thessalonians.Location = new System.Drawing.Point(705, 22);
+			this.lbl2Thessalonians.Location = new System.Drawing.Point(592, 240);
 			this.lbl2Thessalonians.Name = "lbl2Thessalonians";
 			this.lbl2Thessalonians.Size = new System.Drawing.Size(142, 26);
 			this.lbl2Thessalonians.TabIndex = 73;
@@ -336,7 +336,7 @@
 			this.lbl1Timothy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbl1Timothy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl1Timothy.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lbl1Timothy.Location = new System.Drawing.Point(705, 78);
+			this.lbl1Timothy.Location = new System.Drawing.Point(592, 296);
 			this.lbl1Timothy.Name = "lbl1Timothy";
 			this.lbl1Timothy.Size = new System.Drawing.Size(142, 26);
 			this.lbl1Timothy.TabIndex = 74;
@@ -349,7 +349,7 @@
 			this.lblTitus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblTitus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblTitus.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblTitus.Location = new System.Drawing.Point(705, 190);
+			this.lblTitus.Location = new System.Drawing.Point(592, 408);
 			this.lblTitus.Name = "lblTitus";
 			this.lblTitus.Size = new System.Drawing.Size(142, 26);
 			this.lblTitus.TabIndex = 75;
@@ -362,7 +362,7 @@
 			this.lbl2Timothy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbl2Timothy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl2Timothy.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lbl2Timothy.Location = new System.Drawing.Point(705, 134);
+			this.lbl2Timothy.Location = new System.Drawing.Point(592, 352);
 			this.lbl2Timothy.Name = "lbl2Timothy";
 			this.lbl2Timothy.Size = new System.Drawing.Size(142, 26);
 			this.lbl2Timothy.TabIndex = 76;
@@ -375,7 +375,7 @@
 			this.lblPhilemon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblPhilemon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblPhilemon.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblPhilemon.Location = new System.Drawing.Point(705, 246);
+			this.lblPhilemon.Location = new System.Drawing.Point(592, 464);
 			this.lblPhilemon.Name = "lblPhilemon";
 			this.lblPhilemon.Size = new System.Drawing.Size(142, 26);
 			this.lblPhilemon.TabIndex = 77;
@@ -388,7 +388,7 @@
 			this.lblHebrews.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblHebrews.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblHebrews.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblHebrews.Location = new System.Drawing.Point(705, 302);
+			this.lblHebrews.Location = new System.Drawing.Point(767, 17);
 			this.lblHebrews.Name = "lblHebrews";
 			this.lblHebrews.Size = new System.Drawing.Size(142, 26);
 			this.lblHebrews.TabIndex = 78;
@@ -401,7 +401,7 @@
 			this.lblJames.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblJames.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblJames.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblJames.Location = new System.Drawing.Point(705, 358);
+			this.lblJames.Location = new System.Drawing.Point(767, 73);
 			this.lblJames.Name = "lblJames";
 			this.lblJames.Size = new System.Drawing.Size(142, 26);
 			this.lblJames.TabIndex = 79;
@@ -414,7 +414,7 @@
 			this.lbl1Peter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbl1Peter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl1Peter.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lbl1Peter.Location = new System.Drawing.Point(705, 414);
+			this.lbl1Peter.Location = new System.Drawing.Point(767, 129);
 			this.lbl1Peter.Name = "lbl1Peter";
 			this.lbl1Peter.Size = new System.Drawing.Size(142, 26);
 			this.lbl1Peter.TabIndex = 80;
@@ -427,7 +427,7 @@
 			this.lbl2Peter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbl2Peter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl2Peter.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lbl2Peter.Location = new System.Drawing.Point(705, 470);
+			this.lbl2Peter.Location = new System.Drawing.Point(767, 185);
 			this.lbl2Peter.Name = "lbl2Peter";
 			this.lbl2Peter.Size = new System.Drawing.Size(142, 26);
 			this.lbl2Peter.TabIndex = 81;
@@ -440,7 +440,7 @@
 			this.lbl1John.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbl1John.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl1John.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lbl1John.Location = new System.Drawing.Point(705, 526);
+			this.lbl1John.Location = new System.Drawing.Point(767, 241);
 			this.lbl1John.Name = "lbl1John";
 			this.lbl1John.Size = new System.Drawing.Size(142, 26);
 			this.lbl1John.TabIndex = 82;
@@ -453,7 +453,7 @@
 			this.lbl2John.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbl2John.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl2John.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lbl2John.Location = new System.Drawing.Point(705, 582);
+			this.lbl2John.Location = new System.Drawing.Point(767, 297);
 			this.lbl2John.Name = "lbl2John";
 			this.lbl2John.Size = new System.Drawing.Size(142, 26);
 			this.lbl2John.TabIndex = 83;
@@ -472,7 +472,7 @@
 			this.pnlStatistics.Controls.Add(this.lblTotalPoints);
 			this.pnlStatistics.Controls.Add(this.lblGreekPoints);
 			this.pnlStatistics.Controls.Add(this.label2);
-			this.pnlStatistics.Location = new System.Drawing.Point(11, 772);
+			this.pnlStatistics.Location = new System.Drawing.Point(218, 523);
 			this.pnlStatistics.Name = "pnlStatistics";
 			this.pnlStatistics.Size = new System.Drawing.Size(655, 102);
 			this.pnlStatistics.TabIndex = 17;
@@ -605,7 +605,7 @@
 			this.lblCh2Corinthians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh2Corinthians.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh2Corinthians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh2Corinthians.Location = new System.Drawing.Point(11, 413);
+			this.lblCh2Corinthians.Location = new System.Drawing.Point(191, 18);
 			this.lblCh2Corinthians.Name = "lblCh2Corinthians";
 			this.lblCh2Corinthians.Size = new System.Drawing.Size(142, 26);
 			this.lblCh2Corinthians.TabIndex = 22;
@@ -670,7 +670,7 @@
 			this.lblChGalatians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChGalatians.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChGalatians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChGalatians.Location = new System.Drawing.Point(11, 469);
+			this.lblChGalatians.Location = new System.Drawing.Point(191, 73);
 			this.lblChGalatians.Name = "lblChGalatians";
 			this.lblChGalatians.Size = new System.Drawing.Size(142, 26);
 			this.lblChGalatians.TabIndex = 32;
@@ -683,7 +683,7 @@
 			this.lblChEphesians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChEphesians.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChEphesians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChEphesians.Location = new System.Drawing.Point(11, 525);
+			this.lblChEphesians.Location = new System.Drawing.Point(191, 129);
 			this.lblChEphesians.Name = "lblChEphesians";
 			this.lblChEphesians.Size = new System.Drawing.Size(142, 26);
 			this.lblChEphesians.TabIndex = 33;
@@ -696,7 +696,7 @@
 			this.lblChPhilippians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChPhilippians.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChPhilippians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChPhilippians.Location = new System.Drawing.Point(11, 582);
+			this.lblChPhilippians.Location = new System.Drawing.Point(191, 186);
 			this.lblChPhilippians.Name = "lblChPhilippians";
 			this.lblChPhilippians.Size = new System.Drawing.Size(142, 26);
 			this.lblChPhilippians.TabIndex = 34;
@@ -709,7 +709,7 @@
 			this.lblChColossians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChColossians.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChColossians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChColossians.Location = new System.Drawing.Point(11, 638);
+			this.lblChColossians.Location = new System.Drawing.Point(191, 242);
 			this.lblChColossians.Name = "lblChColossians";
 			this.lblChColossians.Size = new System.Drawing.Size(142, 26);
 			this.lblChColossians.TabIndex = 35;
@@ -722,7 +722,7 @@
 			this.lblChTitus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChTitus.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChTitus.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChTitus.Location = new System.Drawing.Point(1198, 190);
+			this.lblChTitus.Location = new System.Drawing.Point(1002, 185);
 			this.lblChTitus.Name = "lblChTitus";
 			this.lblChTitus.Size = new System.Drawing.Size(142, 26);
 			this.lblChTitus.TabIndex = 52;
@@ -735,7 +735,7 @@
 			this.lblChPhilemon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChPhilemon.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChPhilemon.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChPhilemon.Location = new System.Drawing.Point(1198, 246);
+			this.lblChPhilemon.Location = new System.Drawing.Point(1002, 240);
 			this.lblChPhilemon.Name = "lblChPhilemon";
 			this.lblChPhilemon.Size = new System.Drawing.Size(142, 26);
 			this.lblChPhilemon.TabIndex = 53;
@@ -748,7 +748,7 @@
 			this.lblChHebrews.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChHebrews.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChHebrews.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChHebrews.Location = new System.Drawing.Point(1198, 302);
+			this.lblChHebrews.Location = new System.Drawing.Point(1002, 296);
 			this.lblChHebrews.Name = "lblChHebrews";
 			this.lblChHebrews.Size = new System.Drawing.Size(142, 26);
 			this.lblChHebrews.TabIndex = 54;
@@ -761,7 +761,7 @@
 			this.lblChJames.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChJames.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChJames.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChJames.Location = new System.Drawing.Point(1198, 358);
+			this.lblChJames.Location = new System.Drawing.Point(1002, 352);
 			this.lblChJames.Name = "lblChJames";
 			this.lblChJames.Size = new System.Drawing.Size(142, 26);
 			this.lblChJames.TabIndex = 55;
@@ -774,7 +774,7 @@
 			this.lblCh2Timothy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh2Timothy.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh2Timothy.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh2Timothy.Location = new System.Drawing.Point(1198, 134);
+			this.lblCh2Timothy.Location = new System.Drawing.Point(1002, 129);
 			this.lblCh2Timothy.Name = "lblCh2Timothy";
 			this.lblCh2Timothy.Size = new System.Drawing.Size(142, 26);
 			this.lblCh2Timothy.TabIndex = 51;
@@ -787,7 +787,7 @@
 			this.lblCh1Timothy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh1Timothy.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh1Timothy.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh1Timothy.Location = new System.Drawing.Point(1198, 78);
+			this.lblCh1Timothy.Location = new System.Drawing.Point(1002, 74);
 			this.lblCh1Timothy.Name = "lblCh1Timothy";
 			this.lblCh1Timothy.Size = new System.Drawing.Size(142, 26);
 			this.lblCh1Timothy.TabIndex = 50;
@@ -800,7 +800,7 @@
 			this.lblCh2Thessalonians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh2Thessalonians.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh2Thessalonians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh2Thessalonians.Location = new System.Drawing.Point(1198, 22);
+			this.lblCh2Thessalonians.Location = new System.Drawing.Point(1002, 18);
 			this.lblCh2Thessalonians.Name = "lblCh2Thessalonians";
 			this.lblCh2Thessalonians.Size = new System.Drawing.Size(142, 26);
 			this.lblCh2Thessalonians.TabIndex = 49;
@@ -813,7 +813,7 @@
 			this.lblCh1Thessalonians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh1Thessalonians.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh1Thessalonians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh1Thessalonians.Location = new System.Drawing.Point(11, 694);
+			this.lblCh1Thessalonians.Location = new System.Drawing.Point(191, 298);
 			this.lblCh1Thessalonians.Name = "lblCh1Thessalonians";
 			this.lblCh1Thessalonians.Size = new System.Drawing.Size(142, 26);
 			this.lblCh1Thessalonians.TabIndex = 48;
@@ -826,7 +826,7 @@
 			this.lblCh1Peter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh1Peter.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh1Peter.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh1Peter.Location = new System.Drawing.Point(1198, 414);
+			this.lblCh1Peter.Location = new System.Drawing.Point(1171, 17);
 			this.lblCh1Peter.Name = "lblCh1Peter";
 			this.lblCh1Peter.Size = new System.Drawing.Size(142, 26);
 			this.lblCh1Peter.TabIndex = 56;
@@ -839,7 +839,7 @@
 			this.lblCh2Peter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh2Peter.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh2Peter.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh2Peter.Location = new System.Drawing.Point(1198, 470);
+			this.lblCh2Peter.Location = new System.Drawing.Point(1171, 73);
 			this.lblCh2Peter.Name = "lblCh2Peter";
 			this.lblCh2Peter.Size = new System.Drawing.Size(142, 26);
 			this.lblCh2Peter.TabIndex = 57;
@@ -852,7 +852,7 @@
 			this.lblCh1John.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh1John.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh1John.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh1John.Location = new System.Drawing.Point(1198, 526);
+			this.lblCh1John.Location = new System.Drawing.Point(1171, 129);
 			this.lblCh1John.Name = "lblCh1John";
 			this.lblCh1John.Size = new System.Drawing.Size(142, 26);
 			this.lblCh1John.TabIndex = 58;
@@ -865,7 +865,7 @@
 			this.lblCh2John.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh2John.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh2John.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh2John.Location = new System.Drawing.Point(1198, 582);
+			this.lblCh2John.Location = new System.Drawing.Point(1171, 185);
 			this.lblCh2John.Name = "lblCh2John";
 			this.lblCh2John.Size = new System.Drawing.Size(142, 26);
 			this.lblCh2John.TabIndex = 59;
@@ -878,7 +878,7 @@
 			this.lbl3John.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbl3John.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl3John.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lbl3John.Location = new System.Drawing.Point(705, 637);
+			this.lbl3John.Location = new System.Drawing.Point(767, 352);
 			this.lbl3John.Name = "lbl3John";
 			this.lbl3John.Size = new System.Drawing.Size(142, 26);
 			this.lbl3John.TabIndex = 86;
@@ -891,7 +891,7 @@
 			this.lblRevelation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblRevelation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblRevelation.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblRevelation.Location = new System.Drawing.Point(705, 693);
+			this.lblRevelation.Location = new System.Drawing.Point(767, 408);
 			this.lblRevelation.Name = "lblRevelation";
 			this.lblRevelation.Size = new System.Drawing.Size(142, 26);
 			this.lblRevelation.TabIndex = 87;
@@ -904,7 +904,7 @@
 			this.lblCh3John.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh3John.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh3John.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh3John.Location = new System.Drawing.Point(1198, 637);
+			this.lblCh3John.Location = new System.Drawing.Point(1171, 240);
 			this.lblCh3John.Name = "lblCh3John";
 			this.lblCh3John.Size = new System.Drawing.Size(142, 26);
 			this.lblCh3John.TabIndex = 84;
@@ -917,7 +917,7 @@
 			this.lblChRevelation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChRevelation.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChRevelation.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChRevelation.Location = new System.Drawing.Point(1198, 693);
+			this.lblChRevelation.Location = new System.Drawing.Point(1171, 296);
 			this.lblChRevelation.Name = "lblChRevelation";
 			this.lblChRevelation.Size = new System.Drawing.Size(142, 26);
 			this.lblChRevelation.TabIndex = 85;
@@ -926,7 +926,7 @@
 			// 
 			// pnlWindowResize
 			// 
-			this.pnlWindowResize.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.pnlWindowResize.AutoScroll = true;
 			this.pnlWindowResize.Controls.Add(this.pnlTimer);
 			this.pnlWindowResize.Controls.Add(this.lblChRevelation);
 			this.pnlWindowResize.Controls.Add(this.lblCh3John);
@@ -984,7 +984,7 @@
 			this.pnlWindowResize.Controls.Add(this.lblDecorativeEnBooks);
 			this.pnlWindowResize.Location = new System.Drawing.Point(1, 28);
 			this.pnlWindowResize.Name = "pnlWindowResize";
-			this.pnlWindowResize.Size = new System.Drawing.Size(1351, 888);
+			this.pnlWindowResize.Size = new System.Drawing.Size(1351, 638);
 			this.pnlWindowResize.TabIndex = 90;
 			// 
 			// pnlTimer
@@ -992,7 +992,7 @@
 			this.pnlTimer.BackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.pnlTimer.Controls.Add(this.label12);
 			this.pnlTimer.Controls.Add(this.lblTimeElapsed);
-			this.pnlTimer.Location = new System.Drawing.Point(672, 772);
+			this.pnlTimer.Location = new System.Drawing.Point(879, 523);
 			this.pnlTimer.Name = "pnlTimer";
 			this.pnlTimer.Size = new System.Drawing.Size(253, 102);
 			this.pnlTimer.TabIndex = 145;
@@ -1016,25 +1016,26 @@
 			this.lblTimeElapsed.Text = "00:00:00";
 			this.lblTimeElapsed.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
+			// lblDecorativeEnBooks
+			// 
+			this.lblDecorativeEnBooks.BackColor = System.Drawing.SystemColors.ActiveCaption;
+			this.lblDecorativeEnBooks.Location = new System.Drawing.Point(406, -1);
+			this.lblDecorativeEnBooks.Name = "lblDecorativeEnBooks";
+			this.lblDecorativeEnBooks.Size = new System.Drawing.Size(531, 509);
+			this.lblDecorativeEnBooks.TabIndex = 89;
+			// 
 			// timer1
 			// 
 			this.timer1.Enabled = true;
 			this.timer1.Interval = 1000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
-			// settingsToolStripMenuItem
-			// 
-			this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
-			this.settingsToolStripMenuItem.Text = "Settings";
-			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
-			// 
 			// GreekScriptures
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1353, 914);
+			this.AutoScroll = true;
+			this.ClientSize = new System.Drawing.Size(1353, 665);
 			this.Controls.Add(this.pnlWindowResize);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
@@ -1056,7 +1057,6 @@
 		private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem hebrewScripturesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-		private System.Windows.Forms.Label lblDecorativeEnBooks;
 		private System.Windows.Forms.Label lblMatthew;
 		private System.Windows.Forms.Label lblMark;
 		private System.Windows.Forms.Label lblLuke;
@@ -1125,5 +1125,6 @@
 		private System.Windows.Forms.Label lblTimeElapsed;
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+		private System.Windows.Forms.Label lblDecorativeEnBooks;
 	}
 }
