@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Speech.Synthesis;
 using System.Globalization;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BibleBooks {
 	public partial class GreekScriptures : Form {
@@ -49,6 +50,12 @@ namespace BibleBooks {
 				lbl.Location = lpntChLabels[r.Next(0, lpntChLabels.Count)];
 				lpntChLabels.Remove(lbl.Location);
 			}
+
+			// Center main panel if window size is greater than form
+			if (this.Size.Width > 1369 && this.Size.Height > 704) {
+				pnlWindowResize.Left = (this.Size.Width - pnlWindowResize.Width) / 2;
+				pnlWindowResize.Top = (this.Size.Height - pnlWindowResize.Height) / 2;
+			}
 		}
 
 		private void lblMouseDown(object sender, MouseEventArgs e) {
@@ -56,12 +63,20 @@ namespace BibleBooks {
 			previousLocation = e.Location;
 			Cursor = Cursors.Hand;
 			activeControl.BringToFront();
+
+			// Check audio setting
+			// If on, play audio
+			if (Program.blnAudio) {
+				// Use a task so mouse move event will not wait on audio
+				Task.Run(() => playChineseAudio(sender));
+			}
 		}
 
 		private void lblMouseMove(object sender, MouseEventArgs e) {
 			if (activeControl == null || activeControl != sender)
 				return;
 
+			// Have control follow mouose drag
 			var location = activeControl.Location;
 			location.Offset(e.Location.X - previousLocation.X, e.Location.Y - previousLocation.Y);
 			activeControl.Location = location;
@@ -73,13 +88,6 @@ namespace BibleBooks {
 
 			// Check if it has been matched to an English book
 			checkLabelsTouching(sender);
-
-			// Check audio setting
-			// If on, play audio
-			if (Program.blnAudio) {
-				playChineseAudio(sender);
-			}
-
 		}
 
 		private void playChineseAudio(object sender) {
@@ -92,7 +100,6 @@ namespace BibleBooks {
 		}
 
 		private void checkLabelsTouching(object sender) {
-			int i = 0;
 			Label lblCh = sender as Label;
 
 			// Check each English book to see if touching
@@ -100,14 +107,13 @@ namespace BibleBooks {
 				// Get the label from the string name
 				Label lbl = this.Controls.Find(strLbl, true).FirstOrDefault() as Label;
 
-				// Only check labels that have not been correctly matched already
-				if (lblCh.Enabled) {
+				// Only check English labels that are touching the Chinese label
+				if (lblCh.Bounds.IntersectsWith(lbl.Bounds)) {
 
-					// Label is touching an English label
-					if (lblCh.Bounds.IntersectsWith(lbl.Bounds)) {
+					// If the correct English label has been matched
+					int intChLabelIndex = Array.IndexOf(astrChGreek, lblCh.Name);
 
-						// If the correct English label has been matched
-						if (strLbl == astrGreek[i]) {
+					if (strLbl == astrGreek[intChLabelIndex]) {
 							Program.intGreekPoints += 1;
 							Program.intTotalPoints += 1;
 							intNumberCorrect += 1;
@@ -116,18 +122,15 @@ namespace BibleBooks {
 							lblCh.Location = lbl.Location;
 							lblCh.Enabled = false;
 							lbl.Hide();
-						}
-						else {
-							// Point penalty
-							Program.intGreekPoints -= 1;
-							Program.intTotalPoints -= 1;
-							intGreekAnswered += 1;
-							refreshPoints();
-							lblCh.Location = new Point(283, 305);
-						}
+					} else {
+						// Point penalty
+						Program.intGreekPoints -= 1;
+						Program.intTotalPoints -= 1;
+						intGreekAnswered += 1;
+						refreshPoints();
+						lblCh.Location = new Point(283, 305);
 					}
 				}
-				i += 1;
 			}
 		}
 
