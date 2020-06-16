@@ -9,13 +9,6 @@ namespace BibleBooks {
 			WindowState = FormWindowState.Maximized;
 		}
 
-		private void greekScripturesToolStripMenuItem_Click(object sender, EventArgs e) {
-			this.Hide();
-			GreekScriptures frmGreek = new GreekScriptures();
-			frmGreek.ShowDialog();
-			this.Close();
-		}
-
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
 			Close();
 		}
@@ -31,6 +24,20 @@ namespace BibleBooks {
 			this.Hide();
 			Settings frmSettings = new Settings();
 			frmSettings.ShowDialog();
+			this.Close();
+		}
+
+		private void reorderBooksToolStripMenuItem_Click(object sender, EventArgs e) {
+			this.Hide();
+			GreekReorder frmGreekReorder = new GreekReorder();
+			frmGreekReorder.ShowDialog();
+			this.Close();
+		}
+
+		private void matchChineseToEnglishToolStripMenuItem_Click(object sender, EventArgs e) {
+			this.Hide();
+			GreekScriptures frmGreek = new GreekScriptures();
+			frmGreek.ShowDialog();
 			this.Close();
 		}
 	}

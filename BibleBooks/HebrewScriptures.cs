@@ -11,8 +11,10 @@ namespace BibleBooks {
 	public partial class HebrewScriptures : Form {
 		private Control activeControl;
 		private Point previousLocation;
+		private Point locationBeforeMatch;
 		private static int intHebrewAnswered = 0;
 		private static int intNumberCorrect = 0;
+		private static int intHebrewPoints = 0;
 		private static TimeSpan tsSecondsElapsed = TimeSpan.FromSeconds(0);
 		List<Point> lpntChLabels = new List<Point>();
 
@@ -61,6 +63,7 @@ namespace BibleBooks {
 
 		private void lblMouseDown(object sender, MouseEventArgs e) {
 			activeControl = sender as Control;
+			locationBeforeMatch = activeControl.Location;
 			previousLocation = e.Location;
 			Cursor = Cursors.Hand;
 			activeControl.BringToFront();
@@ -72,7 +75,6 @@ namespace BibleBooks {
 				Task.Run(() => playChineseAudio(sender));
 			}
 		}
-
 
 		private void lblMouseMove(object sender, MouseEventArgs e) {
 			if (activeControl == null || activeControl != sender)
@@ -116,7 +118,7 @@ namespace BibleBooks {
 					int intChLabelIndex = Array.IndexOf(astrChHebrew, lblCh.Name);
 
 					if (strLbl == astrHebrew[intChLabelIndex]) {
-						Program.intHebrewPoints += 1;
+						intHebrewPoints += 1;
 						Program.intTotalPoints += 1;
 						intNumberCorrect += 1;
 						intHebrewAnswered += 1;
@@ -126,18 +128,20 @@ namespace BibleBooks {
 						lbl.Hide();
 					} else {
 						// Point penalty
-						Program.intHebrewPoints -= 1;
+						intHebrewPoints -= 1;
 						Program.intTotalPoints -= 1;
 						intHebrewAnswered += 1;
 						refreshPoints();
-						lblCh.Location = new Point(283, 305);
+						lblCh.Location = locationBeforeMatch;
+						lblCh.BackColor = Color.Salmon;
+						incorrectFlash(lblCh);
 					}
 				}
 			}
 		}
 
 		private void refreshPoints() {
-			lblHebrewPoints.Text = Program.intHebrewPoints.ToString();
+			lblHebrewPoints.Text = intHebrewPoints.ToString();
 			lblTotalPoints.Text = Program.intTotalPoints.ToString();
 			lblPercentageCorrect.Text = ((double)intNumberCorrect / intHebrewAnswered * 100).ToString();
 			lblHebrewAnswered.Text = intHebrewAnswered.ToString();
@@ -145,13 +149,6 @@ namespace BibleBooks {
 
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
 			Close();
-		}
-
-		private void greekScripturesToolStripMenuItem_Click(object sender, EventArgs e) {
-			this.Hide();
-			GreekScriptures frmGreek = new GreekScriptures();
-			frmGreek.ShowDialog();
-			this.Close();
 		}
 
 		private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -171,6 +168,25 @@ namespace BibleBooks {
 			Settings frmSettings = new Settings();
 			frmSettings.ShowDialog();
 			this.Close();
+		}
+
+		private void matchChineseToEnglishToolStripMenuItem_Click(object sender, EventArgs e) {
+			this.Hide();
+			GreekScriptures frmGreek = new GreekScriptures();
+			frmGreek.ShowDialog();
+			this.Close();
+		}
+
+		private void reorderBooksToolStripMenuItem_Click(object sender, EventArgs e) {
+			this.Hide();
+			GreekReorder frmGreekReorder = new GreekReorder();
+			frmGreekReorder.ShowDialog();
+			this.Close();
+		}
+
+		private async void incorrectFlash(Label lblIncorrectBook) {
+			await Task.Delay(900);
+			lblIncorrectBook.BackColor = Color.Azure;
 		}
 	}
 }
