@@ -12,8 +12,10 @@ namespace BibleBooks {
 
 		private Control activeControl;
 		private Point previousLocation;
+		private Point locationBeforeMatch;
 		private static int intGreekAnswered = 0;
 		private static int intNumberCorrect = 0;
+		private static int intGreekPoints = 0;
 		private static TimeSpan tsSecondsElapsed = TimeSpan.FromSeconds(0);
 		List<Point> lpntChLabels = new List<Point>();
 
@@ -23,7 +25,7 @@ namespace BibleBooks {
 
 		String[] astrGreek = new String[] { "lblMatthew", "lblMark", "lblLuke", "lblJohn", "lblActs", "lblRomans", "lbl1Corinthians", "lbl2Corinthians", "lblGalatians", "lblEphesians",
 											"lblPhilippians", "lblColossians", "lbl1Thessalonians", "lbl2Thessalonians", "lbl1Timothy", "lbl2Timothy", "lblTitus",
-											"lblPhilemon", "lblHebrews", "lblJames", "lbl1Peter", "lbl2Peter", "lbl1John", "lbl2John", "lblCh3John", "lblChRevelation" };
+											"lblPhilemon", "lblHebrews", "lblJames", "lbl1Peter", "lbl2Peter", "lbl1John", "lbl2John", "lbl3John", "lblRevelation" };
 
 		public GreekScriptures() {
 			InitializeComponent();
@@ -60,6 +62,7 @@ namespace BibleBooks {
 
 		private void lblMouseDown(object sender, MouseEventArgs e) {
 			activeControl = sender as Control;
+			locationBeforeMatch = activeControl.Location;
 			previousLocation = e.Location;
 			Cursor = Cursors.Hand;
 			activeControl.BringToFront();
@@ -114,7 +117,7 @@ namespace BibleBooks {
 					int intChLabelIndex = Array.IndexOf(astrChGreek, lblCh.Name);
 
 					if (strLbl == astrGreek[intChLabelIndex]) {
-							Program.intGreekPoints += 1;
+							intGreekPoints += 1;
 							Program.intTotalPoints += 1;
 							intNumberCorrect += 1;
 							intGreekAnswered += 1;
@@ -124,18 +127,21 @@ namespace BibleBooks {
 							lbl.Hide();
 					} else {
 						// Point penalty
-						Program.intGreekPoints -= 1;
+						intGreekPoints -= 1;
 						Program.intTotalPoints -= 1;
 						intGreekAnswered += 1;
 						refreshPoints();
-						lblCh.Location = new Point(283, 305);
+						lblCh.Location = locationBeforeMatch;
+						lblCh.BackColor = Color.Salmon;
+						incorrectFlash(lblCh);
+
 					}
 				}
 			}
 		}
 
 		private void refreshPoints() {
-			lblGreekPoints.Text = Program.intGreekPoints.ToString();
+			lblGreekPoints.Text = intGreekPoints.ToString();
 			lblTotalPoints.Text = Program.intTotalPoints.ToString();
 			lblPercentageCorrect.Text = ( (double)intNumberCorrect / intGreekAnswered * 100 ).ToString();
 			lblGreekAnswered.Text = intGreekAnswered.ToString();
@@ -176,6 +182,18 @@ namespace BibleBooks {
 			this.Hide();
 			Settings frmSettings = new Settings();
 			frmSettings.ShowDialog();
+			this.Close();
+		}
+
+		private async void incorrectFlash(Label lblIncorrectBook) {
+			await Task.Delay(900);
+			lblIncorrectBook.BackColor = Color.Azure;
+		}
+
+		private void reorderBooksToolStripMenuItem_Click(object sender, EventArgs e) {
+			this.Hide();
+			GreekReorder frmGreekReorder = new GreekReorder();
+			frmGreekReorder.ShowDialog();
 			this.Close();
 		}
 	}

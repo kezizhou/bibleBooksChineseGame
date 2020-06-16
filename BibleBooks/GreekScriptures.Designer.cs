@@ -97,6 +97,9 @@
 			this.lblTimeElapsed = new System.Windows.Forms.Label();
 			this.lblDecorativeEnBooks = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.greekScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.matchChineseToEnglishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.reorderBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.pnlStatistics.SuspendLayout();
 			this.pnlWindowResize.SuspendLayout();
@@ -107,6 +110,7 @@
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainMenuToolStripMenuItem,
+            this.greekScripturesToolStripMenuItem,
             this.hebrewScripturesToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.exitToolStripMenuItem});
@@ -1030,6 +1034,30 @@
 			this.timer1.Interval = 1000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
+			// greekScripturesToolStripMenuItem
+			// 
+			this.greekScripturesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.matchChineseToEnglishToolStripMenuItem,
+            this.reorderBooksToolStripMenuItem});
+			this.greekScripturesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.greekScripturesToolStripMenuItem.Name = "greekScripturesToolStripMenuItem";
+			this.greekScripturesToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
+			this.greekScripturesToolStripMenuItem.Text = "Greek Scriptures";
+			// 
+			// matchChineseToEnglishToolStripMenuItem
+			// 
+			this.matchChineseToEnglishToolStripMenuItem.Enabled = false;
+			this.matchChineseToEnglishToolStripMenuItem.Name = "matchChineseToEnglishToolStripMenuItem";
+			this.matchChineseToEnglishToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
+			this.matchChineseToEnglishToolStripMenuItem.Text = "Match Chinese to English";
+			// 
+			// reorderBooksToolStripMenuItem
+			// 
+			this.reorderBooksToolStripMenuItem.Name = "reorderBooksToolStripMenuItem";
+			this.reorderBooksToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
+			this.reorderBooksToolStripMenuItem.Text = "Reorder Books";
+			this.reorderBooksToolStripMenuItem.Click += new System.EventHandler(this.reorderBooksToolStripMenuItem_Click);
+			// 
 			// GreekScriptures
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1126,5 +1154,8 @@
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
 		private System.Windows.Forms.Label lblDecorativeEnBooks;
+		private System.Windows.Forms.ToolStripMenuItem greekScripturesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem matchChineseToEnglishToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem reorderBooksToolStripMenuItem;
 	}
 }
