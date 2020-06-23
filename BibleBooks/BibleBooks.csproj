@@ -63,6 +63,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomMessageBox.Designer.cs">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomMessageBoxMethods.cs" />
+    <Compile Include="DatabaseConnection.cs" />
     <Compile Include="GreekReorder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +103,9 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CustomMessageBox.resx">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GreekReorder.resx">
       <DependentUpon>GreekReorder.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +158,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bookCursor.cur" />
+    <None Include="Resources\Book.jpg" />
+    <None Include="Resources\congrats.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />

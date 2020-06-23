@@ -21,11 +21,11 @@ namespace BibleBooks {
 
 		String[] astrChGreek = new String[] { "lblChMatthew", "lblChMark", "lblChLuke", "lblChJohn", "lblChActs", "lblChRomans", "lblCh1Corinthians", "lblCh2Corinthians", "lblChGalatians",
 											"lblChEphesians", "lblChPhilippians", "lblChColossians", "lblCh1Thessalonians", "lblCh2Thessalonians", "lblCh1Timothy", "lblCh2Timothy", "lblChTitus",
-											"lblChPhilemon", "lblChHebrews", "lblChJames", "lblCh1Peter", "lblCh2Peter", "lblCh1John", "lblCh2John", "lblCh3John", "lblChRevelation" };
+											"lblChPhilemon", "lblChHebrews", "lblChJames", "lblCh1Peter", "lblCh2Peter", "lblCh1John", "lblCh2John", "lblCh3John", "lblChJude", "lblChRevelation" };
 
 		String[] astrGreek = new String[] { "lblMatthew", "lblMark", "lblLuke", "lblJohn", "lblActs", "lblRomans", "lbl1Corinthians", "lbl2Corinthians", "lblGalatians", "lblEphesians",
 											"lblPhilippians", "lblColossians", "lbl1Thessalonians", "lbl2Thessalonians", "lbl1Timothy", "lbl2Timothy", "lblTitus",
-											"lblPhilemon", "lblHebrews", "lblJames", "lbl1Peter", "lbl2Peter", "lbl1John", "lbl2John", "lbl3John", "lblRevelation" };
+											"lblPhilemon", "lblHebrews", "lblJames", "lbl1Peter", "lbl2Peter", "lbl1John", "lbl2John", "lbl3John", "lblJude", "lblRevelation" };
 
 		public GreekScriptures() {
 			InitializeComponent();
@@ -104,6 +104,7 @@ namespace BibleBooks {
 
 		private void checkLabelsTouching(object sender) {
 			Label lblCh = sender as Label;
+			Boolean blnCorrect = false;
 
 			// Check each English book to see if touching
 			foreach (String strLbl in astrGreek) {
@@ -112,31 +113,36 @@ namespace BibleBooks {
 
 				// Only check English labels that are touching the Chinese label
 				if (lblCh.Bounds.IntersectsWith(lbl.Bounds)) {
-
-					// If the correct English label has been matched
 					int intChLabelIndex = Array.IndexOf(astrChGreek, lblCh.Name);
 
+					// If the correct English label has been matched
 					if (strLbl == astrGreek[intChLabelIndex]) {
-							intGreekPoints += 1;
-							Program.intTotalPoints += 1;
-							intNumberCorrect += 1;
-							intGreekAnswered += 1;
-							refreshPoints();
-							lblCh.Location = lbl.Location;
-							lblCh.Enabled = false;
-							lbl.Hide();
-					} else {
-						// Point penalty
-						intGreekPoints -= 1;
-						Program.intTotalPoints -= 1;
+						// Mark boolean flag true first
+						// Override the false in case it is touching 2 English labels at once
+						blnCorrect = true;
+
+						// Add points
+						intGreekPoints += 1;
+						Program.intTotalPoints += 1;
+						intNumberCorrect += 1;
 						intGreekAnswered += 1;
 						refreshPoints();
-						lblCh.Location = locationBeforeMatch;
-						lblCh.BackColor = Color.Salmon;
-						incorrectFlash(lblCh);
-
+						lblCh.Location = lbl.Location;
+						lblCh.Enabled = false;
+						lbl.Hide();
 					}
 				}
+			}
+
+			if (blnCorrect == false) {
+				// Point penalty
+				intGreekPoints -= 1;
+				Program.intTotalPoints -= 1;
+				intGreekAnswered += 1;
+				refreshPoints();
+				lblCh.Location = locationBeforeMatch;
+				lblCh.BackColor = Color.Salmon;
+				incorrectFlash(lblCh);
 			}
 		}
 
@@ -149,13 +155,6 @@ namespace BibleBooks {
 
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
 			Close();
-		}
-
-		private void hebrewScripturesToolStripMenuItem_Click(object sender, EventArgs e) {
-			this.Hide();
-			HebrewScriptures frmHebrew = new HebrewScriptures();
-			frmHebrew.ShowDialog();
-			this.Close();
 		}
 
 		private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -194,6 +193,13 @@ namespace BibleBooks {
 			this.Hide();
 			GreekReorder frmGreekReorder = new GreekReorder();
 			frmGreekReorder.ShowDialog();
+			this.Close();
+		}
+
+		private void matchChineseToEnglishHebrewToolStripMenuItem1_Click(object sender, EventArgs e) {
+			this.Hide();
+			HebrewScriptures frmHebrew = new HebrewScriptures();
+			frmHebrew.ShowDialog();
 			this.Close();
 		}
 	}

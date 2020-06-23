@@ -38,6 +38,8 @@
 			this.lblChNehemiah = new System.Windows.Forms.Label();
 			this.lblChProverbs = new System.Windows.Forms.Label();
 			this.greekScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.matchChineseToEnglishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.reorderBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lblChPsalms = new System.Windows.Forms.Label();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,6 +91,9 @@
 			this.lblExodus = new System.Windows.Forms.Label();
 			this.lblGenesis = new System.Windows.Forms.Label();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.hebrewScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.matchChineseToEnglishToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.reorderBooksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lblJudges = new System.Windows.Forms.Label();
 			this.pnlWindowResize = new System.Windows.Forms.Panel();
@@ -123,8 +128,6 @@
 			this.lblTimeElapsed = new System.Windows.Forms.Label();
 			this.lblDecorativeEnBooks = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.matchChineseToEnglishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.reorderBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pnlStatistics.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.pnlWindowResize.SuspendLayout();
@@ -310,6 +313,20 @@
 			this.greekScripturesToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
 			this.greekScripturesToolStripMenuItem.Text = "Greek Scriptures";
 			// 
+			// matchChineseToEnglishToolStripMenuItem
+			// 
+			this.matchChineseToEnglishToolStripMenuItem.Name = "matchChineseToEnglishToolStripMenuItem";
+			this.matchChineseToEnglishToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
+			this.matchChineseToEnglishToolStripMenuItem.Text = "Match Chinese to English";
+			this.matchChineseToEnglishToolStripMenuItem.Click += new System.EventHandler(this.matchChineseToEnglishToolStripMenuItem_Click);
+			// 
+			// reorderBooksToolStripMenuItem
+			// 
+			this.reorderBooksToolStripMenuItem.Name = "reorderBooksToolStripMenuItem";
+			this.reorderBooksToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
+			this.reorderBooksToolStripMenuItem.Text = "Reorder Books";
+			this.reorderBooksToolStripMenuItem.Click += new System.EventHandler(this.reorderBooksToolStripMenuItem_Click);
+			// 
 			// mainMenuToolStripMenuItem
 			// 
 			this.mainMenuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -406,7 +423,7 @@
 			// label1
 			// 
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(17, 19);
+			this.label1.Location = new System.Drawing.Point(12, 12);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(254, 23);
 			this.label1.TabIndex = 12;
@@ -415,7 +432,7 @@
 			// lblHebrewPoints
 			// 
 			this.lblHebrewPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblHebrewPoints.Location = new System.Drawing.Point(277, 19);
+			this.lblHebrewPoints.Location = new System.Drawing.Point(272, 14);
 			this.lblHebrewPoints.Name = "lblHebrewPoints";
 			this.lblHebrewPoints.Size = new System.Drawing.Size(54, 23);
 			this.lblHebrewPoints.TabIndex = 14;
@@ -424,7 +441,7 @@
 			// label2
 			// 
 			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(17, 59);
+			this.label2.Location = new System.Drawing.Point(12, 52);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(244, 23);
 			this.label2.TabIndex = 13;
@@ -446,7 +463,7 @@
 			// label7
 			// 
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(656, 19);
+			this.label7.Location = new System.Drawing.Point(331, 57);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(18, 23);
 			this.label7.TabIndex = 36;
@@ -455,7 +472,7 @@
 			// label3
 			// 
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(337, 19);
+			this.label3.Location = new System.Drawing.Point(12, 57);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(253, 23);
 			this.label3.TabIndex = 16;
@@ -464,7 +481,7 @@
 			// lblTotalPoints
 			// 
 			this.lblTotalPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblTotalPoints.Location = new System.Drawing.Point(277, 59);
+			this.lblTotalPoints.Location = new System.Drawing.Point(272, 52);
 			this.lblTotalPoints.Name = "lblTotalPoints";
 			this.lblTotalPoints.Size = new System.Drawing.Size(54, 23);
 			this.lblTotalPoints.TabIndex = 15;
@@ -577,44 +594,37 @@
 			// pnlStatistics
 			// 
 			this.pnlStatistics.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.pnlStatistics.Controls.Add(this.label7);
-			this.pnlStatistics.Controls.Add(this.label3);
-			this.pnlStatistics.Controls.Add(this.lblHebrewAnswered);
-			this.pnlStatistics.Controls.Add(this.lblPercentageCorrect);
-			this.pnlStatistics.Controls.Add(this.label6);
 			this.pnlStatistics.Controls.Add(this.label1);
 			this.pnlStatistics.Controls.Add(this.lblTotalPoints);
 			this.pnlStatistics.Controls.Add(this.lblHebrewPoints);
 			this.pnlStatistics.Controls.Add(this.label2);
-			this.pnlStatistics.Location = new System.Drawing.Point(200, 684);
+			this.pnlStatistics.Location = new System.Drawing.Point(11, 548);
 			this.pnlStatistics.Name = "pnlStatistics";
-			this.pnlStatistics.Size = new System.Drawing.Size(692, 102);
+			this.pnlStatistics.Size = new System.Drawing.Size(358, 87);
 			this.pnlStatistics.TabIndex = 92;
 			// 
 			// lblHebrewAnswered
 			// 
 			this.lblHebrewAnswered.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblHebrewAnswered.Location = new System.Drawing.Point(596, 59);
+			this.lblHebrewAnswered.Location = new System.Drawing.Point(271, 99);
 			this.lblHebrewAnswered.Name = "lblHebrewAnswered";
 			this.lblHebrewAnswered.Size = new System.Drawing.Size(54, 23);
 			this.lblHebrewAnswered.TabIndex = 19;
 			this.lblHebrewAnswered.Text = "0";
-			this.lblHebrewAnswered.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
 			// lblPercentageCorrect
 			// 
 			this.lblPercentageCorrect.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblPercentageCorrect.Location = new System.Drawing.Point(596, 19);
+			this.lblPercentageCorrect.Location = new System.Drawing.Point(271, 57);
 			this.lblPercentageCorrect.Name = "lblPercentageCorrect";
 			this.lblPercentageCorrect.Size = new System.Drawing.Size(54, 23);
 			this.lblPercentageCorrect.TabIndex = 18;
 			this.lblPercentageCorrect.Text = "0";
-			this.lblPercentageCorrect.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
 			// label6
 			// 
 			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.Location = new System.Drawing.Point(337, 59);
+			this.label6.Location = new System.Drawing.Point(12, 99);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(253, 23);
 			this.label6.TabIndex = 17;
@@ -924,6 +934,7 @@
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainMenuToolStripMenuItem,
             this.greekScripturesToolStripMenuItem,
+            this.hebrewScripturesToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.exitToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -931,6 +942,29 @@
 			this.menuStrip1.Size = new System.Drawing.Size(1352, 28);
 			this.menuStrip1.TabIndex = 142;
 			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// hebrewScripturesToolStripMenuItem
+			// 
+			this.hebrewScripturesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.matchChineseToEnglishToolStripMenuItem1,
+            this.reorderBooksToolStripMenuItem1});
+			this.hebrewScripturesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.hebrewScripturesToolStripMenuItem.Name = "hebrewScripturesToolStripMenuItem";
+			this.hebrewScripturesToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+			this.hebrewScripturesToolStripMenuItem.Text = "Hebrew Scriptures";
+			// 
+			// matchChineseToEnglishToolStripMenuItem1
+			// 
+			this.matchChineseToEnglishToolStripMenuItem1.Enabled = false;
+			this.matchChineseToEnglishToolStripMenuItem1.Name = "matchChineseToEnglishToolStripMenuItem1";
+			this.matchChineseToEnglishToolStripMenuItem1.Size = new System.Drawing.Size(243, 24);
+			this.matchChineseToEnglishToolStripMenuItem1.Text = "Match Chinese to English";
+			// 
+			// reorderBooksToolStripMenuItem1
+			// 
+			this.reorderBooksToolStripMenuItem1.Name = "reorderBooksToolStripMenuItem1";
+			this.reorderBooksToolStripMenuItem1.Size = new System.Drawing.Size(243, 24);
+			this.reorderBooksToolStripMenuItem1.Text = "Reorder Books";
 			// 
 			// settingsToolStripMenuItem
 			// 
@@ -1039,7 +1073,7 @@
 			this.pnlWindowResize.Controls.Add(this.lblDecorativeEnBooks);
 			this.pnlWindowResize.Location = new System.Drawing.Point(1, 31);
 			this.pnlWindowResize.Name = "pnlWindowResize";
-			this.pnlWindowResize.Size = new System.Drawing.Size(1351, 798);
+			this.pnlWindowResize.Size = new System.Drawing.Size(1351, 699);
 			this.pnlWindowResize.TabIndex = 144;
 			// 
 			// lblChMalachi
@@ -1383,17 +1417,22 @@
 			// pnlTimer
 			// 
 			this.pnlTimer.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.pnlTimer.Controls.Add(this.label7);
 			this.pnlTimer.Controls.Add(this.label12);
+			this.pnlTimer.Controls.Add(this.label3);
+			this.pnlTimer.Controls.Add(this.lblHebrewAnswered);
 			this.pnlTimer.Controls.Add(this.lblTimeElapsed);
-			this.pnlTimer.Location = new System.Drawing.Point(898, 684);
+			this.pnlTimer.Controls.Add(this.lblPercentageCorrect);
+			this.pnlTimer.Controls.Add(this.label6);
+			this.pnlTimer.Location = new System.Drawing.Point(954, 532);
 			this.pnlTimer.Name = "pnlTimer";
-			this.pnlTimer.Size = new System.Drawing.Size(253, 102);
+			this.pnlTimer.Size = new System.Drawing.Size(360, 133);
 			this.pnlTimer.TabIndex = 144;
 			// 
 			// label12
 			// 
 			this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label12.Location = new System.Drawing.Point(13, 40);
+			this.label12.Location = new System.Drawing.Point(12, 15);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(139, 23);
 			this.label12.TabIndex = 12;
@@ -1402,7 +1441,7 @@
 			// lblTimeElapsed
 			// 
 			this.lblTimeElapsed.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblTimeElapsed.Location = new System.Drawing.Point(158, 40);
+			this.lblTimeElapsed.Location = new System.Drawing.Point(157, 15);
 			this.lblTimeElapsed.Name = "lblTimeElapsed";
 			this.lblTimeElapsed.Size = new System.Drawing.Size(81, 23);
 			this.lblTimeElapsed.TabIndex = 14;
@@ -1423,26 +1462,12 @@
 			this.timer1.Interval = 1000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
-			// matchChineseToEnglishToolStripMenuItem
-			// 
-			this.matchChineseToEnglishToolStripMenuItem.Name = "matchChineseToEnglishToolStripMenuItem";
-			this.matchChineseToEnglishToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
-			this.matchChineseToEnglishToolStripMenuItem.Text = "Match Chinese to English";
-			this.matchChineseToEnglishToolStripMenuItem.Click += new System.EventHandler(this.matchChineseToEnglishToolStripMenuItem_Click);
-			// 
-			// reorderBooksToolStripMenuItem
-			// 
-			this.reorderBooksToolStripMenuItem.Name = "reorderBooksToolStripMenuItem";
-			this.reorderBooksToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
-			this.reorderBooksToolStripMenuItem.Text = "Reorder Books";
-			this.reorderBooksToolStripMenuItem.Click += new System.EventHandler(this.reorderBooksToolStripMenuItem_Click);
-			// 
 			// HebrewScriptures
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
-			this.ClientSize = new System.Drawing.Size(1353, 749);
+			this.ClientSize = new System.Drawing.Size(1353, 725);
 			this.Controls.Add(this.pnlWindowResize);
 			this.Controls.Add(this.menuStrip1);
 			this.Name = "HebrewScriptures";
@@ -1561,5 +1586,8 @@
 		private System.Windows.Forms.Label lblChObadiah;
 		private System.Windows.Forms.ToolStripMenuItem matchChineseToEnglishToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem reorderBooksToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem hebrewScripturesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem matchChineseToEnglishToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem reorderBooksToolStripMenuItem1;
 	}
 }
