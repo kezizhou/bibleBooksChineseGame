@@ -26,7 +26,11 @@
 			this.components = new System.ComponentModel.Container();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.greekScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.matchChineseToEnglishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.reorderBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.hebrewScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.matchChineseToEnglishHebrewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lblMatthew = new System.Windows.Forms.Label();
@@ -97,9 +101,8 @@
 			this.lblTimeElapsed = new System.Windows.Forms.Label();
 			this.lblDecorativeEnBooks = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.greekScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.matchChineseToEnglishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.reorderBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.lblJude = new System.Windows.Forms.Label();
+			this.lblChJude = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.pnlStatistics.SuspendLayout();
 			this.pnlWindowResize.SuspendLayout();
@@ -128,13 +131,45 @@
 			this.mainMenuToolStripMenuItem.Text = "Main Menu";
 			this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.mainMenuToolStripMenuItem_Click);
 			// 
+			// greekScripturesToolStripMenuItem
+			// 
+			this.greekScripturesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.matchChineseToEnglishToolStripMenuItem,
+            this.reorderBooksToolStripMenuItem});
+			this.greekScripturesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.greekScripturesToolStripMenuItem.Name = "greekScripturesToolStripMenuItem";
+			this.greekScripturesToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
+			this.greekScripturesToolStripMenuItem.Text = "Greek Scriptures";
+			// 
+			// matchChineseToEnglishToolStripMenuItem
+			// 
+			this.matchChineseToEnglishToolStripMenuItem.Enabled = false;
+			this.matchChineseToEnglishToolStripMenuItem.Name = "matchChineseToEnglishToolStripMenuItem";
+			this.matchChineseToEnglishToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
+			this.matchChineseToEnglishToolStripMenuItem.Text = "Match Chinese to English";
+			// 
+			// reorderBooksToolStripMenuItem
+			// 
+			this.reorderBooksToolStripMenuItem.Name = "reorderBooksToolStripMenuItem";
+			this.reorderBooksToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
+			this.reorderBooksToolStripMenuItem.Text = "Reorder Books";
+			this.reorderBooksToolStripMenuItem.Click += new System.EventHandler(this.reorderBooksToolStripMenuItem_Click);
+			// 
 			// hebrewScripturesToolStripMenuItem
 			// 
+			this.hebrewScripturesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.matchChineseToEnglishHebrewToolStripMenuItem1});
 			this.hebrewScripturesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.hebrewScripturesToolStripMenuItem.Name = "hebrewScripturesToolStripMenuItem";
 			this.hebrewScripturesToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
 			this.hebrewScripturesToolStripMenuItem.Text = "Hebrew Scriptures";
-			this.hebrewScripturesToolStripMenuItem.Click += new System.EventHandler(this.hebrewScripturesToolStripMenuItem_Click);
+			// 
+			// matchChineseToEnglishHebrewToolStripMenuItem1
+			// 
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Name = "matchChineseToEnglishHebrewToolStripMenuItem1";
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Size = new System.Drawing.Size(243, 24);
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Text = "Match Chinese to English";
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Click += new System.EventHandler(this.matchChineseToEnglishHebrewToolStripMenuItem1_Click);
 			// 
 			// settingsToolStripMenuItem
 			// 
@@ -726,7 +761,7 @@
 			this.lblChTitus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChTitus.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChTitus.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChTitus.Location = new System.Drawing.Point(1002, 185);
+			this.lblChTitus.Location = new System.Drawing.Point(1001, 129);
 			this.lblChTitus.Name = "lblChTitus";
 			this.lblChTitus.Size = new System.Drawing.Size(142, 26);
 			this.lblChTitus.TabIndex = 52;
@@ -739,7 +774,7 @@
 			this.lblChPhilemon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChPhilemon.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChPhilemon.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChPhilemon.Location = new System.Drawing.Point(1002, 240);
+			this.lblChPhilemon.Location = new System.Drawing.Point(1001, 184);
 			this.lblChPhilemon.Name = "lblChPhilemon";
 			this.lblChPhilemon.Size = new System.Drawing.Size(142, 26);
 			this.lblChPhilemon.TabIndex = 53;
@@ -752,7 +787,7 @@
 			this.lblChHebrews.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChHebrews.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChHebrews.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChHebrews.Location = new System.Drawing.Point(1002, 296);
+			this.lblChHebrews.Location = new System.Drawing.Point(1001, 240);
 			this.lblChHebrews.Name = "lblChHebrews";
 			this.lblChHebrews.Size = new System.Drawing.Size(142, 26);
 			this.lblChHebrews.TabIndex = 54;
@@ -765,7 +800,7 @@
 			this.lblChJames.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChJames.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChJames.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChJames.Location = new System.Drawing.Point(1002, 352);
+			this.lblChJames.Location = new System.Drawing.Point(1001, 296);
 			this.lblChJames.Name = "lblChJames";
 			this.lblChJames.Size = new System.Drawing.Size(142, 26);
 			this.lblChJames.TabIndex = 55;
@@ -778,7 +813,7 @@
 			this.lblCh2Timothy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh2Timothy.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh2Timothy.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh2Timothy.Location = new System.Drawing.Point(1002, 129);
+			this.lblCh2Timothy.Location = new System.Drawing.Point(1001, 73);
 			this.lblCh2Timothy.Name = "lblCh2Timothy";
 			this.lblCh2Timothy.Size = new System.Drawing.Size(142, 26);
 			this.lblCh2Timothy.TabIndex = 51;
@@ -791,7 +826,7 @@
 			this.lblCh1Timothy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh1Timothy.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh1Timothy.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh1Timothy.Location = new System.Drawing.Point(1002, 74);
+			this.lblCh1Timothy.Location = new System.Drawing.Point(1001, 18);
 			this.lblCh1Timothy.Name = "lblCh1Timothy";
 			this.lblCh1Timothy.Size = new System.Drawing.Size(142, 26);
 			this.lblCh1Timothy.TabIndex = 50;
@@ -804,7 +839,7 @@
 			this.lblCh2Thessalonians.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh2Thessalonians.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh2Thessalonians.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh2Thessalonians.Location = new System.Drawing.Point(1002, 18);
+			this.lblCh2Thessalonians.Location = new System.Drawing.Point(191, 357);
 			this.lblCh2Thessalonians.Name = "lblCh2Thessalonians";
 			this.lblCh2Thessalonians.Size = new System.Drawing.Size(142, 26);
 			this.lblCh2Thessalonians.TabIndex = 49;
@@ -830,7 +865,7 @@
 			this.lblCh1Peter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh1Peter.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh1Peter.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh1Peter.Location = new System.Drawing.Point(1171, 17);
+			this.lblCh1Peter.Location = new System.Drawing.Point(1001, 351);
 			this.lblCh1Peter.Name = "lblCh1Peter";
 			this.lblCh1Peter.Size = new System.Drawing.Size(142, 26);
 			this.lblCh1Peter.TabIndex = 56;
@@ -843,7 +878,7 @@
 			this.lblCh2Peter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh2Peter.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh2Peter.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh2Peter.Location = new System.Drawing.Point(1171, 73);
+			this.lblCh2Peter.Location = new System.Drawing.Point(1171, 17);
 			this.lblCh2Peter.Name = "lblCh2Peter";
 			this.lblCh2Peter.Size = new System.Drawing.Size(142, 26);
 			this.lblCh2Peter.TabIndex = 57;
@@ -856,7 +891,7 @@
 			this.lblCh1John.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh1John.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh1John.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh1John.Location = new System.Drawing.Point(1171, 129);
+			this.lblCh1John.Location = new System.Drawing.Point(1171, 73);
 			this.lblCh1John.Name = "lblCh1John";
 			this.lblCh1John.Size = new System.Drawing.Size(142, 26);
 			this.lblCh1John.TabIndex = 58;
@@ -869,7 +904,7 @@
 			this.lblCh2John.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh2John.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh2John.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh2John.Location = new System.Drawing.Point(1171, 185);
+			this.lblCh2John.Location = new System.Drawing.Point(1171, 129);
 			this.lblCh2John.Name = "lblCh2John";
 			this.lblCh2John.Size = new System.Drawing.Size(142, 26);
 			this.lblCh2John.TabIndex = 59;
@@ -895,7 +930,7 @@
 			this.lblRevelation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblRevelation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblRevelation.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblRevelation.Location = new System.Drawing.Point(767, 408);
+			this.lblRevelation.Location = new System.Drawing.Point(767, 464);
 			this.lblRevelation.Name = "lblRevelation";
 			this.lblRevelation.Size = new System.Drawing.Size(142, 26);
 			this.lblRevelation.TabIndex = 87;
@@ -908,7 +943,7 @@
 			this.lblCh3John.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblCh3John.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblCh3John.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblCh3John.Location = new System.Drawing.Point(1171, 240);
+			this.lblCh3John.Location = new System.Drawing.Point(1171, 184);
 			this.lblCh3John.Name = "lblCh3John";
 			this.lblCh3John.Size = new System.Drawing.Size(142, 26);
 			this.lblCh3John.TabIndex = 84;
@@ -921,7 +956,7 @@
 			this.lblChRevelation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblChRevelation.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblChRevelation.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.lblChRevelation.Location = new System.Drawing.Point(1171, 296);
+			this.lblChRevelation.Location = new System.Drawing.Point(1171, 295);
 			this.lblChRevelation.Name = "lblChRevelation";
 			this.lblChRevelation.Size = new System.Drawing.Size(142, 26);
 			this.lblChRevelation.TabIndex = 85;
@@ -931,6 +966,8 @@
 			// pnlWindowResize
 			// 
 			this.pnlWindowResize.AutoScroll = true;
+			this.pnlWindowResize.Controls.Add(this.lblChJude);
+			this.pnlWindowResize.Controls.Add(this.lblJude);
 			this.pnlWindowResize.Controls.Add(this.pnlTimer);
 			this.pnlWindowResize.Controls.Add(this.lblChRevelation);
 			this.pnlWindowResize.Controls.Add(this.lblCh3John);
@@ -1034,29 +1071,31 @@
 			this.timer1.Interval = 1000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
-			// greekScripturesToolStripMenuItem
+			// lblJude
 			// 
-			this.greekScripturesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.matchChineseToEnglishToolStripMenuItem,
-            this.reorderBooksToolStripMenuItem});
-			this.greekScripturesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.greekScripturesToolStripMenuItem.Name = "greekScripturesToolStripMenuItem";
-			this.greekScripturesToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
-			this.greekScripturesToolStripMenuItem.Text = "Greek Scriptures";
+			this.lblJude.BackColor = System.Drawing.SystemColors.Window;
+			this.lblJude.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lblJude.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblJude.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.lblJude.Location = new System.Drawing.Point(767, 408);
+			this.lblJude.Name = "lblJude";
+			this.lblJude.Size = new System.Drawing.Size(142, 26);
+			this.lblJude.TabIndex = 146;
+			this.lblJude.Text = "Jude";
+			this.lblJude.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// matchChineseToEnglishToolStripMenuItem
+			// lblChJude
 			// 
-			this.matchChineseToEnglishToolStripMenuItem.Enabled = false;
-			this.matchChineseToEnglishToolStripMenuItem.Name = "matchChineseToEnglishToolStripMenuItem";
-			this.matchChineseToEnglishToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
-			this.matchChineseToEnglishToolStripMenuItem.Text = "Match Chinese to English";
-			// 
-			// reorderBooksToolStripMenuItem
-			// 
-			this.reorderBooksToolStripMenuItem.Name = "reorderBooksToolStripMenuItem";
-			this.reorderBooksToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
-			this.reorderBooksToolStripMenuItem.Text = "Reorder Books";
-			this.reorderBooksToolStripMenuItem.Click += new System.EventHandler(this.reorderBooksToolStripMenuItem_Click);
+			this.lblChJude.BackColor = System.Drawing.Color.Azure;
+			this.lblChJude.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lblChJude.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblChJude.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.lblChJude.Location = new System.Drawing.Point(1171, 239);
+			this.lblChJude.Name = "lblChJude";
+			this.lblChJude.Size = new System.Drawing.Size(142, 26);
+			this.lblChJude.TabIndex = 147;
+			this.lblChJude.Text = "犹大书";
+			this.lblChJude.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// GreekScriptures
 			// 
@@ -1157,5 +1196,8 @@
 		private System.Windows.Forms.ToolStripMenuItem greekScripturesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem matchChineseToEnglishToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem reorderBooksToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem matchChineseToEnglishHebrewToolStripMenuItem1;
+		private System.Windows.Forms.Label lblChJude;
+		private System.Windows.Forms.Label lblJude;
 	}
 }

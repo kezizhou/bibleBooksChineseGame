@@ -13,13 +13,6 @@ namespace BibleBooks {
 			Close();
 		}
 
-		private void hebrewScripturesToolStripMenuItem_Click(object sender, EventArgs e) {
-			this.Hide();
-			HebrewScriptures frmHebrew = new HebrewScriptures();
-			frmHebrew.ShowDialog();
-			this.Close();
-		}
-
 		private void settingsToolStripMenuItem_Click(object sender, EventArgs e) {
 			this.Hide();
 			Settings frmSettings = new Settings();
@@ -34,7 +27,14 @@ namespace BibleBooks {
 			this.Close();
 		}
 
-		private void matchChineseToEnglishToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void matchChineseToEnglishHebrewToolStripMenuItem1_Click(object sender, EventArgs e) {
+			this.Hide();
+			HebrewScriptures frmHebrew = new HebrewScriptures();
+			frmHebrew.ShowDialog();
+			this.Close();
+		}
+
+		private void matchChineseToEnglishGreekToolStripMenuItem_Click(object sender, EventArgs e) {
 			this.Hide();
 			GreekScriptures frmGreek = new GreekScriptures();
 			frmGreek.ShowDialog();

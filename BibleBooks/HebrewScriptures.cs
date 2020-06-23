@@ -105,6 +105,7 @@ namespace BibleBooks {
 
 		private void checkLabelsTouching(object sender) {
 			Label lblCh = sender as Label;
+			Boolean blnCorrect = false;
 
 			// Check each English book to see if touching
 			foreach (String strLbl in astrHebrew) {
@@ -112,12 +113,17 @@ namespace BibleBooks {
 				Label lbl = this.Controls.Find(strLbl, true).FirstOrDefault() as Label;
 
 				// Only check English labels that are touching the Chinese label
-				if (lblCh.Bounds.IntersectsWith(lbl.Bounds)) {
+				if ( lblCh.Bounds.IntersectsWith(lbl.Bounds) ) {
 
-					// If the correct English label has been matched
 					int intChLabelIndex = Array.IndexOf(astrChHebrew, lblCh.Name);
 
+					// If the correct English label has been matched
 					if (strLbl == astrHebrew[intChLabelIndex]) {
+						// Mark boolean flag true first
+						// Override the false in case it is touching 2 English labels at once
+						blnCorrect = true;
+
+						// Add points
 						intHebrewPoints += 1;
 						Program.intTotalPoints += 1;
 						intNumberCorrect += 1;
@@ -126,17 +132,20 @@ namespace BibleBooks {
 						lblCh.Location = lbl.Location;
 						lblCh.Enabled = false;
 						lbl.Hide();
-					} else {
-						// Point penalty
-						intHebrewPoints -= 1;
-						Program.intTotalPoints -= 1;
-						intHebrewAnswered += 1;
-						refreshPoints();
-						lblCh.Location = locationBeforeMatch;
-						lblCh.BackColor = Color.Salmon;
-						incorrectFlash(lblCh);
+
 					}
 				}
+			}
+
+			if (blnCorrect == false) {
+				// Point penalty
+				intHebrewPoints -= 1;
+				Program.intTotalPoints -= 1;
+				intHebrewAnswered += 1;
+				refreshPoints();
+				lblCh.Location = locationBeforeMatch;
+				lblCh.BackColor = Color.Salmon;
+				incorrectFlash(lblCh);
 			}
 		}
 
@@ -154,7 +163,7 @@ namespace BibleBooks {
 		private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e) {
 			this.Hide();
 			MainMenu frmMainMenu = new MainMenu();
-			frmMainMenu.ShowDialog();
+			frmMainMenu.Show();
 			this.Close();
 		}
 
@@ -166,21 +175,21 @@ namespace BibleBooks {
 		private void settingsToolStripMenuItem_Click(object sender, EventArgs e) {
 			this.Hide();
 			Settings frmSettings = new Settings();
-			frmSettings.ShowDialog();
+			frmSettings.Show();
 			this.Close();
 		}
 
 		private void matchChineseToEnglishToolStripMenuItem_Click(object sender, EventArgs e) {
 			this.Hide();
 			GreekScriptures frmGreek = new GreekScriptures();
-			frmGreek.ShowDialog();
+			frmGreek.Show();
 			this.Close();
 		}
 
 		private void reorderBooksToolStripMenuItem_Click(object sender, EventArgs e) {
 			this.Hide();
 			GreekReorder frmGreekReorder = new GreekReorder();
-			frmGreekReorder.ShowDialog();
+			frmGreekReorder.Show();
 			this.Close();
 		}
 

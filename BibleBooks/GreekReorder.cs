@@ -28,6 +28,7 @@ namespace BibleBooks {
 
 		public GreekReorder() {
 			InitializeComponent();
+			DoubleBuffered = true;
 			WindowState = FormWindowState.Maximized;
 		}
 
@@ -60,6 +61,13 @@ namespace BibleBooks {
 		private void lbl_MouseDown(object sender, MouseEventArgs e) {
 			Label lblBook = sender as Label;
 
+			// Check audio setting
+			// If on, play audio
+			if (Program.blnAudio) {
+				// Use a task so mouse move event will not wait on audio
+				Task.Run(() => playAudio(sender));
+			}
+
 			// Copy the label in a bitmap
 			Bitmap bmp = new Bitmap(lblBook.Width, lblBook.Height);
 			lblBook.DrawToBitmap(bmp, new Rectangle(Point.Empty, bmp.Size));
@@ -74,15 +82,10 @@ namespace BibleBooks {
 
 			tlpOrderedBooks.DoDragDrop(lblBook, DragDropEffects.Move);
 
+			lblBook.Show();
+			
 			// Reset cursor
 			Cursor = Cursors.Default;
-
-			// Check audio setting
-			// If on, play audio
-			if (Program.blnAudio) {
-				// Use a task so mouse move event will not wait on audio
-				Task.Run(() => playAudio(sender));
-			}
 
 		}
 
@@ -126,6 +129,9 @@ namespace BibleBooks {
 				return false;
 			// Correct
 			} else {
+				// Do not allow control to be moved again
+				lblBook.MouseDown -= new MouseEventHandler(lbl_MouseDown);
+
 				intCurrentPoints += 1;
 				intNumberCorrect += 1;
 				Program.intTotalPoints += 1;
@@ -172,7 +178,30 @@ namespace BibleBooks {
 
 		private void completedMatching() {
 			timer1.Enabled = false;
-			MessageBox.Show("Congratulations! You have completed.");
+
+			using (var frmMsgBox = new CustomMessageBox()) {
+				DialogResult dlgResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
+											"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intAnswered) + "\n" +
+											"Time Elapsed: " + lblTimeElapsed.Text, "Congratulations!", "congrats", frmMsgBox);
+
+				switch (dlgResponse) {
+					case DialogResult.Retry:
+						Form frmNewGreekReorder = new GreekReorder();
+						frmNewGreekReorder.Show();
+						this.Close();
+						break;
+					case DialogResult.OK:
+						Form frmMainMenu = new MainMenu();
+						frmMainMenu.Show();
+						this.Close();
+						break;
+					case DialogResult.Abort:
+						Application.Exit();
+						break;
+					default:
+						break;
+				}
+			}	
 		}
 
 		private void tlpOrderedBooks_DragEnter(object sender, DragEventArgs e) {
@@ -189,35 +218,31 @@ namespace BibleBooks {
 		}
 
 		private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e) {
-			this.Hide();
+			this.Close();
 			MainMenu frmMainMenu = new MainMenu();
 			frmMainMenu.ShowDialog();
-			this.Close();
 		}
 
 		private void matchChineseToEnglishToolStripMenuItem_Click(object sender, EventArgs e) {
-			this.Hide();
+			this.Close();
 			GreekScriptures frmGreekMatch = new GreekScriptures();
 			frmGreekMatch.ShowDialog();
-			this.Close();
 		}
 
 		private void hebrewScripturesToolStripMenuItem_Click(object sender, EventArgs e) {
-			this.Hide();
+			this.Close();
 			HebrewScriptures frmHebrewMatch = new HebrewScriptures();
 			frmHebrewMatch.ShowDialog();
-			this.Close();
 		}
 
 		private void settingsToolStripMenuItem_Click(object sender, EventArgs e) {
-			this.Hide();
+			this.Close();
 			Settings frmSettings = new Settings();
 			frmSettings.ShowDialog();
-			this.Close();
 		}
 
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
-			Close();
+			Application.Exit();
 		}
 
 		private async void incorrectFlash(Label lblIncorrectBook) {
@@ -225,16 +250,18 @@ namespace BibleBooks {
 			lblIncorrectBook.BackColor = Color.White;
 		}
 
-		private void tlpOrderedBooks_DragLeave(object sender, EventArgs e) {
-			Cursor = bitmapCursor;
+		private void matchChineseToEnglishHebrewToolStripMenuItem1_Click(object sender, EventArgs e) {
+			this.Hide();
+			HebrewScriptures frmHebrew = new HebrewScriptures();
+			frmHebrew.ShowDialog();
+			this.Close();
 		}
-	}
 
-	public static class CursorResource {
-		public static Cursor FromByteArray(byte[] array) {
-			using (MemoryStream memoryStream = new MemoryStream(array)) {
-				return new Cursor(memoryStream);
-			}
+		private void matchChineseToEnglishGreekToolStripMenuItem_Click(object sender, EventArgs e) {
+			this.Hide();
+			GreekScriptures frmGreek = new GreekScriptures();
+			frmGreek.ShowDialog();
+			this.Close();
 		}
 	}
 

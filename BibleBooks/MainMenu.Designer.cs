@@ -23,17 +23,18 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.hebrewScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.greekScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.matchChineseToEnglishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.reorderBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.hebrewScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.matchChineseToEnglishHebrewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.reorderBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.matchChineseToEnglishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -42,23 +43,24 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hebrewScripturesToolStripMenuItem,
+            this.mainMenuToolStripMenuItem,
             this.greekScripturesToolStripMenuItem,
+            this.hebrewScripturesToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.exitToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(402, 28);
+			this.menuStrip1.Size = new System.Drawing.Size(496, 28);
 			this.menuStrip1.TabIndex = 2;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
-			// hebrewScripturesToolStripMenuItem
+			// mainMenuToolStripMenuItem
 			// 
-			this.hebrewScripturesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.hebrewScripturesToolStripMenuItem.Name = "hebrewScripturesToolStripMenuItem";
-			this.hebrewScripturesToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
-			this.hebrewScripturesToolStripMenuItem.Text = "Hebrew Scriptures";
-			this.hebrewScripturesToolStripMenuItem.Click += new System.EventHandler(this.hebrewScripturesToolStripMenuItem_Click);
+			this.mainMenuToolStripMenuItem.Enabled = false;
+			this.mainMenuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
+			this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(95, 24);
+			this.mainMenuToolStripMenuItem.Text = "Main Menu";
 			// 
 			// greekScripturesToolStripMenuItem
 			// 
@@ -69,6 +71,36 @@
 			this.greekScripturesToolStripMenuItem.Name = "greekScripturesToolStripMenuItem";
 			this.greekScripturesToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
 			this.greekScripturesToolStripMenuItem.Text = "Greek Scriptures";
+			// 
+			// matchChineseToEnglishToolStripMenuItem
+			// 
+			this.matchChineseToEnglishToolStripMenuItem.Name = "matchChineseToEnglishToolStripMenuItem";
+			this.matchChineseToEnglishToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
+			this.matchChineseToEnglishToolStripMenuItem.Text = "Match Chinese to English";
+			this.matchChineseToEnglishToolStripMenuItem.Click += new System.EventHandler(this.matchChineseToEnglishGreekToolStripMenuItem_Click);
+			// 
+			// reorderBooksToolStripMenuItem
+			// 
+			this.reorderBooksToolStripMenuItem.Name = "reorderBooksToolStripMenuItem";
+			this.reorderBooksToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
+			this.reorderBooksToolStripMenuItem.Text = "Reorder Books";
+			this.reorderBooksToolStripMenuItem.Click += new System.EventHandler(this.reorderBooksToolStripMenuItem_Click);
+			// 
+			// hebrewScripturesToolStripMenuItem
+			// 
+			this.hebrewScripturesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.matchChineseToEnglishHebrewToolStripMenuItem1});
+			this.hebrewScripturesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.hebrewScripturesToolStripMenuItem.Name = "hebrewScripturesToolStripMenuItem";
+			this.hebrewScripturesToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+			this.hebrewScripturesToolStripMenuItem.Text = "Hebrew Scriptures";
+			// 
+			// matchChineseToEnglishHebrewToolStripMenuItem1
+			// 
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Name = "matchChineseToEnglishHebrewToolStripMenuItem1";
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Size = new System.Drawing.Size(243, 24);
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Text = "Match Chinese to English";
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Click += new System.EventHandler(this.matchChineseToEnglishHebrewToolStripMenuItem1_Click);
 			// 
 			// settingsToolStripMenuItem
 			// 
@@ -91,7 +123,7 @@
 			this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.panel1.Controls.Add(this.pictureBox1);
 			this.panel1.Controls.Add(this.label1);
-			this.panel1.Location = new System.Drawing.Point(2, 31);
+			this.panel1.Location = new System.Drawing.Point(49, 31);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(400, 186);
 			this.panel1.TabIndex = 6;
@@ -99,7 +131,7 @@
 			// pictureBox1
 			// 
 			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+			this.pictureBox1.BackgroundImage = global::BibleBooks.Properties.Resources.book;
 			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.pictureBox1.Location = new System.Drawing.Point(3, 10);
 			this.pictureBox1.Name = "pictureBox1";
@@ -120,26 +152,12 @@
 			this.label1.TabIndex = 6;
 			this.label1.Text = "Use the menu strip at the top to begin";
 			// 
-			// reorderBooksToolStripMenuItem
-			// 
-			this.reorderBooksToolStripMenuItem.Name = "reorderBooksToolStripMenuItem";
-			this.reorderBooksToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-			this.reorderBooksToolStripMenuItem.Text = "Reorder Books";
-			this.reorderBooksToolStripMenuItem.Click += new System.EventHandler(this.reorderBooksToolStripMenuItem_Click);
-			// 
-			// matchChineseToEnglishToolStripMenuItem
-			// 
-			this.matchChineseToEnglishToolStripMenuItem.Name = "matchChineseToEnglishToolStripMenuItem";
-			this.matchChineseToEnglishToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
-			this.matchChineseToEnglishToolStripMenuItem.Text = "Match Chinese to English";
-			this.matchChineseToEnglishToolStripMenuItem.Click += new System.EventHandler(this.matchChineseToEnglishToolStripMenuItem_Click);
-			// 
 			// MainMenu
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.ClientSize = new System.Drawing.Size(402, 217);
+			this.ClientSize = new System.Drawing.Size(496, 217);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
@@ -166,6 +184,8 @@
 		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem reorderBooksToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem matchChineseToEnglishToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem matchChineseToEnglishHebrewToolStripMenuItem1;
 	}
 }
 

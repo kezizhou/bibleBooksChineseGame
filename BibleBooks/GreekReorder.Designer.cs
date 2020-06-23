@@ -66,11 +66,12 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.greekScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.matchChineseToEnglishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.matchChineseToEnglishGreekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.reorderBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.hebrewScripturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.matchChineseToEnglishHebrewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.pnlStatistics.SuspendLayout();
 			this.pnlWindowResize.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
@@ -554,7 +555,6 @@
 			this.tlpOrderedBooks.TabIndex = 149;
 			this.tlpOrderedBooks.DragDrop += new System.Windows.Forms.DragEventHandler(this.tlpOrderedBooks_DragDrop);
 			this.tlpOrderedBooks.DragEnter += new System.Windows.Forms.DragEventHandler(this.tlpOrderedBooks_DragEnter);
-			this.tlpOrderedBooks.DragLeave += new System.EventHandler(this.tlpOrderedBooks_DragLeave);
 			this.tlpOrderedBooks.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.tlpOrderedBooks_GiveFeedback);
 			// 
 			// pnlWindowResize
@@ -610,7 +610,7 @@
             this.exitToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(855, 28);
+			this.menuStrip1.Size = new System.Drawing.Size(856, 28);
 			this.menuStrip1.TabIndex = 151;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -625,19 +625,19 @@
 			// greekScripturesToolStripMenuItem
 			// 
 			this.greekScripturesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.matchChineseToEnglishToolStripMenuItem,
+            this.matchChineseToEnglishGreekToolStripMenuItem,
             this.reorderBooksToolStripMenuItem});
 			this.greekScripturesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.greekScripturesToolStripMenuItem.Name = "greekScripturesToolStripMenuItem";
 			this.greekScripturesToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
 			this.greekScripturesToolStripMenuItem.Text = "Greek Scriptures";
 			// 
-			// matchChineseToEnglishToolStripMenuItem
+			// matchChineseToEnglishGreekToolStripMenuItem
 			// 
-			this.matchChineseToEnglishToolStripMenuItem.Name = "matchChineseToEnglishToolStripMenuItem";
-			this.matchChineseToEnglishToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
-			this.matchChineseToEnglishToolStripMenuItem.Text = "Match Chinese to English";
-			this.matchChineseToEnglishToolStripMenuItem.Click += new System.EventHandler(this.matchChineseToEnglishToolStripMenuItem_Click);
+			this.matchChineseToEnglishGreekToolStripMenuItem.Name = "matchChineseToEnglishGreekToolStripMenuItem";
+			this.matchChineseToEnglishGreekToolStripMenuItem.Size = new System.Drawing.Size(243, 24);
+			this.matchChineseToEnglishGreekToolStripMenuItem.Text = "Match Chinese to English";
+			this.matchChineseToEnglishGreekToolStripMenuItem.Click += new System.EventHandler(this.matchChineseToEnglishGreekToolStripMenuItem_Click);
 			// 
 			// reorderBooksToolStripMenuItem
 			// 
@@ -648,6 +648,8 @@
 			// 
 			// hebrewScripturesToolStripMenuItem
 			// 
+			this.hebrewScripturesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.matchChineseToEnglishHebrewToolStripMenuItem1});
 			this.hebrewScripturesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.hebrewScripturesToolStripMenuItem.Name = "hebrewScripturesToolStripMenuItem";
 			this.hebrewScripturesToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
@@ -669,6 +671,13 @@
 			this.exitToolStripMenuItem.Size = new System.Drawing.Size(45, 24);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+			// 
+			// matchChineseToEnglishHebrewToolStripMenuItem1
+			// 
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Name = "matchChineseToEnglishHebrewToolStripMenuItem1";
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Size = new System.Drawing.Size(243, 24);
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Text = "Match Chinese to English";
+			this.matchChineseToEnglishHebrewToolStripMenuItem1.Click += new System.EventHandler(this.matchChineseToEnglishHebrewToolStripMenuItem1_Click);
 			// 
 			// GreekReorder
 			// 
@@ -734,10 +743,11 @@
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem greekScripturesToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem matchChineseToEnglishToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem matchChineseToEnglishGreekToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem reorderBooksToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem hebrewScripturesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem matchChineseToEnglishHebrewToolStripMenuItem1;
 	}
 }
