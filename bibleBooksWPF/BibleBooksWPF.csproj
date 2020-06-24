@@ -60,6 +60,9 @@
     <Compile Include="CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HebrewMatch.xaml.cs">
+      <DependentUpon>HebrewMatch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
@@ -68,6 +71,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GreekMatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HebrewMatch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
