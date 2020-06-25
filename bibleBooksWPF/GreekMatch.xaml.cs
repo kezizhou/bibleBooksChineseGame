@@ -284,5 +284,19 @@ namespace BibleBooksWPF {
 					break;
 			}
 		}
+
+		private void ImenMatchHebrew_Click(object sender, RoutedEventArgs e) {
+			HebrewMatch pHebrewMatch = new HebrewMatch();
+			NavigationService.Navigate(pHebrewMatch);
+		}
+
+		private void ImenSettings_Click(object sender, RoutedEventArgs e) {
+			Settings pSettings = new Settings();
+			NavigationService.Navigate(pSettings);
+		}
+
+		private void ImenExit_Click(object sender, RoutedEventArgs e) {
+			Application.Current.Shutdown();
+		}
 	}
 }
