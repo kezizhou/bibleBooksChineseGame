@@ -18,11 +18,23 @@ namespace BibleBooksWPF
     /// <summary>
     /// Interaction logic for HebrewMatch.xaml
     /// </summary>
-    public partial class HebrewMatch : Page
-    {
-        public HebrewMatch()
-        {
+    public partial class HebrewMatch : Page {
+        public HebrewMatch() {
             InitializeComponent();
         }
-    }
+
+		private void ImenMatchGreek_Click(object sender, RoutedEventArgs e) {
+			GreekMatch pGreekMatch = new GreekMatch();
+			NavigationService.Navigate(pGreekMatch);
+		}
+
+		private void ImenSettings_Click(object sender, RoutedEventArgs e) {
+			Settings pSettings = new Settings();
+			NavigationService.Navigate(pSettings);
+		}
+
+		private void ImenExit_Click(object sender, RoutedEventArgs e) {
+			Application.Current.Shutdown();
+		}
+	}
 }
