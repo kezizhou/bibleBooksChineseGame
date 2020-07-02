@@ -10,7 +10,7 @@ A matching game for Chinese and English Bible books
 
 To install, download [this](https://github.com/kezizhou/bibleBooksChineseGame/blob/master/publish/setup.exe) file.
 
-### Common Issues:
+### Common Installation Issues:
 
 #### Administrator has blocked install
 You may see an error like this that blocks the install:  
