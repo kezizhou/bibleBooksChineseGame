@@ -305,5 +305,10 @@ namespace BibleBooksWPF
 		private void ImenExit_Click(object sender, RoutedEventArgs e) {
 			Application.Current.Shutdown();
 		}
+
+		private void ImenMainMenu_Click(object sender, RoutedEventArgs e) {
+			MainMenu pMainMenu = new MainMenu();
+			NavigationService.Navigate(pMainMenu);
+		}
 	}
 }
