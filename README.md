@@ -8,7 +8,7 @@ A matching game for Chinese and English Bible books
 ***
 ## Installation
 
-To install, download [this](https://github.com/kezizhou/bibleBooksChineseGame/blob/master/publish/setup.exe) file.
+To install, download the latest release [here](https://github.com/kezizhou/bibleBooksChineseGame/releases).
 
 ### Common Installation Issues:
 
