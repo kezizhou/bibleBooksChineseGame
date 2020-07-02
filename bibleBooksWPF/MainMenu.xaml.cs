@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BibleBooksWPF {
 	/// <summary>
 	/// Interaction logic for MainMenu.xaml
 	/// </summary>
 	public partial class MainMenu : Page {
+		public static int intTotalPoints = 0;
+
 		public MainMenu() {
 			InitializeComponent();
 		}
@@ -27,6 +18,18 @@ namespace BibleBooksWPF {
 			NavigationService.Navigate(pGreekMatch);
 		}
 
-		public static int intTotalPoints = 0;
+		private void ImenMatchHebrew_Click(object sender, RoutedEventArgs e) {
+			HebrewMatch pHebrewMatch = new HebrewMatch();
+			NavigationService.Navigate(pHebrewMatch);
+		}
+
+		private void ImenSettings_Click(object sender, RoutedEventArgs e) {
+			Settings pSettings = new Settings();
+			NavigationService.Navigate(pSettings);
+		}
+
+		private void ImenExit_Click(object sender, RoutedEventArgs e) {
+			Application.Current.Shutdown();
+		}
 	}
 }
