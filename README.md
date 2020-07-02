@@ -6,13 +6,13 @@ A matching game for Chinese and English Bible books
 [Sample Screenshots](#sample-screenshots)  
 
 ***
-### Installation
+## Installation
 
 To install, download [this](https://github.com/kezizhou/bibleBooksChineseGame/blob/master/publish/setup.exe) file.
 
-#### Common Issues:
+### Common Issues:
 
-##### Administrator has blocked install
+#### Administrator has blocked install
 You may see an error like this that blocks the install:
 ![Blocked Install Security Warning](documentation/blockedSecurityWarning.png)
 
@@ -29,10 +29,12 @@ When these steps have been completed, you should see a window like this on the i
 **[Back to Top](#bibleBooksChineseGame)**
 
 ***
-### Sample Screenshots
+## Sample Screenshots
 
-![Main Menu](documentation/mainMenu.png)
-![Hebrew Scriptures Match Chinese to English](documentation/hebrewMatch.png)
-![Greek Scriptures Match Chinese to Englishs](documentation/greekMatch.png)
+![Main Menu](documentation/mainMenu.png)  
+
+![Hebrew Scriptures Match Chinese to English](documentation/hebrewMatch.png)  
+
+![Greek Scriptures Match Chinese to Englishs](documentation/greekMatch.png)  
 
 **[Back to Top](#bibleBooksChineseGame)**
