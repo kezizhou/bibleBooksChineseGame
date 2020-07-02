@@ -54,10 +54,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>9C758C2256D237C68FFD3CB1B731E565B80342CA</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>31B4EDE24DBFF37F828D4EE33E4B4669174B902C</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>BibleBooksWPF_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>bibleBooksCert.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -159,6 +159,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bibleBooksCert.pfx" />
     <None Include="BibleBooksWPF_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
