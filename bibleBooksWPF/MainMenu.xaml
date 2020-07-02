@@ -21,15 +21,15 @@
         <Menu Name="menTop" Grid.Column="0" Grid.Row="0" FontFamily="Tahoma" Background="#FFDFF2F7" VerticalAlignment="Top" Margin="0,0,0,10" Padding="2,5" FontSize="14">
             <MenuItem Header="Main Menu" IsEnabled="False"/>
             <MenuItem Header="Hebrew Scriptures">
-                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English"/>
+                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
                 <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books"/>
             </MenuItem>
             <MenuItem Header="Greek Scriptures">
                 <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English" Click="ImenMatchGreek_Click"/>
                 <MenuItem x:Name="imenReorderGreek" Header="Reorder Books"/>
             </MenuItem>
-            <MenuItem Header="Settings"/>
-            <MenuItem Header="Exit"/>
+            <MenuItem x:Name="imenSettings" Header="Settings" Click="ImenSettings_Click"/>
+            <MenuItem x:Name="imenExit" Header="Exit" Click="ImenExit_Click"/>
         </Menu>
         <Image Name="imgBook" Source="Book.jpg" Grid.Column="0" Grid.Row="1" Margin="0,10"/>
         <TextBlock Name="txbDescription" Grid.Column="0" Grid.Row="2" FontFamily="Tahoma" TextAlignment="Center" VerticalAlignment="Center" FontSize="30" Padding="0,0,0,10">

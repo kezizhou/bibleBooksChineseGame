@@ -5,121 +5,121 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BibleBooksWPF"
       mc:Ignorable="d" 
-      d:DesignHeight="740" d:DesignWidth="1280"
+      d:DesignHeight="740" d:DesignWidth="1290"
       Title="Greek - Match Chinese to English" Loaded="Page_Loaded">
 
     <Grid x:Name="grdGreekMatch" Background="White" Margin="0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="160"/>
-            <ColumnDefinition Width="160"/>
-            <ColumnDefinition Width="160"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.75*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.75*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="9" FontFamily="Tahoma" Background="#FFDFF2F7" VerticalAlignment="Top" Margin="0,0,0,10" Padding="2,5" FontSize="14">
+        <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="9" FontFamily="Tahoma" Background="#FFDFF2F7" Padding="2,5" FontSize="14" VerticalAlignment="Top">
             <MenuItem Header="Main Menu"/>
             <MenuItem Header="Hebrew Scriptures">
-                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English"/>
+                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
                 <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books"/>
             </MenuItem>
             <MenuItem Header="Greek Scriptures">
                 <MenuItem x:Name="imenMatchGreek"  IsEnabled="False" Header="Match Chinese to English"/>
                 <MenuItem x:Name="imenReorderGreek" Header="Reorder Books"/>
             </MenuItem>
-            <MenuItem Header="Settings"/>
-            <MenuItem Header="Exit"/>
+            <MenuItem x:Name="imenSettings" Header="Settings" Click="ImenSettings_Click"/>
+            <MenuItem x:Name="imenExit" Header="Exit" Click="ImenExit_Click"/>
         </Menu>
 
-        <Label x:Name="lblChMatthew" Content="马太福音" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="1" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChMark" Content="马可福音" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="2" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChLuke" Content="路加福音" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="3" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChJohn" Content="约翰福音" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="4" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChActs" Content="使徒行传" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="5" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChRomans" Content="罗马书" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="6" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblCh1Corinthians" Content="哥林多前书" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="7" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
+        <Label x:Name="lblChMatthew" Content="马太福音" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="1" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChMark" Content="马可福音" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="2" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChLuke" Content="路加福音" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="3" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChJohn" Content="约翰福音" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="4" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChActs" Content="使徒行传" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="5" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChRomans" Content="罗马书" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="6" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblCh1Corinthians" Content="哥林多前书" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="7" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
 
-        <Label x:Name="lblCh2Corinthians" Content="哥林多后书" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="1" Padding="5,15"  Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChGalatians" Content="加拉太书" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="2" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChEphesians" Content="以弗所书" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="3" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChPhilippians" Content="腓立比书" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="4" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChColossians" Content="歌罗西书" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="5" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblCh1Thessalonians" Content="帖撒罗尼迦前书" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="6" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblCh2Thessalonians" Content="帖撒罗尼迦后书" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="7" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
+        <Label x:Name="lblCh2Corinthians" Content="哥林多后书" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="1" Padding="5"  Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChGalatians" Content="加拉太书" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="2" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChEphesians" Content="以弗所书" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="3" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChPhilippians" Content="腓立比书" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="4" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChColossians" Content="歌罗西书" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="5" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblCh1Thessalonians" Content="帖撒罗尼迦前书" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="6" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblCh2Thessalonians" Content="帖撒罗尼迦后书" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="7" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
 
-        <Label x:Name="lblMatthew" Content="Matthew" FontSize="18" FontFamily="DengXian" Grid.Column="3" Grid.Row="1" Padding="5,15"  Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblMark" Content="Mark" FontSize="18" FontFamily="DengXian" Grid.Column="3" Grid.Row="2" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblLuke" Content="Luke" FontSize="18" FontFamily="DengXian" Grid.Column="3" Grid.Row="3" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblJohn" Content="John" FontSize="18" FontFamily="DengXian" Grid.Column="3" Grid.Row="4" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblActs" Content="Acts" FontSize="18" FontFamily="DengXian" Grid.Column="3" Grid.Row="5" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblRomans" Content="Romans" FontSize="18" FontFamily="DengXian" Grid.Column="3" Grid.Row="6" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lbl1Corinthians" Content="1 Corinthians" FontSize="18" FontFamily="DengXian" Grid.Column="3" Grid.Row="7" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lbl2Corinthians" Content="2 Corinthians" FontSize="18" FontFamily="DengXian" Grid.Column="3" Grid.Row="8" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblGalatians" Content="Galatians" FontSize="18" FontFamily="DengXian" Grid.Column="3" Grid.Row="9" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
+        <Label x:Name="lblMatthew" Content="Matthew" FontSize="17" FontFamily="DengXian" Grid.Column="3" Grid.Row="1" Padding="5"  Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblMark" Content="Mark" FontSize="17" FontFamily="DengXian" Grid.Column="3" Grid.Row="2" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblLuke" Content="Luke" FontSize="17" FontFamily="DengXian" Grid.Column="3" Grid.Row="3" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblJohn" Content="John" FontSize="17" FontFamily="DengXian" Grid.Column="3" Grid.Row="4" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblActs" Content="Acts" FontSize="17" FontFamily="DengXian" Grid.Column="3" Grid.Row="5" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblRomans" Content="Romans" FontSize="17" FontFamily="DengXian" Grid.Column="3" Grid.Row="6" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl1Corinthians" Content="1 Corinthians" FontSize="17" FontFamily="DengXian" Grid.Column="3" Grid.Row="7" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl2Corinthians" Content="2 Corinthians" FontSize="17" FontFamily="DengXian" Grid.Column="3" Grid.Row="8" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblGalatians" Content="Galatians" FontSize="17" FontFamily="DengXian" Grid.Column="3" Grid.Row="9" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
 
-        <Label x:Name="lblEphesians" Content="Ephesians" FontSize="18" FontFamily="DengXian" Grid.Column="4" Grid.Row="1" Padding="5,15"  Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblPhilippians" Content="Philippians" FontSize="18" FontFamily="DengXian" Grid.Column="4" Grid.Row="2" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblColossians" Content="Colossians" FontSize="18" FontFamily="DengXian" Grid.Column="4" Grid.Row="3" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lbl1Thessalonians" Content="1 Thessalonians" FontSize="18" FontFamily="DengXian" Grid.Column="4" Grid.Row="4" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lbl2Thessalonians" Content="2 Thessalonians" FontSize="18" FontFamily="DengXian" Grid.Column="4" Grid.Row="5" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lbl1Timothy" Content="1 Timothy" FontSize="18" FontFamily="DengXian" Grid.Column="4" Grid.Row="6" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lbl2Timothy" Content="2 Timothy" FontSize="18" FontFamily="DengXian" Grid.Column="4" Grid.Row="7" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblTitus" Content="Titus" FontSize="18" FontFamily="DengXian" Grid.Column="4" Grid.Row="8" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblPhilemon" Content="Philemon" FontSize="18" FontFamily="DengXian" Grid.Column="4" Grid.Row="9" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
+        <Label x:Name="lblEphesians" Content="Ephesians" FontSize="17" FontFamily="DengXian" Grid.Column="4" Grid.Row="1" Padding="5"  Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblPhilippians" Content="Philippians" FontSize="17" FontFamily="DengXian" Grid.Column="4" Grid.Row="2" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblColossians" Content="Colossians" FontSize="17" FontFamily="DengXian" Grid.Column="4" Grid.Row="3" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl1Thessalonians" Content="1 Thessalonians" FontSize="17" FontFamily="DengXian" Grid.Column="4" Grid.Row="4" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl2Thessalonians" Content="2 Thessalonians" FontSize="17" FontFamily="DengXian" Grid.Column="4" Grid.Row="5" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl1Timothy" Content="1 Timothy" FontSize="17" FontFamily="DengXian" Grid.Column="4" Grid.Row="6" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl2Timothy" Content="2 Timothy" FontSize="17" FontFamily="DengXian" Grid.Column="4" Grid.Row="7" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblTitus" Content="Titus" FontSize="17" FontFamily="DengXian" Grid.Column="4" Grid.Row="8" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblPhilemon" Content="Philemon" FontSize="17" FontFamily="DengXian" Grid.Column="4" Grid.Row="9" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
 
-        <Label x:Name="lblHebrews" Content="Hebrews" FontSize="18" FontFamily="DengXian" Grid.Column="5" Grid.Row="1" Padding="5,15"  Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblJames" Content="James" FontSize="18" FontFamily="DengXian" Grid.Column="5" Grid.Row="2" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lbl1Peter" Content="1 Peter" FontSize="18" FontFamily="DengXian" Grid.Column="5" Grid.Row="3" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lbl2Peter" Content="2 Peter" FontSize="18" FontFamily="DengXian" Grid.Column="5" Grid.Row="4" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lbl1John" Content="1 John" FontSize="18" FontFamily="DengXian" Grid.Column="5" Grid.Row="5" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lbl2John" Content="2 John" FontSize="18" FontFamily="DengXian" Grid.Column="5" Grid.Row="6" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lbl3John" Content="3 John" FontSize="18" FontFamily="DengXian" Grid.Column="5" Grid.Row="7" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblJude" Content="Jude" FontSize="18" FontFamily="DengXian" Grid.Column="5" Grid.Row="8" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
-        <Label x:Name="lblRevelation" Content="Revelation" FontSize="18" FontFamily="DengXian" Grid.Column="5" Grid.Row="9" Padding="5,15" Background="#FF9BC1FF" Margin="5,5,15,10"/>
+        <Label x:Name="lblHebrews" Content="Hebrews" FontSize="17" FontFamily="DengXian" Grid.Column="5" Grid.Row="1" Padding="5"  Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblJames" Content="James" FontSize="17" FontFamily="DengXian" Grid.Column="5" Grid.Row="2" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl1Peter" Content="1 Peter" FontSize="17" FontFamily="DengXian" Grid.Column="5" Grid.Row="3" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl2Peter" Content="2 Peter" FontSize="17" FontFamily="DengXian" Grid.Column="5" Grid.Row="4" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl1John" Content="1 John" FontSize="17" FontFamily="DengXian" Grid.Column="5" Grid.Row="5" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl2John" Content="2 John" FontSize="17" FontFamily="DengXian" Grid.Column="5" Grid.Row="6" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl3John" Content="3 John" FontSize="17" FontFamily="DengXian" Grid.Column="5" Grid.Row="7" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblJude" Content="Jude" FontSize="17" FontFamily="DengXian" Grid.Column="5" Grid.Row="8" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblRevelation" Content="Revelation" FontSize="17" FontFamily="DengXian" Grid.Column="5" Grid.Row="9" Padding="5" Background="#FF9BC1FF" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
 
-        <Label x:Name="lblCh1Timothy" Content="提摩太前书" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="1" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblCh2Timothy" Content="提摩太后书" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="2" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChTitus" Content="提多书" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="3" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChPhilemon" Content="腓利门书" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="4" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChHebrews" Content="希伯来书" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="5" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChJames" Content="雅各书" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="6" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblCh1Peter" Content="彼得前书" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="7" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
+        <Label x:Name="lblCh1Timothy" Content="提摩太前书" FontSize="17" FontFamily="DengXian" Grid.Column="7" Grid.Row="1" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblCh2Timothy" Content="提摩太后书" FontSize="17" FontFamily="DengXian" Grid.Column="7" Grid.Row="2" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChTitus" Content="提多书" FontSize="17" FontFamily="DengXian" Grid.Column="7" Grid.Row="3" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChPhilemon" Content="腓利门书" FontSize="17" FontFamily="DengXian" Grid.Column="7" Grid.Row="4" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChHebrews" Content="希伯来书" FontSize="17" FontFamily="DengXian" Grid.Column="7" Grid.Row="5" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChJames" Content="雅各书" FontSize="17" FontFamily="DengXian" Grid.Column="7" Grid.Row="6" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblCh1Peter" Content="彼得前书" FontSize="17" FontFamily="DengXian" Grid.Column="7" Grid.Row="7" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
 
-        <Label x:Name="lblCh2Peter" Content="彼得后书" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="1" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblCh1John" Content="约翰一书" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="2" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblCh2John" Content="约翰二书" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="3" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblCh3John" Content="约翰三书" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="4" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChJude" Content="犹大书" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="5" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
-        <Label x:Name="lblChRevelation" Content="启示录" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="6" Padding="5,15" Background="#FFE6EBF3" Margin="5,5,5,10"/>
+        <Label x:Name="lblCh2Peter" Content="彼得后书" FontSize="17" FontFamily="DengXian" Grid.Column="8" Grid.Row="1" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblCh1John" Content="约翰一书" FontSize="17" FontFamily="DengXian" Grid.Column="8" Grid.Row="2" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblCh2John" Content="约翰二书" FontSize="17" FontFamily="DengXian" Grid.Column="8" Grid.Row="3" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblCh3John" Content="约翰三书" FontSize="17" FontFamily="DengXian" Grid.Column="8" Grid.Row="4" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChJude" Content="犹大书" FontSize="17" FontFamily="DengXian" Grid.Column="8" Grid.Row="5" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblChRevelation" Content="启示录" FontSize="17" FontFamily="DengXian" Grid.Column="8" Grid.Row="6" Padding="5" Background="#FFE6EBF3" Margin="5,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
 
-        <Grid x:Name="grdStatistics" Grid.Column="1" Grid.Row="10" Grid.RowSpan="2" Grid.ColumnSpan="7" Background="#FFD3DAF5" Margin="0,25,0,0" HorizontalAlignment="Center">
+        <Grid x:Name="grdStatistics" Grid.Column="1" Grid.Row="10" Grid.RowSpan="2" Grid.ColumnSpan="7" Background="#FFD3DAF5" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="75"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="75"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -127,19 +127,19 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Column="0" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Padding="10,0">Points for Greek Scriptures:</TextBlock>
-            <Label x:Name="lblGreekPoints" Content="0" Grid.Column="1" Grid.Row="0" FontSize="16" VerticalAlignment="Center"></Label>
+            <Label x:Name="lblGreekPoints" Content="0" Grid.Column="1" Grid.Row="0" FontSize="16"/>
 
             <TextBlock Grid.Column="3" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Greek Percentage Correct:</TextBlock>
-            <Label x:Name="lblPercentageCorrect" Content="0 %" Grid.Column="4" Grid.Row="0" FontSize="16" VerticalAlignment="Center"></Label>
+            <Label x:Name="lblPercentageCorrect" Content="0 %" Grid.Column="4" Grid.Row="0" FontSize="16"/>
 
             <TextBlock Grid.Column="6" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Time Elapsed:</TextBlock>
-            <Label x:Name="lblTimeElapsed" Content="00:00:00" Grid.Column="7" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Padding="5,5,10,5"></Label>
+            <Label x:Name="lblTimeElapsed" Content="00:00:00" Grid.Column="7" Grid.Row="0" FontSize="16" Padding="5,5,10,5"></Label>
 
             <TextBlock Grid.Column="0" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Padding="10,0">Total Points:</TextBlock>
-            <Label x:Name="lblTotalPoints" Content="0" Grid.Column="1" Grid.Row="1" FontSize="16" VerticalAlignment="Center"></Label>
+            <Label x:Name="lblTotalPoints" Content="0" Grid.Column="1" Grid.Row="1" FontSize="16"></Label>
 
             <TextBlock Grid.Column="3" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Greek Answered:</TextBlock>
-            <Label x:Name="lblGreekAnswered" Content="0" Grid.Column="4" Grid.Row="1" FontSize="16" VerticalAlignment="Center"></Label>
+            <Label x:Name="lblGreekAnswered" Content="0" Grid.Column="4" Grid.Row="1" FontSize="16"></Label>
             
         </Grid>
         
