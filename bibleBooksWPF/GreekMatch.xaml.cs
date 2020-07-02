@@ -45,7 +45,7 @@ namespace BibleBooksWPF {
 			InitializeComponent();
 		}
 
-		private void lblMouseDown(object sender, MouseEventArgs e) {
+		private void lblMouseLeftButtonDown(object sender, MouseEventArgs e) {
 			blnDragging = true;
 			Label lblActiveElement = sender as Label;
 			clickPosition = e.GetPosition(this.Parent as UIElement);
@@ -91,7 +91,7 @@ namespace BibleBooksWPF {
 			}
 		}
 
-		private void lblMouseUp(object sender, MouseEventArgs e) {
+		private void lblMouseLeftButtonUp(object sender, MouseEventArgs e) {
 			blnDragging = false;
 			Label lblActiveElement = sender as Label;
 			TranslateTransform transform = lblActiveElement.RenderTransform as TranslateTransform;
@@ -102,15 +102,13 @@ namespace BibleBooksWPF {
 				if (dctTransform.ContainsKey(lblActiveElement.Name)) {
 					// A previous transform is already being stored
 					dctTransform[lblActiveElement.Name] = new Point(transform.X, transform.Y);
-				}
-				else {
+				} else if (transform != null) {
 					dctTransform.Add(lblActiveElement.Name, new Point(transform.X, transform.Y));
 				};
 			}
 
 			lblActiveElement.ReleaseMouseCapture();
 			Cursor = Cursors.Arrow;
-
 		}
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
@@ -119,9 +117,9 @@ namespace BibleBooksWPF {
 			foreach (String strChLbl in astrChGreek) {
 				// Add draggable label methods
 				Label lblCh = this.FindName(strChLbl) as Label;
-				lblCh.MouseDown += new MouseButtonEventHandler(lblMouseDown);
+				lblCh.MouseLeftButtonDown += new MouseButtonEventHandler(lblMouseLeftButtonDown);
 				lblCh.MouseMove += new MouseEventHandler(lblMouseMove);
-				lblCh.MouseUp += new MouseButtonEventHandler(lblMouseUp);
+				lblCh.MouseLeftButtonUp += new MouseButtonEventHandler(lblMouseLeftButtonUp);
 
 				// Add each label's location in the grid to a list of points
 				// (Row, Column)

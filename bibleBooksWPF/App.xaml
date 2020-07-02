@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:BibleBooksWPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="RoundedControls.xaml"/>
     </Application.Resources>
 </Application>
