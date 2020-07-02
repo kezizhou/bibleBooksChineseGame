@@ -9,6 +9,7 @@ A matching game for Chinese and English Bible books
 ## Installation
 
 To install, download the latest release [here](https://github.com/kezizhou/bibleBooksChineseGame/releases).
+Download and run setup.exe to install bibleBooksChineseGame onto your computer. You may choose to uninstall at any time by uninstalling from your programs list. The application will automatically check for new updates every time it is started.
 
 ### Common Installation Issues:
 
