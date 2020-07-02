@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:BibleBooksWPF"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1380"
-      Title="Hebrew - Match Chinese to English">
+      Title="Hebrew - Match Chinese to English" Loaded="Page_Loaded">
 
     <Grid x:Name="grdHebrewMatch" Background="White" Margin="0">
         <Grid.ColumnDefinitions>
