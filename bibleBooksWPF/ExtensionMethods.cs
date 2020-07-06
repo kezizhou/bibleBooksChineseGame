@@ -43,13 +43,8 @@ namespace ExtensionMethods {
 			}
 
 			// Pop-up message box and get return value
-			if (winMsgBox.ShowDialog().Value) {
-				string strResult = winMsgBox.strMsgReturn;
-				return strResult;
-			}
-			else {
-				return "";
-			}
+			string strResult = winMsgBox.strMsgReturn;
+			return strResult;
 		}
 	}
 }

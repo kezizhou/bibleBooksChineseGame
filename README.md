@@ -4,6 +4,7 @@ A matching game for Chinese and English Bible books
 ## Sections:  
 [Installation](#installation)  
 [Sample Screenshots](#sample-screenshots)  
+[Zoom Sharing](#zoom-sharing)  
 
 ***
 ## Installation
@@ -37,5 +38,11 @@ When these steps have been completed, you should see a window like this on the i
 ![Hebrew Scriptures Match Chinese to English](documentation/hebrewMatch.png)  
 
 ![Greek Scriptures Match Chinese to Englishs](documentation/greekMatch.png)  
+
+**[Back to Top](#bibleBooksChineseGame)**
+
+***
+### Zoom Sharing
+To share this application on Zoom and allow another person to control the screen through Remote Control, you will need to install [this](https://github.com/joshuatz/right-click-and-drag/releases/download/v0.1.0/right-click-and-drag.exe) application. The Right Click and Drag application was created by another GitHub user, and uses HotKey operations to turn all right clicks into a left click and drag operation. On Zoom, holding down indicates a right click, so this application will simulate a dragging motion on the host application. To use, check the checkbox to enable the application to start. When finished sharing on Zoom, uncheck the enabled box to end use.
 
 **[Back to Top](#bibleBooksChineseGame)**
