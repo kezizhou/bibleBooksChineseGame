@@ -13,35 +13,32 @@ using System.Windows.Threading;
 
 namespace BibleBooksWPF {
 	/// <summary>
-	/// Interaction logic for GreekMatch.xaml
+	/// Interaction logic for GreekReorder.xaml
 	/// </summary>
-	public partial class GreekMatch : Page {
-
+	public partial class GreekReorder : Page {
 		// Variables for moving labels
 		public bool blnDragging = false;
 		private Point clickPosition;
 		private Point labelClickPosition;
-		Dictionary<string, Point> dctTransform = new Dictionary<String, Point>();
+		Dictionary<string, Point> dctTransform = new Dictionary<string, Point>();
 
 		private Point gridBeforeMatch;
-		private static int intGreekAnswered = 0;
 		private static int intNumberCorrect = 0;
 		private static int intCurrentPoints = 0;
 		private static TimeSpan tsSecondsElapsed = TimeSpan.FromSeconds(0);
-		List<Point> lpntChLabels = new List<Point>();
-
-		static string[] astrChGreek = { "lblChMatthew", "lblChMark", "lblChLuke", "lblChJohn", "lblChActs", "lblChRomans", "lblCh1Corinthians", "lblCh2Corinthians", "lblChGalatians",
-									"lblChEphesians", "lblChPhilippians", "lblChColossians", "lblCh1Thessalonians", "lblCh2Thessalonians", "lblCh1Timothy", "lblCh2Timothy", "lblChTitus",
-									"lblChPhilemon", "lblChHebrews", "lblChJames", "lblCh1Peter", "lblCh2Peter", "lblCh1John", "lblCh2John", "lblCh3John", "lblChJude", "lblChRevelation" };
+		List<Point> lpntLabels = new List<Point>();
 
 		static string[] astrGreek = { "lblMatthew", "lblMark", "lblLuke", "lblJohn", "lblActs", "lblRomans", "lbl1Corinthians", "lbl2Corinthians", "lblGalatians", "lblEphesians",
 									"lblPhilippians", "lblColossians", "lbl1Thessalonians", "lbl2Thessalonians", "lbl1Timothy", "lbl2Timothy", "lblTitus",
 									"lblPhilemon", "lblHebrews", "lblJames", "lbl1Peter", "lbl2Peter", "lbl1John", "lbl2John", "lbl3John", "lblJude", "lblRevelation" };
 
-		List<String> lstrBooksToComplete = new List<String>(astrChGreek);
+		static string[] astrReorderLbls = { "lbl1", "lbl2", "lbl3", "lbl4", "lbl5", "lbl6", "lbl7", "lbl8", "lbl9", "lbl10", "lbl11", "lbl12", "lbl13", "lbl14",
+										 "lbl15", "lbl16", "lbl17", "lbl18", "lbl19", "lbl20", "lbl21", "lbl22", "lbl23", "lbl24", "lbl25", "lbl26"};
+
+		List<string> lstrBooksToComplete = new List<string>(astrGreek);
 		DispatcherTimer timer1 = new DispatcherTimer();
 
-		public GreekMatch() {
+		public GreekReorder() {
 			InitializeComponent();
 		}
 
@@ -49,7 +46,7 @@ namespace BibleBooksWPF {
 			blnDragging = true;
 			Label lblActiveElement = sender as Label;
 			clickPosition = e.GetPosition(this.Parent as UIElement);
-			labelClickPosition = lblActiveElement.TransformToAncestor(grdGreekMatch).Transform(new Point(0, 0));
+			labelClickPosition = lblActiveElement.TransformToAncestor(grdGreekReorder).Transform(new Point(0, 0));
 			gridBeforeMatch = new Point(Grid.GetRow(lblActiveElement), Grid.GetColumn(lblActiveElement));
 
 			lblActiveElement.CaptureMouse();
@@ -60,7 +57,7 @@ namespace BibleBooksWPF {
 			// Check audio setting
 			// If on, play audio
 			if ((bool)App.Current.Properties["blnAudio"] == true) {
-				playChineseAudio(sender);
+				playAudio(sender);
 			}
 		}
 
@@ -79,7 +76,7 @@ namespace BibleBooksWPF {
 				// Transform the distance from the current position to the position it was last in when mouse clicked
 				transform.X = currentPosition.X - clickPosition.X;
 				transform.Y = currentPosition.Y - clickPosition.Y;
-				
+
 				// Label has been moved before
 				if (dctTransform.ContainsKey(lblActiveElement.Name)) {
 					if (dctTransform.ContainsKey(lblActiveElement.Name)) {
@@ -102,7 +99,8 @@ namespace BibleBooksWPF {
 				if (dctTransform.ContainsKey(lblActiveElement.Name)) {
 					// A previous transform is already being stored
 					dctTransform[lblActiveElement.Name] = new Point(transform.X, transform.Y);
-				} else if (transform != null) {
+				}
+				else if (transform != null) {
 					dctTransform.Add(lblActiveElement.Name, new Point(transform.X, transform.Y));
 				};
 			}
@@ -114,30 +112,30 @@ namespace BibleBooksWPF {
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
 			Random r = new Random();
 
-			foreach (String strChLbl in astrChGreek) {
+			foreach (String strLbl in astrGreek) {
 				// Add draggable label methods
-				Label lblCh = this.FindName(strChLbl) as Label;
-				lblCh.MouseLeftButtonDown += new MouseButtonEventHandler(lblMouseLeftButtonDown);
-				lblCh.MouseMove += new MouseEventHandler(lblMouseMove);
-				lblCh.MouseLeftButtonUp += new MouseButtonEventHandler(lblMouseLeftButtonUp);
+				Label lbl = this.FindName(strLbl) as Label;
+				lbl.MouseLeftButtonDown += new MouseButtonEventHandler(lblMouseLeftButtonDown);
+				lbl.MouseMove += new MouseEventHandler(lblMouseMove);
+				lbl.MouseLeftButtonUp += new MouseButtonEventHandler(lblMouseLeftButtonUp);
 
 				// Add each label's location in the grid to a list of points
 				// (Row, Column)
-				Point pntGridPosition = new Point(Grid.GetRow(lblCh), Grid.GetColumn(lblCh));
-				lpntChLabels.Add(pntGridPosition);
+				Point pntGridPosition = new Point(Grid.GetRow(lbl), Grid.GetColumn(lbl));
+				lpntLabels.Add(pntGridPosition);
 			}
 
-			// Randomly shuffle all Chinese label locations
-			foreach (String strChLbl in astrChGreek) {
-				Label lblCh = this.FindName(strChLbl) as Label;
+			// Randomly shuffle all label locations
+			foreach (String strLbl in astrGreek) {
+				Label lbl = this.FindName(strLbl) as Label;
 
 				// Assign the label to a random grid position
-				int intRandom = r.Next(0, lpntChLabels.Count);
-				Grid.SetRow(lblCh, (int) lpntChLabels[intRandom].X);
-				Grid.SetColumn(lblCh, (int) lpntChLabels[intRandom].Y);
+				int intRandom = r.Next(0, lpntLabels.Count);
+				Grid.SetRow(lbl, (int)lpntLabels[intRandom].X);
+				Grid.SetColumn(lbl, (int)lpntLabels[intRandom].Y);
 
 				// Remove the point so it is not assigned again
-				lpntChLabels.Remove( new Point(Grid.GetRow(lblCh), Grid.GetColumn(lblCh)) );
+				lpntLabels.Remove(new Point(Grid.GetRow(lbl), Grid.GetColumn(lbl)));
 			}
 
 			// Start timer
@@ -148,47 +146,47 @@ namespace BibleBooksWPF {
 
 		private void timer1_Tick(object sender, EventArgs e) {
 			tsSecondsElapsed += TimeSpan.FromSeconds(1);
-			lblTimeElapsed.Content= tsSecondsElapsed.ToString();
+			lblTimeElapsed.Content = tsSecondsElapsed.ToString();
 		}
 
-		private void playChineseAudio(object sender) {
+		private void playAudio(object sender) {
 			// Play audio
-			Label lblChineseBook = sender as Label;
+			Label lblBook = sender as Label;
 			var synthesizer = new SpeechSynthesizer();
 			synthesizer.SetOutputToDefaultAudioDevice();
 			synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
-			synthesizer.SpeakAsync(lblChineseBook.Content.ToString());
+			synthesizer.SpeakAsync(lblBook.Content.ToString());
 		}
 
 		private bool checkLabelsTouching(object sender) {
-			Label lblCh = sender as Label;
+			Label lbl = sender as Label;
 			Boolean blnCorrect = false;
 			Boolean blnAttemptedMatch = false;
 
-			// Turn Chinese label int a rectangle
-			Rect rctChLbl = new Rect();
-			rctChLbl.Location = lblCh.PointToScreen(new Point(0, 0));
-			rctChLbl.Height = lblCh.ActualHeight;
-			rctChLbl.Width = lblCh.ActualWidth;
+			// Convert the moved label into a rect
+			Rect rectMovedLbl = new Rect();
+			rectMovedLbl.Location = lbl.PointToScreen(new Point(0, 0));
+			rectMovedLbl.Height = lbl.ActualHeight;
+			rectMovedLbl.Width = lbl.ActualWidth;
 
-			// Check each English book to see if touching
-			foreach (String strLbl in astrGreek) {
+			// Loop through the container labels to see if the moved label is touching one of them
+			foreach (String strContainerName in astrReorderLbls) {
 				// Get the label from the string name
-				Label lbl = this.FindName(strLbl) as Label;
+				Label lblReorder = (Label) this.FindName(strContainerName);
 
-				// Turn English label into a rectangle
-				Rect rctLbl = new Rect();
-				rctLbl.Location = lbl.PointToScreen(new Point(0, 0));
-				rctLbl.Height = lbl.ActualHeight;
-				rctLbl.Width = lbl.ActualWidth;
+				// Convert the reorder container label to a rect
+				Rect rectReorder = new Rect();
+				rectReorder.Location = lblReorder.PointToScreen(new Point(0, 0));
+				rectReorder.Height = lblReorder.ActualHeight;
+				rectReorder.Width = lblReorder.ActualWidth;
 
-				// Only check English labels that are touching the Chinese label
-				if (rctChLbl.IntersectsWith(rctLbl)) {
-					int intChLabelIndex = Array.IndexOf(astrChGreek, lblCh.Name);
+				// Only check the label that is touching a reorder rectangle
+				if (rectMovedLbl.IntersectsWith(rectReorder)) {
+					int intLabelIndex = Array.IndexOf(astrGreek, lbl.Name);
 					blnAttemptedMatch = true;
-					
+
 					// If the correct English label has been matched
-					if (strLbl == astrGreek[intChLabelIndex]) {
+					if (strContainerName.Equals( "lbl" + (intLabelIndex + 1).ToString() )) {
 						// Mark boolean flag true first
 						// Override the false in case it is touching 2 English labels at once
 						blnCorrect = true;
@@ -197,16 +195,22 @@ namespace BibleBooksWPF {
 						intCurrentPoints += 1;
 						MainMenu.intTotalPoints += 1;
 						intNumberCorrect += 1;
-						intGreekAnswered += 1;
 						refreshPoints();
 
-						// Move correct label on top of English
-						lblCh.RenderTransform = new TranslateTransform();
-						Grid.SetRow(lblCh, Grid.GetRow(lbl));
-						Grid.SetColumn(lblCh, Grid.GetColumn(lbl));
-						lblCh.IsEnabled = false;
+						// Move label to reordered container label
+						lbl.RenderTransform = new TranslateTransform();
 
-						lstrBooksToComplete.Remove(lblCh.Name);
+						// Remove from main grid
+						grdGreekReorder.Children.Remove(lbl);
+
+						// Add to reorder labels grid
+						grdReordered.Children.Add(lbl);
+						Grid.SetRow(lbl, Grid.GetRow(lblReorder));
+						Grid.SetColumn(lbl, Grid.GetColumn(lblReorder));
+						lbl.Background = (Brush)(new BrushConverter().ConvertFromString("#B5DBFF"));
+						lbl.IsEnabled = false;
+
+						lstrBooksToComplete.Remove(lbl.Name);
 
 						// Check if all books have been matched
 						if (lstrBooksToComplete.Count == 0) {
@@ -221,23 +225,24 @@ namespace BibleBooksWPF {
 				// Point penalty
 				intCurrentPoints -= 1;
 				MainMenu.intTotalPoints -= 1;
-				intGreekAnswered += 1;
 				refreshPoints();
 
 				// Label was moved from original position
-				if (dctTransform.ContainsKey(lblCh.Name) == false) {
-					lblCh.RenderTransform = new TranslateTransform();
-					dctTransform[lblCh.Name] = new Point(0, 0);
-				} else {
+				if (dctTransform.ContainsKey(lbl.Name) == false) {
+					lbl.RenderTransform = new TranslateTransform();
+					dctTransform[lbl.Name] = new Point(0, 0);
+				}
+				else {
 					// Return to previous position before match
-					TranslateTransform transform = lblCh.RenderTransform as TranslateTransform;
-					transform.X = dctTransform[lblCh.Name].X;
-					transform.Y = dctTransform[lblCh.Name].Y;
+					TranslateTransform transform = lbl.RenderTransform as TranslateTransform;
+					transform.X = dctTransform[lbl.Name].X;
+					transform.Y = dctTransform[lbl.Name].Y;
 				}
 
-				lblCh.Background = Brushes.Salmon;
-				incorrectFlash(lblCh);
-			} else if(blnCorrect == false && blnAttemptedMatch == false) {
+				lbl.Background = Brushes.Salmon;
+				incorrectFlash(lbl);
+			}
+			else if (blnCorrect == false && blnAttemptedMatch == false) {
 				// No match attempted
 				return false;
 			}
@@ -248,14 +253,13 @@ namespace BibleBooksWPF {
 
 		private async void incorrectFlash(Label lblIncorrectBook) {
 			await Task.Delay(900);
-			lblIncorrectBook.Background = (Brush)(new BrushConverter().ConvertFromString("#E6EBF3"));
+			lblIncorrectBook.Background = (Brush)(new BrushConverter().ConvertFromString("#9BC1FF"));
 		}
 
 		private void refreshPoints() {
 			lblCurrentPoints.Content = intCurrentPoints.ToString();
 			lblTotalPoints.Content = MainMenu.intTotalPoints.ToString();
-			lblPercentageCorrect.Content = String.Format("{0:P2}", (double)intNumberCorrect / intGreekAnswered);
-			lblGreekAnswered.Content = intGreekAnswered.ToString();
+			lblPercentageCorrect.Content = String.Format("{0:P2}", (double)intNumberCorrect / astrGreek.Length);
 		}
 
 		private void completedMatching() {
@@ -263,13 +267,13 @@ namespace BibleBooksWPF {
 			CustomMessageBox winMsgBox = new CustomMessageBox();
 
 			string strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
-										"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intGreekAnswered) + "\n" +
+										"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / astrGreek.Length) + "\n" +
 										"Time Elapsed: " + lblTimeElapsed.Content, "Congratulations!", "congrats", winMsgBox);
 
 			switch (strResponse) {
 				case "Retry":
-					GreekMatch pGreekMatch = new GreekMatch();
-					NavigationService.Navigate(pGreekMatch);
+					GreekReorder pGreekReorder = new GreekReorder();
+					NavigationService.Navigate(pGreekReorder);
 					break;
 				case "Main":
 					MainMenu pMainMenu = new MainMenu();
@@ -288,6 +292,11 @@ namespace BibleBooksWPF {
 			NavigationService.Navigate(pHebrewMatch);
 		}
 
+		private void ImenMatchGreek_Click(object sender, RoutedEventArgs e) {
+			GreekMatch pGreekMatch = new GreekMatch();
+			NavigationService.Navigate(pGreekMatch);
+		}
+
 		private void ImenSettings_Click(object sender, RoutedEventArgs e) {
 			Settings pSettings = new Settings();
 			NavigationService.Navigate(pSettings);
@@ -300,11 +309,6 @@ namespace BibleBooksWPF {
 		private void ImenMainMenu_Click(object sender, RoutedEventArgs e) {
 			MainMenu pMainMenu = new MainMenu();
 			NavigationService.Navigate(pMainMenu);
-		}
-
-		private void ImenReorderGreek_Click(object sender, RoutedEventArgs e) {
-			GreekReorder pGreekReorder = new GreekReorder();
-			NavigationService.Navigate(pGreekReorder);
 		}
 	}
 }
