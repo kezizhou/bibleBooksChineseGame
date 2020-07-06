@@ -154,7 +154,7 @@ namespace BibleBooksWPF {
 			Label lblBook = sender as Label;
 			var synthesizer = new SpeechSynthesizer();
 			synthesizer.SetOutputToDefaultAudioDevice();
-			synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
+			synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("en"));
 			synthesizer.SpeakAsync(lblBook.Content.ToString());
 		}
 

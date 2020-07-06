@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BibleBooksWPF"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Settings">
+      d:DesignHeight="400" d:DesignWidth="600"
+      Title="Settings" Loaded="Page_Loaded">
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="350"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,25 +20,34 @@
         </Grid.RowDefinitions>
 
         <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" FontFamily="Tahoma" Background="#FFDFF2F7" VerticalAlignment="Top" Margin="0,0,0,10" Padding="2,5" FontSize="14">
-            <MenuItem Header="Main Menu"/>
+            <MenuItem Header="Main Menu" Click="ImenMainMenu_Click"/>
             <MenuItem Header="Hebrew Scriptures">
-                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English"/>
+                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
                 <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books"/>
             </MenuItem>
             <MenuItem Header="Greek Scriptures">
-                <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English"/>
-                <MenuItem x:Name="imenReorderGreek" Header="Reorder Books"/>
+                <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English"  Click="ImenMatchGreek_Click"/>
+                <MenuItem x:Name="imenReorderGreek" Header="Reorder Books" Click="ImenReorderGreek_Click"/>
             </MenuItem>
-            <MenuItem Header="Settings" IsEnabled="False" />
-            <MenuItem Header="Exit"/>
+            <MenuItem Header="Settings" IsEnabled="False"/>
+            <MenuItem Header="Exit" Click="ImenExit_Click"/>
         </Menu>
 
-        <GroupBox Header="Audio Pronunciation" Grid.Column="0" Grid.Row="1" FontSize="14" Margin="0,0,0,5">
+        <GroupBox Header="Audio Pronunciation" FontSize="16" Grid.Column="0" Grid.Row="1" Margin="10,0,0,5" Height="100" Width="180" VerticalAlignment="Top" HorizontalAlignment="Left">
             <StackPanel Margin="5,5,0,0">
-                <RadioButton x:Name="radAudioOn" IsChecked="True" IsEnabledChanged="RadAudio_IsEnabledChanged">On</RadioButton>
-                <RadioButton x:Name="radAudioOff" IsEnabledChanged="RadAudio_IsEnabledChanged">Off</RadioButton>
+                <RadioButton x:Name="radAudioOn" IsChecked="True" IsEnabledChanged="RadAudio_IsEnabledChanged" FontSize="14">On</RadioButton>
+                <RadioButton x:Name="radAudioOff" IsEnabledChanged="RadAudio_IsEnabledChanged" FontSize="14">Off</RadioButton>
             </StackPanel>
         </GroupBox>
 
+        <GroupBox Header="About" Grid.Column="1" Grid.Row="1" FontSize="16" Height="100" Width="180" Margin="10,0,10,5" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
+                    <TextBlock FontSize="14" Margin="0,0,10,10">Version:</TextBlock>
+                    <TextBlock x:Name="lblVersion" FontSize="14">1.0.1</TextBlock>
+                </StackPanel>
+                <Button x:Name="btnUpdate" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Padding="5" Click="BtnUpdate_Click">Check for Updates</Button>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Page>
