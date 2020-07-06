@@ -28,7 +28,7 @@ namespace BibleBooksWPF
 		private Point gridBeforeMatch;
 		private static int intHebrewAnswered = 0;
 		private static int intNumberCorrect = 0;
-		private static int intHebrewPoints = 0;
+		private static int intCurrentPoints = 0;
 		private static TimeSpan tsSecondsElapsed = TimeSpan.FromSeconds(0);
 		List<Point> lpntChLabels = new List<Point>();
 
@@ -201,7 +201,7 @@ namespace BibleBooksWPF
 						blnCorrect = true;
 
 						// Add points
-						intHebrewPoints += 1;
+						intCurrentPoints += 1;
 						MainMenu.intTotalPoints += 1;
 						intNumberCorrect += 1;
 						intHebrewAnswered += 1;
@@ -226,7 +226,7 @@ namespace BibleBooksWPF
 
 			if (blnCorrect == false && blnAttemptedMatch == true) {
 				// Point penalty
-				intHebrewPoints -= 1;
+				intCurrentPoints -= 1;
 				MainMenu.intTotalPoints -= 1;
 				intHebrewAnswered += 1;
 				refreshPoints();
@@ -257,11 +257,11 @@ namespace BibleBooksWPF
 
 		private async void incorrectFlash(Label lblIncorrectBook) {
 			await Task.Delay(900);
-			lblIncorrectBook.Background = (Brush)(new BrushConverter().ConvertFromString("#FFE6EBF3"));
+			lblIncorrectBook.Background = (Brush)(new BrushConverter().ConvertFromString("#E6EBF3"));
 		}
 
 		private void refreshPoints() {
-			lblHebrewPoints.Content = intHebrewPoints.ToString();
+			lblCurrentPoints.Content = intCurrentPoints.ToString();
 			lblTotalPoints.Content = MainMenu.intTotalPoints.ToString();
 			lblPercentageCorrect.Content = String.Format("{0:P2}", (double)intNumberCorrect / intHebrewAnswered);
 			lblHebrewAnswered.Content = intHebrewAnswered.ToString();
@@ -309,6 +309,11 @@ namespace BibleBooksWPF
 		private void ImenMainMenu_Click(object sender, RoutedEventArgs e) {
 			MainMenu pMainMenu = new MainMenu();
 			NavigationService.Navigate(pMainMenu);
+		}
+
+		private void ImenReorderGreek_Click(object sender, RoutedEventArgs e) {
+			GreekReorder pGreekReorder = new GreekReorder();
+			NavigationService.Navigate(pGreekReorder);
 		}
 	}
 }

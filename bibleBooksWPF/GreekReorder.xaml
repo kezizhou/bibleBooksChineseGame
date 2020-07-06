@@ -5,16 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BibleBooksWPF"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="GreekReorder">
+      d:DesignHeight="810" d:DesignWidth="1000"
+      Title="GreekReorder" Loaded="Page_Loaded">
 
     <Grid x:Name="grdGreekReorder" Background="White" Margin="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="0.75*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.75*"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -31,9 +35,53 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" FontFamily="Tahoma" Background="#FFDFF2F7" Padding="2,5" FontSize="14" VerticalAlignment="Top">
+            <MenuItem x:Name="imenMainMenu" Header="Main Menu" Click="ImenMainMenu_Click"/>
+            <MenuItem Header="Hebrew Scriptures">
+                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
+                <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books"/>
+            </MenuItem>
+            <MenuItem Header="Greek Scriptures">
+                <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English"  Click="ImenMatchGreek_Click"/>
+                <MenuItem x:Name="imenReorderGreek" IsEnabled="False" Header="Reorder Books"/>
+            </MenuItem>
+            <MenuItem x:Name="imenSettings" Header="Settings" Click="ImenSettings_Click"/>
+            <MenuItem x:Name="imenExit" Header="Exit" Click="ImenExit_Click"/>
+        </Menu>
 
-        <Grid x:Name="grdReordered" Background="White" Margin="0" Grid.Row="0" Grid.Column="2" Grid.RowSpan="12">
+        <Label x:Name="lblMatthew" Content="Matthew" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="1" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblMark" Content="Mark" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="2" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblLuke" Content="Luke" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="3" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblJohn" Content="John" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="4" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblActs" Content="Acts" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="5" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblRomans" Content="Romans" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="6" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl1Corinthians" Content="1 Corinthians" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="7" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl2Corinthians" Content="2 Corinthians" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="8" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblGalatians" Content="Galatians" FontSize="17" FontFamily="DengXian" Grid.Column="0" Grid.Row="9" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+
+        <Label x:Name="lblEphesians" Content="Ephesians" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="1" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblPhilippians" Content="Philippians" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="2" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblColossians" Content="Colossians" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="3" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl1Thessalonians" Content="1 Thessalonians" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="4" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl2Thessalonians" Content="2 Thessalonians" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="5" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl1Timothy" Content="1 Timothy" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="6" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl2Timothy" Content="2 Timothy" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="7" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblTitus" Content="Titus" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="8" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblPhilemon" Content="Philemon" FontSize="17" FontFamily="DengXian" Grid.Column="1" Grid.Row="9" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+
+        <Label x:Name="lblHebrews" Content="Hebrews" FontSize="17" FontFamily="DengXian" Grid.Column="2" Grid.Row="1" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblJames" Content="James" FontSize="17" FontFamily="DengXian" Grid.Column="2" Grid.Row="2" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl1Peter" Content="1 Peter" FontSize="17" FontFamily="DengXian" Grid.Column="2" Grid.Row="3" Padding="5" Background="#9BC1FF" Margin="10,5,15,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl2Peter" Content="2 Peter" FontSize="17" FontFamily="DengXian" Grid.Column="2" Grid.Row="4" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl1John" Content="1 John" FontSize="17" FontFamily="DengXian" Grid.Column="2" Grid.Row="5" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl2John" Content="2 John" FontSize="17" FontFamily="DengXian" Grid.Column="2" Grid.Row="6" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lbl3John" Content="3 John" FontSize="17" FontFamily="DengXian" Grid.Column="2" Grid.Row="7" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblJude" Content="Jude" FontSize="17" FontFamily="DengXian" Grid.Column="2" Grid.Row="8" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+        <Label x:Name="lblRevelation" Content="Revelation" FontSize="17" FontFamily="DengXian" Grid.Column="2" Grid.Row="9" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+
+        <Grid x:Name="grdReordered" Background="White" Margin="0,0,10,15" Grid.Row="1" Grid.Column="4" Grid.RowSpan="14" Grid.ColumnSpan="2" ShowGridLines="True">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -49,7 +97,63 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
+
+            <Label x:Name="lbl1" Grid.Column="0" Grid.Row="0" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl2" Grid.Column="0" Grid.Row="1" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl3" Grid.Column="0" Grid.Row="2" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl4" Grid.Column="0" Grid.Row="3" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl5" Grid.Column="0" Grid.Row="4" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl6" Grid.Column="0" Grid.Row="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl7" Grid.Column="0" Grid.Row="6" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl8" Grid.Column="0" Grid.Row="7" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl9" Grid.Column="0" Grid.Row="8" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl10" Grid.Column="0" Grid.Row="9" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl11" Grid.Column="0" Grid.Row="10" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl12" Grid.Column="0" Grid.Row="11" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl13" Grid.Column="0" Grid.Row="12" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl14" Grid.Column="0" Grid.Row="13" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+
+            <Label x:Name="lbl15" Grid.Column="1" Grid.Row="0" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl16" Grid.Column="1" Grid.Row="1" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl17" Grid.Column="1" Grid.Row="2" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl18" Grid.Column="1" Grid.Row="3" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl19" Grid.Column="1" Grid.Row="4" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl20" Grid.Column="1" Grid.Row="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl21" Grid.Column="1" Grid.Row="6" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl22" Grid.Column="1" Grid.Row="7" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl23" Grid.Column="1" Grid.Row="8" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl24" Grid.Column="1" Grid.Row="9" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl25" Grid.Column="1" Grid.Row="10" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl26" Grid.Column="1" Grid.Row="11" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+            <Label x:Name="lbl27" Grid.Column="1" Grid.Row="12" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"></Label>
+        </Grid>
+
+        <Grid x:Name="grdStatistics" Grid.Column="0" Grid.Row="11" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FFD3DAF5" VerticalAlignment="Center" Margin="10,0,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0.75*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.75*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Padding="10,0">Current Points:</TextBlock>
+            <Label x:Name="lblCurrentPoints" Content="0" Grid.Column="1" Grid.Row="0" FontSize="16"/>
+
+            <TextBlock Grid.Column="2" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Current Percentage Correct:</TextBlock>
+            <Label x:Name="lblPercentageCorrect" Content="0 %" Grid.Column="4" Grid.Row="0" FontSize="16"/>
+
+            <TextBlock Grid.Column="2" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Time Elapsed:</TextBlock>
+            <Label x:Name="lblTimeElapsed" Content="00:00:00" Grid.Column="4" Grid.Row="1" FontSize="16" Padding="5,5,10,5"></Label>
+
+            <TextBlock Grid.Column="0" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Padding="10,0">Total Points:</TextBlock>
+            <Label x:Name="lblTotalPoints" Content="0" Grid.Column="1" Grid.Row="1" FontSize="16"></Label>
         </Grid>
     </Grid>
 </Page>

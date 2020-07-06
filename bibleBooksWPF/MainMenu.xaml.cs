@@ -31,5 +31,10 @@ namespace BibleBooksWPF {
 		private void ImenExit_Click(object sender, RoutedEventArgs e) {
 			Application.Current.Shutdown();
 		}
+
+		private void ImenReorderGreek_Click(object sender, RoutedEventArgs e) {
+			GreekReorder pGreekReorder = new GreekReorder();
+			NavigationService.Navigate(pGreekReorder);
+		}
 	}
 }
