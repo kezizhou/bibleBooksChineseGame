@@ -34,7 +34,6 @@ namespace ExtensionMethods {
 
 			// Show correct icon according to parameter
 			switch (strIcon) {
-				// Icon made by Flat Icons from www.flaticon.com
 				case "congrats":
 					img.Source = new BitmapImage(new Uri("pack://application:,,,/BibleBooksWPF;component/congrats.png"));
 					break;
