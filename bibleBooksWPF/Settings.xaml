@@ -23,7 +23,7 @@
             <MenuItem Header="Main Menu" Click="ImenMainMenu_Click"/>
             <MenuItem Header="Hebrew Scriptures">
                 <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
-                <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books"/>
+                <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books" Click="ImenReorderHebrew_Click"/>
             </MenuItem>
             <MenuItem Header="Greek Scriptures">
                 <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English"  Click="ImenMatchGreek_Click"/>

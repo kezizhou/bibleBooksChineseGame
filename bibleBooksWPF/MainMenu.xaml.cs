@@ -13,14 +13,25 @@ namespace BibleBooksWPF {
 			InitializeComponent();
 		}
 
+
+		private void ImenMatchHebrew_Click(object sender, RoutedEventArgs e) {
+			HebrewMatch pHebrewMatch = new HebrewMatch();
+			NavigationService.Navigate(pHebrewMatch);
+		}
+
+		private void ImenReorderHebrew_Click(object sender, RoutedEventArgs e) {
+			HebrewReorder pHebrewReorder = new HebrewReorder();
+			NavigationService.Navigate(pHebrewReorder);
+		}
+
 		private void ImenMatchGreek_Click(object sender, RoutedEventArgs e) {
 			GreekMatch pGreekMatch = new GreekMatch();
 			NavigationService.Navigate(pGreekMatch);
 		}
 
-		private void ImenMatchHebrew_Click(object sender, RoutedEventArgs e) {
-			HebrewMatch pHebrewMatch = new HebrewMatch();
-			NavigationService.Navigate(pHebrewMatch);
+		private void ImenReorderGreek_Click(object sender, RoutedEventArgs e) {
+			GreekReorder pGreekReorder = new GreekReorder();
+			NavigationService.Navigate(pGreekReorder);
 		}
 
 		private void ImenSettings_Click(object sender, RoutedEventArgs e) {
@@ -32,9 +43,5 @@ namespace BibleBooksWPF {
 			Application.Current.Shutdown();
 		}
 
-		private void ImenReorderGreek_Click(object sender, RoutedEventArgs e) {
-			GreekReorder pGreekReorder = new GreekReorder();
-			NavigationService.Navigate(pGreekReorder);
-		}
 	}
 }
