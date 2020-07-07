@@ -42,6 +42,7 @@ namespace ExtensionMethods {
 			}
 
 			// Pop-up message box and get return value
+			winMsgBox.ShowDialog();
 			string strResult = winMsgBox.strMsgReturn;
 			return strResult;
 		}
