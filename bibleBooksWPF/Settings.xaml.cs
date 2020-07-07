@@ -88,6 +88,9 @@ namespace BibleBooksWPF {
 							return;
 						}
 					}
+				} else {
+					// No updates
+					System.Windows.MessageBox.Show("There are no new updates.");
 				}
 			} else {
 				// Program is not installed, debug mode
@@ -104,6 +107,11 @@ namespace BibleBooksWPF {
 		private void ImenMatchHebrew_Click(object sender, RoutedEventArgs e) {
 			HebrewMatch pHebrewMatch = new HebrewMatch();
 			NavigationService.Navigate(pHebrewMatch);
+		}
+
+		private void ImenReorderHebrew_Click(object sender, RoutedEventArgs e) {
+			HebrewReorder pHebrewReorder = new HebrewReorder();
+			NavigationService.Navigate(pHebrewReorder);
 		}
 
 		private void ImenMatchGreek_Click(object sender, RoutedEventArgs e) {

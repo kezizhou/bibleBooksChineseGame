@@ -26,9 +26,12 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://raw.githubusercontent.com/kezizhou/bibleBooksChineseGame/master/publish/</InstallUrl>
+    <SupportUrl>https://github.com/kezizhou/bibleBooksChineseGame/issues</SupportUrl>
+    <ProductName>Bible Books Game</ProductName>
+    <PublisherName>kezizhou</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -102,6 +105,9 @@
     <Compile Include="HebrewMatch.xaml.cs">
       <DependentUpon>HebrewMatch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HebrewReorder.xaml.cs">
+      <DependentUpon>HebrewReorder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
@@ -118,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HebrewMatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HebrewReorder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

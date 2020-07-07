@@ -25,6 +25,7 @@ namespace BibleBooksWPF {
 		private Point gridBeforeMatch;
 		private static int intNumberCorrect = 0;
 		private static int intCurrentPoints = 0;
+		private static int intTries = 0;
 		private static TimeSpan tsSecondsElapsed = TimeSpan.FromSeconds(0);
 		List<Point> lpntLabels = new List<Point>();
 
@@ -195,6 +196,7 @@ namespace BibleBooksWPF {
 						intCurrentPoints += 1;
 						MainMenu.intTotalPoints += 1;
 						intNumberCorrect += 1;
+						intTries += 1;
 						refreshPoints();
 
 						// Move label to reordered container label
@@ -225,6 +227,7 @@ namespace BibleBooksWPF {
 				// Point penalty
 				intCurrentPoints -= 1;
 				MainMenu.intTotalPoints -= 1;
+				intTries += 1;
 				refreshPoints();
 
 				// Label was moved from original position
@@ -259,7 +262,7 @@ namespace BibleBooksWPF {
 		private void refreshPoints() {
 			lblCurrentPoints.Content = intCurrentPoints.ToString();
 			lblTotalPoints.Content = MainMenu.intTotalPoints.ToString();
-			lblPercentageCorrect.Content = String.Format("{0:P2}", (double)intNumberCorrect / astrGreek.Length);
+			lblPercentageCorrect.Content = String.Format("{0:P2}", (double)intNumberCorrect / intTries);
 		}
 
 		private void completedMatching() {
@@ -267,7 +270,7 @@ namespace BibleBooksWPF {
 			CustomMessageBox winMsgBox = new CustomMessageBox();
 
 			string strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
-										"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / astrGreek.Length) + "\n" +
+										"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intTries) + "\n" +
 										"Time Elapsed: " + lblTimeElapsed.Content, "Congratulations!", "congrats", winMsgBox);
 
 			switch (strResponse) {
@@ -309,6 +312,11 @@ namespace BibleBooksWPF {
 		private void ImenMainMenu_Click(object sender, RoutedEventArgs e) {
 			MainMenu pMainMenu = new MainMenu();
 			NavigationService.Navigate(pMainMenu);
+		}
+
+		private void ImenReorderHebrew_Click(object sender, RoutedEventArgs e) {
+			HebrewReorder pHebrewReorder = new HebrewReorder();
+			NavigationService.Navigate(pHebrewReorder);
 		}
 	}
 }
