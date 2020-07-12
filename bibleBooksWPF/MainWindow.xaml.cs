@@ -21,7 +21,6 @@ namespace BibleBooksWPF {
 
 		public MainWindow() {
 			InitializeComponent();
-			App.Current.Properties["blnAudio"] = true;
 		}
 
 	}
