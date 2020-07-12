@@ -13,6 +13,9 @@ namespace BibleBooksWPF {
 			InitializeComponent();
 		}
 
+		private void Page_Loaded(object sender, RoutedEventArgs e) {
+			lblWelcome.Content = "Welcome: " + App.Current.Properties["currentUsername"];
+		}
 
 		private void ImenMatchHebrew_Click(object sender, RoutedEventArgs e) {
 			HebrewMatch pHebrewMatch = new HebrewMatch();
@@ -34,6 +37,11 @@ namespace BibleBooksWPF {
 			NavigationService.Navigate(pGreekReorder);
 		}
 
+		private void ImenStatistics_Click(object sender, RoutedEventArgs e) {
+			StatisticsPage pStatistics = new StatisticsPage();
+			NavigationService.Navigate(pStatistics);
+		}
+
 		private void ImenSettings_Click(object sender, RoutedEventArgs e) {
 			Settings pSettings = new Settings();
 			NavigationService.Navigate(pSettings);
@@ -42,6 +50,5 @@ namespace BibleBooksWPF {
 		private void ImenExit_Click(object sender, RoutedEventArgs e) {
 			Application.Current.Shutdown();
 		}
-
 	}
 }
