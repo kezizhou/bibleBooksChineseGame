@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:BibleBooksWPF"
       mc:Ignorable="d" 
       d:DesignHeight="810" d:DesignWidth="1000"
-      Title="GreekReorder" Loaded="Page_Loaded">
+      Title="Greek - Reorder Books" Loaded="Page_Loaded">
 
     <Grid x:Name="grdGreekReorder" Background="White" Margin="0">
         <Grid.ColumnDefinitions>
@@ -45,6 +45,7 @@
                 <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English" Click="ImenMatchGreek_Click"/>
                 <MenuItem x:Name="imenReorderGreek" IsEnabled="False" Header="Reorder Books"/>
             </MenuItem>
+            <MenuItem x:Name="imenStatistics" Header="Statistics" Click="ImenStatistics_Click"/>
             <MenuItem x:Name="imenSettings" Header="Settings" Click="ImenSettings_Click"/>
             <MenuItem x:Name="imenExit" Header="Exit" Click="ImenExit_Click"/>
         </Menu>
