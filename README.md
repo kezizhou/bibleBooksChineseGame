@@ -60,3 +60,8 @@ To share this application on Zoom and allow another person to control the screen
   * Icon made by Flat Icons from www.flaticon.com
 * Main Menu image "book.jpg":
   * Photo by [Aaron Burden](https://unsplash.com/@aaronburden) on [Unsplash](https://unsplash.com/)
+* New user message box image "newUser.png":
+  * Icon made by Smashicons from www.flaticon.com
+* Achievement Badges
+  * Icons made by Freepik from www.flaticon.com
+  * Icons made by photo3idea_studio from www.flaticon.com
