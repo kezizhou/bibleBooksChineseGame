@@ -59,7 +59,7 @@ namespace BibleBooksWPF {
 
 			// Check audio setting
 			// If on, play audio
-			if ((bool)App.Current.Properties["blnAudio"] == true) {
+			if (Properties.Settings.Default.blnAudio == true) {
 				playChineseAudio(sender);
 			}
 		}
@@ -262,6 +262,9 @@ namespace BibleBooksWPF {
 			timer1.IsEnabled = false;
 			CustomMessageBox winMsgBox = new CustomMessageBox();
 
+			// Add the game data to statistics json file
+			Statistics.AddStatistic("GreekMatch", intCurrentPoints, tsSecondsElapsed);
+
 			string strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
 										"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intGreekAnswered) + "\n" +
 										"Time Elapsed: " + lblTimeElapsed.Content, "Congratulations!", "congrats", winMsgBox);
@@ -303,6 +306,11 @@ namespace BibleBooksWPF {
 			NavigationService.Navigate(pGreekReorder);
 		}
 
+		private void ImenStatistics_Click(object sender, RoutedEventArgs e) {
+			StatisticsPage pStatistics = new StatisticsPage();
+			NavigationService.Navigate(pStatistics);
+		}
+
 		private void ImenSettings_Click(object sender, RoutedEventArgs e) {
 			Settings pSettings = new Settings();
 			NavigationService.Navigate(pSettings);
@@ -311,6 +319,5 @@ namespace BibleBooksWPF {
 		private void ImenExit_Click(object sender, RoutedEventArgs e) {
 			Application.Current.Shutdown();
 		}
-
 	}
 }
