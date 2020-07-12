@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="BibleBooksWPF.exe" version="1.1.0.1" publicKeyToken="7354a7de178af193" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="applicationBook.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="BibleBooksWPF" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="BibleBooksWPF.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BibleBooksWPF.exe" size="1232328">
+      <assemblyIdentity name="BibleBooksWPF" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>qZI/AjpO7QEC1UPQrPREgggRP+BBYDTx5ynGNAi4aGU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="700336">
+      <assemblyIdentity name="Newtonsoft.Json" version="12.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>f5ErKKB8Im4L46z7L1fwUFOKugEA+h8L8sOfGh8dqBQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="applicationBook.ico" size="67646">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>EY0+1c+qZMj0x3VR8FlNSd2EkqRBTlNZv2Um8UogPyo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="BibleBooksWPF.exe.config" size="682">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>RBX0qPDCSuYj2hRe1kv725G786SuF2I5UU//Oelhr2s=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=&quot;Keziah Zhou CA, 0=Keziah Zhou, C=US&quot;" issuerKeyHash="34656bb7bfab22a7ed2618c35ac810acec02345c" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>sVBfRjtrPpMESECG4wGPc8PWCjLLxI3gxK7Unq9WaWw=</DigestValue></Reference></SignedInfo><SignatureValue>hQge+zDk4tbHavvUdtIjxZRdBW64eKvN5kPrDGFO/dj713QF8M2VW94ba1NaHvnqJasKqmyI6hiOc4tg/ITQXHGYwZt0TMbRXHe3njIWrK1VQ8RXmPmC++PJaUWZZi4LxgvJb7FBZb7HbMCQ5ZWjCNmK1sBNtIEoVWG1gyXry8FigJrqy3DvEhLhqrBzrVkEK7uftOPCleIxu2DOfaaCyiFVJW/ifAw5vSqWEKfsIXTHTBUhYwOSTK1V7b/Voi20ayzUtfoTcYoD+R2xIjs5/ER9ZOIxWNDythMKr5U0c5KZ6QURCLq5ICmFr2V5AaxxMrBVzyrE6CSOV3fi+m0m6w==</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>00T2C7QO8hXtvbA+l44b3wwgEvTC4Ks11njJ8KdFXr5pwgkts9rbfK5ZZQGfCiLM6olYIRLwbu8B6L8iAyS0C0hTpDqtgD0GQmEAdO5a9s6ee4aL+ZNqeGSMsQDYoIRzqihetf761JnD8UYZdqFHXLRhmUR8EsysBvOStdULm76jBhK4AZieWhdc+Yos3CYy4F3oTOyYXa5R4bjeMGGLkNwvzcnqs7XFj5zbq9jLkWwAzH+zfK76dOiLmjfM6QJWtOZHhWBaXsVwnQreVkH+68G7/MJ7jTOPu3C3nhZymCrJlc6GBtUEPb92ma6JigMqDM6Wm5VBNezkrSjxjl01FQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="6c6956af9ed4aec4e08dc4cb320ad6c3738f01e386404804933e6b3b465f50b1" Description="" Url=""><as:assemblyIdentity name="BibleBooksWPF.exe" version="1.1.0.1" publicKeyToken="7354a7de178af193" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN="Keziah Zhou CA, 0=Keziah Zhou, C=US"</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>KFGQpcJ6Y7gBK1Xxc3yt5PCxP7LSp8Qq+wrNy9UfQVs=</DigestValue></Reference></SignedInfo><SignatureValue>pTcHNxJBGYXeTpebYodiS4zv3Gfvw7VuYwnvz3mO9+w0o4itgNZVWQ0gDE5xbsQxIxsKl4n55zWbjwrX2Oy281LEaiSsKBpQC6RJadEng2xur10ZJGeMPXOUZJAjUhfvHdy8IPyox9WB5Az8rDs8diIryIs9mgvEmY/R4HPgcTeNNQbCQNuDBQU4Lqee54nxMa6qRF+d4dfbdTL/tqNP2e543rRoPtvO/V7ELWi3Nrm/YyVV7f6gzB8yNroXLcVyVNTPi5GeDSrWu0A4u7/D+vqG8/eEqfFFk+0chzgsy7tNlBPH+wUNzPvolUPsPrrUf8ncQh9VU2vXNwOouiZYGQ==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>00T2C7QO8hXtvbA+l44b3wwgEvTC4Ks11njJ8KdFXr5pwgkts9rbfK5ZZQGfCiLM6olYIRLwbu8B6L8iAyS0C0hTpDqtgD0GQmEAdO5a9s6ee4aL+ZNqeGSMsQDYoIRzqihetf761JnD8UYZdqFHXLRhmUR8EsysBvOStdULm76jBhK4AZieWhdc+Yos3CYy4F3oTOyYXa5R4bjeMGGLkNwvzcnqs7XFj5zbq9jLkWwAzH+zfK76dOiLmjfM6QJWtOZHhWBaXsVwnQreVkH+68G7/MJ7jTOPu3C3nhZymCrJlc6GBtUEPb92ma6JigMqDM6Wm5VBNezkrSjxjl01FQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIDOjCCAiKgAwIBAgIQWgtEX1RvQqBJdYQjg4RzlzANBgkqhkiG9w0BAQsFADAuMSwwKgYDVQQDDCNLZXppYWggWmhvdSBDQSwgMD1LZXppYWggWmhvdSwgQz1VUzAeFw0yMDA3MDIxNzM1MjRaFw0yMzA0MDIxNzQ1MjNaMC4xLDAqBgNVBAMMI0tlemlhaCBaaG91IENBLCAwPUtlemlhaCBaaG91LCBDPVVTMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA00T2C7QO8hXtvbA+l44b3wwgEvTC4Ks11njJ8KdFXr5pwgkts9rbfK5ZZQGfCiLM6olYIRLwbu8B6L8iAyS0C0hTpDqtgD0GQmEAdO5a9s6ee4aL+ZNqeGSMsQDYoIRzqihetf761JnD8UYZdqFHXLRhmUR8EsysBvOStdULm76jBhK4AZieWhdc+Yos3CYy4F3oTOyYXa5R4bjeMGGLkNwvzcnqs7XFj5zbq9jLkWwAzH+zfK76dOiLmjfM6QJWtOZHhWBaXsVwnQreVkH+68G7/MJ7jTOPu3C3nhZymCrJlc6GBtUEPb92ma6JigMqDM6Wm5VBNezkrSjxjl01FQIDAQABo1QwUjAOBgNVHQ8BAf8EBAMCB4AwEwYDVR0lBAwwCgYIKwYBBQUHAwMwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUNGVrt7+rIqftJhjDWsgQrOwCNFwwDQYJKoZIhvcNAQELBQADggEBAKLV3ebQNVYpvU+51PdCF1hR7mZEswwHx4ARQfl+Aqs1DPcQPf/Ox3xlm0mBZWSRbsw8dggp43jIjH/OzXu7TPBhXL+8rAuoRTWm7SK7z2JJ6iUQCGjxvoLlX3L2bUPGipt/w4XpmkDHXsz09gOam1Tu/UvZ/UEIQaHFUQJWl14NWnXekyTApwz/Wx96FQm7vi9hIGmsrpLmotBP1+BdnwcQ7giduZtAK9jbZxCZamZ9tc7kDzGCn63aXnCDq97wVEAgNhmsbnK1bG+pdf01ES80sNSCOJnaMLUlz2Xg/btsWEJqas2bzO3B7XoK68medGFf+XYnbN06VHLLG7rT6k8=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
