@@ -5,5 +5,5 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BibleBooksWPF"
         mc:Ignorable="d"
-        Title="Bible Books" Height="450" Width="800" Source="MainMenu.xaml" WindowState="Maximized">
+        Title="Bible Books" Height="450" Width="800" Source="SelectUser.xaml" WindowState="Maximized">
 </NavigationWindow>

@@ -35,8 +35,8 @@
 
         <GroupBox Header="Audio Pronunciation" FontSize="16" Grid.Column="0" Grid.Row="1" Margin="10,0,0,5" Height="100" Width="180" VerticalAlignment="Top" HorizontalAlignment="Left">
             <StackPanel Margin="5,5,0,0">
-                <RadioButton x:Name="radAudioOn" IsChecked="True" IsEnabledChanged="RadAudio_IsEnabledChanged" FontSize="14">On</RadioButton>
-                <RadioButton x:Name="radAudioOff" IsEnabledChanged="RadAudio_IsEnabledChanged" FontSize="14">Off</RadioButton>
+                <RadioButton x:Name="radAudioOn" GroupName="grpAudio" FontSize="14" Checked="RadAudioOn_Checked">On</RadioButton>
+                <RadioButton x:Name="radAudioOff" GroupName="grpAudio" FontSize="14" Checked="RadAudioOff_Checked">Off</RadioButton>
             </StackPanel>
         </GroupBox>
 
