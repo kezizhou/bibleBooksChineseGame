@@ -65,7 +65,7 @@ namespace BibleBooksWPF
 
 			// Check audio setting
 			// If on, play audio
-			if ((bool)App.Current.Properties["blnAudio"] == true) {
+			if (Properties.Settings.Default.blnAudio == true) {
 				playChineseAudio(sender);
 			}
 		}
@@ -271,6 +271,9 @@ namespace BibleBooksWPF
 			timer1.IsEnabled = false;
 			CustomMessageBox winMsgBox = new CustomMessageBox();
 
+			// Add the game data to statistics json file
+			Statistics.AddStatistic("HebrewMatch", intCurrentPoints, tsSecondsElapsed);
+
 			string strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
 										"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intHebrewAnswered) + "\n" +
 										"Time Elapsed: " + lblTimeElapsed.Content, "Congratulations!", "congrats", winMsgBox);
@@ -292,9 +295,24 @@ namespace BibleBooksWPF
 			}
 		}
 
+		private void ImenMainMenu_Click(object sender, RoutedEventArgs e) {
+			MainMenu pMainMenu = new MainMenu();
+			NavigationService.Navigate(pMainMenu);
+		}
+
+		private void ImenReorderHebrew_Click(object sender, RoutedEventArgs e) {
+			HebrewReorder pHebrewReorder = new HebrewReorder();
+			NavigationService.Navigate(pHebrewReorder);
+		}
+
 		private void ImenMatchGreek_Click(object sender, RoutedEventArgs e) {
 			GreekMatch pGreekMatch = new GreekMatch();
 			NavigationService.Navigate(pGreekMatch);
+		}
+
+		private void ImenReorderGreek_Click(object sender, RoutedEventArgs e) {
+			GreekReorder pGreekReorder = new GreekReorder();
+			NavigationService.Navigate(pGreekReorder);
 		}
 
 		private void ImenSettings_Click(object sender, RoutedEventArgs e) {
@@ -302,18 +320,14 @@ namespace BibleBooksWPF
 			NavigationService.Navigate(pSettings);
 		}
 
+		private void ImenStatistics_Click(object sender, RoutedEventArgs e) {
+			StatisticsPage pStatistics = new StatisticsPage();
+			NavigationService.Navigate(pStatistics);
+		}
+
 		private void ImenExit_Click(object sender, RoutedEventArgs e) {
 			Application.Current.Shutdown();
 		}
 
-		private void ImenMainMenu_Click(object sender, RoutedEventArgs e) {
-			MainMenu pMainMenu = new MainMenu();
-			NavigationService.Navigate(pMainMenu);
-		}
-
-		private void ImenReorderGreek_Click(object sender, RoutedEventArgs e) {
-			GreekReorder pGreekReorder = new GreekReorder();
-			NavigationService.Navigate(pGreekReorder);
-		}
 	}
 }
