@@ -31,8 +31,8 @@
     <PublisherName>kezizhou</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -72,6 +72,9 @@
     <ApplicationIcon>applicationBook.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -96,9 +99,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomInputBox.xaml.cs">
+      <DependentUpon>CustomInputBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="gameStatistic.cs" />
     <Compile Include="GreekReorder.xaml.cs">
       <DependentUpon>GreekReorder.xaml</DependentUpon>
     </Compile>
@@ -108,9 +115,20 @@
     <Compile Include="HebrewReorder.xaml.cs">
       <DependentUpon>HebrewReorder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SelectUser.xaml.cs">
+      <DependentUpon>SelectUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StatisticsPage.xaml.cs">
+      <DependentUpon>StatisticsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <Page Include="CustomInputBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,7 +176,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SelectUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatisticsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,6 +209,7 @@
     </EmbeddedResource>
     <None Include="bibleBooksCert.pfx" />
     <None Include="BibleBooksWPF_TemporaryKey.pfx" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -192,16 +219,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Book.jpg" />
+    <Resource Include="Resources\book.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="congrats.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Book.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\congrats.png" />
+    <Resource Include="Resources\congrats.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -217,6 +238,62 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="applicationBook.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\newuser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\badge1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\badge8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\badge9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\badge7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\badge5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\badge4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\badge2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\badge3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\badge6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\badge10.png" />
+    <Resource Include="Resources\Badges\badge11.png" />
+    <Resource Include="Resources\Badges\badge12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialBride.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialGroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialBirds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\BookBadges\badgeRuth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\badgeMorning.png" />
+    <Resource Include="Resources\Badges\badgeNight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialHands.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialHug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialRings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
