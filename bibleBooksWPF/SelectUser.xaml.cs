@@ -1,7 +1,6 @@
 ﻿using ExtensionMethods;
 
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,7 +30,6 @@ namespace BibleBooksWPF {
 			if (new FileInfo("users.json").Length != 0) {
 				using (StreamReader file = File.OpenText("users.json")) {
 					JsonSerializer serializer = new JsonSerializer();
-					//lstUsers = JObject.Parse(File.ReadAllText("users.json")).SelectToken("Users").ToObject<RootUser>();
 					lstUsers = serializer.Deserialize(file, typeof(RootUser)) as RootUser;
 				}
 
@@ -52,9 +50,9 @@ namespace BibleBooksWPF {
 			} else {
 				// Existing user
 				LoadExistingUser((string)btnUser1.Content);
+				MainMenu pMainMenu = new MainMenu();
+				NavigationService.Navigate(pMainMenu);
 			}
-			MainMenu pMainMenu = new MainMenu();
-			NavigationService.Navigate(pMainMenu);
 		}
 
 		private void BtnUser2_Click(object sender, RoutedEventArgs e) {
@@ -64,9 +62,9 @@ namespace BibleBooksWPF {
 			} else {
 				// Existing user
 				LoadExistingUser((string)btnUser2.Content);
+				MainMenu pMainMenu = new MainMenu();
+				NavigationService.Navigate(pMainMenu);
 			}
-			MainMenu pMainMenu = new MainMenu();
-			NavigationService.Navigate(pMainMenu);
 		}
 
 		private void BtnUser3_Click(object sender, RoutedEventArgs e) {
@@ -76,15 +74,45 @@ namespace BibleBooksWPF {
 			} else {
 				// Existing user
 				LoadExistingUser((string) btnUser3.Content);
+				MainMenu pMainMenu = new MainMenu();
+				NavigationService.Navigate(pMainMenu);
 			}
-			MainMenu pMainMenu = new MainMenu();
-			NavigationService.Navigate(pMainMenu);
 		}
 
 		private void NewUser() {
 			CustomInputBox winInputBox = new CustomInputBox();
 
 			string strResponse = CustomMessageBoxMethods.ShowMessage("Please enter your username:", "New User", "newUser", winInputBox);
+			string[] astrUsernames = new string[3];
+
+			// Create an array of usernames
+			for (int i = 0; i < 3; i++) {
+				Button btnUser = this.FindName("btnUser" + (i + 1).ToString()) as Button;
+				astrUsernames[i] = btnUser.Content.ToString();
+			}
+
+			// Check that the input is not an existing user
+			while ( ((Array.IndexOf(astrUsernames, strResponse) >= 0) ||  // Is a duplicate username
+			strResponse.Equals(string.Empty) ||							// Is an empty string
+			strResponse.Equals("New User") )							// Is "New User"
+			&& !strResponse.Equals("Cancel")) {                         // Is not the cancel button
+
+				switch (strResponse) {
+					case "":
+						winInputBox = new CustomInputBox();
+						strResponse = CustomMessageBoxMethods.ShowMessage("Please enter your username:", "New User", "newUser", "Please enter a valid username", winInputBox);
+						break;
+					case "New User":
+						winInputBox = new CustomInputBox();
+						strResponse = CustomMessageBoxMethods.ShowMessage("Please enter your username:", "New User", "newUser", "Please enter a valid username", winInputBox);
+						break;
+					default:
+						winInputBox = new CustomInputBox();
+						strResponse = CustomMessageBoxMethods.ShowMessage("Please enter your username:", "New User", "newUser", "Please enter a unique username", winInputBox);
+						break;
+				}
+
+			}
 
 			switch (strResponse) {
 				case "Cancel":
@@ -92,6 +120,8 @@ namespace BibleBooksWPF {
 				default:
 					CreateUserData(strResponse);
 					MessageBox.Show("New user " + strResponse + " created.");
+					MainMenu pMainMenu = new MainMenu();
+					NavigationService.Navigate(pMainMenu);
 					break;
 			}
 		}
@@ -102,11 +132,11 @@ namespace BibleBooksWPF {
 			GameStatistics gsHebrewReorder = new GameStatistics("HebrewReorder");
 			GameStatistics gsGreekMatch = new GameStatistics("GreekMatch");
 			GameStatistics gsGreekReorder = new GameStatistics("GreekReorder");
-
 			RootGameStatistics lstStatistics = new RootGameStatistics(new[] {
 				gsHebrewMatch, gsHebrewReorder, gsGreekMatch, gsGreekReorder
 			});
-			User currentUser = new User(strUsername, lstStatistics);
+			List<string> lstBadges = new List<string>();
+			User currentUser = new User(strUsername, lstStatistics, lstBadges);
 
 			App.Current.Properties["currentUsername"] = currentUser.username;
 
@@ -123,7 +153,6 @@ namespace BibleBooksWPF {
 
 		private void LoadExistingUser(string strUsername) {
 			App.Current.Properties["currentUsername"] = strUsername;
-
 		}
 	}
 }

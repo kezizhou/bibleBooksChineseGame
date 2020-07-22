@@ -1,6 +1,10 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+
+using ExtensionMethods;
 
 namespace BibleBooksWPF {
 	/// <summary>
@@ -15,6 +19,22 @@ namespace BibleBooksWPF {
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
 			lblWelcome.Content = "Welcome: " + App.Current.Properties["currentUsername"];
+			List<string> lstBadges = Statistics.GetBadges();
+			NewBadgeMessage winBadgeBox = new NewBadgeMessage();
+
+			TimeSpan tsMorning = new TimeSpan(8, 30, 0);
+			TimeSpan tsNight = new TimeSpan(21, 0, 0);
+			if (DateTime.Now.TimeOfDay < tsMorning && !lstBadges.Contains("imgBadgeMorning")) {
+				// Morning badge earned
+				Statistics.AddBadge("imgBadgeMorning");
+				CustomMessageBoxMethods.ShowMessage("imgBadgeMorning", winBadgeBox);
+			} else if (DateTime.Now.TimeOfDay > tsNight && !lstBadges.Contains("imgBadgeNight")) {
+				// Night badge earned
+				Statistics.AddBadge("imgBadgeNight");
+				CustomMessageBoxMethods.ShowMessage("imgBadgeNight", winBadgeBox);
+			}
+			App.Current.Properties["exodusBadge"] = "0";
+			App.Current.Properties["ruthBadge"] = "0";
 		}
 
 		private void ImenMatchHebrew_Click(object sender, RoutedEventArgs e) {
@@ -49,6 +69,11 @@ namespace BibleBooksWPF {
 
 		private void ImenExit_Click(object sender, RoutedEventArgs e) {
 			Application.Current.Shutdown();
+		}
+
+		private void BtnChangeUser_Click(object sender, RoutedEventArgs e) {
+			SelectUser pSelectUser = new SelectUser();
+			NavigationService.Navigate(pSelectUser);
 		}
 	}
 }
