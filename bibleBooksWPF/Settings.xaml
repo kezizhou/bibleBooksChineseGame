@@ -29,6 +29,7 @@
                 <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English"  Click="ImenMatchGreek_Click"/>
                 <MenuItem x:Name="imenReorderGreek" Header="Reorder Books" Click="ImenReorderGreek_Click"/>
             </MenuItem>
+            <MenuItem x:Name="imenStatistics" Header="Statistics" Click="ImenStatistics_Click"/>
             <MenuItem Header="Settings" IsEnabled="False"/>
             <MenuItem Header="Exit" Click="ImenExit_Click"/>
         </Menu>
