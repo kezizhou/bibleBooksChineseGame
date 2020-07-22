@@ -124,16 +124,23 @@ namespace BibleBooksWPF {
 			NavigationService.Navigate(pGreekReorder);
 		}
 
+		private void ImenStatistics_Click(object sender, RoutedEventArgs e) {
+			StatisticsPage pStatistics = new StatisticsPage();
+			NavigationService.Navigate(pStatistics);
+		}
+
 		private void ImenExit_Click(object sender, RoutedEventArgs e) {
 			Application.Current.Shutdown();
 		}
 
 		private void RadAudioOff_Checked(object sender, RoutedEventArgs e) {
 			Properties.Settings.Default.blnAudio = false;
+			Properties.Settings.Default.Save();
 		}
 
 		private void RadAudioOn_Checked(object sender, RoutedEventArgs e) {
 			Properties.Settings.Default.blnAudio = true;
+			Properties.Settings.Default.Save();
 		}
 	}
 }

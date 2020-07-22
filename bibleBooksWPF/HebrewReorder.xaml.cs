@@ -219,6 +219,25 @@ namespace BibleBooksWPF {
 
 						lstrBooksToComplete.Remove(lbl.Name);
 
+						if (intLabelIndex == 1) {
+							// Exodus badge
+							if (App.Current.Properties["exodusBadge"].Equals("1")) {
+								App.Current.Properties["exodusBadge"] = "2";
+							}
+							else {
+								App.Current.Properties["exodusBadge"] = "1";
+							}
+						}
+						else if (intLabelIndex == 7) {
+							// Ruth badge
+							if (App.Current.Properties["ruthBadge"].Equals("1")) {
+								App.Current.Properties["ruthBadge"] = "2";
+							}
+							else {
+								App.Current.Properties["ruthBadge"] = "1";
+							}
+						}
+
 						// Check if all books have been matched
 						if (lstrBooksToComplete.Count == 0) {
 							// Show congratulations message

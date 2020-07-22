@@ -42,7 +42,7 @@
         <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="9" FontFamily="Tahoma" Background="#FFDFF2F7" Padding="2,5" FontSize="14" VerticalAlignment="Top">
             <MenuItem x:Name="imenMainMenu" Header="Main Menu" Click="ImenMainMenu_Click"/>
             <MenuItem Header="Hebrew Scriptures">
-                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English"/>
+                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
                 <MenuItem x:Name="imenReorderHebrew" IsEnabled="False" Header="Reorder Books"/>
             </MenuItem>
             <MenuItem Header="Greek Scriptures">

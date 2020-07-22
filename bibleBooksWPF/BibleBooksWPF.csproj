@@ -115,6 +115,9 @@
     <Compile Include="HebrewReorder.xaml.cs">
       <DependentUpon>HebrewReorder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewBadgeMessage.xaml.cs">
+      <DependentUpon>NewBadgeMessage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectUser.xaml.cs">
       <DependentUpon>SelectUser.xaml</DependentUpon>
     </Compile>
@@ -172,7 +175,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="RoundedControls.xaml">
+    <Page Include="NewBadgeMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceDict.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,7 +250,7 @@
     <Resource Include="Resources\newuser.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge1.png" />
+    <Resource Include="Resources\Badges\imgFirstHebrewMatch.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Badges\badge8.png" />
@@ -252,7 +259,7 @@
     <Resource Include="Resources\Badges\badge9.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge7.png" />
+    <Resource Include="Resources\Badges\imgFirstGreekMatch.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Badges\badge5.png" />
@@ -261,7 +268,7 @@
     <Resource Include="Resources\Badges\badge4.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge2.png" />
+    <Resource Include="Resources\Badges\imgFirstHebrewReorder.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Badges\badge3.png" />
@@ -270,30 +277,33 @@
     <Resource Include="Resources\Badges\badge6.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge10.png" />
+    <Resource Include="Resources\Badges\imgFirstGreekReorder.png" />
     <Resource Include="Resources\Badges\badge11.png" />
     <Resource Include="Resources\Badges\badge12.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialBride.png" />
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialGroom.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial3.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialBirds.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\BookBadges\badgeRuth.png" />
+    <Resource Include="Resources\Badges\imgBadgeRuth.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badgeMorning.png" />
-    <Resource Include="Resources\Badges\badgeNight.png" />
+    <Resource Include="Resources\Badges\imgBadgeMorning.png" />
+    <Resource Include="Resources\Badges\imgBadgeNight.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialHands.png" />
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialHug.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial4.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial5.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialRings.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\imgBadgeExodus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
