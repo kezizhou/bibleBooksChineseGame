@@ -6,10 +6,12 @@ namespace BibleBooksWPF {
 
 		public string username { get; set; }
 		public RootGameStatistics lstGameStatistics { get; set; }
+		public List<string> lstBadges { get; set; }
 
-		public User(string username, RootGameStatistics lstGameStatistics) {
+		public User(string username, RootGameStatistics lstGameStatistics, List<string> lstBadges) {
 			this.username = username;
 			this.lstGameStatistics = lstGameStatistics;
+			this.lstBadges = lstBadges;
 		}
 
 		public User() {
