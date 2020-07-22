@@ -11,17 +11,19 @@
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" Margin="20" FontSize="30" FontFamily="Tahoma" TextAlignment="Center" VerticalAlignment="Center">Please select the user:</TextBlock>
-        <Button x:Name="btnUser1" Grid.Column="0" Grid.Row="1" Margin="20" Background="#9BC1FF" Content="New User" FontSize="16" Click="BtnUser1_Click" Style="{StaticResource RoundedCornerButton}"/>
-        <Button x:Name="btnUser2" Grid.Column="0" Grid.Row="2" Margin="20" Background="#9BC1FF" Content="New User" FontSize="16" Click="BtnUser2_Click" Style="{StaticResource RoundedCornerButton}"/>
-        <Button x:Name="btnUser3" Grid.Column="0" Grid.Row="3" Margin="20" Background="#9BC1FF" Content="New User" FontSize="16" Click="BtnUser3_Click" Style="{StaticResource RoundedCornerButton}"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" Margin="20" FontSize="30" FontFamily="Tahoma" TextAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3">Please select the user:</TextBlock>
+        <Button x:Name="btnUser1" Grid.Column="1" Grid.Row="1" Margin="20" Content="New User" FontSize="18" Click="BtnUser1_Click" Style="{StaticResource RoundedUserButton}"/>
+        <Button x:Name="btnUser2" Grid.Column="1" Grid.Row="2" Margin="20" Content="New User" FontSize="18" Click="BtnUser2_Click" Style="{StaticResource RoundedUserButton}"/>
+        <Button x:Name="btnUser3" Grid.Column="1" Grid.Row="3" Margin="20" Content="New User" FontSize="18" Click="BtnUser3_Click" Style="{StaticResource RoundedUserButton}"/>
     </Grid>
 </Page>
