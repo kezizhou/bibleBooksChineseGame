@@ -31,7 +31,7 @@
     <PublisherName>kezizhou</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -80,6 +80,9 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Speech" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -114,6 +117,15 @@
     </Compile>
     <Compile Include="HebrewReorder.xaml.cs">
       <DependentUpon>HebrewReorder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewBadgeMessage.xaml.cs">
+      <DependentUpon>NewBadgeMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewUser.xaml.cs">
+      <DependentUpon>NewUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PauseMenu.xaml.cs">
+      <DependentUpon>PauseMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="SelectUser.xaml.cs">
       <DependentUpon>SelectUser.xaml</DependentUpon>
@@ -172,7 +184,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="RoundedControls.xaml">
+    <Page Include="NewBadgeMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PauseMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceDict.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,7 +232,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="bibleBooksCert.pfx" />
-    <None Include="BibleBooksWPF_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -243,57 +266,89 @@
     <Resource Include="Resources\newuser.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge1.png" />
+    <Resource Include="Resources\Badges\imgFirstHebrewMatch.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge8.png" />
+    <Resource Include="Resources\Badges\imgGreekReorderTime.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge9.png" />
+    <Resource Include="Resources\Badges\imgHebrewMatch100.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge7.png" />
+    <Resource Include="Resources\Badges\imgFirstGreekMatch.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge5.png" />
+    <Resource Include="Resources\Badges\imgHebrewMatchTime.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge4.png" />
+    <Resource Include="Resources\Badges\imgHebrewReorder100.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge2.png" />
+    <Resource Include="Resources\Badges\imgFirstHebrewReorder.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge3.png" />
+    <Resource Include="Resources\Badges\imgGreekMatchTime.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge6.png" />
+    <Resource Include="Resources\Badges\imgHebrewReorderTime.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badge10.png" />
-    <Resource Include="Resources\Badges\badge11.png" />
-    <Resource Include="Resources\Badges\badge12.png" />
+    <Resource Include="Resources\Badges\imgFirstGreekReorder.png" />
+    <Resource Include="Resources\Badges\imgGreekMatch100.png" />
+    <Resource Include="Resources\Badges\imgGreekReorder100.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialBride.png" />
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialGroom.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial3.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialBirds.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\BookBadges\badgeRuth.png" />
+    <Resource Include="Resources\Badges\imgBadgeRuth.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\badgeMorning.png" />
-    <Resource Include="Resources\Badges\badgeNight.png" />
+    <Resource Include="Resources\Badges\imgBadgeMorning.png" />
+    <Resource Include="Resources\Badges\imgBadgeNight.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialHands.png" />
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialHug.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial4.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial5.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\badgeSpecialRings.png" />
+    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\imgBadgeExodus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ProfileImages\girl1.png" />
+    <Resource Include="Resources\ProfileImages\girl2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ProfileImages\boy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ProfileImages\girl8.png" />
+    <Resource Include="Resources\ProfileImages\girl7.png" />
+    <Resource Include="Resources\ProfileImages\girl6.png" />
+    <Resource Include="Resources\ProfileImages\girl5.png" />
+    <Resource Include="Resources\ProfileImages\girl4.png" />
+    <Resource Include="Resources\ProfileImages\girl3.png" />
+    <Resource Include="Resources\ProfileImages\girl.png" />
+    <Resource Include="Resources\ProfileImages\boy2.png" />
+    <Resource Include="Resources\ProfileImages\boy3.png" />
+    <Resource Include="Resources\ProfileImages\boy4.png" />
+    <Resource Include="Resources\ProfileImages\boy5.png" />
+    <Resource Include="Resources\ProfileImages\boy6.png" />
+    <Resource Include="Resources\ProfileImages\boy7.png" />
+    <Resource Include="Resources\ProfileImages\boy8.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
