@@ -5,13 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BibleBooksWPF"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Bible Books Game - Select User" Loaded="Page_Loaded">
+      d:DesignHeight="700" d:DesignWidth="1200"
+      Title="Bible Books Game - Select User" Loaded="Page_Loaded"
+      Background="White">
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -22,8 +23,23 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Column="0" Grid.Row="0" Margin="20" FontSize="30" FontFamily="Tahoma" TextAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3">Please select the user:</TextBlock>
-        <Button x:Name="btnUser1" Grid.Column="1" Grid.Row="1" Margin="20" Content="New User" FontSize="18" Click="BtnUser1_Click" Style="{StaticResource RoundedUserButton}"/>
-        <Button x:Name="btnUser2" Grid.Column="1" Grid.Row="2" Margin="20" Content="New User" FontSize="18" Click="BtnUser2_Click" Style="{StaticResource RoundedUserButton}"/>
-        <Button x:Name="btnUser3" Grid.Column="1" Grid.Row="3" Margin="20" Content="New User" FontSize="18" Click="BtnUser3_Click" Style="{StaticResource RoundedUserButton}"/>
+
+        <Image x:Name="imgUser1" Grid.Row="1" Grid.Column="0" Width="100" Height="100" HorizontalAlignment="Right"></Image>
+        <Button x:Name="btnUser1" Grid.Column="1" Grid.Row="1" Margin="20" Content="New User" FontSize="22" Click="BtnUser1_Click" Style="{StaticResource RoundedUserButton}" Width="400" Height="150" Foreground="White"/>
+        <Button x:Name="btnDelete1" Click="btnDelete1_Click" Grid.Row="1" Grid.Column="2" Width="60" Height="60" HorizontalAlignment="Left" Background="White" BorderThickness="0" Visibility="Hidden">
+            <Image x:Name="imgDelete1" Source="pack://application:,,,/BibleBooksWPF;component/Resources/delete.png"></Image>
+        </Button>
+
+        <Image x:Name="imgUser2" Grid.Row="2" Grid.Column="0" Width="100" Height="100" HorizontalAlignment="Right"></Image>
+        <Button x:Name="btnUser2" Grid.Column="1" Grid.Row="2" Margin="20" Content="New User" FontSize="22" Click="BtnUser2_Click" Style="{StaticResource RoundedUserButton}" Width="400" Height="150" Foreground="White"/>
+        <Button x:Name="btnDelete2" Click="btnDelete2_Click" Grid.Row="2" Grid.Column="2" Width="60" Height="60" HorizontalAlignment="Left" Background="White" BorderThickness="0" Visibility="Hidden">
+            <Image x:Name="imgDelete2" Source="pack://application:,,,/BibleBooksWPF;component/Resources/delete.png"></Image>
+        </Button>
+
+        <Image x:Name="imgUser3" Grid.Row="3" Grid.Column="0" Width="100" Height="100" HorizontalAlignment="Right"></Image>
+        <Button x:Name="btnUser3" Grid.Column="1" Grid.Row="3" Margin="20" Content="New User" FontSize="22" Click="BtnUser3_Click" Style="{StaticResource RoundedUserButton}" Width="400" Height="150" Foreground="White"/>
+        <Button x:Name="btnDelete3" Click="btnDelete3_Click" Grid.Row="3" Grid.Column="2" Width="60" Height="60" HorizontalAlignment="Left" Background="White" BorderThickness="0" Visibility="Hidden">
+            <Image x:Name="imgDelete3" Source="pack://application:,,,/BibleBooksWPF;component/Resources/delete.png"></Image>
+        </Button>
     </Grid>
 </Page>
