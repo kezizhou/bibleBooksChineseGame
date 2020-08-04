@@ -140,7 +140,11 @@
             <TextBlock Grid.Column="2" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Greek Answered:</TextBlock>
             <Label x:Name="lblGreekAnswered" Content="0" Grid.Column="3" Grid.Row="1" FontSize="16"></Label>
         </Grid>
-        
+
+        <Button x:Name="btnPause" Click="btnPause_Click" Grid.Row="10" Grid.Column="8" Grid.RowSpan="2" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderThickness="0">
+            <Image x:Name="imgPause" Source="pack://application:,,,/BibleBooksWPF;component/Resources/pause.png"></Image>
+        </Button>
+
     </Grid>
         
 </Page>
