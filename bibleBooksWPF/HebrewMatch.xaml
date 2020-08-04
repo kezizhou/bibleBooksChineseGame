@@ -54,7 +54,6 @@
             <MenuItem x:Name="imenExit" Header="Exit" Click="ImenExit_Click"/>
         </Menu>
 
-
         <Label x:Name="lblChGenesis" Content="创世记" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="1" Padding="5" Background="#E6EBF3" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
         <Label x:Name="lblChExodus" Content="出埃及记" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="2" Padding="5" Background="#E6EBF3" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
         <Label x:Name="lblChLeviticus" Content="利未记" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="3" Padding="5" Background="#E6EBF3" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
@@ -169,6 +168,10 @@
             <Label x:Name="lblHebrewAnswered" Content="0" Grid.Column="3" Grid.Row="1" FontSize="16" VerticalAlignment="Center"></Label>
 
         </Grid>
+        
+        <Button x:Name="btnPause" Click="btnPause_Click" Grid.Row="14" Grid.Column="8" Grid.RowSpan="2" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderThickness="0">
+            <Image x:Name="imgPause" Source="pack://application:,,,/BibleBooksWPF;component/Resources/pause.png"></Image>
+        </Button>
 
     </Grid>
 </Page>
