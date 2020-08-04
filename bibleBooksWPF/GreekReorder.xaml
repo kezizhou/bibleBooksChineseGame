@@ -156,5 +156,9 @@
             <TextBlock Grid.Column="0" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Padding="10,0">Total Points:</TextBlock>
             <Label x:Name="lblTotalPoints" Content="0" Grid.Column="1" Grid.Row="1" FontSize="16"></Label>
         </Grid>
+
+        <Button x:Name="btnPause" Click="btnPause_Click" Grid.Row="13" Grid.Column="0" Grid.RowSpan="2" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Background="White" BorderThickness="0">
+            <Image x:Name="imgPause" Source="pack://application:,,,/BibleBooksWPF;component/Resources/pause.png"></Image>
+        </Button>
     </Grid>
 </Page>
