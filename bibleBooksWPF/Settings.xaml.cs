@@ -30,6 +30,15 @@ namespace BibleBooksWPF {
 					radAudioOff.IsChecked = true;
 				}
 
+				// Previous language setting
+				if (Properties.Settings.Default.strLanguage.Equals("English")) {
+					radEnglish.IsChecked = true;
+					radChinese.IsChecked = false;
+				} else if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+					radEnglish.IsChecked = false;
+					radChinese.IsChecked = true;
+				}
+
 				// Current version
 				if (ApplicationDeployment.IsNetworkDeployed) {
 					Version version = ApplicationDeployment.CurrentDeployment.CurrentVersion;
@@ -191,5 +200,14 @@ namespace BibleBooksWPF {
 			txbSaved.Visibility = Visibility.Hidden;
 		}
 
+		private void radEnglish_Checked(object sender, RoutedEventArgs e) {
+			Properties.Settings.Default.strLanguage = "English";
+			Properties.Settings.Default.Save();
+		}
+
+		private void radChinese_Checked(object sender, RoutedEventArgs e) {
+			Properties.Settings.Default.strLanguage = "Chinese";
+			Properties.Settings.Default.Save();
+		}
 	}
 }

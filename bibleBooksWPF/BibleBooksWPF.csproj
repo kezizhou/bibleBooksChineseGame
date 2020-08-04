@@ -31,7 +31,7 @@
     <PublisherName>kezizhou</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -102,6 +102,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConfirmMessageBox.xaml.cs">
+      <DependentUpon>ConfirmMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomInputBox.xaml.cs">
       <DependentUpon>CustomInputBox.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,10 @@
       <DependentUpon>StatisticsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Page Include="ConfirmMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomInputBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -349,6 +356,9 @@
     <Resource Include="Resources\ProfileImages\boy6.png" />
     <Resource Include="Resources\ProfileImages\boy7.png" />
     <Resource Include="Resources\ProfileImages\boy8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\deleteUser.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
