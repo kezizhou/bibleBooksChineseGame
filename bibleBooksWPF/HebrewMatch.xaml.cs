@@ -84,7 +84,7 @@ namespace BibleBooksWPF
 				// Check audio setting
 				// If on, play audio
 				if (Properties.Settings.Default.blnAudio == true) {
-					playChineseAudio(sender);
+					playAudio(sender);
 				}
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
@@ -152,8 +152,18 @@ namespace BibleBooksWPF
 				Random r = new Random();
 
 				foreach (String strChLbl in astrChHebrew) {
-					// Add draggable label methods
 					Label lblCh = this.FindName(strChLbl) as Label;
+
+					// Check main language
+					if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+						string strTemp = lblCh.Content.ToString();
+
+						Label lblEn = this.FindName(strChLbl.Remove(3, 2)) as Label;
+						lblCh.Content = lblEn.Content;
+						lblEn.Content = strTemp;
+					}
+
+					// Add draggable label methods
 					lblCh.MouseLeftButtonDown += new MouseButtonEventHandler(lblMouseLeftButtonDown);
 					lblCh.MouseMove += new MouseEventHandler(lblMouseMove);
 					lblCh.MouseLeftButtonUp += new MouseButtonEventHandler(lblMouseLeftButtonUp);
@@ -197,13 +207,31 @@ namespace BibleBooksWPF
 			}
 		}
 
-		private void playChineseAudio(object sender) {
-			// Play audio
-			Label lblChineseBook = sender as Label;
-			var synthesizer = new SpeechSynthesizer();
-			synthesizer.SetOutputToDefaultAudioDevice();
-			synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
-			synthesizer.SpeakAsync(lblChineseBook.Content.ToString());
+		private void playAudio(object sender) {
+			try {
+				Label lblBook = sender as Label;
+				string strRead = lblBook.Content.ToString();
+
+				var synthesizer = new SpeechSynthesizer();
+				synthesizer.SetOutputToDefaultAudioDevice();
+				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("EN"));
+
+					if (strRead.Contains("1")) {
+						strRead = strRead.Replace("1", "First");
+					} else if (strRead.Contains("2")) {
+						strRead = strRead.Replace("2", "Second");
+					} else if (strRead.Contains("3")) {
+						strRead = strRead.Replace("3", "Third");
+					}
+				} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
+					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
+				}
+
+				synthesizer.SpeakAsync(strRead);
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private bool checkLabelsTouching(object sender) {
