@@ -20,12 +20,11 @@
 
         <Image x:Name="imgIcon" Grid.Row="0" Grid.Column="0" Width="100" Height="83"></Image>
         <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
-            <TextBlock x:Name="txbMessageText" TextWrapping="WrapWithOverflow" FontSize="16" HorizontalAlignment="Center">
-            Message text goes here
-            </TextBlock>
-            <TextBox x:Name="txtInputText" Grid.Row="0" Grid.Column="1" Margin="10"></TextBox>
+            <TextBlock x:Name="txbMessageText" TextWrapping="WrapWithOverflow" FontSize="16" HorizontalAlignment="Center">Message text goes here</TextBlock>
+            <TextBox x:Name="txtInputText" Grid.Row="0" Grid.Column="1" Margin="10" />
+            <TextBlock x:Name="txbValidation" HorizontalAlignment="Center" Foreground="Red" Visibility="Collapsed">Validation message here</TextBlock>
         </StackPanel>
-        <Button x:Name="btnOK" Content="OK" Grid.Row="1" Grid.Column="1" Width="103" Height="40" Click="BtnOK_Click" Margin="0,0,0,20" Style="{StaticResource RoundedCornerButton}"></Button>
-        <Button x:Name="btnCancel" Content="Cancel" Grid.Row="1" Grid.Column="2" Width="103" Height="40" Click="BtnCancel_Click" Margin="0,0,0,20" Style="{StaticResource RoundedCornerButton}"></Button>
+        <Button x:Name="btnOK" Content="OK" Grid.Row="1" Grid.Column="1" Width="103" Height="40" Click="BtnOK_Click" IsDefault="True" Margin="0,0,0,20" Style="{StaticResource RoundedMessageButton}"></Button>
+        <Button x:Name="btnCancel" Content="Cancel" Grid.Row="1" Grid.Column="2" Width="103" Height="40" Click="BtnCancel_Click" IsCancel="True" Margin="0,0,0,20"  Style="{StaticResource RoundedMessageButton}"></Button>
     </Grid>
 </Window>
