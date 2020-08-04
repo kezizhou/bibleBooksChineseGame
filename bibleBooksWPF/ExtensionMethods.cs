@@ -378,5 +378,23 @@ namespace ExtensionMethods {
 
 			return strResult;
 		}
+
+		public static string ShowMessage(string strText, ConfirmMessageBox winConfirm) {
+			string strResult = "";
+
+			// Message text 
+			TextBlock txb = winConfirm.FindName("txbMessageText") as TextBlock;
+			txb.Text = strText;
+
+			// Pop-up message box and get return value
+			winConfirm.ShowDialog();
+			if (winConfirm.strMsgReturn == null) {
+				strResult = "Cancel";
+			} else {
+				strResult = winConfirm.strMsgReturn;
+			}
+
+			return strResult;
+		}
 	}
 }
