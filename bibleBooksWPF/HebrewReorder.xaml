@@ -42,7 +42,7 @@
         <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="9" FontFamily="Tahoma" Background="#FFDFF2F7" Padding="2,5" FontSize="14" VerticalAlignment="Top">
             <MenuItem x:Name="imenMainMenu" Header="Main Menu" Click="ImenMainMenu_Click"/>
             <MenuItem Header="Hebrew Scriptures">
-                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English"/>
+                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
                 <MenuItem x:Name="imenReorderHebrew" IsEnabled="False" Header="Reorder Books"/>
             </MenuItem>
             <MenuItem Header="Greek Scriptures">
@@ -188,5 +188,8 @@
             <Label x:Name="lblTimeElapsed" Content="00:00:00" Grid.Column="3" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Padding="5,5,10,5"></Label>
         </Grid>
 
+        <Button x:Name="btnPause" Click="btnPause_Click" Grid.Row="14" Grid.Column="0" Grid.RowSpan="2" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Background="White" BorderThickness="0">
+            <Image x:Name="imgPause" Source="pack://application:,,,/BibleBooksWPF;component/Resources/pause.png"></Image>
+        </Button>
     </Grid>
 </Page>
