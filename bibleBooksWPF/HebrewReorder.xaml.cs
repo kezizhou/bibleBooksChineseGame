@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Threading;
+using System.Diagnostics;
 
 using ExtensionMethods;
 
@@ -43,116 +44,154 @@ namespace BibleBooksWPF {
 
 		List<string> lstrBooksToComplete = new List<string>(astrHebrew);
 		DispatcherTimer timer1 = new DispatcherTimer();
+		Stopwatch stopwatch = new Stopwatch();
 
 		public HebrewReorder() {
-			InitializeComponent();
+			try {
+				InitializeComponent();
+
+				// Reset points
+				intNumberCorrect = 0;
+				intCurrentPoints = 0;
+				intTries = 0;
+
+				// Reset timer
+				timer1.Tick += new EventHandler(timer1_Tick);
+				timer1.Interval = new TimeSpan(0, 0, 0, 1);
+				stopwatch.Reset();
+				lblTimeElapsed.Content = "00:00:00";
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void lblMouseLeftButtonDown(object sender, MouseEventArgs e) {
-			blnDragging = true;
-			Label lblActiveElement = sender as Label;
-			clickPosition = e.GetPosition(this.Parent as UIElement);
-			labelClickPosition = lblActiveElement.TransformToAncestor(grdHebrewReorder).Transform(new Point(0, 0));
-			gridBeforeMatch = new Point(Grid.GetRow(lblActiveElement), Grid.GetColumn(lblActiveElement));
+			try {
+				blnDragging = true;
+				Label lblActiveElement = sender as Label;
+				clickPosition = e.GetPosition(this.Parent as UIElement);
+				labelClickPosition = lblActiveElement.TransformToAncestor(grdHebrewReorder).Transform(new Point(0, 0));
+				gridBeforeMatch = new Point(Grid.GetRow(lblActiveElement), Grid.GetColumn(lblActiveElement));
 
-			lblActiveElement.CaptureMouse();
+				lblActiveElement.CaptureMouse();
 
-			lblActiveElement.BringToFront();
-			Cursor = Cursors.Hand;
+				lblActiveElement.BringToFront();
+				Cursor = Cursors.Hand;
 
-			// Check audio setting
-			// If on, play audio
-			if (Properties.Settings.Default.blnAudio == true) {
-				playAudio(sender);
+				// Check audio setting
+				// If on, play audio
+				if (Properties.Settings.Default.blnAudio == true) {
+					playAudio(sender);
+				}
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
 			}
 		}
 
 		private void lblMouseMove(object sender, MouseEventArgs e) {
-			Label lblActiveElement = sender as Label;
+			try {
+				Label lblActiveElement = sender as Label;
 
-			if (blnDragging && lblActiveElement != null) {
-				Point currentPosition = e.GetPosition(this.Parent as UIElement);
+				if (blnDragging && lblActiveElement != null) {
+					Point currentPosition = e.GetPosition(this.Parent as UIElement);
 
-				TranslateTransform transform = lblActiveElement.RenderTransform as TranslateTransform;
-				if (transform == null || dctTransform.ContainsKey(lblActiveElement.Name) == false) {
-					transform = new TranslateTransform();
-					lblActiveElement.RenderTransform = transform;
-				}
+					TranslateTransform transform = lblActiveElement.RenderTransform as TranslateTransform;
+					if (transform == null || dctTransform.ContainsKey(lblActiveElement.Name) == false) {
+						transform = new TranslateTransform();
+						lblActiveElement.RenderTransform = transform;
+					}
 
-				// Transform the distance from the current position to the position it was last in when mouse clicked
-				transform.X = currentPosition.X - clickPosition.X;
-				transform.Y = currentPosition.Y - clickPosition.Y;
+					// Transform the distance from the current position to the position it was last in when mouse clicked
+					transform.X = currentPosition.X - clickPosition.X;
+					transform.Y = currentPosition.Y - clickPosition.Y;
 
-				// Label has been moved before
-				if (dctTransform.ContainsKey(lblActiveElement.Name)) {
+					// Label has been moved before
 					if (dctTransform.ContainsKey(lblActiveElement.Name)) {
-						// Add on the previous transform
-						transform.X += dctTransform[lblActiveElement.Name].X;
-						transform.Y += dctTransform[lblActiveElement.Name].Y;
+						if (dctTransform.ContainsKey(lblActiveElement.Name)) {
+							// Add on the previous transform
+							transform.X += dctTransform[lblActiveElement.Name].X;
+							transform.Y += dctTransform[lblActiveElement.Name].Y;
+						}
 					}
 				}
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
 			}
 		}
 
 		private void lblMouseLeftButtonUp(object sender, MouseEventArgs e) {
-			blnDragging = false;
-			Label lblActiveElement = sender as Label;
-			TranslateTransform transform = lblActiveElement.RenderTransform as TranslateTransform;
+			try {
+				blnDragging = false;
+				Label lblActiveElement = sender as Label;
+				TranslateTransform transform = lblActiveElement.RenderTransform as TranslateTransform;
 
-			// Check if it has been matched to an English book
-			if (checkLabelsTouching(sender) == false) {
-				// Not matched, add new point to transform
-				if (dctTransform.ContainsKey(lblActiveElement.Name)) {
-					// A previous transform is already being stored
-					dctTransform[lblActiveElement.Name] = new Point(transform.X, transform.Y);
+				// Check if it has been matched to an English book
+				if (checkLabelsTouching(sender) == false) {
+					// Not matched, add new point to transform
+					if (dctTransform.ContainsKey(lblActiveElement.Name)) {
+						// A previous transform is already being stored
+						dctTransform[lblActiveElement.Name] = new Point(transform.X, transform.Y);
+					}
+					else if (transform != null) {
+						dctTransform.Add(lblActiveElement.Name, new Point(transform.X, transform.Y));
+					};
 				}
-				else if (transform != null) {
-					dctTransform.Add(lblActiveElement.Name, new Point(transform.X, transform.Y));
-				};
-			}
 
-			lblActiveElement.ReleaseMouseCapture();
-			Cursor = Cursors.Arrow;
+				lblActiveElement.ReleaseMouseCapture();
+				Cursor = Cursors.Arrow;
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
-			Random r = new Random();
+			try {
+				Random r = new Random();
 
-			foreach (string strLbl in astrHebrew) {
-				// Add draggable label methods
-				Label lbl = this.FindName(strLbl) as Label;
-				lbl.MouseLeftButtonDown += new MouseButtonEventHandler(lblMouseLeftButtonDown);
-				lbl.MouseMove += new MouseEventHandler(lblMouseMove);
-				lbl.MouseLeftButtonUp += new MouseButtonEventHandler(lblMouseLeftButtonUp);
+				foreach (string strLbl in astrHebrew) {
+					// Add draggable label methods
+					Label lbl = this.FindName(strLbl) as Label;
+					lbl.MouseLeftButtonDown += new MouseButtonEventHandler(lblMouseLeftButtonDown);
+					lbl.MouseMove += new MouseEventHandler(lblMouseMove);
+					lbl.MouseLeftButtonUp += new MouseButtonEventHandler(lblMouseLeftButtonUp);
 
-				// Add each label's location in the grid to a list of points
-				// (Row, Column)
-				Point pntGridPosition = new Point(Grid.GetRow(lbl), Grid.GetColumn(lbl));
-				lpntLabels.Add(pntGridPosition);
+					// Add each label's location in the grid to a list of points
+					// (Row, Column)
+					Point pntGridPosition = new Point(Grid.GetRow(lbl), Grid.GetColumn(lbl));
+					lpntLabels.Add(pntGridPosition);
+				}
+
+				// Randomly shuffle all label locations
+				foreach (String strLbl in astrHebrew) {
+					Label lbl = this.FindName(strLbl) as Label;
+
+					// Assign the label to a random grid position
+					int intRandom = r.Next(0, lpntLabels.Count);
+					Grid.SetRow(lbl, (int)lpntLabels[intRandom].X);
+					Grid.SetColumn(lbl, (int)lpntLabels[intRandom].Y);
+
+					// Remove the point so it is not assigned again
+					lpntLabels.Remove(new Point(Grid.GetRow(lbl), Grid.GetColumn(lbl)));
+				}
+
+				// Start timer
+				stopwatch.Start();
+				timer1.Start();
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
 			}
-
-			// Randomly shuffle all label locations
-			foreach (String strLbl in astrHebrew) {
-				Label lbl = this.FindName(strLbl) as Label;
-
-				// Assign the label to a random grid position
-				int intRandom = r.Next(0, lpntLabels.Count);
-				Grid.SetRow(lbl, (int)lpntLabels[intRandom].X);
-				Grid.SetColumn(lbl, (int)lpntLabels[intRandom].Y);
-
-				// Remove the point so it is not assigned again
-				lpntLabels.Remove(new Point(Grid.GetRow(lbl), Grid.GetColumn(lbl)));
-			}
-
-			// Start timer
-			timer1.Interval = TimeSpan.FromSeconds(1);
-			timer1.Tick += timer1_Tick;
-			timer1.Start();
 		}
 
 		private void timer1_Tick(object sender, EventArgs e) {
-			tsSecondsElapsed += TimeSpan.FromSeconds(1);
-			lblTimeElapsed.Content = tsSecondsElapsed.ToString();
+			try {
+				if (stopwatch.IsRunning) {
+					TimeSpan ts = stopwatch.Elapsed;
+					lblTimeElapsed.Content = String.Format("{0:00}:{1:00}:{2:00}",
+						ts.Hours, ts.Minutes, ts.Seconds);
+				}
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void playAudio(object sender) {
@@ -219,6 +258,25 @@ namespace BibleBooksWPF {
 
 						lstrBooksToComplete.Remove(lbl.Name);
 
+						if (intLabelIndex == 1) {
+							// Exodus badge
+							if (App.Current.Properties["exodusBadge"].Equals("1")) {
+								App.Current.Properties["exodusBadge"] = "2";
+							}
+							else {
+								App.Current.Properties["exodusBadge"] = "1";
+							}
+						}
+						else if (intLabelIndex == 7) {
+							// Ruth badge
+							if (App.Current.Properties["ruthBadge"].Equals("1")) {
+								App.Current.Properties["ruthBadge"] = "2";
+							}
+							else {
+								App.Current.Properties["ruthBadge"] = "1";
+							}
+						}
+
 						// Check if all books have been matched
 						if (lstrBooksToComplete.Count == 0) {
 							// Show congratulations message
@@ -271,7 +329,7 @@ namespace BibleBooksWPF {
 		}
 
 		private void completedMatching() {
-			timer1.IsEnabled = false;
+			stopwatch.Stop();
 			CustomMessageBox winMsgBox = new CustomMessageBox();
 
 			// Add the game data to statistics json file
@@ -298,34 +356,80 @@ namespace BibleBooksWPF {
 			}
 		}
 
+		private void btnPause_Click(object sender, RoutedEventArgs e) {
+			stopwatch.Stop();
+			PauseMenu winPause = new PauseMenu();
+
+			string strResponse = CustomMessageBoxMethods.ShowMessage(winPause);
+
+			switch (strResponse) {
+				case "Resume":
+					stopwatch.Start();
+					break;
+				case "Main":
+					MainMenu pMainMenu = new MainMenu();
+					NavigationService.Navigate(pMainMenu);
+					break;
+				case "Exit":
+					Application.Current.Shutdown();
+					break;
+				default:
+					break;
+			}
+		}
+
 		private void ImenMainMenu_Click(object sender, RoutedEventArgs e) {
-			MainMenu pMainMenu = new MainMenu();
-			NavigationService.Navigate(pMainMenu);
+			try {
+				MainMenu pMainMenu = new MainMenu();
+				NavigationService.Navigate(pMainMenu);
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void ImenMatchHebrew_Click(object sender, RoutedEventArgs e) {
-			HebrewMatch pHebrewMatch = new HebrewMatch();
-			NavigationService.Navigate(pHebrewMatch);
+			try {
+				HebrewMatch pHebrewMatch = new HebrewMatch();
+				NavigationService.Navigate(pHebrewMatch);
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void ImenMatchGreek_Click(object sender, RoutedEventArgs e) {
-			GreekMatch pGreekMatch = new GreekMatch();
-			NavigationService.Navigate(pGreekMatch);
+			try {
+				GreekMatch pGreekMatch = new GreekMatch();
+				NavigationService.Navigate(pGreekMatch);
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void ImenReorderGreek_Click(object sender, RoutedEventArgs e) {
-			GreekReorder pGreekReorder = new GreekReorder();
-			NavigationService.Navigate(pGreekReorder);
+			try {
+				GreekReorder pGreekReorder = new GreekReorder();
+				NavigationService.Navigate(pGreekReorder);
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void ImenStatistics_Click(object sender, RoutedEventArgs e) {
-			StatisticsPage pStatistics = new StatisticsPage();
-			NavigationService.Navigate(pStatistics);
+			try {
+				StatisticsPage pStatistics = new StatisticsPage();
+				NavigationService.Navigate(pStatistics);
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void ImenSettings_Click(object sender, RoutedEventArgs e) {
-			Settings pSettings = new Settings();
-			NavigationService.Navigate(pSettings);
+			try {
+				Settings pSettings = new Settings();
+				NavigationService.Navigate(pSettings);
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void ImenExit_Click(object sender, RoutedEventArgs e) {
