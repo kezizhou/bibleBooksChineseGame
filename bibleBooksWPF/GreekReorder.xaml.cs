@@ -38,6 +38,9 @@ namespace BibleBooksWPF {
 		static string[] astrReorderLbls = { "lbl1", "lbl2", "lbl3", "lbl4", "lbl5", "lbl6", "lbl7", "lbl8", "lbl9", "lbl10", "lbl11", "lbl12", "lbl13", "lbl14",
 										 "lbl15", "lbl16", "lbl17", "lbl18", "lbl19", "lbl20", "lbl21", "lbl22", "lbl23", "lbl24", "lbl25", "lbl26", "lbl27"};
 
+		static string[] astrChinese = { "马太福音", "马可福音", "路加福音", "约翰福音", "使徒行传", "罗马书", "哥林多前书", "哥林多后书", "加拉太书", "以弗所书", "腓立比书", "歌罗西书", "帖撒罗尼迦前书",
+										"帖撒罗尼迦后书", "提摩太前书", "提摩太后书", "提多书", "腓利门书", "希伯来书", "雅各书", "彼得前书", "彼得后书", "约翰一书", "约翰二书", "约翰三书", "犹大书", "启示录"};
+
 		List<string> lstrBooksToComplete = new List<string>(astrGreek);
 		DispatcherTimer timer1 = new DispatcherTimer();
 		Stopwatch stopwatch = new Stopwatch();
@@ -144,9 +147,17 @@ namespace BibleBooksWPF {
 			try {
 				Random r = new Random();
 
+				int i = 0;
 				foreach (String strLbl in astrGreek) {
-					// Add draggable label methods
 					Label lbl = this.FindName(strLbl) as Label;
+
+					// Check main language
+					if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+						lbl.Content = astrChinese[i];
+						lbl.FontSize = 19;
+					}
+
+					// Add draggable label methods
 					lbl.MouseLeftButtonDown += new MouseButtonEventHandler(lblMouseLeftButtonDown);
 					lbl.MouseMove += new MouseEventHandler(lblMouseMove);
 					lbl.MouseLeftButtonUp += new MouseButtonEventHandler(lblMouseLeftButtonUp);
@@ -155,6 +166,8 @@ namespace BibleBooksWPF {
 					// (Row, Column)
 					Point pntGridPosition = new Point(Grid.GetRow(lbl), Grid.GetColumn(lbl));
 					lpntLabels.Add(pntGridPosition);
+
+					i++;
 				}
 
 				// Randomly shuffle all label locations
@@ -191,12 +204,31 @@ namespace BibleBooksWPF {
 		}
 
 		private void playAudio(object sender) {
-			// Play audio
-			Label lblBook = sender as Label;
-			var synthesizer = new SpeechSynthesizer();
-			synthesizer.SetOutputToDefaultAudioDevice();
-			synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("en"));
-			synthesizer.SpeakAsync(lblBook.Content.ToString());
+			try {
+				// Play audio
+				Label lblBook = sender as Label;
+				string strRead = lblBook.Content.ToString();
+
+				var synthesizer = new SpeechSynthesizer();
+				synthesizer.SetOutputToDefaultAudioDevice();
+				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
+				} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
+					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("EN"));
+
+					if (strRead.Contains("1")) {
+						strRead = strRead.Replace("1", "First");
+					} else if (strRead.Contains("2")) {
+						strRead = strRead.Replace("2", "Second");
+					} else if (strRead.Contains("3")) {
+						strRead = strRead.Replace("3", "Third");
+					}
+				}
+
+				synthesizer.SpeakAsync(strRead);
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private bool checkLabelsTouching(object sender) {

@@ -186,13 +186,24 @@ namespace BibleBooksWPF {
 		}
 
 		private void btnDelete1_Click(object sender, RoutedEventArgs e) {
-			lstUsers.Users.RemoveAt(0);
+			// Confirm message box
+			ConfirmMessageBox winConfirm = new ConfirmMessageBox();
+			string strText = "Are you sure you want to delete user: " + lstUsers.Users[0].username + "?";
+			string strResult = CustomMessageBoxMethods.ShowMessage(strText, winConfirm);
 
-			// Update JSON file
-			using (StreamWriter file = File.CreateText("users.json")) {
-				JsonSerializer serializer = new JsonSerializer();
-				serializer.Formatting = Formatting.Indented;
-				serializer.Serialize(file, lstUsers);
+			switch (strResult) {
+				case "Yes":
+					lstUsers.Users.RemoveAt(0);
+
+					// Update JSON file
+					using (StreamWriter file = File.CreateText("users.json")) {
+						JsonSerializer serializer = new JsonSerializer();
+						serializer.Formatting = Formatting.Indented;
+						serializer.Serialize(file, lstUsers);
+					}
+					break;
+				default:
+					break;
 			}
 
 			RefreshPage();
