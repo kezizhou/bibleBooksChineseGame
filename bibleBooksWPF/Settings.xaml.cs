@@ -2,32 +2,54 @@
 using System.Windows.Controls;
 using System.Deployment.Application;
 using System;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BibleBooksWPF {
 	/// <summary>
 	/// Interaction logic for Settings.xaml
 	/// </summary>
 	public partial class Settings : Page {
+
 		public Settings() {
 			InitializeComponent();
 		}
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
-			// Previous audio setting
-			if (Properties.Settings.Default.blnAudio) {
-				radAudioOn.IsChecked = true;
-				radAudioOff.IsChecked = false;
-			} else {
-				radAudioOn.IsChecked = false;
-				radAudioOff.IsChecked = true;
-			}
+			try {
 
-			// Current version
-			if (ApplicationDeployment.IsNetworkDeployed) {
-				Version version = ApplicationDeployment.CurrentDeployment.CurrentVersion;
-				lblVersion.Text = string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
-			} else {
-				lblVersion.Text = "Not Installed";
+				// Previous audio setting
+				if (Properties.Settings.Default.blnAudio) {
+					radAudioOn.IsChecked = true;
+					radAudioOff.IsChecked = false;
+				} else {
+					radAudioOn.IsChecked = false;
+					radAudioOff.IsChecked = true;
+				}
+
+				// Current version
+				if (ApplicationDeployment.IsNetworkDeployed) {
+					Version version = ApplicationDeployment.CurrentDeployment.CurrentVersion;
+					lblVersion.Text = string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+				} else {
+					lblVersion.Text = "Not Installed";
+				}
+
+				// Get user from JSON file
+				JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+				JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+				User userCurrent = userToken.ToObject<User>();
+
+				// Load user settings
+				txtInputText.Text = userCurrent.username;
+				RadioButton radProfilePic = this.FindName(userCurrent.profilePicture) as RadioButton;
+				radProfilePic.IsChecked = true;
+
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
 			}
 		}
 
@@ -124,16 +146,50 @@ namespace BibleBooksWPF {
 			NavigationService.Navigate(pGreekReorder);
 		}
 
+		private void ImenStatistics_Click(object sender, RoutedEventArgs e) {
+			StatisticsPage pStatistics = new StatisticsPage();
+			NavigationService.Navigate(pStatistics);
+		}
+
 		private void ImenExit_Click(object sender, RoutedEventArgs e) {
 			Application.Current.Shutdown();
 		}
 
 		private void RadAudioOff_Checked(object sender, RoutedEventArgs e) {
 			Properties.Settings.Default.blnAudio = false;
+			Properties.Settings.Default.Save();
 		}
 
 		private void RadAudioOn_Checked(object sender, RoutedEventArgs e) {
 			Properties.Settings.Default.blnAudio = true;
+			Properties.Settings.Default.Save();
 		}
+
+		private void btnSaveSettings_Click(object sender, RoutedEventArgs e) {
+			// Get user from JSON file
+			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+			User userCurrent = userToken.ToObject<User>();
+
+			// Update the json with new information
+			userCurrent.username = txtInputText.Text;
+			App.Current.Properties["currentUsername"] = userCurrent.username;
+
+			WrapPanel pic = this.FindName("wrapProfilePic") as WrapPanel;
+			userCurrent.profilePicture = pic.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value).Name;
+			userToken.Replace(JToken.FromObject(userCurrent));
+
+			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+			File.WriteAllText("users.json", newJson);
+
+			txbSaved.Visibility = Visibility.Visible;
+			AsyncHideSaved();
+		}
+
+		private async void AsyncHideSaved() {
+			await Task.Delay(1600);
+			txbSaved.Visibility = Visibility.Hidden;
+		}
+
 	}
 }
