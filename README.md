@@ -63,5 +63,10 @@ To share this application on Zoom and allow another person to control the screen
 * New user message box image "newUser.png":
   * Icon made by Smashicons from www.flaticon.com
 * Achievement Badges
-  * Icons made by Freepik from www.flaticon.com
   * Icons made by photo3idea_studio from www.flaticon.com
+* Pause Button Icon
+  * Icon made by Pixelmeetup from www.flaticon.com
+* Icons made by Freepik from www.flaticon.com :
+  * Achievement Bdages
+  * Delete User Icon
+  * User Profile Icons

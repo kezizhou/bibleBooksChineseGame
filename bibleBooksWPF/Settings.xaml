@@ -5,16 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BibleBooksWPF"
       mc:Ignorable="d" 
-      d:DesignHeight="400" d:DesignWidth="600"
+      d:DesignHeight="700" d:DesignWidth="1000"
       Title="Settings" Loaded="Page_Loaded">
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -29,6 +29,7 @@
                 <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English"  Click="ImenMatchGreek_Click"/>
                 <MenuItem x:Name="imenReorderGreek" Header="Reorder Books" Click="ImenReorderGreek_Click"/>
             </MenuItem>
+            <MenuItem x:Name="imenStatistics" Header="Statistics" Click="ImenStatistics_Click"/>
             <MenuItem Header="Settings" IsEnabled="False"/>
             <MenuItem Header="Exit" Click="ImenExit_Click"/>
         </Menu>
@@ -44,9 +45,48 @@
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
                     <TextBlock FontSize="14" Margin="0,0,10,10">Version:</TextBlock>
-                    <TextBlock x:Name="lblVersion" FontSize="14">1.0.1</TextBlock>
+                    <TextBlock x:Name="lblVersion" FontSize="14">1.1.1</TextBlock>
                 </StackPanel>
-                <Button x:Name="btnUpdate" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Padding="5" Click="BtnUpdate_Click">Check for Updates</Button>
+                <Button x:Name="btnUpdate" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Padding="5" Click="BtnUpdate_Click" Style="{StaticResource DarkRoundedMessageButton}" Foreground="White">Check for Updates</Button>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="User Settings" FontSize="16" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="10,0,0,5" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <StackPanel Margin="5,5,0,0">
+                <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+                    <TextBlock FontSize="16" Margin="10,10,10,10">Username:</TextBlock>
+                    <TextBox x:Name="txtInputText" Grid.Row="0" Grid.Column="1" Margin="10" />
+                    <TextBlock x:Name="txbValidation" HorizontalAlignment="Center" Foreground="Red" Visibility="Collapsed">Validation message here</TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
+                    <TextBlock FontSize="16" Margin="10,10,10,10">Profile Image:</TextBlock>
+                    <WrapPanel x:Name="wrapProfilePic">
+                        <RadioButton x:Name="boy1" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy1.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="boy2" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy2.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="boy3" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy3.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="boy4" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy4.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="boy5" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy5.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="boy6" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy6.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="boy7" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy7.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="boy8" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy8.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+
+                        <TextBlock Width="10000" Height="0" />
+
+                        <RadioButton x:Name="girl1" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl1.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="girl2" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl2.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="girl3" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl3.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="girl4" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl4.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="girl5" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl5.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="girl6" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl6.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="girl7" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl7.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="girl8" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl8.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                    </WrapPanel>
+                </StackPanel>
+
+                <Button x:Name="btnSaveSettings" Margin="10,10,10,10" Padding="10,10,10,10" Style="{StaticResource DarkRoundedMessageButton}" Click="btnSaveSettings_Click" Foreground="White">Save User Settings</Button>
+
+                <TextBlock x:Name="txbSaved" HorizontalAlignment="Center" Visibility="Collapsed">Changes Saved</TextBlock>
             </StackPanel>
         </GroupBox>
     </Grid>
