@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:BibleBooksWPF"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Custom Message Box Title" Height="235" Width="505">
+        Title="Custom Message Box Title" Height="235" Width="530">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="165"/>
-            <ColumnDefinition Width="165"/>
-            <ColumnDefinition Width="165"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="125"/>
@@ -22,8 +22,8 @@
         <TextBlock x:Name="txbMessageText" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center">
             Message text goes here
         </TextBlock>
-        <Button x:Name="btnRetry" Content="Retry" Grid.Row="1" Grid.Column="0" Width="103" Height="40" Click="BtnRetry_Click" Margin="0,0,0,20" Background="#DFF2F7" Style="{StaticResource RoundedCornerButton}"></Button>
-        <Button x:Name="btnMain" Content="Back to Main" Grid.Row="1" Grid.Column="1" Width="103" Height="40" Click="BtnMain_Click" Margin="0,0,0,20" Background="#DFF2F7" Style="{StaticResource RoundedCornerButton}"></Button>
-        <Button x:Name="btnExit" Content="Exit" Grid.Row="1" Grid.Column="2" Width="103" Height="40" Click="BtnExit_Click" Margin="0,0,0,20" Background="#DFF2F7" Style="{StaticResource RoundedCornerButton}"></Button>
+        <Button x:Name="btnRetry" Content="Retry" Grid.Row="1" Grid.Column="0" Width="103" Height="40" Click="BtnRetry_Click" Margin="0,0,0,20" Background="#DFF2F7" Style="{StaticResource RoundedMessageButton}"></Button>
+        <Button x:Name="btnMain" Content="Back to Main" Grid.Row="1" Grid.Column="1" Width="103" Height="40" Click="BtnMain_Click" Margin="0,0,0,20" Background="#DFF2F7" Style="{StaticResource RoundedMessageButton}"></Button>
+        <Button x:Name="btnExit" Content="Exit" Grid.Row="1" Grid.Column="2" Width="103" Height="40" Click="BtnExit_Click" Margin="0,0,0,20" Background="#DFF2F7" Style="{StaticResource RoundedMessageButton}"></Button>
     </Grid>
 </Window>
