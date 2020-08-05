@@ -28,7 +28,6 @@ namespace BibleBooksWPF {
 		private static int intNumberCorrect = 0;
 		private static int intCurrentPoints = 0;
 		private static int intTries = 0;
-		private static TimeSpan tsSecondsElapsed = TimeSpan.FromSeconds(0);
 		List<Point> lpntLabels = new List<Point>();
 
 		static string[] astrGreek = { "lblMatthew", "lblMark", "lblLuke", "lblJohn", "lblActs", "lblRomans", "lbl1Corinthians", "lbl2Corinthians", "lblGalatians", "lblEphesians",
@@ -342,7 +341,7 @@ namespace BibleBooksWPF {
 			CustomMessageBox winMsgBox = new CustomMessageBox();
 
 			// Add the game data to statistics json file
-			Statistics.AddStatistic("GreekReorder", intCurrentPoints, tsSecondsElapsed);
+			Statistics.AddStatistic("GreekReorder", intCurrentPoints, stopwatch.Elapsed);
 
 			string strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
 										"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intTries) + "\n" +
