@@ -175,24 +175,34 @@ namespace BibleBooksWPF {
 		}
 
 		private void btnSaveSettings_Click(object sender, RoutedEventArgs e) {
-			// Get user from JSON file
-			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
-			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
-			User userCurrent = userToken.ToObject<User>();
+			try {
+				// Get user from JSON file
+				JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+				JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+				User userCurrent = userToken.ToObject<User>();
 
-			// Update the json with new information
-			userCurrent.username = txtInputText.Text;
-			App.Current.Properties["currentUsername"] = userCurrent.username;
+				// Update the json with new information
+				// Username
+				userCurrent.username = txtInputText.Text;
+				App.Current.Properties["currentUsername"] = userCurrent.username;
 
-			WrapPanel pic = this.FindName("wrapProfilePic") as WrapPanel;
-			userCurrent.profilePicture = pic.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value).Name;
-			userToken.Replace(JToken.FromObject(userCurrent));
+				// Find which profile picture was selected
+				if ( wrpMales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value) != null ) {
+					userCurrent.profilePicture = wrpMales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value).Name;
+				} else if ( wrpFemales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value) != null ) {
+					userCurrent.profilePicture = wrpFemales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value).Name;
+				}
 
-			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
-			File.WriteAllText("users.json", newJson);
+				userToken.Replace(JToken.FromObject(userCurrent));
 
-			txbSaved.Visibility = Visibility.Visible;
-			AsyncHideSaved();
+				string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+				File.WriteAllText("users.json", newJson);
+
+				txbSaved.Visibility = Visibility.Visible;
+				AsyncHideSaved();
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private async void AsyncHideSaved() {
