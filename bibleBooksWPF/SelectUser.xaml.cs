@@ -210,26 +210,47 @@ namespace BibleBooksWPF {
 		}
 
 		private void btnDelete2_Click(object sender, RoutedEventArgs e) {
-			lstUsers.Users.RemoveAt(1);
+			// Confirm message box
+			ConfirmMessageBox winConfirm = new ConfirmMessageBox();
+			string strText = "Are you sure you want to delete user: " + lstUsers.Users[1].username + "?";
+			string strResult = CustomMessageBoxMethods.ShowMessage(strText, winConfirm);
 
-			// Update JSON file
-			using (StreamWriter file = File.CreateText("users.json")) {
-				JsonSerializer serializer = new JsonSerializer();
-				serializer.Formatting = Formatting.Indented;
-				serializer.Serialize(file, lstUsers);
+			switch (strResult) {
+				case "Yes":
+					lstUsers.Users.RemoveAt(1);
+
+					// Update JSON file
+					using (StreamWriter file = File.CreateText("users.json")) {
+						JsonSerializer serializer = new JsonSerializer();
+						serializer.Formatting = Formatting.Indented;
+						serializer.Serialize(file, lstUsers);
+					}
+					break;
+				default:
+					break;
 			}
-
 			RefreshPage();
 		}
 
 		private void btnDelete3_Click(object sender, RoutedEventArgs e) {
-			lstUsers.Users.RemoveAt(2);
+			// Confirm message box
+			ConfirmMessageBox winConfirm = new ConfirmMessageBox();
+			string strText = "Are you sure you want to delete user: " + lstUsers.Users[2].username + "?";
+			string strResult = CustomMessageBoxMethods.ShowMessage(strText, winConfirm);
 
-			// Update JSON file
-			using (StreamWriter file = File.CreateText("users.json")) {
-				JsonSerializer serializer = new JsonSerializer();
-				serializer.Formatting = Formatting.Indented;
-				serializer.Serialize(file, lstUsers);
+			switch (strResult) {
+				case "Yes":
+					lstUsers.Users.RemoveAt(2);
+
+					// Update JSON file
+					using (StreamWriter file = File.CreateText("users.json")) {
+						JsonSerializer serializer = new JsonSerializer();
+						serializer.Formatting = Formatting.Indented;
+						serializer.Serialize(file, lstUsers);
+					}
+					break;
+				default:
+					break;
 			}
 
 			RefreshPage();
