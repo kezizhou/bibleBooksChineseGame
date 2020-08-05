@@ -309,8 +309,9 @@ namespace ExtensionMethods {
 				// Input text
 				TextBox txt = winNewUser.FindName("txtInputText") as TextBox;
 
-				// Profile picture
-				WrapPanel pic = winNewUser.FindName("wrapProfilePic") as WrapPanel;
+				// Profile picture wrap panels
+				WrapPanel wrpMales = winNewUser.FindName("wrpMales") as WrapPanel;
+				WrapPanel wrpFemales = winNewUser.FindName("wrpFemales") as WrapPanel;
 
 				// Pop-up message box
 				winNewUser.ShowDialog();
@@ -322,7 +323,13 @@ namespace ExtensionMethods {
 					// Username was entered
 					// Set username and profile picture
 					strResult = txt.Text;
-					strPicture = pic.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value).Name;
+
+					// Find which profile picture was selected
+					if (wrpMales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value) != null) {
+						strPicture = wrpMales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value).Name;
+					} else if (wrpFemales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value) != null) {
+						strPicture = wrpFemales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value).Name;
+					}
 				} else {
 					strResult = winNewUser.strMsgReturn;
 				}
@@ -341,8 +348,9 @@ namespace ExtensionMethods {
 				// Input text
 				TextBox txt = winNewUser.FindName("txtInputText") as TextBox;
 
-				// Profile picture
-				WrapPanel pic = winNewUser.FindName("wrapProfilePic") as WrapPanel;
+				// Profile picture wrap panels
+				WrapPanel wrpMales = winNewUser.FindName("wrpMales") as WrapPanel;
+				WrapPanel wrpFemales = winNewUser.FindName("wrpFemales") as WrapPanel;
 
 				// Pop-up message box
 				winNewUser.ShowDialog();
@@ -354,7 +362,13 @@ namespace ExtensionMethods {
 					// Username was entered
 					// Set username and profile picture
 					strResult = txt.Text;
-					strPicture = pic.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value).Name;
+
+					// Find which profile picture was selected
+					if (wrpMales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value) != null) {
+						strPicture = wrpMales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value).Name;
+					} else if (wrpFemales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value) != null) {
+						strPicture = wrpFemales.Children.OfType<RadioButton>().FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value).Name;
+					}
 				} else {
 					strResult = winNewUser.strMsgReturn;
 				}
