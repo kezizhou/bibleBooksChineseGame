@@ -10,7 +10,7 @@ A matching game for Chinese and English Bible books
 ***
 ## Installation
 
-To install, download the latest release [**here**](https://github.com/kezizhou/bibleBooksChineseGame/releases).
+To install, download the latest release [**here**](https://github.com/kezizhou/bibleBooksChineseGame/releases/latest).
 Download and run setup.exe to install bibleBooksChineseGame onto your computer. You may choose to uninstall at any time by uninstalling from your programs list. The application will automatically check for new updates every time it is started.
 
 ### Common Installation Issues:
@@ -34,11 +34,19 @@ When these steps have been completed, you should see a window like this on the i
 ***
 ## Sample Screenshots
 
+![Select User](documentation/selectUser)
+
 ![Main Menu](documentation/mainMenu.png)  
 
 ![Hebrew Scriptures Match Chinese to English](documentation/hebrewMatch.png)  
 
+![Hebrew Scriptures Reorder](documentation/hebrewReorder.png)  
+
 ![Greek Scriptures Match Chinese to Englishs](documentation/greekMatch.png)  
+
+![Greek Scriptures Reorder](documentation/greekReorder.png)  
+
+![Settings](documentation/settings.png)
 
 **[Back to Top](#bibleBooksChineseGame)**
 
