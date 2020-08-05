@@ -67,6 +67,7 @@ To share this application on Zoom and allow another person to control the screen
 * Pause Button Icon
   * Icon made by Pixelmeetup from www.flaticon.com
 * Icons made by Freepik from www.flaticon.com:
-  * Achievement Bdages
-  * Delete User Icon
+  * Achievement Badges
+  * Delete User Trash Can Icon
+  * Confirm Delete User Icon
   * User Profile Icons
