@@ -30,7 +30,6 @@ namespace BibleBooksWPF
 		private static int intHebrewAnswered = 0;
 		private static int intNumberCorrect = 0;
 		private static int intCurrentPoints = 0;
-		private static TimeSpan tsSecondsElapsed = TimeSpan.FromSeconds(0);
 		List<Point> lpntChLabels = new List<Point>();
 
 		static string[] astrChHebrew= { "lblChGenesis", "lblChExodus", "lblChLeviticus", "lblChNumbers", "lblChDeuteronomy", "lblChJoshua", "lblChJudges", "lblChRuth", "lblCh1Samuel",
@@ -356,7 +355,7 @@ namespace BibleBooksWPF
 			CustomMessageBox winMsgBox = new CustomMessageBox();
 
 			// Add the game data to statistics json file
-			Statistics.AddStatistic("HebrewMatch", intCurrentPoints, tsSecondsElapsed);
+			Statistics.AddStatistic("HebrewMatch", intCurrentPoints, stopwatch.Elapsed);
 
 			string strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
 										"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intHebrewAnswered) + "\n" +
