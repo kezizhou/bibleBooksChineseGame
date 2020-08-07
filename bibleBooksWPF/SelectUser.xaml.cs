@@ -229,6 +229,8 @@ namespace BibleBooksWPF {
 			// Previous audio and language settings
 			Properties.Settings.Default.blnAudio = userCurrent.blnAudio;
 			Properties.Settings.Default.strLanguage = userCurrent.strLanguage;
+			// Last total points setting
+			Properties.Settings.Default.lngTotalPoints = userCurrent.lngTotalPoints;
 		}
 
 		private void btnDelete1_Click(object sender, RoutedEventArgs e) {
