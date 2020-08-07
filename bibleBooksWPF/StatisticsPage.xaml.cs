@@ -77,7 +77,7 @@ namespace BibleBooksWPF
 				imgHebrewMatchTime.ToolTip = "希伯来语经卷配对时间少于00:01:15";
 				imgHebrewReorderTime.ToolTip = "希伯来语经卷排序时间少于00:02:15";
 				imgGreekMatchTime.ToolTip = "希腊语经卷配对时间少于00:00:45";
-				imgGreekReorderTime.ToolTip = "希腊语经卷排序时间少于00:01:45";
+				imgGreekReorderTime.ToolTip = "希腊语经卷排序时间少于00:00:50";
 				imgHebrewMatch100.ToolTip = "希伯来语经卷配对100%准确率";
 				imgHebrewReorder100.ToolTip = "希伯来语经卷排序100%准确率";
 				imgGreekMatch100.ToolTip = "希腊语经卷配对100%准确率";
