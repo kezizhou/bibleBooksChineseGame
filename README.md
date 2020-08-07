@@ -34,7 +34,7 @@ When these steps have been completed, you should see a window like this on the i
 ***
 ## Sample Screenshots
 
-![Select User](documentation/selectUser)
+![Select User](documentation/selectUser.png)
 
 ![Main Menu](documentation/mainMenu.png)  
 
