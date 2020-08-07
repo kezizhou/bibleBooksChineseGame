@@ -1,10 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Globalization;
-using System.IO;
-using System.Linq.Expressions;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 
 namespace BibleBooksWPF {
 	/// <summary>
@@ -28,6 +22,12 @@ namespace BibleBooksWPF {
 		private void BtnCancel_Click(object sender, RoutedEventArgs e) {
 			strMsgReturn = "Cancel";
 			this.Close();
+		}
+
+		private void Window_Loaded(object sender, RoutedEventArgs e) {
+			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+				btnCancel.Content = "取消";
+			}
 		}
 	}
 }

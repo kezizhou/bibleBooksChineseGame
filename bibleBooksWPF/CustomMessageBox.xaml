@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BibleBooksWPF"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Custom Message Box Title" Height="235" Width="530">
+        Title="Custom Message Box Title" Height="235" Width="530" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

@@ -22,40 +22,40 @@
         </Grid.RowDefinitions>
 
         <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" FontFamily="Tahoma" Background="#FFDFF2F7" VerticalAlignment="Top" Margin="0,0,0,10" Padding="2,5" FontSize="14">
-            <MenuItem Header="Main Menu" Click="ImenMainMenu_Click"/>
-            <MenuItem Header="Hebrew Scriptures">
+            <MenuItem x:Name="imenMainMenu" Header="Main Menu" Click="ImenMainMenu_Click"/>
+            <MenuItem x:Name="imenHebrew" Header="Hebrew Scriptures">
                 <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
                 <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books" Click="ImenReorderHebrew_Click"/>
             </MenuItem>
-            <MenuItem Header="Greek Scriptures">
+            <MenuItem x:Name="imenGreek" Header="Greek Scriptures">
                 <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English"  Click="ImenMatchGreek_Click"/>
                 <MenuItem x:Name="imenReorderGreek" Header="Reorder Books" Click="ImenReorderGreek_Click"/>
             </MenuItem>
             <MenuItem x:Name="imenStatistics" Header="Statistics" Click="ImenStatistics_Click"/>
-            <MenuItem Header="Settings" IsEnabled="False"/>
-            <MenuItem Header="Exit" Click="ImenExit_Click"/>
+            <MenuItem x:Name="imenSettings" Header="Settings" IsEnabled="False"/>
+            <MenuItem x:Name="imenExit" Header="Exit" Click="ImenExit_Click"/>
         </Menu>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center">
-            <GroupBox Header="Audio Pronunciation" FontSize="16" Margin="10,0,10,10" Height="100" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <GroupBox x:Name="grpAudio" Header="Audio Pronunciation" FontSize="16" Margin="10,0,10,10" Height="100" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <StackPanel Margin="5,5,0,0">
-                    <RadioButton x:Name="radAudioOn" GroupName="grpAudio" FontSize="14" Checked="RadAudioOn_Checked">On</RadioButton>
-                    <RadioButton x:Name="radAudioOff" GroupName="grpAudio" FontSize="14" Checked="RadAudioOff_Checked">Off</RadioButton>
+                    <RadioButton x:Name="radAudioOn" GroupName="grpAudio" FontSize="14" Checked="RadAudioOn_Checked" Content="On"/>
+                    <RadioButton x:Name="radAudioOff" GroupName="grpAudio" FontSize="14" Checked="RadAudioOff_Checked" Content="Off"/>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Main Language" FontSize="16" Margin="10,0,10,10" Height="100" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <GroupBox x:Name="grpLanguage" Header="Main Language" FontSize="16" Margin="10,0,10,10" Height="100" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <StackPanel Margin="5,5,0,0">
-                    <RadioButton x:Name="radEnglish" GroupName="grpLanguage" FontSize="14" Checked="radEnglish_Checked">English</RadioButton>
-                    <RadioButton x:Name="radChinese" GroupName="grpLanguage" FontSize="14" Checked="radChinese_Checked">Chinese</RadioButton>
+                    <RadioButton x:Name="radEnglish" GroupName="grpLanguage" FontSize="14" Checked="radEnglish_Checked" Content="English" Unchecked="radEnglish_Unchecked"/>
+                    <RadioButton x:Name="radChinese" GroupName="grpLanguage" FontSize="14" Checked="radChinese_Checked" Content="Chinese" Unchecked="radChinese_Unchecked"/>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="About" FontSize="16" Height="100" Width="180" Margin="10,0,10,10" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <GroupBox x:Name="grpAbout" Header="About" FontSize="16" Height="100" Width="180" Margin="10,0,10,10" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
-                        <TextBlock FontSize="14" Margin="0,0,10,10">Version:</TextBlock>
-                        <TextBlock x:Name="lblVersion" FontSize="14">1.1.1</TextBlock>
+                        <TextBlock x:Name="txbVersionDesc" FontSize="14" Margin="0,0,10,10">Version:</TextBlock>
+                        <TextBlock x:Name="txbVersion" FontSize="14">1.1.2</TextBlock>
                     </StackPanel>
                     <Button x:Name="btnUpdate" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Padding="5" Click="BtnUpdate_Click" Style="{StaticResource DarkRoundedMessageButton}" Foreground="White">Check for Updates</Button>
                 </StackPanel>
@@ -65,13 +65,13 @@
         <GroupBox x:Name="grpUserSettings" Header="User Settings" FontSize="16" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Center">
             <StackPanel Margin="5,5,0,0">
                 <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
-                    <TextBlock FontSize="16" Margin="10,10,10,10">Username:</TextBlock>
+                    <TextBlock x:Name="txbUsername" FontSize="16" Margin="10,10,10,10">Username:</TextBlock>
                     <TextBox x:Name="txtInputText" Grid.Row="0" Grid.Column="1" Margin="10" />
                     <TextBlock x:Name="txbValidation" HorizontalAlignment="Center" Foreground="Red" Visibility="Collapsed">Validation message here</TextBlock>
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
-                    <TextBlock FontSize="16" Margin="10,10,10,10">Profile Image:</TextBlock>
+                    <TextBlock x:Name="txbProfilePic" FontSize="16" Margin="10,10,10,10">Profile Image:</TextBlock>
                     <StackPanel x:Name="stkProfilePic">
                         <WrapPanel x:Name="wrpMales">
                             <RadioButton x:Name="boy1" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy1.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
@@ -97,13 +97,13 @@
                     </StackPanel>
                 </StackPanel>
 
-                <Button x:Name="btnSaveSettings" Margin="10,10,10,10" Padding="10,10,10,10" Style="{StaticResource DarkRoundedMessageButton}" Click="btnSaveSettings_Click" Foreground="White">Save User Settings</Button>
+                <Button x:Name="btnSaveSettings" Margin="10,10,10,10" Padding="10,10,10,10" Style="{StaticResource DarkRoundedMessageButton}" Click="btnSaveSettings_Click" Foreground="White" Content="Save User Settings"/>
 
                 <TextBlock x:Name="txbSaved" HorizontalAlignment="Center" Visibility="Collapsed">Changes Saved</TextBlock>
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Header="Credits" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" FontSize="16" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Center" Width="{Binding ActualWidth, ElementName=grpUserSettings}">
+        <GroupBox x:Name="grpCredits" Header="Credits" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" FontSize="16" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Center" Width="{Binding ActualWidth, ElementName=grpUserSettings}">
             <StackPanel  Margin="10,10,10,10">
                 <TextBlock>
                     <Run FontWeight="SemiBold" Text="Code and Design: "/>https://github.com/kezizhou

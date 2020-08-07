@@ -20,7 +20,6 @@ namespace BibleBooksWPF {
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
 			try {
-
 				// Previous audio setting
 				if (Properties.Settings.Default.blnAudio) {
 					radAudioOn.IsChecked = true;
@@ -37,14 +36,48 @@ namespace BibleBooksWPF {
 				} else if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
 					radEnglish.IsChecked = false;
 					radChinese.IsChecked = true;
+
+					// Menu bar
+					imenMainMenu.Header = "主菜单";
+					imenHebrew.Header = "希伯来语经卷";
+					imenMatchHebrew.Header = "中英文配对";
+					imenReorderHebrew.Header = "排序";
+					imenGreek.Header = "希腊语经卷";
+					imenMatchGreek.Header = "中英文配对";
+					imenReorderGreek.Header = "排序";
+					imenStatistics.Header = "成绩";
+					imenSettings.Header = "设置";
+					imenExit.Header = "退出";
+					menTop.FontSize = 16;
+
+					// Settings descriptions
+					grpAudio.Header = "声音";
+					radAudioOn.Content = "开";
+					radAudioOff.Content = "关";
+					grpLanguage.Header = "语言";
+					radEnglish.Content = "英文";
+					radChinese.Content = "中文";
+					grpAbout.Header = "关于游戏";
+					txbVersionDesc.Text = "版本";
+					btnUpdate.Content = "检查更新";
+					grpUserSettings.Header = "用户设置";
+					txbUsername.Text = "用户名";
+					txbProfilePic.Text = "个人图片";
+					btnSaveSettings.Content = "储存用户设置";
+					txbSaved.Text = "设置已经储存。";
+					grpCredits.Header = "制作";
 				}
 
 				// Current version
 				if (ApplicationDeployment.IsNetworkDeployed) {
 					Version version = ApplicationDeployment.CurrentDeployment.CurrentVersion;
-					lblVersion.Text = string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+					txbVersion.Text = string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
 				} else {
-					lblVersion.Text = "Not Installed";
+					if (Properties.Settings.Default.strLanguage.Equals("English")) {
+						txbVersion.Text = "Not Installed";
+					} else if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+						txbVersion.Text = "没有安装";
+					}
 				}
 
 				// Get user from JSON file
@@ -165,13 +198,35 @@ namespace BibleBooksWPF {
 		}
 
 		private void RadAudioOff_Checked(object sender, RoutedEventArgs e) {
+			// Get user from JSON file
+			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+			User userCurrent = userToken.ToObject<User>();
+
+			// Update the setting in json
+			userCurrent.blnAudio = false;
 			Properties.Settings.Default.blnAudio = false;
 			Properties.Settings.Default.Save();
+			userToken.Replace(JToken.FromObject(userCurrent));
+
+			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+			File.WriteAllText("users.json", newJson);
 		}
 
 		private void RadAudioOn_Checked(object sender, RoutedEventArgs e) {
+			// Get user from JSON file
+			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+			User userCurrent = userToken.ToObject<User>();
+
+			// Update the setting in json
+			userCurrent.blnAudio = true;
 			Properties.Settings.Default.blnAudio = true;
 			Properties.Settings.Default.Save();
+			userToken.Replace(JToken.FromObject(userCurrent));
+
+			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+			File.WriteAllText("users.json", newJson);
 		}
 
 		private void btnSaveSettings_Click(object sender, RoutedEventArgs e) {
@@ -211,13 +266,48 @@ namespace BibleBooksWPF {
 		}
 
 		private void radEnglish_Checked(object sender, RoutedEventArgs e) {
+			// Get user from JSON file
+			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+			User userCurrent = userToken.ToObject<User>();
+
+			// Update the setting in json
+			userCurrent.strLanguage = "English";
 			Properties.Settings.Default.strLanguage = "English";
 			Properties.Settings.Default.Save();
+			userToken.Replace(JToken.FromObject(userCurrent));
+
+			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+			File.WriteAllText("users.json", newJson);
 		}
 
 		private void radChinese_Checked(object sender, RoutedEventArgs e) {
+			// Get user from JSON file
+			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+			User userCurrent = userToken.ToObject<User>();
+
+			// Update the setting in json
+			userCurrent.strLanguage = "Chinese";
 			Properties.Settings.Default.strLanguage = "Chinese";
 			Properties.Settings.Default.Save();
+			userToken.Replace(JToken.FromObject(userCurrent));
+
+			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+			File.WriteAllText("users.json", newJson);
+		}
+
+		private void RefreshPage() {
+			Settings pSettings = new Settings();
+			NavigationService.Navigate(pSettings);
+		}
+
+		private void radEnglish_Unchecked(object sender, RoutedEventArgs e) {
+			RefreshPage();
+		}
+
+		private void radChinese_Unchecked(object sender, RoutedEventArgs e) {
+			RefreshPage();
 		}
 	}
 }
