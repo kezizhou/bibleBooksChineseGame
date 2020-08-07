@@ -41,6 +41,15 @@ namespace BibleBooksWPF
 			strMsgReturn = "Cancel";
 			this.Close();
 		}
+
+		private void Window_Loaded(object sender, RoutedEventArgs e) {
+			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+				winNewUser.Title = "新用户";
+				txbUsernameDesc.Text = "用户名";
+				txbSelectProfile.Text = "选择个人图片";
+				btnCancel.Content = "取消";
+			}
+		}
 	}
 
 	public class UsernameRule : ValidationRule {

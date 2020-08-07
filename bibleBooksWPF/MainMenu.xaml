@@ -20,12 +20,12 @@
         </Grid.RowDefinitions>
 
         <Menu Name="menTop" Grid.Column="0" Grid.Row="0" FontFamily="Tahoma" Background="#DFF2F7" VerticalAlignment="Top" Margin="0,0,0,10" Padding="2,5" FontSize="14">
-            <MenuItem Header="Main Menu" IsEnabled="False"/>
-            <MenuItem Header="Hebrew Scriptures">
+            <MenuItem x:Name="imenMain" Header="Main Menu" IsEnabled="False"/>
+            <MenuItem x:Name="imenHebrew" Header="Hebrew Scriptures">
                 <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
                 <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books" Click="ImenReorderHebrew_Click"/>
             </MenuItem>
-            <MenuItem Header="Greek Scriptures">
+            <MenuItem x:Name="imenGreek" Header="Greek Scriptures">
                 <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English" Click="ImenMatchGreek_Click"/>
                 <MenuItem x:Name="imenReorderGreek" Header="Reorder Books" Click="ImenReorderGreek_Click"/>
             </MenuItem>

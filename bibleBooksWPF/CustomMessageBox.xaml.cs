@@ -29,5 +29,13 @@ namespace BibleBooksWPF {
 			strMsgReturn = "Exit";
 			this.Close();
 		}
+
+		private void Window_Loaded(object sender, RoutedEventArgs e) {
+			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+				btnRetry.Content = "从新开始";
+				btnMain.Content = "回到主菜单";
+				btnExit.Content = "退出";
+			}
+		}
 	}
 }

@@ -21,6 +21,78 @@ namespace BibleBooksWPF
         }
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
+			// Language setting
+			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+				// Menu bar
+				imenMainMenu.Header = "主菜单";
+				imenHebrew.Header = "希伯来语经卷";
+				imenMatchHebrew.Header = "中英文配对";
+				imenReorderHebrew.Header = "排序";
+				imenGreek.Header = "希腊语经卷";
+				imenMatchGreek.Header = "中英文配对";
+				imenReorderGreek.Header = "排序";
+				imenStatistics.Header = "成绩";
+				imenSettings.Header = "设置";
+				imenExit.Header = "退出";
+				menTop.FontSize = 16;
+
+				// Hebrew Scriptures
+				grpHebrew.Header = "希伯来语经卷";
+				// Matching
+				txbMatchingH.Text = "配对";
+				lblHebrewRecordPtMDesc.Content = "最高分数";
+				lblHebrewRecordTimeMDesc.Content = "最快时间";
+				lblHebrewAveragePtMDesc.Content = "平均分数";
+				lblHebrewAverageTimeMDesc.Content = "平均时间";
+				// Reorder
+				txbReorderH.Text = "排序";
+				lblHebrewRecordPtRDesc.Content = "最高分数";
+				lblHebrewRecordTimeRDesc.Content = "最快时间";
+				lblHebrewAveragePtRDesc.Content = "平均分数";
+				lblHebrewAverageTimeRDesc.Content = "平均时间";
+
+				// Greek Scriptures
+				grpGreek.Header = "希腊语经卷";
+				// Matching
+				txbMatchingG.Text = "配对";
+				lblGreekRecordPtMDesc.Content = "最高分数";
+				lblGreekRecordTimeMDesc.Content = "最快时间";
+				lblGreekAveragePtMDesc.Content = "平均分数";
+				lblGreekAverageTimeMDesc.Content = "平均时间";
+				// Reorder
+				txbReorderG.Text = "排序";
+				lblGreekRecordPtRDesc.Content = "最高分数";
+				lblGreekRecordTimeRDesc.Content = "最快时间";
+				lblGreekAveragePtRDesc.Content = "平均分数";
+				lblGreekAverageTimeRDesc.Content = "平均时间";
+
+				// Achievements
+				grpAchievements.Header = "成绩";
+				txbBadges.Text = "奖章";
+				// Badge Tooltips
+				imgFirstHebrewMatch.ToolTip = "玩一次希伯来语经卷配对";
+				imgFirstHebrewReorder.ToolTip = "玩一次希伯来语经卷排序";
+				imgFirstGreekMatch.ToolTip = "玩一次希腊语经卷配对";
+				imgFirstGreekReorder.ToolTip = "玩一次希腊语经卷排序";
+				imgHebrewMatchTime.ToolTip = "希伯来语经卷配对时间少于00:01:15";
+				imgHebrewReorderTime.ToolTip = "希伯来语经卷排序时间少于00:02:15";
+				imgGreekMatchTime.ToolTip = "希腊语经卷配对时间少于00:00:45";
+				imgGreekReorderTime.ToolTip = "希腊语经卷排序时间少于00:01:45";
+				imgHebrewMatch100.ToolTip = "希伯来语经卷配对100%准确率";
+				imgHebrewReorder100.ToolTip = "希伯来语经卷排序100%准确率";
+				imgGreekMatch100.ToolTip = "希腊语经卷配对100%准确率";
+				imgGreekReorder100.ToolTip = "希腊语经卷排序100%准确率";
+				imgBadgeMorning.ToolTip = "8:30am 之前玩";
+				imgBadgeNight.ToolTip = "9:00pm 以后玩";
+				imgBadgeExodus.ToolTip = "把这本书在两个不同的游戏中答对";
+				imgBadgeRuth.ToolTip = "把这本书在两个不同的游戏中答对";
+
+				// Enter a Code
+				txbEnterCode.Text = "输入密码";
+				btnSubmitCode.Content = "递交";
+				txbInvalid.Text = "密码无效。";
+			}
+
 			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
 
 			// Load statistic numbers
