@@ -22,7 +22,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" Margin="20" FontSize="30" FontFamily="Tahoma" TextAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3">Please select the user:</TextBlock>
+        <TextBlock x:Name="txbSelect" Grid.Column="0" Grid.Row="0" Margin="20" FontSize="30" FontFamily="Tahoma" TextAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3">Please select the user:</TextBlock>
 
         <Image x:Name="imgUser1" Grid.Row="1" Grid.Column="0" Width="100" Height="100" HorizontalAlignment="Right"></Image>
         <Button x:Name="btnUser1" Grid.Column="1" Grid.Row="1" Margin="20" Content="New User" FontSize="22" Click="BtnUser1_Click" Style="{StaticResource RoundedUserButton}" Width="400" Height="150" Foreground="White"/>

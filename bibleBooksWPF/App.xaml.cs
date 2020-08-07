@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.IO;
 using System.Windows;
 
 namespace BibleBooksWPF {
@@ -11,5 +8,6 @@ namespace BibleBooksWPF {
 	/// Interaction logic for App.xaml
 	/// </summary>
 	public partial class App : Application {
+
 	}
 }

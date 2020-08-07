@@ -11,7 +11,6 @@ namespace BibleBooksWPF {
 	/// Interaction logic for MainMenu.xaml
 	/// </summary>
 	public partial class MainMenu : Page {
-		public static int intTotalPoints = 0;
 
 		public MainMenu() {
 			try {
@@ -23,7 +22,23 @@ namespace BibleBooksWPF {
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
 			try {
-				lblWelcome.Content = "Welcome: " + App.Current.Properties["currentUsername"];
+				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+					imenMain.Header = "主菜单";
+					imenHebrew.Header = "希伯来语经卷";
+					imenMatchHebrew.Header = "中英文配对";
+					imenReorderHebrew.Header = "排序";
+					imenGreek.Header = "希腊语经卷";
+					imenMatchGreek.Header = "中英文配对";
+					imenReorderGreek.Header = "排序";
+					imenStatistics.Header = "成绩";
+					imenSettings.Header = "设置";
+					imenExit.Header = "退出";
+					lblWelcome.Content = "欢迎: " + App.Current.Properties["currentUsername"];
+					menTop.FontSize = 16;
+				} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
+					lblWelcome.Content = "Welcome:  " + App.Current.Properties["currentUsername"];
+				}
+				
 				List<string> lstBadges = Statistics.GetBadges();
 				NewBadgeMessage winBadgeBox = new NewBadgeMessage();
 
