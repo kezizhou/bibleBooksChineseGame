@@ -144,7 +144,7 @@
                     <Image x:Name="imgHebrewReorderTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewReorderTime.png" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="5" ToolTip="Hebrew Reorder time less than 00:02:15"/>
 
                     <Image x:Name="imgGreekMatchTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekMatchTime.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="0" ToolTip="Greek Match time less than 00:00:45"/>
-                    <Image x:Name="imgGreekReorderTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekReorderTime.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="1" ToolTip="Greek Reorder time less than 00:01:45"/>
+                    <Image x:Name="imgGreekReorderTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekReorderTime.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="1" ToolTip="Greek Reorder time less than 00:00:50"/>
                     <Image x:Name="imgHebrewMatch100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewMatch100.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="2" ToolTip="Hebrew Match 100% accuracy"/>
                     <Image x:Name="imgHebrewReorder100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewReorder100.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="3" ToolTip="Hebrew Reorder 100% accuracy"/>
                     <Image x:Name="imgGreekMatch100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekMatch100.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="4" ToolTip="Greek Match 100% accuracy"/>

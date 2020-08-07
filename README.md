@@ -4,6 +4,7 @@ A matching game for Chinese and English Bible books
 ## Sections:  
 [Installation](#installation)  
 [Sample Screenshots](#sample-screenshots)  
+[Features](#features)
 [Zoom Sharing](#zoom-sharing)  
 [Credits](#credits)
 
@@ -46,9 +47,21 @@ When these steps have been completed, you should see a window like this on the i
 
 ![Greek Scriptures Reorder](documentation/greekReorder.png)  
 
+![Statistics](documentation/statistics.png)  
+
 ![Settings](documentation/settings.png)
 
 **[Back to Top](#bibleBooksChineseGame)**
+
+***
+### Features
+* Language setting to switch interface and games from English to Chinese and vice versa
+* Matching games for Hebrew and Greek Scriptures with Chinese and English
+* Reorder Bible books games for Hebrew and Greek Scriptures
+* Opportunity to earn badges during play
+* Statistics page tracks average and record scores and times
+* Turn on or off audio pronunciation for Bible books
+* Multiple users per device
 
 ***
 ### Zoom Sharing
