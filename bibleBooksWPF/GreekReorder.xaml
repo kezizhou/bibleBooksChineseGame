@@ -37,11 +37,11 @@
 
         <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" FontFamily="Tahoma" Background="#FFDFF2F7" Padding="2,5" FontSize="14" VerticalAlignment="Top">
             <MenuItem x:Name="imenMainMenu" Header="Main Menu" Click="ImenMainMenu_Click"/>
-            <MenuItem Header="Hebrew Scriptures">
+            <MenuItem x:Name="imenHebrew" Header="Hebrew Scriptures">
                 <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
                 <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books" Click="ImenReorderHebrew_Click"/>
             </MenuItem>
-            <MenuItem Header="Greek Scriptures">
+            <MenuItem x:Name="imenGreek" Header="Greek Scriptures">
                 <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English" Click="ImenMatchGreek_Click"/>
                 <MenuItem x:Name="imenReorderGreek" IsEnabled="False" Header="Reorder Books"/>
             </MenuItem>
@@ -144,16 +144,16 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Column="0" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Padding="10,0">Current Points:</TextBlock>
+            <TextBlock x:Name="txbCurrentPoints" Grid.Column="0" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Padding="10,0">Current Points:</TextBlock>
             <Label x:Name="lblCurrentPoints" Content="0" Grid.Column="1" Grid.Row="0" FontSize="16"/>
 
-            <TextBlock Grid.Column="2" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Current Percentage Correct:</TextBlock>
+            <TextBlock x:Name="txbPercentageCorrect" Grid.Column="2" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Current Percentage Correct:</TextBlock>
             <Label x:Name="lblPercentageCorrect" Content="0 %" Grid.Column="4" Grid.Row="0" FontSize="16"/>
 
-            <TextBlock Grid.Column="2" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Time Elapsed:</TextBlock>
+            <TextBlock x:Name="txbTimeElapsed" Grid.Column="2" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Time Elapsed:</TextBlock>
             <Label x:Name="lblTimeElapsed" Content="00:00:00" Grid.Column="4" Grid.Row="1" FontSize="16" Padding="5,5,10,5"></Label>
 
-            <TextBlock Grid.Column="0" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Padding="10,0">Total Points:</TextBlock>
+            <TextBlock x:Name="txbTotalPoints" Grid.Column="0" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Padding="10,0">Total Points:</TextBlock>
             <Label x:Name="lblTotalPoints" Content="0" Grid.Column="1" Grid.Row="1" FontSize="16"></Label>
         </Grid>
 

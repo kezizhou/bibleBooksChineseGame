@@ -27,7 +27,7 @@ namespace BibleBooksWPF
 		Dictionary<string, Point> dctTransform = new Dictionary<String, Point>();
 
 		private Point gridBeforeMatch;
-		private static int intHebrewAnswered = 0;
+		private static int intNumberAttempted = 0;
 		private static int intNumberCorrect = 0;
 		private static int intCurrentPoints = 0;
 		List<Point> lpntChLabels = new List<Point>();
@@ -53,7 +53,7 @@ namespace BibleBooksWPF
 				InitializeComponent();
 
 				// Reset points
-				intHebrewAnswered = 0;
+				intNumberAttempted = 0;
 				intNumberCorrect = 0;
 				intCurrentPoints = 0;
 
@@ -148,6 +148,30 @@ namespace BibleBooksWPF
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
 			try {
+				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+					// Menu bar
+					imenMainMenu.Header = "主菜单";
+					imenHebrew.Header = "希伯来语经卷";
+					imenMatchHebrew.Header = "中英文配对";
+					imenReorderHebrew.Header = "排序";
+					imenGreek.Header = "希腊语经卷";
+					imenMatchGreek.Header = "中英文配对";
+					imenReorderGreek.Header = "排序";
+					imenStatistics.Header = "成绩";
+					imenSettings.Header = "设置";
+					imenExit.Header = "退出";
+					menTop.FontSize = 16;
+
+					// Score labels
+					txbCurrentPoints.Text = "本次分数";
+					txbPercentageCorrect.Text = "本次正确率";
+					txbTimeElapsed.Text = "计时";
+					txbTotalPoints.Text = "总分";
+					txbNumberAttempted.Text = "尝试次数";
+				}
+
+				lblTotalPoints.Content = Properties.Settings.Default.lngTotalPoints;
+
 				Random r = new Random();
 
 				foreach (String strChLbl in astrChHebrew) {
@@ -268,9 +292,10 @@ namespace BibleBooksWPF
 
 						// Add points
 						intCurrentPoints += 1;
-						MainMenu.intTotalPoints += 1;
+						Properties.Settings.Default.lngTotalPoints += 1;
+						Properties.Settings.Default.Save();
 						intNumberCorrect += 1;
-						intHebrewAnswered += 1;
+						intNumberAttempted += 1;
 						refreshPoints();
 
 						// Move correct label on top of English
@@ -310,8 +335,9 @@ namespace BibleBooksWPF
 			if (blnCorrect == false && blnAttemptedMatch == true) {
 				// Point penalty
 				intCurrentPoints -= 1;
-				MainMenu.intTotalPoints -= 1;
-				intHebrewAnswered += 1;
+				Properties.Settings.Default.lngTotalPoints -= 1;
+				Properties.Settings.Default.Save();
+				intNumberAttempted += 1;
 				refreshPoints();
 
 				// Label was moved from original position
@@ -345,9 +371,9 @@ namespace BibleBooksWPF
 
 		private void refreshPoints() {
 			lblCurrentPoints.Content = intCurrentPoints.ToString();
-			lblTotalPoints.Content = MainMenu.intTotalPoints.ToString();
-			lblPercentageCorrect.Content = String.Format("{0:P2}", (double)intNumberCorrect / intHebrewAnswered);
-			lblHebrewAnswered.Content = intHebrewAnswered.ToString();
+			lblTotalPoints.Content = Properties.Settings.Default.lngTotalPoints.ToString();
+			lblPercentageCorrect.Content = String.Format("{0:P2}", (double)intNumberCorrect / intNumberAttempted);
+			lblNumberAttempted.Content = intNumberAttempted.ToString();
 		}
 
 		private void completedMatching() {
@@ -355,10 +381,11 @@ namespace BibleBooksWPF
 			CustomMessageBox winMsgBox = new CustomMessageBox();
 
 			// Add the game data to statistics json file
-			Statistics.AddStatistic("HebrewMatch", intCurrentPoints, stopwatch.Elapsed);
+			TimeSpan time = new TimeSpan(stopwatch.Elapsed.Hours, stopwatch.Elapsed.Minutes, stopwatch.Elapsed.Seconds);
+			Statistics.AddStatistic("HebrewMatch", intCurrentPoints, time);
 
 			string strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
-										"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intHebrewAnswered) + "\n" +
+										"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intNumberAttempted) + "\n" +
 										"Time Elapsed: " + lblTimeElapsed.Content, "Congratulations!", "congrats", winMsgBox);
 
 			switch (strResponse) {
