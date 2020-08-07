@@ -150,6 +150,29 @@ namespace BibleBooksWPF {
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
 			try {
+				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+					// Menu bar
+					imenMainMenu.Header = "主菜单";
+					imenHebrew.Header = "希伯来语经卷";
+					imenMatchHebrew.Header = "中英文配对";
+					imenReorderHebrew.Header = "排序";
+					imenGreek.Header = "希腊语经卷";
+					imenMatchGreek.Header = "中英文配对";
+					imenReorderGreek.Header = "排序";
+					imenStatistics.Header = "成绩";
+					imenSettings.Header = "设置";
+					imenExit.Header = "退出";
+					menTop.FontSize = 16;
+
+					// Score labels
+					txbCurrentPoints.Text = "本次分数";
+					txbPercentageCorrect.Text = "本次正确率";
+					txbTimeElapsed.Text = "计时";
+					txbTotalPoints.Text = "总分";
+				}
+
+				lblTotalPoints.Content = Properties.Settings.Default.lngTotalPoints;
+
 				Random r = new Random();
 
 				int i = 0;
@@ -271,7 +294,8 @@ namespace BibleBooksWPF {
 
 						// Add points
 						intCurrentPoints += 1;
-						MainMenu.intTotalPoints += 1;
+						Properties.Settings.Default.lngTotalPoints += 1;
+						Properties.Settings.Default.Save();
 						intNumberCorrect += 1;
 						intTries += 1;
 						refreshPoints();
@@ -323,7 +347,8 @@ namespace BibleBooksWPF {
 				// Point penalty
 				intCurrentPoints -= 1;
 				intTries += 1;
-				MainMenu.intTotalPoints -= 1;
+				Properties.Settings.Default.lngTotalPoints -= 1;
+				Properties.Settings.Default.Save();
 				refreshPoints();
 
 				// Label was moved from original position
@@ -357,7 +382,7 @@ namespace BibleBooksWPF {
 
 		private void refreshPoints() {
 			lblCurrentPoints.Content = intCurrentPoints.ToString();
-			lblTotalPoints.Content = MainMenu.intTotalPoints.ToString();
+			lblTotalPoints.Content = Properties.Settings.Default.lngTotalPoints.ToString();
 			lblPercentageCorrect.Content = String.Format("{0:P2}", (double)intNumberCorrect / intTries);
 		}
 
@@ -366,7 +391,8 @@ namespace BibleBooksWPF {
 			CustomMessageBox winMsgBox = new CustomMessageBox();
 
 			// Add the game data to statistics json file
-			Statistics.AddStatistic("HebrewReorder", intCurrentPoints, stopwatch.Elapsed);
+			TimeSpan time = new TimeSpan(stopwatch.Elapsed.Hours, stopwatch.Elapsed.Minutes, stopwatch.Elapsed.Seconds);
+			Statistics.AddStatistic("HebrewReorder", intCurrentPoints, time);
 
 			string strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
 										"Percentage Correct: " + string.Format("{0:P2}", (double)intNumberCorrect / intTries) + "\n" +
