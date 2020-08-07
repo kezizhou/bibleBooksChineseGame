@@ -46,5 +46,17 @@ namespace BibleBooksWPF.Properties {
                 this["strLanguage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public long lngTotalPoints {
+            get {
+                return ((long)(this["lngTotalPoints"]));
+            }
+            set {
+                this["lngTotalPoints"] = value;
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ExtensionMethods;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +28,14 @@ namespace BibleBooksWPF {
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
 			try {
+				// Language settings
+				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+					txbSelect.Text = "请选择用户";
+					btnUser1.Content = "新用户";
+					btnUser2.Content = "新用户";
+					btnUser3.Content = "新用户";
+				}
+
 				// Create file if it does not exist
 				if (!File.Exists("users.json")) {
 					File.Create("users.json");
@@ -65,7 +74,7 @@ namespace BibleBooksWPF {
 		private void BtnUser1_Click(object sender, RoutedEventArgs e) {
 			try {
 				Button btnUser1 = sender as Button;
-				if (btnUser1.Content.Equals("New User")) {
+				if (btnUser1.Content.Equals("New User") || btnUser1.Content.Equals("新用户")) {
 					NewUser();
 				} else {
 					// Existing user
@@ -81,7 +90,7 @@ namespace BibleBooksWPF {
 		private void BtnUser2_Click(object sender, RoutedEventArgs e) {
 			try {
 				Button btnUser2 = sender as Button;
-				if (btnUser2.Content.Equals("New User")) {
+				if (btnUser2.Content.Equals("New User") || btnUser2.Content.Equals("新用户")) {
 					NewUser();
 				} else {
 					// Existing user
@@ -97,7 +106,7 @@ namespace BibleBooksWPF {
 		private void BtnUser3_Click(object sender, RoutedEventArgs e) {
 			try {
 				Button btnUser3 = sender as Button;
-				if (btnUser3.Content.Equals("New User")) {
+				if (btnUser3.Content.Equals("New User") || btnUser3.Content.Equals("新用户")) {
 					NewUser();
 				} else {
 					// Existing user
@@ -125,22 +134,48 @@ namespace BibleBooksWPF {
 			// Check that the input is not an existing user
 			while ( ((Array.IndexOf(astrUsernames, newUser.Item1) >= 0) ||  // Is a duplicate username
 			newUser.Item1.Equals(string.Empty) ||                           // Is an empty string
-			newUser.Item1.Equals("New User") )							// Is "New User"
-			&& !newUser.Item1.Equals("Cancel")) {                         // Is not the cancel button
+			newUser.Item1.Equals("New User") ||								// Is "New User"
+			newUser.Item1.Equals("新用户") )									// Is "新用户“
+			&& !newUser.Item1.Equals("Cancel") ) {                          // And is not the cancel button
 
-				switch (newUser.Item1) {
-					case "":
-						winNewUser = new NewUser();
-						newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "Please enter a valid username");
-						break;
-					case "New User":
-						winNewUser = new NewUser();
-						newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "Please enter a valid username");
-						break;
-					default:
-						winNewUser = new NewUser();
-						newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "Please enter a unique username");
-						break;
+				if (Properties.Settings.Default.strLanguage.Equals("English")) {
+					switch (newUser.Item1) {
+						case "":
+							winNewUser = new NewUser();
+							newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "Please enter a valid username");
+							break;
+						case "New User":
+							winNewUser = new NewUser();
+							newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "Please enter a valid username");
+							break;
+						case "新用户":
+							winNewUser = new NewUser();
+							newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "Please enter a valid username");
+							break;
+						default:
+							winNewUser = new NewUser();
+							newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "Please enter a unique username");
+							break;
+					}
+				} else if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+					switch (newUser.Item1) {
+						case "":
+							winNewUser = new NewUser();
+							newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "请输入用户名");
+							break;
+						case "New User":
+							winNewUser = new NewUser();
+							newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "请换一个用户名");
+							break;
+						case "新用户":
+							winNewUser = new NewUser();
+							newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "请换一个用户名");
+							break;
+						default:
+							winNewUser = new NewUser();
+							newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "用户名已经存在");
+							break;
+					}
 				}
 
 			}
@@ -169,6 +204,8 @@ namespace BibleBooksWPF {
 			User currentUser = new User(strUsername, strProfilePic, lstStatistics, lstBadges);
 
 			App.Current.Properties["currentUsername"] = currentUser.username;
+			Properties.Settings.Default.blnAudio = true;
+			Properties.Settings.Default.strLanguage = "English";
 
 			lstUsers.Users.Add(currentUser);
 
@@ -183,12 +220,21 @@ namespace BibleBooksWPF {
 
 		private void LoadExistingUser(string strUsername) {
 			App.Current.Properties["currentUsername"] = strUsername;
+
+			// Get user from JSON file
+			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+			User userCurrent = userToken.ToObject<User>();
+
+			// Previous audio and language settings
+			Properties.Settings.Default.blnAudio = userCurrent.blnAudio;
+			Properties.Settings.Default.strLanguage = userCurrent.strLanguage;
 		}
 
 		private void btnDelete1_Click(object sender, RoutedEventArgs e) {
 			// Confirm message box
 			ConfirmMessageBox winConfirm = new ConfirmMessageBox();
-			string strText = "Are you sure you want to delete user: " + lstUsers.Users[0].username + "?";
+			string strText = "Are you sure you want to delete user: " + lstUsers.Users[0].username + "?" + System.Environment.NewLine + "This cannot be undone.";
 			string strResult = CustomMessageBoxMethods.ShowMessage(strText, winConfirm);
 
 			switch (strResult) {
@@ -212,7 +258,7 @@ namespace BibleBooksWPF {
 		private void btnDelete2_Click(object sender, RoutedEventArgs e) {
 			// Confirm message box
 			ConfirmMessageBox winConfirm = new ConfirmMessageBox();
-			string strText = "Are you sure you want to delete user: " + lstUsers.Users[1].username + "?";
+			string strText = "Are you sure you want to delete user: " + lstUsers.Users[1].username + "?" + System.Environment.NewLine + "This cannot be undone.";
 			string strResult = CustomMessageBoxMethods.ShowMessage(strText, winConfirm);
 
 			switch (strResult) {
@@ -235,7 +281,7 @@ namespace BibleBooksWPF {
 		private void btnDelete3_Click(object sender, RoutedEventArgs e) {
 			// Confirm message box
 			ConfirmMessageBox winConfirm = new ConfirmMessageBox();
-			string strText = "Are you sure you want to delete user: " + lstUsers.Users[2].username + "?";
+			string strText = "Are you sure you want to delete user: " + lstUsers.Users[2].username + "?" + System.Environment.NewLine + "This cannot be undone.";
 			string strResult = CustomMessageBoxMethods.ShowMessage(strText, winConfirm);
 
 			switch (strResult) {
