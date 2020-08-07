@@ -32,7 +32,7 @@ namespace ExtensionMethods {
 	public static class Statistics {
 		public static void AddStatistic(string strGameName, int intPoints, TimeSpan tsTimeElapsed) {
 			try {
-				NewBadgeMessage winBadgeBox = new NewBadgeMessage();
+				NewBadgeMessage winBadgeBox;
 
 				// Get the current user's statistics for this game
 				JObject obj = JObject.Parse(File.ReadAllText("users.json"));
@@ -44,6 +44,7 @@ namespace ExtensionMethods {
 				if (gsTotalGames.lintPoints.Count == 0) {
 					// Add new badge
 					AddBadge("imgFirst" + strGameName);
+					winBadgeBox = new NewBadgeMessage();
 					CustomMessageBoxMethods.ShowMessage("imgFirst" + strGameName, winBadgeBox);
 
 					// Refresh json object
@@ -54,42 +55,92 @@ namespace ExtensionMethods {
 				// Exodus badge
 				if (App.Current.Properties["exodusBadge"].ToString() == "2") {
 					AddBadge("imgBadgeExodus");
+					winBadgeBox = new NewBadgeMessage();
 					CustomMessageBoxMethods.ShowMessage("imgBadgeExodus", winBadgeBox);
 				}
 
 				// Ruth badge
 				if (App.Current.Properties["ruthBadge"].ToString() == "2") {
 					AddBadge("imgBadgeRuth");
+					winBadgeBox = new NewBadgeMessage();
 					CustomMessageBoxMethods.ShowMessage("imgBadgeRuth", winBadgeBox);
 				}
 
 				if (strGameName.Equals("HebrewMatch")) {
 					if (tsTimeElapsed <= new TimeSpan(0, 1, 15)) {
 						AddBadge("imgHebrewMatchTime");
+						winBadgeBox = new NewBadgeMessage();
+						CustomMessageBoxMethods.ShowMessage("imgHebrewMatchTime", winBadgeBox);
+
+						// Refresh json object
+						obj = JObject.Parse(File.ReadAllText("users.json"));
+						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 					if (intPoints == 39 ) {
 						AddBadge("imgHebrewMatch100");
+						winBadgeBox = new NewBadgeMessage();
+						CustomMessageBoxMethods.ShowMessage("imgHebrewMatch100", winBadgeBox);
+
+						// Refresh json object
+						obj = JObject.Parse(File.ReadAllText("users.json"));
+						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 				} else if (strGameName.Equals("HebrewReorder")) {
 					if (tsTimeElapsed <= new TimeSpan(0, 2, 15)) {
 						AddBadge("imgHebrewReorderTime");
+						winBadgeBox = new NewBadgeMessage();
+						CustomMessageBoxMethods.ShowMessage("imgHebrewReorderTime", winBadgeBox);
+
+						// Refresh json object
+						obj = JObject.Parse(File.ReadAllText("users.json"));
+						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 					if (intPoints == 39) {
 						AddBadge("imgHebrewReorder100");
+						winBadgeBox = new NewBadgeMessage();
+						CustomMessageBoxMethods.ShowMessage("imgHebrewReorder100", winBadgeBox);
+
+						// Refresh json object
+						obj = JObject.Parse(File.ReadAllText("users.json"));
+						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 				} else if (strGameName.Equals("GreekMatch")) {
 					if (tsTimeElapsed <= new TimeSpan(0, 0, 45)) {
 						AddBadge("imgGreekMatchTime");
+						winBadgeBox = new NewBadgeMessage();
+						CustomMessageBoxMethods.ShowMessage("imgGreekMatchTime", winBadgeBox);
+
+						// Refresh json object
+						obj = JObject.Parse(File.ReadAllText("users.json"));
+						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 					if (intPoints == 27) {
 						AddBadge("imgGreekMatch100");
+						winBadgeBox = new NewBadgeMessage();
+						CustomMessageBoxMethods.ShowMessage("imgGreekMatch100", winBadgeBox);
+
+						// Refresh json object
+						obj = JObject.Parse(File.ReadAllText("users.json"));
+						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 				} else if (strGameName.Equals("GreekReorder")) {
 					if (tsTimeElapsed <= new TimeSpan(0, 1, 45)) {
 						AddBadge("imgGreekReorderTime");
+						winBadgeBox = new NewBadgeMessage();
+						CustomMessageBoxMethods.ShowMessage("imgGreekReorderTime", winBadgeBox);
+
+						// Refresh json object
+						obj = JObject.Parse(File.ReadAllText("users.json"));
+						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 					if (intPoints == 27) {
 						AddBadge("imgGreekReorder100");
+						winBadgeBox = new NewBadgeMessage();
+						CustomMessageBoxMethods.ShowMessage("imgGreekReorder100", winBadgeBox);
+
+						// Refresh json object
+						obj = JObject.Parse(File.ReadAllText("users.json"));
+						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 				}
 
