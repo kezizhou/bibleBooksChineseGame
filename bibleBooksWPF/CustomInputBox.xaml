@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BibleBooksWPF"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Custom Input Box Title" Height="235" Width="505">
+        Title="Custom Input Box Title" Height="235" Width="505" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="165"/>
