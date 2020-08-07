@@ -124,7 +124,7 @@ namespace ExtensionMethods {
 						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 				} else if (strGameName.Equals("GreekReorder")) {
-					if (tsTimeElapsed <= new TimeSpan(0, 1, 45)) {
+					if (tsTimeElapsed <= new TimeSpan(0, 0, 50)) {
 						AddBadge("imgGreekReorderTime");
 						winBadgeBox = new NewBadgeMessage();
 						CustomMessageBoxMethods.ShowMessage("imgGreekReorderTime", winBadgeBox);
