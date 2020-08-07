@@ -35,20 +35,35 @@ When these steps have been completed, you should see a window like this on the i
 ***
 ## Sample Screenshots
 
-![Select User](documentation/selectUser.png)
+Select User  
+![Select User](documentation/selectUser.png)  
+***
 
+Main Menu  
 ![Main Menu](documentation/mainMenu.png)  
+***
 
+Hebrew Scriptures Match Chinese to English  
 ![Hebrew Scriptures Match Chinese to English](documentation/hebrewMatch.png)  
+***
 
+Hebrew Scriptures Reorder Books  
 ![Hebrew Scriptures Reorder](documentation/hebrewReorder.png)  
+***
 
-![Greek Scriptures Match Chinese to Englishs](documentation/greekMatch.png)  
+Greek Scriptures Match Chinese to English  
+![Greek Scriptures Match Chinese to English](documentation/greekMatch.png)  
+***
 
+Greek Scriptures Reorder Books  
 ![Greek Scriptures Reorder](documentation/greekReorder.png)  
+***
 
+Statistics  
 ![Statistics](documentation/statistics.png)  
+***
 
+Settings  
 ![Settings](documentation/settings.png)
 
 **[Back to Top](#bibleBooksChineseGame)**
