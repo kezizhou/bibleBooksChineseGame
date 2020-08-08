@@ -38,13 +38,13 @@ namespace BibleBooksWPF {
 				}
 
 				// Create app directory and users file if they do not exist
-				string appDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BibleBooksGame");
+				string appDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BibleBooksGame");
 				if (!Directory.Exists(appDirectory)) {
 					Directory.CreateDirectory(appDirectory);
 				}
 
 				if (!File.Exists(Globals.usersFilePath)) {
-					File.Create(Globals.usersFilePath).Close();
+					File.Create(Globals.usersFilePath);
 				}
 
 				// Get the users from the file if not empty
