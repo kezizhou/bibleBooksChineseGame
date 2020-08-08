@@ -34,6 +34,7 @@ namespace BibleBooksWPF {
 					imenSettings.Header = "设置";
 					imenExit.Header = "退出";
 					lblWelcome.Content = "欢迎: " + App.Current.Properties["currentUsername"];
+					txbDescription.Text = "点击以上的链接选择游戏";
 					menTop.FontSize = 16;
 				} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
 					lblWelcome.Content = "Welcome:  " + App.Current.Properties["currentUsername"];

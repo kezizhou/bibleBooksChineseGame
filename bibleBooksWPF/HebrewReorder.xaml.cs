@@ -392,11 +392,20 @@ namespace BibleBooksWPF {
 
 			// Add the game data to statistics json file
 			TimeSpan time = new TimeSpan(stopwatch.Elapsed.Hours, stopwatch.Elapsed.Minutes, stopwatch.Elapsed.Seconds);
-			Statistics.AddStatistic("HebrewReorder", intCurrentPoints, time);
+			string strRecord = Statistics.AddStatistic("HebrewReorder", intCurrentPoints, time);
 
-			string strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
-										"Percentage Correct: " + string.Format("{0:P2}", (double)intNumberCorrect / intTries) + "\n" +
-										"Time Elapsed: " + lblTimeElapsed.Content, "Congratulations!", "congrats", winMsgBox);
+			string strResponse = "";
+			if (strRecord != "") {
+				// Record set
+				strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
+							"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intTries) + "\n" +
+							"Time Elapsed: " + lblTimeElapsed.Content, "Congratulations!", "congrats", strRecord, winMsgBox);
+			} else {
+				// No record set
+				strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
+							"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intTries) + "\n" +
+							"Time Elapsed: " + lblTimeElapsed.Content, "Congratulations!", "congrats", winMsgBox);
+			}
 
 			switch (strResponse) {
 				case "Retry":
