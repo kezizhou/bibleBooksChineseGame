@@ -44,7 +44,7 @@ namespace BibleBooksWPF {
 				}
 
 				if (!File.Exists(Globals.usersFilePath)) {
-					File.Create(Globals.usersFilePath);
+					File.Create(Globals.usersFilePath).Close();
 				}
 
 				// Get the users from the file if not empty
