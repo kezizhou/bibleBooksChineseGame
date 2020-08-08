@@ -44,7 +44,7 @@ namespace BibleBooksWPF {
 
 		static Globals() {
 			if (ApplicationDeployment.IsNetworkDeployed) {
-				usersFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BibleBooksGame", Globals.usersFilePath);
+				usersFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BibleBooksGame", "users.json");
 			} else {
 				usersFilePath = "users.json";
 			}
