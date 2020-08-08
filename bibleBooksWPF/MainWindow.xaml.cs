@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Deployment.Application;
 using System.IO;
 using System.Windows;
 using System.Windows.Navigation;
@@ -18,20 +19,35 @@ namespace BibleBooksWPF {
 		protected override void OnClosed(EventArgs e) {
 			// Save user total points
 			// Get user from JSON file
-			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
-			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
-			User userCurrent = userToken.ToObject<User>();
+			if (App.Current.Properties["currentUsername"] == null) {
 
-			// Update the setting in json
-			userCurrent.lngTotalPoints = Properties.Settings.Default.lngTotalPoints;
-			Properties.Settings.Default.Save();
-			userToken.Replace(JToken.FromObject(userCurrent));
+				JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
+				JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+				User userCurrent = userToken.ToObject<User>();
 
-			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
-			File.WriteAllText("users.json", newJson);
+				// Update the setting in json
+				userCurrent.lngTotalPoints = Properties.Settings.Default.lngTotalPoints;
+				Properties.Settings.Default.Save();
+				userToken.Replace(JToken.FromObject(userCurrent));
+
+				string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+				File.WriteAllText(Globals.usersFilePath, newJson);
+			}
 
 			base.OnClosed(e);
 			Application.Current.Shutdown();
+		}
+	}
+
+	public static class Globals {
+		public static string usersFilePath = "";
+
+		static Globals() {
+			if (ApplicationDeployment.IsNetworkDeployed) {
+				usersFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BibleBooksGame", Globals.usersFilePath);
+			} else {
+				usersFilePath = "users.json";
+			}
 		}
 	}
 }

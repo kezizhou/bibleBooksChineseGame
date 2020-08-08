@@ -18,7 +18,15 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="imgIcon" Grid.Row="0" Grid.Column="0" Width="100" Height="83"></Image>
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" >
+            <Image x:Name="imgIcon" Width="100" Height="83"></Image>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image x:Name="imgPointRecord" Width="25" Height="25" Margin="5" Source="pack://application:,,,/BibleBooksWPF;component/Resources/pointRecord.png" Visibility="Collapsed"></Image>
+                <Image x:Name="imgTimeRecord" Width="25" Height="25" Source="pack://application:,,,/BibleBooksWPF;component/Resources/timeRecord.png" Visibility="Collapsed"></Image>
+                <TextBlock x:Name="txbRecord" Padding="5" Foreground="red" VerticalAlignment="Center" Visibility="Collapsed">New Record!</TextBlock>
+            </StackPanel>
+        </StackPanel>
+
         <TextBlock x:Name="txbMessageText" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center">
             Message text goes here
         </TextBlock>
