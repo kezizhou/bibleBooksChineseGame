@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace ExtensionMethods {
@@ -30,12 +31,15 @@ namespace ExtensionMethods {
 	}
 
 	public static class Statistics {
-		public static void AddStatistic(string strGameName, int intPoints, TimeSpan tsTimeElapsed) {
+		public static string AddStatistic(string strGameName, int intPoints, TimeSpan tsTimeElapsed) {
+			string strRecord = "";
+
 			try {
+
 				NewBadgeMessage winBadgeBox;
 
 				// Get the current user's statistics for this game
-				JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+				JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 				JToken userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 
 				GameStatistics gsTotalGames = userGameToken.ToObject<GameStatistics>();
@@ -48,8 +52,17 @@ namespace ExtensionMethods {
 					CustomMessageBoxMethods.ShowMessage("imgFirst" + strGameName, winBadgeBox);
 
 					// Refresh json object
-					obj = JObject.Parse(File.ReadAllText("users.json"));
+					obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 					userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
+				} else {
+					// Check if this is a new high score
+					if ( (intPoints > gsTotalGames.lintPoints.Max()) && (tsTimeElapsed < gsTotalGames.ltsTimeElapsed.Min()) ) {
+						strRecord = "both";
+					} else if (tsTimeElapsed < gsTotalGames.ltsTimeElapsed.Min()) {
+						strRecord = "time";
+					} else if (intPoints > gsTotalGames.lintPoints.Max()) {
+						strRecord = "point";
+					}
 				}
 
 				// Exodus badge
@@ -73,7 +86,7 @@ namespace ExtensionMethods {
 						CustomMessageBoxMethods.ShowMessage("imgHebrewMatchTime", winBadgeBox);
 
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText("users.json"));
+						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 					if (intPoints == 39 ) {
@@ -82,7 +95,7 @@ namespace ExtensionMethods {
 						CustomMessageBoxMethods.ShowMessage("imgHebrewMatch100", winBadgeBox);
 
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText("users.json"));
+						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 				} else if (strGameName.Equals("HebrewReorder")) {
@@ -92,7 +105,7 @@ namespace ExtensionMethods {
 						CustomMessageBoxMethods.ShowMessage("imgHebrewReorderTime", winBadgeBox);
 
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText("users.json"));
+						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 					if (intPoints == 39) {
@@ -101,7 +114,7 @@ namespace ExtensionMethods {
 						CustomMessageBoxMethods.ShowMessage("imgHebrewReorder100", winBadgeBox);
 
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText("users.json"));
+						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 				} else if (strGameName.Equals("GreekMatch")) {
@@ -111,7 +124,7 @@ namespace ExtensionMethods {
 						CustomMessageBoxMethods.ShowMessage("imgGreekMatchTime", winBadgeBox);
 
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText("users.json"));
+						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 					if (intPoints == 27) {
@@ -120,7 +133,7 @@ namespace ExtensionMethods {
 						CustomMessageBoxMethods.ShowMessage("imgGreekMatch100", winBadgeBox);
 
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText("users.json"));
+						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 				} else if (strGameName.Equals("GreekReorder")) {
@@ -130,7 +143,7 @@ namespace ExtensionMethods {
 						CustomMessageBoxMethods.ShowMessage("imgGreekReorderTime", winBadgeBox);
 
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText("users.json"));
+						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 					if (intPoints == 27) {
@@ -139,7 +152,7 @@ namespace ExtensionMethods {
 						CustomMessageBoxMethods.ShowMessage("imgGreekReorder100", winBadgeBox);
 
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText("users.json"));
+						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 					}
 				}
@@ -151,16 +164,19 @@ namespace ExtensionMethods {
 				userGameToken.Replace(JToken.FromObject(gsTotalGames));
 
 				string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
-				File.WriteAllText("users.json", newJson);
+				File.WriteAllText(Globals.usersFilePath, newJson);
+
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
+
+			return strRecord;
 		}
 
 		public static void AddBadge(string strBadgeName) {
 			try {
 				// Get the current user's badges
-				JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+				JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 				JToken userBadgesToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstBadges");
 				List<string> lstBadges = userBadgesToken.ToObject<List<string>>();
 
@@ -173,7 +189,7 @@ namespace ExtensionMethods {
 				userBadgesToken.Replace(JToken.FromObject(lstBadges));
 
 				string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
-				File.WriteAllText("users.json", newJson);
+				File.WriteAllText(Globals.usersFilePath, newJson);
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -181,7 +197,7 @@ namespace ExtensionMethods {
 
 		public static List<string> GetBadges() {
 			// Get the current user's badges
-			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 			JToken userBadgesToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstBadges");
 			List<string> lstBadges = userBadgesToken.ToObject<List<string>>();
 
@@ -208,6 +224,66 @@ namespace ExtensionMethods {
 				switch (strIcon) {
 					case "congrats":
 						img.Source = new BitmapImage(new Uri("pack://application:,,,/BibleBooksWPF;component/Resources/congrats.png"));
+						break;
+					default:
+						break;
+				}
+
+				// Pop-up message box and get return value
+				winMsgBox.ShowDialog();
+				if (winMsgBox.strMsgReturn == null) {
+					strResult = "Main";
+				} else {
+					strResult = winMsgBox.strMsgReturn;
+				}
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
+
+			return strResult;
+		}
+
+		public static string ShowMessage(string strMessage, string strTitle, string strIcon, string strRecord, CustomMessageBox winMsgBox) {
+			string strResult = "";
+
+			try {
+				// Message text 
+				TextBlock txb = winMsgBox.FindName("txbMessageText") as TextBlock;
+				txb.Text = strMessage;
+
+				// Title
+				winMsgBox.Title = strTitle;
+
+				// Icon
+				Image img = winMsgBox.FindName("imgIcon") as Image;
+
+				// Show correct icon according to parameter
+				switch (strIcon) {
+					case "congrats":
+						img.Source = new BitmapImage(new Uri("pack://application:,,,/BibleBooksWPF;component/Resources/congrats.png"));
+						break;
+					default:
+						break;
+				}
+
+				// Show record message
+				Image imgTime = winMsgBox.FindName("imgTimeRecord") as Image;
+				Image imgPoint = winMsgBox.FindName("imgPointRecord") as Image;
+				TextBlock txbRecord = winMsgBox.FindName("txbRecord") as TextBlock;
+				switch (strRecord) {
+					case "both":
+						imgTime.Visibility = Visibility.Visible;
+						imgPoint.Visibility = Visibility.Visible;
+						txbRecord.Text = "New records!";
+						txbRecord.Visibility = Visibility.Visible;
+						break;
+					case "time":
+						imgTime.Visibility = Visibility.Visible;
+						txbRecord.Visibility = Visibility.Visible;
+						break;
+					case "point":
+						imgPoint.Visibility = Visibility.Visible;
+						txbRecord.Visibility = Visibility.Visible;
 						break;
 					default:
 						break;

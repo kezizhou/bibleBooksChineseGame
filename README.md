@@ -107,3 +107,5 @@ To share this application on Zoom and allow another person to control the screen
   * Delete User Trash Can Icon
   * Confirm Delete User Icon
   * User Profile Icons
+  * Record Score Icon
+  * Record Time Icon
