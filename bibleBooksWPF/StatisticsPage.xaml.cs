@@ -149,7 +149,44 @@ namespace BibleBooksWPF
 		}
 
 		private void BtnSubmitCode_Click(object sender, RoutedEventArgs e) {
-			// Hidden for Git publish
+			switch (txtCode.Text.ToLower()) {
+				// Anniversary
+				case "042119":
+					imgBadgeSpecial1.Visibility = Visibility.Visible;
+					Statistics.AddBadge("imgBadgeSpecial1");
+					break;
+				// Simcity name + " " + How old you thought I was
+				case "kezlen <3 12":
+					imgBadgeSpecial2.Visibility = Visibility.Visible;
+					Statistics.AddBadge("imgBadgeSpecial2");
+					break;
+				// A Box folder name
+				case "kezmei's (stuff that i love)":
+					imgBadgeSpecial3.Visibility = Visibility.Visible;
+					Statistics.AddBadge("imgBadgeSpecial3");
+					break;
+				// A favorite memory
+				case "holding hands":
+					imgBadgeSpecial4.Visibility = Visibility.Visible;
+					Statistics.AddBadge("imgBadgeSpecial4");
+					break;
+				// Another favorite memory
+				case "special hug":
+					imgBadgeSpecial5.Visibility = Visibility.Visible;
+					Statistics.AddBadge("imgBadgeSpecial5");
+					break;
+				// We have a matching set of these
+				case "rings":
+					imgBadgeSpecial6.Visibility = Visibility.Visible;
+					Statistics.AddBadge("imgBadgeSpecial6");
+					break;
+				default:
+					txbInvalid.Visibility = Visibility.Visible;
+					asyncRemoveInvalid();
+					break;
+			}
+
+			txtCode.Clear();
 		}
 
 		private async void asyncRemoveInvalid() {
