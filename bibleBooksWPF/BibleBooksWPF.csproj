@@ -31,7 +31,7 @@
     <PublisherName>kezizhou</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -359,6 +359,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\deleteUser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pointRecord.png" />
+    <Resource Include="Resources\timeRecord.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

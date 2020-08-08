@@ -30,20 +30,26 @@ namespace BibleBooksWPF {
 			try {
 				// Language settings
 				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
-					txbSelect.Text = "请选择用户";
+					txbSelect.Text = "请选择用户:";
 					btnUser1.Content = "新用户";
 					btnUser2.Content = "新用户";
 					btnUser3.Content = "新用户";
+					btnLanguage.Content = "English";
 				}
 
-				// Create file if it does not exist
-				if (!File.Exists("users.json")) {
-					File.Create("users.json");
+				// Create app directory and users file if they do not exist
+				string appDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BibleBooksGame");
+				if (!Directory.Exists(appDirectory)) {
+					Directory.CreateDirectory(appDirectory);
+				}
+
+				if (!File.Exists(Globals.usersFilePath)) {
+					File.Create(Globals.usersFilePath);
 				}
 
 				// Get the users from the file if not empty
-				if (new FileInfo("users.json").Length != 0) {
-					using (StreamReader file = File.OpenText("users.json")) {
+				if (new FileInfo(Globals.usersFilePath).Length != 0) {
+					using (StreamReader file = File.OpenText(Globals.usersFilePath)) {
 						JsonSerializer serializer = new JsonSerializer();
 						lstUsers = serializer.Deserialize(file, typeof(RootUser)) as RootUser;
 					}
@@ -210,7 +216,7 @@ namespace BibleBooksWPF {
 			lstUsers.Users.Add(currentUser);
 
 			// Add to JSON file
-			using (StreamWriter file = File.CreateText("users.json")) {
+			using (StreamWriter file = File.CreateText(Globals.usersFilePath)) {
 				JsonSerializer serializer = new JsonSerializer();
 				serializer.Formatting = Formatting.Indented;
 				serializer.Serialize(file, lstUsers);
@@ -222,7 +228,7 @@ namespace BibleBooksWPF {
 			App.Current.Properties["currentUsername"] = strUsername;
 
 			// Get user from JSON file
-			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
 			User userCurrent = userToken.ToObject<User>();
 
@@ -244,7 +250,7 @@ namespace BibleBooksWPF {
 					lstUsers.Users.RemoveAt(0);
 
 					// Update JSON file
-					using (StreamWriter file = File.CreateText("users.json")) {
+					using (StreamWriter file = File.CreateText(Globals.usersFilePath)) {
 						JsonSerializer serializer = new JsonSerializer();
 						serializer.Formatting = Formatting.Indented;
 						serializer.Serialize(file, lstUsers);
@@ -268,7 +274,7 @@ namespace BibleBooksWPF {
 					lstUsers.Users.RemoveAt(1);
 
 					// Update JSON file
-					using (StreamWriter file = File.CreateText("users.json")) {
+					using (StreamWriter file = File.CreateText(Globals.usersFilePath)) {
 						JsonSerializer serializer = new JsonSerializer();
 						serializer.Formatting = Formatting.Indented;
 						serializer.Serialize(file, lstUsers);
@@ -291,7 +297,7 @@ namespace BibleBooksWPF {
 					lstUsers.Users.RemoveAt(2);
 
 					// Update JSON file
-					using (StreamWriter file = File.CreateText("users.json")) {
+					using (StreamWriter file = File.CreateText(Globals.usersFilePath)) {
 						JsonSerializer serializer = new JsonSerializer();
 						serializer.Formatting = Formatting.Indented;
 						serializer.Serialize(file, lstUsers);
@@ -307,6 +313,18 @@ namespace BibleBooksWPF {
 		private void RefreshPage() {
 			SelectUser pSelectUser = new SelectUser();
 			NavigationService.Navigate(pSelectUser);
+		}
+
+		private void btnLanguage_Click(object sender, RoutedEventArgs e) {
+			if (Properties.Settings.Default.strLanguage == "English") {
+				Properties.Settings.Default.strLanguage = "Chinese";
+				Properties.Settings.Default.Save();
+			} else if (Properties.Settings.Default.strLanguage == "Chinese") {
+				Properties.Settings.Default.strLanguage = "English";
+				Properties.Settings.Default.Save();
+			}
+
+			RefreshPage();
 		}
 	}
 }
