@@ -81,7 +81,7 @@ namespace BibleBooksWPF {
 				}
 
 				// Get user from JSON file
-				JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+				JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 				JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
 				User userCurrent = userToken.ToObject<User>();
 
@@ -199,7 +199,7 @@ namespace BibleBooksWPF {
 
 		private void RadAudioOff_Checked(object sender, RoutedEventArgs e) {
 			// Get user from JSON file
-			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
 			User userCurrent = userToken.ToObject<User>();
 
@@ -210,12 +210,12 @@ namespace BibleBooksWPF {
 			userToken.Replace(JToken.FromObject(userCurrent));
 
 			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
-			File.WriteAllText("users.json", newJson);
+			File.WriteAllText(Globals.usersFilePath, newJson);
 		}
 
 		private void RadAudioOn_Checked(object sender, RoutedEventArgs e) {
 			// Get user from JSON file
-			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
 			User userCurrent = userToken.ToObject<User>();
 
@@ -226,13 +226,13 @@ namespace BibleBooksWPF {
 			userToken.Replace(JToken.FromObject(userCurrent));
 
 			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
-			File.WriteAllText("users.json", newJson);
+			File.WriteAllText(Globals.usersFilePath, newJson);
 		}
 
 		private void btnSaveSettings_Click(object sender, RoutedEventArgs e) {
 			try {
 				// Get user from JSON file
-				JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+				JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 				JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
 				User userCurrent = userToken.ToObject<User>();
 
@@ -251,7 +251,7 @@ namespace BibleBooksWPF {
 				userToken.Replace(JToken.FromObject(userCurrent));
 
 				string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
-				File.WriteAllText("users.json", newJson);
+				File.WriteAllText(Globals.usersFilePath, newJson);
 
 				txbSaved.Visibility = Visibility.Visible;
 				AsyncHideSaved();
@@ -267,7 +267,7 @@ namespace BibleBooksWPF {
 
 		private void radEnglish_Checked(object sender, RoutedEventArgs e) {
 			// Get user from JSON file
-			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
 			User userCurrent = userToken.ToObject<User>();
 
@@ -278,12 +278,12 @@ namespace BibleBooksWPF {
 			userToken.Replace(JToken.FromObject(userCurrent));
 
 			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
-			File.WriteAllText("users.json", newJson);
+			File.WriteAllText(Globals.usersFilePath, newJson);
 		}
 
 		private void radChinese_Checked(object sender, RoutedEventArgs e) {
 			// Get user from JSON file
-			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
 			User userCurrent = userToken.ToObject<User>();
 
@@ -294,7 +294,7 @@ namespace BibleBooksWPF {
 			userToken.Replace(JToken.FromObject(userCurrent));
 
 			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
-			File.WriteAllText("users.json", newJson);
+			File.WriteAllText(Globals.usersFilePath, newJson);
 		}
 
 		private void RefreshPage() {

@@ -60,10 +60,10 @@ namespace BibleBooksWPF
 					return new ValidationResult(false, "Username cannot be empty");
 				} else {
 					// Get the users from the file if not empty
-					if (new FileInfo("users.json").Length != 0) {
+					if (new FileInfo(Globals.usersFilePath).Length != 0) {
 						RootUser lstUsers = new RootUser();
 
-						using (StreamReader file = File.OpenText("users.json")) {
+						using (StreamReader file = File.OpenText(Globals.usersFilePath)) {
 							JsonSerializer serializer = new JsonSerializer();
 							lstUsers = serializer.Deserialize(file, typeof(RootUser)) as RootUser;
 						}

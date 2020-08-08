@@ -93,7 +93,7 @@ namespace BibleBooksWPF
 				txbInvalid.Text = "密码无效。";
 			}
 
-			JObject obj = JObject.Parse(File.ReadAllText("users.json"));
+			JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 
 			// Load statistic numbers
 			// Hebrew Scriptures Matching
