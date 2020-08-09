@@ -43,7 +43,7 @@ namespace BibleBooksWPF {
 		public static string usersFilePath = "";
 
 		static Globals() {
-			usersFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BibleBooksGame", "users.json");
+			usersFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BibleBooksGame", "users.json");
 		}
 	}
 }
