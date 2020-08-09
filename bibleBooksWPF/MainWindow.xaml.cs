@@ -19,7 +19,7 @@ namespace BibleBooksWPF {
 		protected override void OnClosed(EventArgs e) {
 			// Save user total points
 			// Get user from JSON file
-			if (App.Current.Properties["currentUsername"] == null) {
+			if (App.Current.Properties["currentUsername"] != null) {
 
 				JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 				JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
@@ -43,11 +43,7 @@ namespace BibleBooksWPF {
 		public static string usersFilePath = "";
 
 		static Globals() {
-			if (ApplicationDeployment.IsNetworkDeployed) {
-				usersFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BibleBooksGame", "users.json");
-			} else {
-				usersFilePath = "users.json";
-			}
+			usersFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BibleBooksGame", "users.json");
 		}
 	}
 }
