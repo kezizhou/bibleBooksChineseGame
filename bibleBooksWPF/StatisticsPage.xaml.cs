@@ -68,6 +68,7 @@ namespace BibleBooksWPF
 
 				// Achievements
 				grpAchievements.Header = "成绩";
+				txbTotalPointsDesc.Text = "总分";
 				txbBadges.Text = "奖章";
 				// Badge Tooltips
 				imgFirstHebrewMatch.ToolTip = "玩一次希伯来语经卷配对";
@@ -135,6 +136,9 @@ namespace BibleBooksWPF
 				lblGreekAveragePtR.Content += gsTotalGames.lintPoints.Average().ToString();
 				lblGreekAverageTimeR.Content += TimeSpan.FromSeconds(gsTotalGames.ltsTimeElapsed.Average(timeSpan => timeSpan.TotalSeconds)).ToString();
 			}
+
+			// Load total points
+			txbTotalPoints.Text = Properties.Settings.Default.lngTotalPoints.ToString();
 
 			// Load badges
 			JToken userBadgesToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstBadges");
