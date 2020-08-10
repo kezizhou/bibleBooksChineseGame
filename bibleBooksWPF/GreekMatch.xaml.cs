@@ -11,7 +11,6 @@ using System.Windows.Threading;
 using System.Diagnostics;
 
 using ExtensionMethods;
-using System.Windows.Resources;
 
 namespace BibleBooksWPF {
 	/// <summary>
@@ -96,6 +95,19 @@ namespace BibleBooksWPF {
 					if (transform == null || dctTransform.ContainsKey(lblActiveElement.Name) == false) {
 						transform = new TranslateTransform();
 						lblActiveElement.RenderTransform = transform;
+					}
+
+					// Prevent from dragging off window
+					if (currentPosition.X < 100) {
+						currentPosition.X = 100;
+					} else if (currentPosition.X > grdGreekMatch.ActualWidth - 100) {
+						currentPosition.X = grdGreekMatch.ActualWidth - 100;
+					}
+
+					if (currentPosition.Y < 100) {
+						currentPosition.Y = 100;
+					} else if (currentPosition.Y > grdGreekMatch.ActualHeight) {
+						currentPosition.Y = grdGreekMatch.ActualHeight;
 					}
 
 					// Transform the distance from the current position to the position it was last in when mouse clicked

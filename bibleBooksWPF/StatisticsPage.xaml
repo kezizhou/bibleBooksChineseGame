@@ -118,6 +118,9 @@
 
         <GroupBox x:Name="grpAchievements" Header="Achievements" FontSize="18" Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" Margin="10,0,10,10">
             <StackPanel Margin="5,5,0,0">
+                <TextBlock x:Name="txbTotalPointsDesc" FontSize="17" Background="#E6F7DF" Margin="0,0,0,10" Padding="5">Total Points Earned</TextBlock>
+                <TextBlock x:Name="txbTotalPoints" FontSize="17" Margin="0,0,0,10" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center">1234</TextBlock>
+
                 <TextBlock x:Name="txbBadges" FontSize="17" Background="#E6F7DF" Margin="0,0,0,10" Padding="5">Badges</TextBlock>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -136,30 +139,33 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Image x:Name="imgFirstHebrewMatch" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstHebrewMatch.png" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="0" ToolTip="Play a Hebrew Match game"/>
-                    <Image x:Name="imgFirstHebrewReorder" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstHebrewReorder.png" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="1" ToolTip="Play a Hebrew Reorder game"/>
-                    <Image x:Name="imgFirstGreekMatch" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstGreekMatch.png" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="2" ToolTip="Play a Greek Match game"/>
-                    <Image x:Name="imgFirstGreekReorder" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstGreekReorder.png" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="3" ToolTip="Play a Greek Reorder game"/>
-                    <Image x:Name="imgHebrewMatchTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewMatchTime.png" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="4" ToolTip="Hebrew Match time less than 00:01:15"/>
-                    <Image x:Name="imgHebrewReorderTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewReorderTime.png" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="5" ToolTip="Hebrew Reorder time less than 00:02:15"/>
+                    <WrapPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="6">
+                        <Image x:Name="imgFirstHebrewMatch" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstHebrewMatch.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Play a Hebrew Match game"/>
+                        <Image x:Name="imgFirstHebrewReorder" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstHebrewReorder.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Play a Hebrew Reorder game"/>
+                        <Image x:Name="imgFirstGreekMatch" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstGreekMatch.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="2" ToolTip="Play a Greek Match game"/>
+                        <Image x:Name="imgFirstGreekReorder" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstGreekReorder.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="3" ToolTip="Play a Greek Reorder game"/>
+                        <Image x:Name="imgHebrewMatchTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewMatchTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="4" ToolTip="Hebrew Match time less than 00:01:15"/>
+                        <Image x:Name="imgHebrewReorderTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewReorderTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="5" ToolTip="Hebrew Reorder time less than 00:02:15"/>
 
-                    <Image x:Name="imgGreekMatchTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekMatchTime.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="0" ToolTip="Greek Match time less than 00:00:45"/>
-                    <Image x:Name="imgGreekReorderTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekReorderTime.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="1" ToolTip="Greek Reorder time less than 00:00:50"/>
-                    <Image x:Name="imgHebrewMatch100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewMatch100.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="2" ToolTip="Hebrew Match 100% accuracy"/>
-                    <Image x:Name="imgHebrewReorder100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewReorder100.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="3" ToolTip="Hebrew Reorder 100% accuracy"/>
-                    <Image x:Name="imgGreekMatch100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekMatch100.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="4" ToolTip="Greek Match 100% accuracy"/>
-                    <Image x:Name="imgGreekReorder100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekReorder100.png" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="5" ToolTip="Greek Reorder 100% accuracy"/>
-                    <Image x:Name="imgBadgeMorning" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeMorning.png" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="0" ToolTip="Play before 8:30am"/>
-                    <Image x:Name="imgBadgeNight" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeNight.png" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="1" ToolTip="Play after 9:00pm"/>
-                    <Image x:Name="imgBadgeExodus" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeExodus.png" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="2" ToolTip="Get this book right twice, different games, one session"/>
-                    <Image x:Name="imgBadgeRuth" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeRuth.png" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="3" ToolTip="Get this book right twice, different games, one session"/>
+                        <Image x:Name="imgGreekMatchTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekMatchTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="0" ToolTip="Greek Match time less than 00:00:45"/>
+                        <Image x:Name="imgGreekReorderTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekReorderTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="1" ToolTip="Greek Reorder time less than 00:00:50"/>
+                        <Image x:Name="imgHebrewMatch100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewMatch100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="2" ToolTip="Hebrew Match 100% accuracy"/>
+                        <Image x:Name="imgHebrewReorder100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewReorder100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="3" ToolTip="Hebrew Reorder 100% accuracy"/>
+                        <Image x:Name="imgGreekMatch100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekMatch100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="4" ToolTip="Greek Match 100% accuracy"/>
+                        <Image x:Name="imgGreekReorder100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekReorder100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="5" ToolTip="Greek Reorder 100% accuracy"/>
+                        <Image x:Name="imgBadgeMorning" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeMorning.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="0" ToolTip="Play before 8:30am"/>
+                        <Image x:Name="imgBadgeNight" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeNight.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="1" ToolTip="Play after 9:00pm"/>
+                        <Image x:Name="imgBadgeExodus" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeExodus.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="2" ToolTip="Get this book right twice, different games, one session"/>
+                        <Image x:Name="imgBadgeRuth" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeRuth.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="3" ToolTip="Get this book right twice, different games, one session"/>
+
+                        <Image x:Name="imgBadgeSpecial1" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial1.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="0" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeSpecial2" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial2.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="1" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeSpecial3" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial3.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="2" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeSpecial4" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial4.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="3" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeSpecial5" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial5.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="4" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeSpecial6" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial6.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="5" Visibility="Collapsed"></Image>
+                    </WrapPanel>
                     
-                    <Image x:Name="imgBadgeSpecial1" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial1.png" Margin="5" Grid.Row="3" Grid.Column="0" Visibility="Collapsed"></Image>
-                    <Image x:Name="imgBadgeSpecial2" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial2.png" Margin="5" Grid.Row="3" Grid.Column="1" Visibility="Collapsed"></Image>
-                    <Image x:Name="imgBadgeSpecial3" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial3.png" Margin="5" Grid.Row="3" Grid.Column="2" Visibility="Collapsed"></Image>
-                    <Image x:Name="imgBadgeSpecial4" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial4.png" Margin="5" Grid.Row="3" Grid.Column="3" Visibility="Collapsed"></Image>
-                    <Image x:Name="imgBadgeSpecial5" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial5.png" Margin="5" Grid.Row="3" Grid.Column="4" Visibility="Collapsed"></Image>
-                    <Image x:Name="imgBadgeSpecial6" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial6.png" Margin="5" Grid.Row="3" Grid.Column="5" Visibility="Collapsed"></Image>
                 </Grid>
                 <TextBlock x:Name="txbEnterCode" FontSize="17" Background="#E6F7DF" Margin="0,15,0,10" Padding="5">Enter a Code</TextBlock>
                 <TextBox x:Name="txtCode" Margin="15"></TextBox>

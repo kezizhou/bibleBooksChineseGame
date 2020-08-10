@@ -99,6 +99,19 @@ namespace BibleBooksWPF {
 						lblActiveElement.RenderTransform = transform;
 					}
 
+					// Prevent from dragging off window
+					if (currentPosition.X < 100) {
+						currentPosition.X = 100;
+					} else if (currentPosition.X > grdGreekReorder.ActualWidth - 100) {
+						currentPosition.X = grdGreekReorder.ActualWidth - 100;
+					}
+
+					if (currentPosition.Y < 100) {
+						currentPosition.Y = 100;
+					} else if (currentPosition.Y > grdGreekReorder.ActualHeight) {
+						currentPosition.Y = grdGreekReorder.ActualHeight;
+					}
+
 					// Transform the distance from the current position to the position it was last in when mouse clicked
 					transform.X = currentPosition.X - clickPosition.X;
 					transform.Y = currentPosition.Y - clickPosition.Y;
