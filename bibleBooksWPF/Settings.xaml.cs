@@ -71,7 +71,7 @@ namespace BibleBooksWPF {
 				// Current version
 				if (ApplicationDeployment.IsNetworkDeployed) {
 					Version version = ApplicationDeployment.CurrentDeployment.CurrentVersion;
-					txbVersion.Text = string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+					txbVersion.Text = string.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Revision);
 				} else {
 					if (Properties.Settings.Default.strLanguage.Equals("English")) {
 						txbVersion.Text = "Not Installed";
