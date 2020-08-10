@@ -4,7 +4,7 @@ A matching game for Chinese and English Bible books
 ## Sections:  
 [Installation](#installation)  
 [Sample Screenshots](#sample-screenshots)  
-[Features](#features)
+[Features](#features)  
 [Zoom Sharing](#zoom-sharing)  
 [Credits](#credits)
 
