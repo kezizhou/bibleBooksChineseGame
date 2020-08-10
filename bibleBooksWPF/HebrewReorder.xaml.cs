@@ -330,20 +330,33 @@ namespace BibleBooksWPF {
 
 						if (intLabelIndex == 1) {
 							// Exodus badge
-							if (App.Current.Properties["exodusBadge"].Equals("1")) {
-								App.Current.Properties["exodusBadge"] = "2";
+							switch (App.Current.Properties["exodusBadge"].ToString()) {
+								case "match":
+									// Second game right
+									App.Current.Properties["exodusBadge"] = "both";
+									break;
+								case "":
+									// First time getting book right
+									App.Current.Properties["exodusBadge"] = "reorder";
+									break;
+								default:
+									// Badge already awarded
+									break;
 							}
-							else {
-								App.Current.Properties["exodusBadge"] = "1";
-							}
-						}
-						else if (intLabelIndex == 7) {
+						} else if (intLabelIndex == 7) {
 							// Ruth badge
-							if (App.Current.Properties["ruthBadge"].Equals("1")) {
-								App.Current.Properties["ruthBadge"] = "2";
-							}
-							else {
-								App.Current.Properties["ruthBadge"] = "1";
+							switch (App.Current.Properties["ruthBadge"].ToString()) {
+								case "match":
+									// Second game right
+									App.Current.Properties["ruthBadge"] = "both";
+									break;
+								case "":
+									// First time getting book right
+									App.Current.Properties["ruthBadge"] = "reorder";
+									break;
+								default:
+									// Badge already awarded
+									break;
 							}
 						}
 
