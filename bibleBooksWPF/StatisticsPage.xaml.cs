@@ -21,6 +21,9 @@ namespace BibleBooksWPF
         }
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
+			TimeSpan average = new TimeSpan();
+			TimeSpan averageTrim = new TimeSpan();
+
 			// Language setting
 			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
 				// Menu bar
@@ -103,8 +106,10 @@ namespace BibleBooksWPF
 			if (gsTotalGames.lintPoints.Count != 0 && gsTotalGames.ltsTimeElapsed.Count != 0) {
 				lblHebrewRecordPtM.Content += gsTotalGames.lintPoints.Max().ToString();
 				lblHebrewRecordTimeM.Content += gsTotalGames.ltsTimeElapsed.Min().ToString();
-				lblHebrewAveragePtM.Content += gsTotalGames.lintPoints.Average().ToString();
-				lblHebrewAverageTimeM.Content += TimeSpan.FromSeconds(gsTotalGames.ltsTimeElapsed.Average(timeSpan => timeSpan.TotalSeconds)).ToString();
+				lblHebrewAveragePtM.Content += gsTotalGames.lintPoints.Average().ToString();;
+				average = TimeSpan.FromSeconds(gsTotalGames.ltsTimeElapsed.Average(timeSpan => timeSpan.TotalSeconds));
+				averageTrim = new TimeSpan(average.Hours, average.Minutes, average.Seconds);
+				lblHebrewAverageTimeM.Content += averageTrim.ToString();
 			}
 
 			// Hebrew Scriptures Reorder
@@ -114,7 +119,9 @@ namespace BibleBooksWPF
 				lblHebrewRecordPtR.Content += gsTotalGames.lintPoints.Max().ToString();
 				lblHebrewRecordTimeR.Content += gsTotalGames.ltsTimeElapsed.Min().ToString();
 				lblHebrewAveragePtR.Content += gsTotalGames.lintPoints.Average().ToString();
-				lblHebrewAverageTimeR.Content += TimeSpan.FromSeconds(gsTotalGames.ltsTimeElapsed.Average(timeSpan => timeSpan.TotalSeconds)).ToString();
+				average = TimeSpan.FromSeconds(gsTotalGames.ltsTimeElapsed.Average(timeSpan => timeSpan.TotalSeconds));
+				averageTrim = new TimeSpan(average.Hours, average.Minutes, average.Seconds);
+				lblHebrewAverageTimeR.Content += averageTrim.ToString();
 			}
 
 			// Greek Scriptures Matching
@@ -124,7 +131,9 @@ namespace BibleBooksWPF
 				lblGreekRecordPtM.Content += gsTotalGames.lintPoints.Max().ToString();
 				lblGreekRecordTimeM.Content += gsTotalGames.ltsTimeElapsed.Min().ToString();
 				lblGreekAveragePtM.Content += gsTotalGames.lintPoints.Average().ToString();
-				lblGreekAverageTimeM.Content += TimeSpan.FromSeconds(gsTotalGames.ltsTimeElapsed.Average(timeSpan => timeSpan.TotalSeconds)).ToString();
+				average = TimeSpan.FromSeconds(gsTotalGames.ltsTimeElapsed.Average(timeSpan => timeSpan.TotalSeconds));
+				averageTrim = new TimeSpan(average.Hours, average.Minutes, average.Seconds);
+				lblGreekAverageTimeM.Content += averageTrim.ToString();
 			}
 
 			// Greek Scriptures Reorder
@@ -134,7 +143,9 @@ namespace BibleBooksWPF
 				lblGreekRecordPtR.Content += gsTotalGames.lintPoints.Max().ToString();
 				lblGreekRecordTimeR.Content += gsTotalGames.ltsTimeElapsed.Min().ToString();
 				lblGreekAveragePtR.Content += gsTotalGames.lintPoints.Average().ToString();
-				lblGreekAverageTimeR.Content += TimeSpan.FromSeconds(gsTotalGames.ltsTimeElapsed.Average(timeSpan => timeSpan.TotalSeconds)).ToString();
+				average = TimeSpan.FromSeconds(gsTotalGames.ltsTimeElapsed.Average(timeSpan => timeSpan.TotalSeconds));
+				averageTrim = new TimeSpan(average.Hours, average.Minutes, average.Seconds);
+				lblGreekAverageTimeR.Content += averageTrim.ToString();
 			}
 
 			// Load total points

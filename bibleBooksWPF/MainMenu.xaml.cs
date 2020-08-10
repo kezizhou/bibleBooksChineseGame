@@ -54,8 +54,8 @@ namespace BibleBooksWPF {
 					Statistics.AddBadge("imgBadgeNight");
 					CustomMessageBoxMethods.ShowMessage("imgBadgeNight", winBadgeBox);
 				}
-				App.Current.Properties["exodusBadge"] = "0";
-				App.Current.Properties["ruthBadge"] = "0";
+				App.Current.Properties["exodusBadge"] = "";
+				App.Current.Properties["ruthBadge"] = "";
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}

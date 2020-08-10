@@ -66,17 +66,19 @@ namespace ExtensionMethods {
 				}
 
 				// Exodus badge
-				if (App.Current.Properties["exodusBadge"].ToString() == "2") {
+				if (App.Current.Properties["exodusBadge"].ToString() == "both") {
 					AddBadge("imgBadgeExodus");
 					winBadgeBox = new NewBadgeMessage();
 					CustomMessageBoxMethods.ShowMessage("imgBadgeExodus", winBadgeBox);
+					App.Current.Properties["exodusBadge"] = "added";
 				}
 
 				// Ruth badge
-				if (App.Current.Properties["ruthBadge"].ToString() == "2") {
+				if (App.Current.Properties["ruthBadge"].ToString() == "both") {
 					AddBadge("imgBadgeRuth");
 					winBadgeBox = new NewBadgeMessage();
 					CustomMessageBoxMethods.ShowMessage("imgBadgeRuth", winBadgeBox);
+					App.Current.Properties["ruthBadge"] = "added";
 				}
 
 				if (strGameName.Equals("HebrewMatch")) {
@@ -357,10 +359,10 @@ namespace ExtensionMethods {
 				img.Source = new BitmapImage(new Uri("pack://application:,,,/BibleBooksWPF;component/Resources/Badges/" + strBadgeName + ".png"));
 
 				// Set description of badge
-				Label lblDescription = winBadgeBox.FindName("lblDescription") as Label;
+				TextBlock txbDescription = winBadgeBox.FindName("txbDescription") as TextBlock;
 				StatisticsPage pStatistics = new StatisticsPage();
 				Image imgBadge = pStatistics.FindName(strBadgeName) as Image;
-				lblDescription.Content += imgBadge.ToolTip.ToString();
+				txbDescription.Text += imgBadge.ToolTip.ToString();
 
 				// Pop-up message box
 				winBadgeBox.ShowDialog();
