@@ -30,11 +30,13 @@ namespace BibleBooksWPF {
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
-			winPauseMenu.Title = "游戏暂停";
-			txbMessageText.Text = "游戏暂停";
-			btnResume.Content = "继续";
-			btnMain.Content = "回到主菜单";
-			btnExit.Content = "退出";
+			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+				winPauseMenu.Title = "游戏暂停";
+				txbMessageText.Text = "游戏暂停";
+				btnResume.Content = "继续";
+				btnMain.Content = "回到主菜单";
+				btnExit.Content = "退出";
+			}
 		}
 	}
 }
