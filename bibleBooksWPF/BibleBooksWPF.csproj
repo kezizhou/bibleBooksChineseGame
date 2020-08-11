@@ -31,7 +31,7 @@
     <PublisherName>kezizhou</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -363,6 +363,33 @@
   <ItemGroup>
     <Resource Include="Resources\pointRecord.png" />
     <Resource Include="Resources\timeRecord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeBear.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeButterfly.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeCow.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeFox.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeGiraffe.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeHorse.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeLion.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgePanda.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgePenguin.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeTiger.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeTurtle.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeZebra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeCat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeDolphin.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeElephant.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeFlamingo.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeSnake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeDog.png" />
+    <Resource Include="Resources\Badges\AnimalBadges\imgBadgeKoala.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

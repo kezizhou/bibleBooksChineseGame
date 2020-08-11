@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BibleBooksWPF"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="1200"
       Title="Bible Books Game - Main Menu" Loaded="Page_Loaded">
 
     <Grid Background="White">
@@ -13,6 +13,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="1*"/>
@@ -36,11 +37,12 @@
 
         <Button x:Name="btnChangeUser" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" Padding="5" FontSize="16" Click="BtnChangeUser_Click" Style="{StaticResource RoundedChangeUserButton}">Change User</Button>
 
-        <Image Name="imgBook" Source="pack://application:,,,/BibleBooksWPF;component/Resources/book.jpg" Grid.Column="0" Grid.Row="1" Margin="0,10"/>
-        <Label x:Name="lblWelcome" Grid.Column="0" Grid.Row="2" FontFamily="Tahoma" FontSize="30" HorizontalContentAlignment="Center" Content="Welcome: "/>
-        <TextBlock Name="txbDescription" Grid.Column="0" Grid.Row="3" FontFamily="Tahoma" TextAlignment="Center" FontSize="30">
-            Use the menu strip at the top to begin
-        </TextBlock>
+        <Image Name="imgBook" Source="pack://application:,,,/BibleBooksWPF;component/Resources/book.jpg" Grid.Column="0" Grid.Row="2" Margin="0,10"/>
 
+        <Label x:Name="lblWelcome" Grid.Column="0" Grid.Row="3" FontFamily="Tahoma" FontSize="30" HorizontalContentAlignment="Center" Content="Welcome: "/>
+        <TextBlock Name="txbDescription" Grid.Column="0" Grid.Row="4" FontFamily="Tahoma" TextAlignment="Center" FontSize="30">
+                Use the menu strip at the top to begin
+        </TextBlock>
     </Grid>
+    
 </Page>
