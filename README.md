@@ -13,7 +13,7 @@ A matching game for Chinese and English Bible books
 ## Installation
 
 To install, download the latest release [**here**](https://github.com/kezizhou/bibleBooksChineseGame/releases/latest).
-Download and run setup.exe to install bibleBooksChineseGame onto your computer. You may choose to uninstall at any time by uninstalling from your programs list. The application will automatically check for new updates every time it is started.
+Download and run bibleBooksGameSetup.exe to install bibleBooksChineseGame onto your computer. You may choose to uninstall at any time by uninstalling from your programs list. The application will automatically check for new updates every time it is started, or you can check manually in the settings page.
 
 ### System Requirements:
 Windows: Runs on Microsoft .NET Framework 4.6.1
