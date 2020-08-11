@@ -6,7 +6,7 @@ A matching game for Chinese and English Bible books
 [Sample Screenshots](#sample-screenshots)  
 [Features](#features)  
 [Zoom Sharing](#zoom-sharing)  
-[WinForms](#winforms-old-design)
+[WinForms (Old Design)](#winforms-old-design)  
 [Credits](#credits)
 
 ***
