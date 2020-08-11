@@ -43,6 +43,10 @@ Select User
 ![Select User](documentation/selectUser.png)  
 ***
 
+New User  
+![New User](documentation/newUser.png)   
+***
+
 Main Menu  
 ![Main Menu](documentation/mainMenu.png)  
 ***
