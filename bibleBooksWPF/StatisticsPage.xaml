@@ -5,174 +5,176 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BibleBooksWPF"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="800"
+      d:DesignHeight="850" d:DesignWidth="1250"
       Title="Statistics" Loaded="Page_Loaded">
 
-    <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontFamily="Tahoma" Background="#DFF2F7" VerticalAlignment="Top" Margin="0,0,0,5" Padding="2,5" FontSize="14">
-            <MenuItem x:Name="imenMainMenu" Header="Main Menu" Click="ImenMainMenu_Click"/>
-            <MenuItem x:Name="imenHebrew" Header="Hebrew Scriptures">
-                <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
-                <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books" Click="ImenReorderHebrew_Click"/>
-            </MenuItem>
-            <MenuItem x:Name="imenGreek" Header="Greek Scriptures">
-                <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English" Click="ImenMatchGreek_Click"/>
-                <MenuItem x:Name="imenReorderGreek" Header="Reorder Books" Click="ImenReorderGreek_Click"/>
-            </MenuItem>
-            <MenuItem x:Name="imenStatistics" Header="Statistics" IsEnabled="False"/>
-            <MenuItem x:Name="imenSettings" Header="Settings" Click="ImenSettings_Click"/>
-            <MenuItem x:Name="imenExit" Header="Exit" Click="ImenExit_Click"/>
-        </Menu>
+            <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontFamily="Tahoma" Background="#DFF2F7" VerticalAlignment="Top" Margin="0,0,0,5" Padding="2,5" FontSize="14">
+                <MenuItem x:Name="imenMainMenu" Header="Main Menu" Click="ImenMainMenu_Click"/>
+                <MenuItem x:Name="imenHebrew" Header="Hebrew Scriptures">
+                    <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
+                    <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books" Click="ImenReorderHebrew_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="imenGreek" Header="Greek Scriptures">
+                    <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English" Click="ImenMatchGreek_Click"/>
+                    <MenuItem x:Name="imenReorderGreek" Header="Reorder Books" Click="ImenReorderGreek_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="imenStatistics" Header="Statistics" IsEnabled="False"/>
+                <MenuItem x:Name="imenSettings" Header="Settings" Click="ImenSettings_Click"/>
+                <MenuItem x:Name="imenExit" Header="Exit" Click="ImenExit_Click"/>
+            </Menu>
 
-        <GroupBox x:Name="grpHebrew" Header="Hebrew Scriptures" FontSize="18" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Margin="10,0,0,5">
-            <StackPanel Margin="5,5,0,0">
-                <TextBlock x:Name="txbMatchingH" FontSize="17" Background="#F0DFF7" Padding="5">Matching</TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblHebrewRecordPtMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Point Score:"/>
-                    <Label x:Name="lblHebrewRecordPtM" FontSize="16"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblHebrewRecordTimeMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Time:"/>
-                    <Label x:Name="lblHebrewRecordTimeM" FontSize="16"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblHebrewAveragePtMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Point Score:"/>
-                    <Label x:Name="lblHebrewAveragePtM" FontSize="16"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblHebrewAverageTimeMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Time:"/>
-                    <Label x:Name="lblHebrewAverageTimeM" FontSize="16"/>
-                </StackPanel>
+            <GroupBox x:Name="grpHebrew" Header="Hebrew Scriptures" FontSize="18" Grid.Column="0" Grid.Row="1" Margin="10,0,0,5">
+                <StackPanel Margin="5,5,0,0">
+                    <TextBlock x:Name="txbMatchingH" FontSize="17" Background="#F0DFF7" Padding="5">Matching</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblHebrewRecordPtMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Point Score:"/>
+                        <Label x:Name="lblHebrewRecordPtM" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblHebrewRecordTimeMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Time:"/>
+                        <Label x:Name="lblHebrewRecordTimeM" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblHebrewAveragePtMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Point Score:"/>
+                        <Label x:Name="lblHebrewAveragePtM" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblHebrewAverageTimeMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Time:"/>
+                        <Label x:Name="lblHebrewAverageTimeM" FontSize="16"/>
+                    </StackPanel>
 
-                <TextBlock x:Name="txbReorderH" FontSize="17" Background="#F0DFF7" Padding="5" Margin="0,10,0,0">Reorder</TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblHebrewRecordPtRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Point Score:"/>
-                    <Label x:Name="lblHebrewRecordPtR" FontSize="16"/>
+                    <TextBlock x:Name="txbReorderH" FontSize="17" Background="#F0DFF7" Padding="5" Margin="0,10,0,0">Reorder</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblHebrewRecordPtRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Point Score:"/>
+                        <Label x:Name="lblHebrewRecordPtR" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblHebrewRecordTimeRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Time:"/>
+                        <Label x:Name="lblHebrewRecordTimeR" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblHebrewAveragePtRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Point Score:"/>
+                        <Label x:Name="lblHebrewAveragePtR" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblHebrewAverageTimeRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Time:"/>
+                        <Label x:Name="lblHebrewAverageTimeR" FontSize="16"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblHebrewRecordTimeRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Time:"/>
-                    <Label x:Name="lblHebrewRecordTimeR" FontSize="16"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblHebrewAveragePtRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Point Score:"/>
-                    <Label x:Name="lblHebrewAveragePtR" FontSize="16"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblHebrewAverageTimeRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Time:"/>
-                    <Label x:Name="lblHebrewAverageTimeR" FontSize="16"/>
-                </StackPanel>
-            </StackPanel>
-        </GroupBox>
+            </GroupBox>
 
-        <GroupBox x:Name="grpGreek" Header="Greek Scriptures" FontSize="18" Grid.Column="0" Grid.Row="3" Grid.RowSpan="2" Margin="10,0,0,10">
-            <StackPanel Margin="5,5,0,0">
-                <TextBlock x:Name="txbMatchingG" FontSize="17" Background="#F0DFF7" Padding="5">Matching</TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblGreekRecordPtMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Point Score:"/>
-                    <Label x:Name="lblGreekRecordPtM" FontSize="16"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblGreekRecordTimeMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Time:"/>
-                    <Label x:Name="lblGreekRecordTimeM" FontSize="16"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblGreekAveragePtMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Point Score:"/>
-                    <Label x:Name="lblGreekAveragePtM" FontSize="16"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblGreekAverageTimeMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Time:"/>
-                    <Label x:Name="lblGreekAverageTimeM" FontSize="16"/>
-                </StackPanel>
+            <GroupBox x:Name="grpGreek" Header="Greek Scriptures" FontSize="18" Grid.Column="0" Grid.Row="2" Margin="10,0,0,10">
+                <StackPanel Margin="5,5,0,0">
+                    <TextBlock x:Name="txbMatchingG" FontSize="17" Background="#F0DFF7" Padding="5">Matching</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblGreekRecordPtMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Point Score:"/>
+                        <Label x:Name="lblGreekRecordPtM" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblGreekRecordTimeMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Time:"/>
+                        <Label x:Name="lblGreekRecordTimeM" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblGreekAveragePtMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Point Score:"/>
+                        <Label x:Name="lblGreekAveragePtM" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblGreekAverageTimeMDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Time:"/>
+                        <Label x:Name="lblGreekAverageTimeM" FontSize="16"/>
+                    </StackPanel>
 
-                <TextBlock x:Name="txbReorderG" FontSize="17" Background="#F0DFF7" Padding="5" Margin="0,10,0,0">Reorder</TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblGreekRecordPtRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Point Score:"/>
-                    <Label x:Name="lblGreekRecordPtR" FontSize="16"/>
+                    <TextBlock x:Name="txbReorderG" FontSize="17" Background="#F0DFF7" Padding="5" Margin="0,10,0,0">Reorder</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblGreekRecordPtRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Point Score:"/>
+                        <Label x:Name="lblGreekRecordPtR" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblGreekRecordTimeRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Time:"/>
+                        <Label x:Name="lblGreekRecordTimeR" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblGreekAveragePtRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Point Score:"/>
+                        <Label x:Name="lblGreekAveragePtR" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblGreekAverageTimeRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Time:"/>
+                        <Label x:Name="lblGreekAverageTimeR" FontSize="16"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblGreekRecordTimeRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Record Time:"/>
-                    <Label x:Name="lblGreekRecordTimeR" FontSize="16"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblGreekAveragePtRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Point Score:"/>
-                    <Label x:Name="lblGreekAveragePtR" FontSize="16"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="lblGreekAverageTimeRDesc" FontSize="16" Foreground="#57465E" FontWeight="Bold" Content="Average Time:"/>
-                    <Label x:Name="lblGreekAverageTimeR" FontSize="16"/>
-                </StackPanel>
-            </StackPanel>
-        </GroupBox>
+            </GroupBox>
 
-        <GroupBox x:Name="grpAchievements" Header="Achievements" FontSize="18" Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" Margin="10,0,10,10">
-            <StackPanel Margin="5,5,0,0">
-                <TextBlock x:Name="txbTotalPointsDesc" FontSize="17" Background="#E6F7DF" Margin="0,0,0,10" Padding="5">Total Points Earned</TextBlock>
-                <TextBlock x:Name="txbTotalPoints" FontSize="17" Margin="0,0,0,10" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center">1234</TextBlock>
+            <GroupBox x:Name="grpAchievements" Header="Achievements" FontSize="18" Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" Margin="10,0,10,10">
+                <StackPanel Margin="5,5,0,0">
+                    <TextBlock x:Name="txbTotalPointsDesc" FontSize="17" Background="#E6F7DF" Margin="0,0,0,10" Padding="5">Total Points Earned</TextBlock>
+                    <TextBlock x:Name="txbTotalPoints" FontSize="17" Margin="0,0,0,10" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center">1234</TextBlock>
 
-                <TextBlock x:Name="txbBadges" FontSize="17" Background="#E6F7DF" Margin="0,0,0,10" Padding="5">Badges</TextBlock>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="txbBadges" FontSize="17" Background="#E6F7DF" Margin="0,0,0,10" Padding="5">Badges</TextBlock>
 
-                    <WrapPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="6">
+                    <WrapPanel>
                         <Image x:Name="imgFirstHebrewMatch" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstHebrewMatch.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Play a Hebrew Match game"/>
                         <Image x:Name="imgFirstHebrewReorder" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstHebrewReorder.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Play a Hebrew Reorder game"/>
-                        <Image x:Name="imgFirstGreekMatch" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstGreekMatch.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="2" ToolTip="Play a Greek Match game"/>
-                        <Image x:Name="imgFirstGreekReorder" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstGreekReorder.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="3" ToolTip="Play a Greek Reorder game"/>
-                        <Image x:Name="imgHebrewMatchTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewMatchTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="4" ToolTip="Hebrew Match time less than 00:01:15"/>
-                        <Image x:Name="imgHebrewReorderTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewReorderTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="0" Grid.Column="5" ToolTip="Hebrew Reorder time less than 00:02:15"/>
+                        <Image x:Name="imgFirstGreekMatch" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstGreekMatch.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Play a Greek Match game"/>
+                        <Image x:Name="imgFirstGreekReorder" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgFirstGreekReorder.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Play a Greek Reorder game"/>
+                        <Image x:Name="imgHebrewMatchTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewMatchTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Hebrew Match time less than 00:01:15"/>
+                        <Image x:Name="imgHebrewReorderTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewReorderTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Hebrew Reorder time less than 00:02:15"/>
 
-                        <Image x:Name="imgGreekMatchTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekMatchTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="0" ToolTip="Greek Match time less than 00:00:45"/>
-                        <Image x:Name="imgGreekReorderTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekReorderTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="1" ToolTip="Greek Reorder time less than 00:00:50"/>
-                        <Image x:Name="imgHebrewMatch100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewMatch100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="2" ToolTip="Hebrew Match 100% accuracy"/>
-                        <Image x:Name="imgHebrewReorder100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewReorder100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="3" ToolTip="Hebrew Reorder 100% accuracy"/>
-                        <Image x:Name="imgGreekMatch100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekMatch100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="4" ToolTip="Greek Match 100% accuracy"/>
-                        <Image x:Name="imgGreekReorder100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekReorder100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="1" Grid.Column="5" ToolTip="Greek Reorder 100% accuracy"/>
-                        <Image x:Name="imgBadgeMorning" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeMorning.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="0" ToolTip="Play before 8:30am"/>
-                        <Image x:Name="imgBadgeNight" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeNight.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="1" ToolTip="Play after 9:00pm"/>
-                        <Image x:Name="imgBadgeExodus" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeExodus.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="2" ToolTip="Get this book right twice, different games, one session"/>
-                        <Image x:Name="imgBadgeRuth" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeRuth.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" Grid.Row="2" Grid.Column="3" ToolTip="Get this book right twice, different games, one session"/>
+                        <Image x:Name="imgGreekMatchTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekMatchTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Greek Match time less than 00:00:45"/>
+                        <Image x:Name="imgGreekReorderTime" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekReorderTime.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Greek Reorder time less than 00:00:50"/>
+                        <Image x:Name="imgHebrewMatch100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewMatch100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Hebrew Match 100% accuracy"/>
+                        <Image x:Name="imgHebrewReorder100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgHebrewReorder100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Hebrew Reorder 100% accuracy"/>
+                        <Image x:Name="imgGreekMatch100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekMatch100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Greek Match 100% accuracy"/>
+                        <Image x:Name="imgGreekReorder100" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgGreekReorder100.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Greek Reorder 100% accuracy"/>
+                        <Image x:Name="imgBadgeMorning" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeMorning.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Play before 8:30am"/>
+                        <Image x:Name="imgBadgeNight" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeNight.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Play after 9:00pm"/>
+                        <Image x:Name="imgBadgeExodus" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeExodus.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Get this book right twice, different games, one session"/>
+                        <Image x:Name="imgBadgeRuth" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/imgBadgeRuth.png" MaxHeight="100" MaxWidth="100" Margin="7" Opacity="0.1" ToolTip="Get this book right twice, different games, one session"/>
 
-                        <Image x:Name="imgBadgeSpecial1" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial1.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="0" Visibility="Collapsed"></Image>
-                        <Image x:Name="imgBadgeSpecial2" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial2.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="1" Visibility="Collapsed"></Image>
-                        <Image x:Name="imgBadgeSpecial3" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial3.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="2" Visibility="Collapsed"></Image>
-                        <Image x:Name="imgBadgeSpecial4" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial4.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="3" Visibility="Collapsed"></Image>
-                        <Image x:Name="imgBadgeSpecial5" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial5.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="4" Visibility="Collapsed"></Image>
-                        <Image x:Name="imgBadgeSpecial6" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial6.png" MaxHeight="100" MaxWidth="100" Margin="5" Grid.Row="3" Grid.Column="5" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeBear" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeBear.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeButterfly" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeButterfly.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeCat" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeCat.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeCow" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeCow.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeDolphin" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeDolphin.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeDog" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeDog.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeElephant" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeElephant.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeFox" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeFox.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeGiraffe" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeGiraffe.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeHorse" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeHorse.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeKoala" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeKoala.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeLion" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeLion.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgePanda" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgePanda.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgePenguin" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgePenguin.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeSnake" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeSnake.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeTiger" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeTiger.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeTurtle" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeTurtle.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeZebra" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeZebra.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        
+                        <Image x:Name="imgBadgeSpecial1" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial1.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeSpecial2" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial2.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeSpecial3" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial3.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeSpecial4" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial4.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeSpecial5" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial5.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
+                        <Image x:Name="imgBadgeSpecial6" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial6.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
                     </WrapPanel>
-                    
-                </Grid>
-                <TextBlock x:Name="txbEnterCode" FontSize="17" Background="#E6F7DF" Margin="0,15,0,10" Padding="5">Enter a Code</TextBlock>
-                <TextBox x:Name="txtCode" Margin="15"></TextBox>
-                <Button x:Name="btnSubmitCode" Margin="15,0,15,0" Click="BtnSubmitCode_Click" IsDefault="True">Submit</Button>
-                <TextBlock x:Name="txbInvalid" Margin="0,10,0,0" HorizontalAlignment="Center" Foreground="#FFFF2727" Visibility="Hidden">Invalid code entered.</TextBlock>
-            </StackPanel>
-        </GroupBox>
 
-    </Grid>
+                    <TextBlock x:Name="txbEnterCode" FontSize="17" Background="#E6F7DF" Margin="0,15,0,10" Padding="5">Enter a Code</TextBlock>
+                    <TextBox x:Name="txtCode" Margin="15"></TextBox>
+                    <Button x:Name="btnSubmitCode" Margin="15,0,15,0" Click="BtnSubmitCode_Click" IsDefault="True">Submit</Button>
+                    <TextBlock x:Name="txbInvalid" Margin="0,10,0,0" HorizontalAlignment="Center" Foreground="#FFFF2727" Visibility="Hidden">Invalid code entered.</TextBlock>
+                </StackPanel>
+            </GroupBox>
+
+        </Grid>
+    </ScrollViewer>
 </Page>

@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 
 using ExtensionMethods;
+using System.Windows.Media.Imaging;
 
 namespace BibleBooksWPF
 {
@@ -157,14 +158,26 @@ namespace BibleBooksWPF
 			foreach (string strBadgeName in lstBadges) {
 				Image img = (Image)this.FindName(strBadgeName);
 				img.Opacity = 1;
-				if (img.Name.Contains("Special")) {
-					img.Visibility = Visibility.Visible;
-				}
+				img.Visibility = Visibility.Visible;
 			}
 		}
 
 		private void BtnSubmitCode_Click(object sender, RoutedEventArgs e) {
-			// Hidden for Git publish
+			if (txtCode.Text.Length == 0 || txtCode.Text.Length == 1) {
+				// Empty string or 1 character
+				txbInvalid.Visibility = Visibility.Visible;
+				asyncRemoveInvalid();
+			} else if (this.FindName("imgBadge" + char.ToUpper(txtCode.Text.ToLower()[0]) + txtCode.Text.Substring(1)) != null) {
+				Image imgBadge = this.FindName("imgBadge" + char.ToUpper(txtCode.Text.ToLower()[0]) + txtCode.Text.Substring(1)) as Image;
+				imgBadge.Visibility = Visibility.Visible;
+				Statistics.AddBadge(imgBadge.Name);
+			} else {
+				// Invalid code
+				txbInvalid.Visibility = Visibility.Visible;
+				asyncRemoveInvalid();
+			}
+
+			txtCode.Clear();
 		}
 
 		private async void asyncRemoveInvalid() {
