@@ -6,6 +6,7 @@ A matching game for Chinese and English Bible books
 [Sample Screenshots](#sample-screenshots)  
 [Features](#features)  
 [Zoom Sharing](#zoom-sharing)  
+[WinForms](#winforms-old-design)
 [Credits](#credits)
 
 ***
@@ -83,6 +84,17 @@ Settings
 To share this application on Zoom and allow another person to control the screen through Remote Control, you will need to install [**this**](https://github.com/joshuatz/right-click-and-drag/releases/download/v0.1.0/right-click-and-drag.exe) application. The Right Click and Drag application was created by another GitHub user, and uses HotKey operations to turn all right clicks into a left click and drag operation. On Zoom, holding down indicates a right click, so this application will simulate a dragging motion on the host application. To use, check the checkbox to enable the application to start. When finished sharing on Zoom, uncheck the enabled box to end use.
 
 **[Back to Top](#bibleBooksChineseGame)**
+
+***
+### WinForms (Old Design)
+This application was originally created using WinForms, and then changed to use WPF. To see the original WinForms branch, click [here](https://github.com/kezizhou/bibleBooksChineseGame/tree/winforms). The following are screenshots of the old design:  
+
+WinForms Hebrew Match
+![WinForms Hebrew Match](documentation/winformsHebrewMatch.png)
+***
+
+WinForms Greek Reorder
+![WinForms Greek Reorder](documentation/winformsGreekReorder.png)
 
 ***
 ### Credits
