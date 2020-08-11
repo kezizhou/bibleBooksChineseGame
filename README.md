@@ -75,9 +75,11 @@ Settings
 * Matching games for Hebrew and Greek Scriptures with Chinese and English
 * Reorder Bible books games for Hebrew and Greek Scriptures
 * Opportunity to earn badges during play
+* Enter codes to earn more badges
 * Statistics page tracks average and record scores and times
 * Turn on or off audio pronunciation for Bible books
 * Multiple users per device
+* Responsive design for different screen sizes
 
 ***
 ### Zoom Sharing
