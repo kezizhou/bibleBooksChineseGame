@@ -98,15 +98,19 @@ namespace BibleBooksWPF {
 					}
 
 					// Prevent from dragging off window
-					if (currentPosition.X < 100) {
-						currentPosition.X = 100;
-					} else if (currentPosition.X > grdGreekMatch.ActualWidth - 100) {
-						currentPosition.X = grdGreekMatch.ActualWidth - 100;
+					if ((currentPosition.X < 25) && (Mouse.GetPosition(lblActiveElement).X > 110)) {
+						// Past left side of window
+						currentPosition.X = 25;
+					} else if ((currentPosition.X > grdGreekMatch.ActualWidth - 25) && (Mouse.GetPosition(lblActiveElement).X < 25)) {
+						// Past right side of window
+						currentPosition.X = grdGreekMatch.ActualWidth - 25;
 					}
 
-					if (currentPosition.Y < 100) {
-						currentPosition.Y = 100;
-					} else if (currentPosition.Y > grdGreekMatch.ActualHeight) {
+					if ((currentPosition.Y < 25) && (Mouse.GetPosition(lblActiveElement).Y < 25)) {
+						// Past top side of window
+						currentPosition.Y = 25;
+					} else if ((currentPosition.Y > grdGreekMatch.ActualHeight) && (Mouse.GetPosition(lblActiveElement).Y < 25)) {
+						// Past bottom side of window
 						currentPosition.Y = grdGreekMatch.ActualHeight;
 					}
 
@@ -244,6 +248,8 @@ namespace BibleBooksWPF {
 
 				var synthesizer = new SpeechSynthesizer();
 				synthesizer.SetOutputToDefaultAudioDevice();
+				PromptBuilder pBuilder = new PromptBuilder();
+
 				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
 					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("EN"));
 
@@ -253,12 +259,17 @@ namespace BibleBooksWPF {
 						strRead = strRead.Replace("2", "Second");
 					} else if (strRead.Contains("3")) {
 						strRead = strRead.Replace("3", "Third");
+					} else if (strRead == "Philemon") {
+						pBuilder.AppendTextWithPronunciation("Philemon", "faɪlimən");
+					} else {
+						pBuilder.AppendText(strRead);
 					}
 				} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
 					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
+					pBuilder.AppendText(strRead);
 				}
 
-				synthesizer.SpeakAsync(strRead);
+				synthesizer.SpeakAsync(pBuilder);
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}

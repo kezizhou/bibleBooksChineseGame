@@ -250,21 +250,35 @@ namespace BibleBooksWPF
 
 				var synthesizer = new SpeechSynthesizer();
 				synthesizer.SetOutputToDefaultAudioDevice();
+				PromptBuilder pBuilder = new PromptBuilder();
+
 				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
 					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("EN"));
 
 					if (strRead.Contains("1")) {
-						strRead = strRead.Replace("1", "First");
+						strRead = strRead.Replace("1", "fɜrst");
+						pBuilder.AppendText(strRead);
 					} else if (strRead.Contains("2")) {
 						strRead = strRead.Replace("2", "Second");
+						pBuilder.AppendText(strRead);
 					} else if (strRead.Contains("3")) {
 						strRead = strRead.Replace("3", "Third");
+						pBuilder.AppendText(strRead);
+					} else if (strRead == "Job") {
+						pBuilder.AppendTextWithPronunciation("Job", "ʤoʊb");
+					} else if (strRead == "Haggai") {
+						pBuilder.AppendTextWithPronunciation("Haggai", "hægaɪ");
+					} else if (strRead == "Habakkuk") {
+						pBuilder.AppendTextWithPronunciation("Habakkuk", "hʌbækʌk");
+					} else {
+						pBuilder.AppendText(strRead);
 					}
 				} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
 					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
+					pBuilder.AppendText(strRead);
 				}
 
-				synthesizer.SpeakAsync(strRead);
+				synthesizer.SpeakAsync(pBuilder);
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}

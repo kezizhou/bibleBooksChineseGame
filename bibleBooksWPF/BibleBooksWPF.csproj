@@ -391,5 +391,8 @@
     <Resource Include="Resources\Badges\AnimalBadges\imgBadgeDog.png" />
     <Resource Include="Resources\Badges\AnimalBadges\imgBadgeKoala.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Lexicons\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
