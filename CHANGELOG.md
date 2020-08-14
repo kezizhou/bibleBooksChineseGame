@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
-## [Unreleased]
+## Unreleased
 
 ## [1.1.9] - 2020-08-15
 ### Added
@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixed
 - Prevent controls from being dragged off window
 
-## [Releases and Prereleases]
+## Releases and Prereleases
 
 ## [1.1.8](https://github.com/kezizhou/bibleBooksChineseGame/releases/tag/v1.1.8) - 2020-08-11
 ### Added
