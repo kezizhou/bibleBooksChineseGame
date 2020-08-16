@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixed
 - Prevent controls from being dragged off window
 - Show Chinese for Change User button
+- Deny invalid username changes on Settings page
 
 ## Releases and Prereleases
 
