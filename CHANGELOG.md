@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [1.1.9] - 2020-08-15
 ### Added
 - Info/help button on Main Menu
+- Change cursor to hand on draggable labels
 ### Changed
 - Pronunciation on the books of Job, Haggai, Habakkuk, Philemon
 - Main Menu design
