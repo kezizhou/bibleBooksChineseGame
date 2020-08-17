@@ -98,7 +98,7 @@
                         </StackPanel>
                     </StackPanel>
 
-                    <Button x:Name="btnSaveSettings" Margin="10,10,10,10" Padding="10,10,10,10" Style="{StaticResource DarkRoundedMessageButton}" Click="btnSaveSettings_Click" Foreground="White" Content="Save User Settings"/>
+                    <Button x:Name="btnSaveSettings" Margin="10,10,10,10" Padding="10,10,10,10" Style="{StaticResource DarkRoundedMessageButton}" Click="btnSaveSettings_Click" Foreground="White" Content="Save"/>
 
                     <TextBlock x:Name="txbSaved" HorizontalAlignment="Center" Visibility="Collapsed">Changes Saved</TextBlock>
                 </StackPanel>

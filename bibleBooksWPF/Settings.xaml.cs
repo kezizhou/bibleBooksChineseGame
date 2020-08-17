@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace BibleBooksWPF {
 	/// <summary>
@@ -62,8 +63,8 @@ namespace BibleBooksWPF {
 					btnUpdate.Content = "检查更新";
 					grpUserSettings.Header = "用户设置";
 					txbUsername.Text = "用户名";
-					txbProfilePic.Text = "个人图片";
-					btnSaveSettings.Content = "储存用户设置";
+					txbProfilePic.Text = "头像";
+					btnSaveSettings.Content = "保存";
 					txbSaved.Text = "设置已经储存。";
 					grpCredits.Header = "制作";
 				}
@@ -238,6 +239,63 @@ namespace BibleBooksWPF {
 
 				// Update the json with new information
 				// Username
+				// Check if valid
+				if (Properties.Settings.Default.strLanguage.Equals("English")) {
+					switch (txtInputText.Text) {
+						case "":
+							txbSaved.Text = "Please enter a valid username";
+							txbSaved.Foreground = System.Windows.Media.Brushes.Red;
+							txbSaved.Visibility = Visibility.Visible;
+							AsyncHideSaved();
+							return;
+						case "New User":
+							txbSaved.Text = "Please enter a valid username";
+							txbSaved.Foreground = System.Windows.Media.Brushes.Red;
+							txbSaved.Visibility = Visibility.Visible;
+							AsyncHideSaved();
+							return;
+						case "新用户":
+							txbSaved.Text = "Please enter a valid username";
+							txbSaved.Foreground = System.Windows.Media.Brushes.Red;
+							txbSaved.Visibility = Visibility.Visible;
+							AsyncHideSaved();
+							return;
+						default:
+							txbSaved.Text = "Please enter a unique username";
+							txbSaved.Foreground = System.Windows.Media.Brushes.Red;
+							txbSaved.Visibility = Visibility.Visible;
+							AsyncHideSaved();
+							return;
+					}
+				} else if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+					switch (txtInputText.Text) {
+						case "":
+							txbSaved.Text = "请输入用户名";
+							txbSaved.Foreground = System.Windows.Media.Brushes.Red;
+							txbSaved.Visibility = Visibility.Visible;
+							AsyncHideSaved();
+							return;
+						case "New User":
+							txbSaved.Text = "请换一个用户名";
+							txbSaved.Foreground = System.Windows.Media.Brushes.Red;
+							txbSaved.Visibility = Visibility.Visible;
+							AsyncHideSaved();
+							return;
+						case "新用户":
+							txbSaved.Text = "请换一个用户名";
+							txbSaved.Foreground = System.Windows.Media.Brushes.Red;
+							txbSaved.Visibility = Visibility.Visible;
+							AsyncHideSaved();
+							return;
+						default:
+							txbSaved.Text = "用户名已经存在";
+							txbSaved.Foreground = System.Windows.Media.Brushes.Red;
+							txbSaved.Visibility = Visibility.Visible;
+							AsyncHideSaved();
+							return;
+					}
+				}
+
 				userCurrent.username = txtInputText.Text;
 				App.Current.Properties["currentUsername"] = userCurrent.username;
 
@@ -261,7 +319,7 @@ namespace BibleBooksWPF {
 		}
 
 		private async void AsyncHideSaved() {
-			await Task.Delay(1600);
+			await Task.Delay(1800);
 			txbSaved.Visibility = Visibility.Hidden;
 		}
 
