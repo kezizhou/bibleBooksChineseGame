@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -538,6 +539,25 @@ namespace ExtensionMethods {
 			}
 
 			return strResult;
+		}
+	}
+
+	public static class Layout {
+		public static int TransformToPixels(Visual visual, double dblXY) {
+			Matrix matrix;
+			var source = PresentationSource.FromVisual(visual);
+
+			if (source != null) {
+				matrix = source.CompositionTarget.TransformToDevice;
+			} else {
+				using (var src = new HwndSource(new HwndSourceParameters())) {
+					matrix = src.CompositionTarget.TransformToDevice;
+				}
+			}
+
+			int intPixelXY = (int)(matrix.M11 * dblXY);
+
+			return intPixelXY;
 		}
 	}
 }
