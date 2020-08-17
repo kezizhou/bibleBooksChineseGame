@@ -78,14 +78,16 @@ Settings
 
 ***
 ### Features
+See [CHANGELOG.md](https://github.com/kezizhou/bibleBooksChineseGame/blob/master/CHANGELOG.md) for detailed changes with each version.
 * Language setting to switch interface and games from English to Chinese and vice versa
+* Help button to display video tutorials
 * Matching games for Hebrew and Greek Scriptures with Chinese and English
 * Reorder Bible books games for Hebrew and Greek Scriptures
 * Opportunity to earn badges during play
 * Enter codes to earn more badges
 * Statistics page tracks average and record scores and times
 * Turn on or off audio pronunciation for Bible books
-* Multiple users per device
+* Multiple users stored per device
 * Responsive design for different screen sizes
 
 ***
