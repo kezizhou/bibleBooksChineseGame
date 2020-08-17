@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## Unreleased
 
+## Releases and Prereleases
+
+## [1.1.10](https://github.com/kezizhou/bibleBooksChineseGame/releases/tag/v1.1.10) - 2020-08-17
+### Fixed
+- Audio pronunciation
+- Cursor clip size across dpi percentages
+
 ## [1.1.9](https://github.com/kezizhou/bibleBooksChineseGame/releases/tag/v1.1.9) - 2020-08-17
 ### Added
 - Info/help button on Main Menu in Chinese and English
@@ -19,8 +26,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Show Chinese for Change User button
 - Deny invalid username changes on Settings page
 - Added scrollbars to Main Menu
-
-## Releases and Prereleases
 
 ## [1.1.8](https://github.com/kezizhou/bibleBooksChineseGame/releases/tag/v1.1.8) - 2020-08-11
 ### Added
