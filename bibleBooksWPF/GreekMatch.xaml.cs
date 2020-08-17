@@ -21,10 +21,8 @@ namespace BibleBooksWPF {
 		// Variables for moving labels
 		public bool blnDragging = false;
 		private Point clickPosition;
-		private Point labelClickPosition;
 		Dictionary<string, Point> dctTransform = new Dictionary<String, Point>();
 
-		private Point gridBeforeMatch;
 		private static int intNumberAttempted = 0;
 		private static int intNumberCorrect = 0;
 		private static int intCurrentPoints = 0;
@@ -66,13 +64,20 @@ namespace BibleBooksWPF {
 				blnDragging = true;
 				Label lblActiveElement = sender as Label;
 				clickPosition = e.GetPosition(this.Parent as UIElement);
-				labelClickPosition = lblActiveElement.TransformToAncestor(grdGreekMatch).Transform(new Point(0, 0));
-				gridBeforeMatch = new Point(Grid.GetRow(lblActiveElement), Grid.GetColumn(lblActiveElement));
+				Point mouseOnElement = Mouse.GetPosition(lblActiveElement);
 
 				lblActiveElement.CaptureMouse();
 
 				lblActiveElement.BringToFront();
 				Cursor = Cursors.Hand;
+
+				Point pntGrid = grdGreekMatch.PointToScreen(grdGreekMatch.TranslatePoint(new Point(0, 0), this));
+				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y + menTop.ActualHeight);
+
+				// Width: Subtract the label width
+				// Height: Subtract height of menu bar and the label height
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y), 
+												   (int)(grdGreekMatch.ActualWidth - lblActiveElement.ActualWidth), (int)(grdGreekMatch.ActualHeight - menTop.ActualHeight - lblActiveElement.ActualHeight));
 
 				// Check audio setting
 				// If on, play audio
@@ -80,6 +85,7 @@ namespace BibleBooksWPF {
 					playAudio(sender);
 				}
 			} catch (Exception ex) {
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();
 				MessageBox.Show(ex.Message);
 			}
 		}
@@ -90,24 +96,12 @@ namespace BibleBooksWPF {
 
 				if (blnDragging && lblActiveElement != null) {
 					Point currentPosition = e.GetPosition(this.Parent as UIElement);
+					Point mouseOnElement = Mouse.GetPosition(lblActiveElement);
 
 					TranslateTransform transform = lblActiveElement.RenderTransform as TranslateTransform;
 					if (transform == null || dctTransform.ContainsKey(lblActiveElement.Name) == false) {
 						transform = new TranslateTransform();
 						lblActiveElement.RenderTransform = transform;
-					}
-
-					// Prevent from dragging off window
-					if (currentPosition.X < 100) {
-						currentPosition.X = 100;
-					} else if (currentPosition.X > grdGreekMatch.ActualWidth - 100) {
-						currentPosition.X = grdGreekMatch.ActualWidth - 100;
-					}
-
-					if (currentPosition.Y < 100) {
-						currentPosition.Y = 100;
-					} else if (currentPosition.Y > grdGreekMatch.ActualHeight) {
-						currentPosition.Y = grdGreekMatch.ActualHeight;
 					}
 
 					// Transform the distance from the current position to the position it was last in when mouse clicked
@@ -124,6 +118,7 @@ namespace BibleBooksWPF {
 					}
 				}
 			} catch (Exception ex) {
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();
 				MessageBox.Show(ex.Message);
 			}
 		}
@@ -146,8 +141,10 @@ namespace BibleBooksWPF {
 				}
 
 				lblActiveElement.ReleaseMouseCapture();
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();
 				Cursor = Cursors.Arrow;
 			} catch (Exception ex) {
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();
 				MessageBox.Show(ex.Message);
 			}
 		}
@@ -197,6 +194,8 @@ namespace BibleBooksWPF {
 					lblCh.MouseMove += new MouseEventHandler(lblMouseMove);
 					lblCh.MouseLeftButtonUp += new MouseButtonEventHandler(lblMouseLeftButtonUp);
 
+					lblCh.Cursor = Cursors.Hand;
+
 					// Add each label's location in the grid to a list of points
 					// (Row, Column)
 					Point pntGridPosition = new Point(Grid.GetRow(lblCh), Grid.GetColumn(lblCh));
@@ -244,6 +243,8 @@ namespace BibleBooksWPF {
 
 				var synthesizer = new SpeechSynthesizer();
 				synthesizer.SetOutputToDefaultAudioDevice();
+				PromptBuilder pBuilder = new PromptBuilder();
+
 				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
 					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("EN"));
 
@@ -253,12 +254,17 @@ namespace BibleBooksWPF {
 						strRead = strRead.Replace("2", "Second");
 					} else if (strRead.Contains("3")) {
 						strRead = strRead.Replace("3", "Third");
+					} else if (strRead == "Philemon") {
+						pBuilder.AppendTextWithPronunciation("Philemon", "faɪlimən");
+					} else {
+						pBuilder.AppendText(strRead);
 					}
 				} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
 					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
+					pBuilder.AppendText(strRead);
 				}
 
-				synthesizer.SpeakAsync(strRead);
+				synthesizer.SpeakAsync(pBuilder);
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
