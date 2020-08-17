@@ -22,10 +22,8 @@ namespace BibleBooksWPF {
 		// Variables for moving labels
 		public bool blnDragging = false;
 		private Point clickPosition;
-		private Point labelClickPosition;
 		Dictionary<string, Point> dctTransform = new Dictionary<string, Point>();
 
-		private Point gridBeforeMatch;
 		private static int intNumberCorrect = 0;
 		private static int intCurrentPoints = 0;
 		private static int intTries = 0;
@@ -74,13 +72,21 @@ namespace BibleBooksWPF {
 				blnDragging = true;
 				Label lblActiveElement = sender as Label;
 				clickPosition = e.GetPosition(this.Parent as UIElement);
-				labelClickPosition = lblActiveElement.TransformToAncestor(grdHebrewReorder).Transform(new Point(0, 0));
-				gridBeforeMatch = new Point(Grid.GetRow(lblActiveElement), Grid.GetColumn(lblActiveElement));
+				Point mouseOnElement = Mouse.GetPosition(lblActiveElement);
 
 				lblActiveElement.CaptureMouse();
 
 				lblActiveElement.BringToFront();
 				Cursor = Cursors.Hand;
+
+				Point pntGrid = grdHebrewReorder.PointToScreen(grdHebrewReorder.TranslatePoint(new Point(0, 0), this));
+				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y + menTop.ActualHeight);
+
+				// Width: Subtract the label width
+				// Height: Subtract height of menu bar and the label height
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y),
+												   (int)(grdHebrewReorder.ActualWidth - lblActiveElement.ActualWidth), (int)(grdHebrewReorder.ActualHeight - menTop.ActualHeight - lblActiveElement.ActualHeight));
+
 
 				// Check audio setting
 				// If on, play audio
@@ -88,6 +94,7 @@ namespace BibleBooksWPF {
 					playAudio(sender);
 				}
 			} catch (Exception ex) {
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();
 				MessageBox.Show(ex.Message);
 			}
 		}
@@ -105,19 +112,6 @@ namespace BibleBooksWPF {
 						lblActiveElement.RenderTransform = transform;
 					}
 
-					// Prevent from dragging off window
-					if (currentPosition.X < 100) {
-						currentPosition.X = 100;
-					} else if (currentPosition.X > grdHebrewReorder.ActualWidth - 100) {
-						currentPosition.X = grdHebrewReorder.ActualWidth - 100;
-					}
-
-					if (currentPosition.Y < 100) {
-						currentPosition.Y = 100;
-					} else if (currentPosition.Y > grdHebrewReorder.ActualHeight) {
-						currentPosition.Y = grdHebrewReorder.ActualHeight;
-					}
-
 					// Transform the distance from the current position to the position it was last in when mouse clicked
 					transform.X = currentPosition.X - clickPosition.X;
 					transform.Y = currentPosition.Y - clickPosition.Y;
@@ -132,6 +126,7 @@ namespace BibleBooksWPF {
 					}
 				}
 			} catch (Exception ex) {
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();
 				MessageBox.Show(ex.Message);
 			}
 		}
@@ -155,8 +150,10 @@ namespace BibleBooksWPF {
 				}
 
 				lblActiveElement.ReleaseMouseCapture();
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();
 				Cursor = Cursors.Arrow;
 			} catch (Exception ex) {
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();
 				MessageBox.Show(ex.Message);
 			}
 		}
@@ -202,6 +199,8 @@ namespace BibleBooksWPF {
 					lbl.MouseLeftButtonDown += new MouseButtonEventHandler(lblMouseLeftButtonDown);
 					lbl.MouseMove += new MouseEventHandler(lblMouseMove);
 					lbl.MouseLeftButtonUp += new MouseButtonEventHandler(lblMouseLeftButtonUp);
+
+					lbl.Cursor = Cursors.Hand;
 
 					// Add each label's location in the grid to a list of points
 					// (Row, Column)

@@ -48,14 +48,6 @@
 
     <Style x:Key="RoundedUserButton" TargetType="Button">
         <Setter Property="Background" Value="#82A8E6"/>
-        <!--<Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#9BC1FF" Offset="0"/>
-                    <GradientStop Color="#DFF2F7" Offset="1"/>
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -162,7 +154,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#D7C6DE"/>
+                <Setter Property="Background" Value="#e1beef"/>
             </Trigger>
         </Style.Triggers>
     </Style>

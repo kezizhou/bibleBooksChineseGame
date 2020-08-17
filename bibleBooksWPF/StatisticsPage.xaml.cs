@@ -9,14 +9,12 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 
 using ExtensionMethods;
-using System.Windows.Media.Imaging;
 
-namespace BibleBooksWPF
-{
-    /// <summary>
-    /// Interaction logic for Statistics.xaml
-    /// </summary>
-    public partial class StatisticsPage : Page {
+namespace BibleBooksWPF {
+	/// <summary>
+	/// Interaction logic for Statistics.xaml
+	/// </summary>
+	public partial class StatisticsPage : Page {
         public StatisticsPage() {
             InitializeComponent();
         }

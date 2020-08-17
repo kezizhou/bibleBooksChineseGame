@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-
+using BibleBooksWPF.Resources;
 using ExtensionMethods;
 
 namespace BibleBooksWPF {
@@ -35,6 +35,8 @@ namespace BibleBooksWPF {
 					imenExit.Header = "退出";
 					lblWelcome.Content = "欢迎: " + App.Current.Properties["currentUsername"];
 					txbDescription.Text = "点击以上的链接选择游戏";
+					btnChangeUser.Content = "改变用户";
+					btnHelp.ToolTip = "帮助";
 					menTop.FontSize = 16;
 				} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
 					lblWelcome.Content = "Welcome:  " + App.Current.Properties["currentUsername"];
@@ -126,6 +128,11 @@ namespace BibleBooksWPF {
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
+		}
+
+		private void btnHelp_Click(object sender, RoutedEventArgs e) {
+			HelpWindow helpWindow = new HelpWindow();
+			helpWindow.ShowDialog(); 
 		}
 	}
 }

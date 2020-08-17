@@ -46,7 +46,7 @@ namespace BibleBooksWPF
 			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
 				winNewUser.Title = "新用户";
 				txbUsernameDesc.Text = "用户名";
-				txbSelectProfile.Text = "选择个人图片";
+				txbSelectProfile.Text = "选择头像";
 				btnCancel.Content = "取消";
 			}
 		}
