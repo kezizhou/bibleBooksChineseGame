@@ -77,13 +77,23 @@ namespace BibleBooksWPF
 				lblActiveElement.BringToFront();
 				Cursor = Cursors.Hand;
 
+				// Convert wpf size to pixels to fit all dpi percentages
+				int intGridWidth = Layout.TransformToPixels(grdHebrewMatch, grdHebrewMatch.ActualWidth);
+				int intGridHeight = Layout.TransformToPixels(grdHebrewMatch, grdHebrewMatch.ActualHeight);
+
+				int intLabelWidth = Layout.TransformToPixels(grdHebrewMatch, lblActiveElement.ActualWidth);
+				int intLabelHeight = Layout.TransformToPixels(grdHebrewMatch, lblActiveElement.ActualHeight);
+
+				int intMenuWidth = Layout.TransformToPixels(grdHebrewMatch, menTop.ActualWidth);
+				int intMenuHeight = Layout.TransformToPixels(grdHebrewMatch, menTop.ActualHeight);
+
 				Point pntGrid = grdHebrewMatch.PointToScreen(grdHebrewMatch.TranslatePoint(new Point(0, 0), this));
-				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y + menTop.ActualHeight);
+				mouseOnElement = new Point(Layout.TransformToPixels(grdHebrewMatch, mouseOnElement.X), Layout.TransformToPixels(grdHebrewMatch, mouseOnElement.Y));
+				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y + intMenuHeight);
 
 				// Width: Subtract the label width
 				// Height: Subtract height of menu bar and the label height
-				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y),
-												   (int)(grdHebrewMatch.ActualWidth - lblActiveElement.ActualWidth), (int)(grdHebrewMatch.ActualHeight - menTop.ActualHeight - lblActiveElement.ActualHeight));
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y), intGridWidth - intLabelWidth, intGridHeight - intMenuHeight - intLabelHeight);
 
 				// Check audio setting
 				// If on, play audio
@@ -246,15 +256,15 @@ namespace BibleBooksWPF
 				Label lblBook = sender as Label;
 				string strRead = lblBook.Content.ToString();
 
-				var synthesizer = new SpeechSynthesizer();
+				SpeechSynthesizer synthesizer = new SpeechSynthesizer();
 				synthesizer.SetOutputToDefaultAudioDevice();
 				PromptBuilder pBuilder = new PromptBuilder();
 
 				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
-					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("EN"));
+					pBuilder.Culture = CultureInfo.GetCultureInfo("en-US");
 
 					if (strRead.Contains("1")) {
-						strRead = strRead.Replace("1", "fɜrst");
+						strRead = strRead.Replace("1", "First");
 						pBuilder.AppendText(strRead);
 					} else if (strRead.Contains("2")) {
 						strRead = strRead.Replace("2", "Second");
@@ -272,7 +282,7 @@ namespace BibleBooksWPF
 						pBuilder.AppendText(strRead);
 					}
 				} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
-					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
+					pBuilder.Culture = CultureInfo.GetCultureInfo("zh-CN");
 					pBuilder.AppendText(strRead);
 				}
 
