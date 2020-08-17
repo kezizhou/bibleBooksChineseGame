@@ -51,6 +51,9 @@ Main Menu
 ![Main Menu](documentation/mainMenu.png)  
 ***
 
+Help Window
+![Help Window](documentation/help.png)
+
 Hebrew Scriptures Match Chinese to English  
 ![Hebrew Scriptures Match Chinese to English](documentation/hebrewMatch.png)  
 ***
