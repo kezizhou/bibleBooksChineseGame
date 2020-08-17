@@ -73,13 +73,23 @@ namespace BibleBooksWPF {
 				lblActiveElement.BringToFront();
 				Cursor = Cursors.Hand;
 
+				// Convert wpf size to pixels to fit all dpi percentages
+				int intGridWidth = Layout.TransformToPixels(grdGreekReorder, grdGreekReorder.ActualWidth);
+				int intGridHeight = Layout.TransformToPixels(grdGreekReorder, grdGreekReorder.ActualHeight);
+
+				int intLabelWidth = Layout.TransformToPixels(grdGreekReorder, lblActiveElement.ActualWidth);
+				int intLabelHeight = Layout.TransformToPixels(grdGreekReorder, lblActiveElement.ActualHeight);
+
+				int intMenuWidth = Layout.TransformToPixels(grdGreekReorder, menTop.ActualWidth);
+				int intMenuHeight = Layout.TransformToPixels(grdGreekReorder, menTop.ActualHeight);
+
 				Point pntGrid = grdGreekReorder.PointToScreen(grdGreekReorder.TranslatePoint(new Point(0, 0), this));
-				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y + menTop.ActualHeight);
+				mouseOnElement = new Point(Layout.TransformToPixels(grdGreekReorder, mouseOnElement.X), Layout.TransformToPixels(grdGreekReorder, mouseOnElement.Y));
+				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y + intMenuHeight);
 
 				// Width: Subtract the label width
 				// Height: Subtract height of menu bar and the label height
-				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y),
-												   (int)(grdGreekReorder.ActualWidth - lblActiveElement.ActualWidth), (int)(grdGreekReorder.ActualHeight - menTop.ActualHeight - lblActiveElement.ActualHeight));
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y), intGridWidth - intLabelWidth, intGridHeight - intMenuHeight - intLabelHeight);
 
 				// Check audio setting
 				// If on, play audio
@@ -242,15 +252,15 @@ namespace BibleBooksWPF {
 				Label lblBook = sender as Label;
 				string strRead = lblBook.Content.ToString();
 
-				var synthesizer = new SpeechSynthesizer();
+				SpeechSynthesizer synthesizer = new SpeechSynthesizer();
 				synthesizer.SetOutputToDefaultAudioDevice();
 				PromptBuilder pBuilder = new PromptBuilder();
 
 				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
-					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("zh-CN"));
+					pBuilder.Culture = CultureInfo.GetCultureInfo("zh-CN");
 					pBuilder.AppendText(strRead);
 				} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
-					synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo("EN"));
+					pBuilder.Culture = CultureInfo.GetCultureInfo("en-US");
 
 					if (strRead.Contains("1")) {
 						strRead = strRead.Replace("1", "First");
