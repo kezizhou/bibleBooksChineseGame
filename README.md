@@ -115,8 +115,12 @@ WinForms Greek Reorder
   * This icon was not changed in any format.
 * Congratulations image on completion "congrats.png":
   * Icon made by Flat Icons from www.flaticon.com
-* Main Menu image "book.jpg":
-  * Photo by [Aaron Burden](https://unsplash.com/@aaronburden) on [Unsplash](https://unsplash.com/)
+* Main Menu image "mainMenu.jpg":
+  * Photo by [Carolinie Cavalli](https://unsplash.com/@caroliniecavalli) on [Unsplash](https://unsplash.com/)
+* Main Menu Book Icon:
+  * Icon made by Good Ware from www.flaticon.com
+* Help Back and Next Page Icons:
+  * Icons made by Roundicons from www.flaticon.com
 * New user message box image "newUser.png":
   * Icon made by Smashicons from www.flaticon.com
 * Achievement Badges
