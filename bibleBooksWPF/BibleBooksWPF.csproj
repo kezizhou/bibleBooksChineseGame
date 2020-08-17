@@ -28,7 +28,7 @@
     <InstallUrl>https://raw.githubusercontent.com/kezizhou/bibleBooksChineseGame/master/publish/</InstallUrl>
     <SupportUrl>https://github.com/kezizhou/bibleBooksChineseGame/issues</SupportUrl>
     <ProductName>Bible Books Game</ProductName>
-    <PublisherName>kezizhou</PublisherName>
+    <PublisherName>Kezizhou Bible Books Game</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>10</ApplicationRevision>
