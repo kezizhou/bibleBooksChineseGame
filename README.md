@@ -96,8 +96,10 @@ See [CHANGELOG.md](https://github.com/kezizhou/bibleBooksChineseGame/blob/master
 ***
 ### Zoom Sharing
 To share this application on Zoom and allow another person to control the screen through Remote Control, you will need to install [**this**](https://github.com/joshuatz/right-click-and-drag/releases) application. Download and install the right-click-and-drag.exe file to use.  
-The Right Click and Drag application was created by another GitHub user, and uses HotKey operations to turn all right clicks into a left click and drag operation. On Zoom, holding down indicates a right click, so this application will simulate a dragging motion on the host application. 
-To use, open the Right Click and Drag application, and check the checkbox to enable the application to start. When finished sharing on Zoom, uncheck the enabled box to end use. The Remote Control user will need to touch and hold down the Bible book labels for 2 seconds before they can drag it.
+
+To use, open the Right Click and Drag application, and check the checkbox to enable the application to start. When finished sharing on Zoom, uncheck the enabled box to end use. The Remote Control user will need to touch and hold down the Bible book labels for 2 seconds before they can drag it.  
+
+The Right Click and Drag application was created by another GitHub user, and uses HotKey operations to turn all right clicks into a left click and drag operation. On Zoom, holding down indicates a right click, so this application will simulate a dragging motion on the host application.  
 
 **[Back to Top](#bibleBooksChineseGame)**
 
