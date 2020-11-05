@@ -99,6 +99,19 @@ namespace BibleBooksWPF {
 			}
 		}
 
+		private void imenDiceHebrew_Click(object sender, RoutedEventArgs e) {
+
+		}
+
+		private void imenDiceGreek_Click(object sender, RoutedEventArgs e) {
+			try {
+				DiceBooksGreek pDiceBooksGreek = new DiceBooksGreek();
+				NavigationService.Navigate(pDiceBooksGreek);
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
+		}
+
 		private void ImenStatistics_Click(object sender, RoutedEventArgs e) {
 			try {
 				StatisticsPage pStatistics = new StatisticsPage();
@@ -131,8 +144,12 @@ namespace BibleBooksWPF {
 		}
 
 		private void btnHelp_Click(object sender, RoutedEventArgs e) {
-			HelpWindow helpWindow = new HelpWindow();
-			helpWindow.ShowDialog(); 
+			try {
+				HelpWindow helpWindow = new HelpWindow();
+				helpWindow.ShowDialog();
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 	}
 }

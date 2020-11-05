@@ -35,6 +35,12 @@
                     <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English" Click="ImenMatchGreek_Click"/>
                     <MenuItem x:Name="imenReorderGreek" Header="Reorder Books" Click="ImenReorderGreek_Click"/>
                 </MenuItem>
+                <MenuItem x:Name="imenMultiplayer" Header="Multiplayer">
+                    <MenuItem x:Name="imenDice" Header="Dice Books">
+                        <MenuItem x:Name="imenDiceHebrew" Header="Hebrew Scriptures" Click="imenDiceHebrew_Click"></MenuItem>
+                        <MenuItem x:Name="imenDiceGreek" Header="Greek Scriptures" Click="imenDiceGreek_Click"></MenuItem>
+                    </MenuItem>
+                </MenuItem>
                 <MenuItem x:Name="imenStatistics" Header="Statistics" Click="ImenStatistics_Click"/>
                 <MenuItem x:Name="imenSettings" Header="Settings" Click="ImenSettings_Click"/>
                 <MenuItem x:Name="imenExit" Header="Exit" Click="ImenExit_Click"/>
