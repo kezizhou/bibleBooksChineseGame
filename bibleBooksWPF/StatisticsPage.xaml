@@ -160,13 +160,6 @@
                         <Image x:Name="imgBadgeTiger" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeTiger.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
                         <Image x:Name="imgBadgeTurtle" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeTurtle.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
                         <Image x:Name="imgBadgeZebra" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/imgBadgeZebra.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
-                        
-                        <Image x:Name="imgBadgeSpecial1" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial1.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
-                        <Image x:Name="imgBadgeSpecial2" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial2.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
-                        <Image x:Name="imgBadgeSpecial3" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial3.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
-                        <Image x:Name="imgBadgeSpecial4" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial4.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
-                        <Image x:Name="imgBadgeSpecial5" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial5.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
-                        <Image x:Name="imgBadgeSpecial6" Source="pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/imgBadgeSpecial6.png" MaxHeight="100" MaxWidth="100" Margin="7" Visibility="Collapsed"></Image>
                     </WrapPanel>
 
                     <TextBlock x:Name="txbEnterCode" FontSize="17" Background="#E6F7DF" Margin="0,15,0,10" Padding="5">Enter a Code</TextBlock>

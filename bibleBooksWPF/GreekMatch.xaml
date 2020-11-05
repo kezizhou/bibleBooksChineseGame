@@ -127,19 +127,18 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock x:Name="txbCurrentPoints" Grid.Column="0" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Padding="10,0">Current Points:</TextBlock>
-                <Label x:Name="lblCurrentPoints" Content="0" Grid.Column="1" Grid.Row="0" FontSize="16"/>
+                <Label x:Name="lblCurrentPoints" Content="{Binding Path=propCurrentPoints}" Grid.Column="1" Grid.Row="0" FontSize="16"/>
 
                 <TextBlock x:Name="txbPercentageCorrect" Grid.Column="2" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Current Percentage Correct:</TextBlock>
                 <Label x:Name="lblPercentageCorrect" Content="0 %" Grid.Column="3" Grid.Row="0" FontSize="16"/>
 
                 <TextBlock x:Name="txbTimeElapsed" Grid.Column="4" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Time Elapsed:</TextBlock>
-                <Label x:Name="lblTimeElapsed" Content="00:00:00" Grid.Column="5" Grid.Row="0" FontSize="16" Padding="5,5,10,5"></Label>
-
+                <Label x:Name="lblTimeElapsed" Content="{Binding Path=propTimeElapsed, StringFormat={}{0:HH\\:mm\\:ss}}" Grid.Column="5" Grid.Row="0" FontSize="16" Padding="5,5,10,5"/>
                 <TextBlock x:Name="txbTotalPoints" Grid.Column="0" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Padding="10,0">Total Points:</TextBlock>
-                <Label x:Name="lblTotalPoints" Content="0" Grid.Column="1" Grid.Row="1" FontSize="16"></Label>
+                <Label x:Name="lblTotalPoints" Content="{Binding Path=propTotalPoints}" Grid.Column="1" Grid.Row="1" FontSize="16"></Label>
 
                 <TextBlock x:Name="txbNumberAttempted" Grid.Column="2" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0">Number Attempted:</TextBlock>
-                <Label x:Name="lblNumberAttempted" Content="0" Grid.Column="3" Grid.Row="1" FontSize="16"></Label>
+                <Label x:Name="lblNumberAttempted" Content="{Binding Path=propNumberAttempted}" Grid.Column="3" Grid.Row="1" FontSize="16"></Label>
             </Grid>
 
             <Button x:Name="btnPause" Click="btnPause_Click" Grid.Row="10" Grid.Column="8" Grid.RowSpan="2" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderThickness="0">

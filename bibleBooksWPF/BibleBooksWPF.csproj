@@ -83,6 +83,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -102,6 +103,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\MatchingGameViewModel.cs" />
     <Compile Include="ConfirmMessageBox.xaml.cs">
       <DependentUpon>ConfirmMessageBox.xaml</DependentUpon>
     </Compile>
@@ -111,7 +113,10 @@
     <Compile Include="CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="gameStatistic.cs" />
+    <Compile Include="DiceBooksGreek.xaml.cs">
+      <DependentUpon>DiceBooksGreek.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameStatistisc.cs" />
     <Compile Include="GreekReorder.xaml.cs">
       <DependentUpon>GreekReorder.xaml</DependentUpon>
     </Compile>
@@ -121,6 +126,7 @@
     <Compile Include="HebrewReorder.xaml.cs">
       <DependentUpon>HebrewReorder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MatchingGames.cs" />
     <Compile Include="NewBadgeMessage.xaml.cs">
       <DependentUpon>NewBadgeMessage.xaml</DependentUpon>
     </Compile>
@@ -152,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiceBooksGreek.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -313,25 +323,11 @@
     <Resource Include="Resources\Badges\imgGreekReorder100.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial3.png" />
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Badges\imgBadgeRuth.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Badges\imgBadgeMorning.png" />
     <Resource Include="Resources\Badges\imgBadgeNight.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial4.png" />
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial6.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Badges\imgBadgeExodus.png" />
@@ -418,6 +414,7 @@
     <Resource Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\correct.png" />
     <Content Include="Resources\HelpVideos\MainMenu.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -439,6 +436,8 @@
     <Content Include="Resources\HelpVideos\Statistics.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\incorrect.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
