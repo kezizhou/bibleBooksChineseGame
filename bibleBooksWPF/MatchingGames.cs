@@ -23,7 +23,7 @@ namespace BibleBooksWPF {
 			rctLbl.Width = lbl.ActualWidth;
 
 			// Only check English labels that are touching the Chinese label
-			if (rctChLbl.IntersectsWith(rctLbl)) {
+			if (rctChLbl.IntersectsWith(rctLbl) && lbl.IsEnabled) {
 				int intChLabelIndex = Array.IndexOf(astrChBooks, lblCh.Name);
 				blnAttemptedMatch = true;
 
@@ -38,6 +38,7 @@ namespace BibleBooksWPF {
 					Grid.SetRow(lblCh, Grid.GetRow(lbl));
 					Grid.SetColumn(lblCh, Grid.GetColumn(lbl));
 					lblCh.IsEnabled = false;
+					lbl.IsEnabled = false;
 				}
 			}
 

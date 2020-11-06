@@ -9,9 +9,10 @@ using System.Windows.Navigation;
 using System.Windows.Threading;
 using System.Speech.Synthesis;
 using System.Diagnostics;
+using System.Globalization;
 
 using ExtensionMethods;
-using System.Globalization;
+using BibleBooksWPF.ViewModels;
 
 namespace BibleBooksWPF
 {
@@ -23,11 +24,9 @@ namespace BibleBooksWPF
 		// Variables for moving labels
 		public bool blnDragging = false;
 		private Point clickPosition;
+		MatchingGameViewModel viewModel;
 		Dictionary<string, Point> dctTransform = new Dictionary<String, Point>();
 
-		private static int intNumberAttempted = 0;
-		private static int intNumberCorrect = 0;
-		private static int intCurrentPoints = 0;
 		List<Point> lpntChLabels = new List<Point>();
 
 		static string[] astrChHebrew= { "lblChGenesis", "lblChExodus", "lblChLeviticus", "lblChNumbers", "lblChDeuteronomy", "lblChJoshua", "lblChJudges", "lblChRuth", "lblCh1Samuel",
@@ -51,9 +50,8 @@ namespace BibleBooksWPF
 				InitializeComponent();
 
 				// Reset points
-				intNumberAttempted = 0;
-				intNumberCorrect = 0;
-				intCurrentPoints = 0;
+				viewModel = new MatchingGameViewModel();
+				this.DataContext = viewModel;
 
 				// Reset timer
 				timer1.Tick += new EventHandler(timer1_Tick);
@@ -242,9 +240,7 @@ namespace BibleBooksWPF
 		private void timer1_Tick(object sender, EventArgs e) {
 			try {
 				if (stopwatch.IsRunning) {
-					TimeSpan ts = stopwatch.Elapsed;
-					lblTimeElapsed.Content = String.Format("{0:00}:{1:00}:{2:00}",
-						ts.Hours, ts.Minutes, ts.Seconds);
+					viewModel.propTimeElapsed = stopwatch.Elapsed;
 				}
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
@@ -308,87 +304,79 @@ namespace BibleBooksWPF
 				// Get the label from the string name
 				Label lbl = this.FindName(strLbl) as Label;
 
-				// Turn English label into a rectangle
-				Rect rctLbl = new Rect();
-				rctLbl.Location = lbl.PointToScreen(new Point(0, 0));
-				rctLbl.Height = lbl.ActualHeight;
-				rctLbl.Width = lbl.ActualWidth;
+				var tpMatchReturn = MatchingGames.checkTouchingLabelsCorrect(lbl, lblCh, rctChLbl, astrHebrew, astrChHebrew);
+				if (tpMatchReturn.Item1) blnCorrect = true;
+				if (tpMatchReturn.Item2) blnAttemptedMatch = true;
 
-				// Only check English labels that are touching the Chinese label
-				if (rctChLbl.IntersectsWith(rctLbl)) {
+				lstrBooksToComplete.Remove(lblCh.Name);
+				if (blnCorrect) {
+					// Add points
+					viewModel.AddCorrectAttempt();
+
+					lstrBooksToComplete.Remove(lblCh.Name);
+
 					int intChLabelIndex = Array.IndexOf(astrChHebrew, lblCh.Name);
-					blnAttemptedMatch = true;
-
-					// If the correct English label has been matched
-					if (strLbl == astrHebrew[intChLabelIndex]) {
-						// Mark boolean flag true first
-						// Override the false in case it is touching 2 English labels at once
-						blnCorrect = true;
-
-						// Add points
-						intCurrentPoints += 1;
-						Properties.Settings.Default.lngTotalPoints += 1;
-						Properties.Settings.Default.Save();
-						intNumberCorrect += 1;
-						intNumberAttempted += 1;
-						refreshPoints();
-
-						// Move correct label on top of English
-						lblCh.RenderTransform = new TranslateTransform();
-						Grid.SetRow(lblCh, Grid.GetRow(lbl));
-						Grid.SetColumn(lblCh, Grid.GetColumn(lbl));
-						lblCh.IsEnabled = false;
-
-						lstrBooksToComplete.Remove(lblCh.Name);
-
-						if (intChLabelIndex == 1) {
-							// Exodus badge
-							switch (App.Current.Properties["exodusBadge"].ToString()) {
-								case "reorder":
-									// Second game right
-									App.Current.Properties["exodusBadge"] = "both";
-									break;
-								case "":
-									// First time getting book right
-									App.Current.Properties["exodusBadge"] = "match";
-									break;
-								default:
-									// Badge already awarded
-									break;
-							}
-						} else if (intChLabelIndex == 7) {
-							// Ruth badge
-							switch (App.Current.Properties["ruthBadge"].ToString()) {
-								case "reorder":
-									// Second game right
-									App.Current.Properties["ruthBadge"] = "both";
-									break;
-								case "":
-									// First time getting book right
-									App.Current.Properties["ruthBadge"] = "match";
-									break;
-								default:
-									// Badge already awarded
-									break;
-							}
+					if (intChLabelIndex == 1) {
+						// Exodus badge
+						switch (App.Current.Properties["exodusBadge"].ToString()) {
+							case "reorder":
+								// Second game right
+								App.Current.Properties["exodusBadge"] = "both";
+								break;
+							case "":
+								// First time getting book right
+								App.Current.Properties["exodusBadge"] = "match";
+								break;
+							default:
+								// Badge already awarded
+								break;
 						}
-
-						// Check if all books have been matched
-						if (lstrBooksToComplete.Count == 0) {
-							// Show congratulations message
-							completedMatching();
+					} else if (intChLabelIndex == 7) {
+						// Ruth badge
+						switch (App.Current.Properties["ruthBadge"].ToString()) {
+							case "reorder":
+								// Second game right
+								App.Current.Properties["ruthBadge"] = "both";
+								break;
+							case "":
+								// First time getting book right
+								App.Current.Properties["ruthBadge"] = "match";
+								break;
+							default:
+								// Badge already awarded
+								break;
 						}
 					}
+
+					// Finished matching
+					if (lstrBooksToComplete.Count == 0) {
+						stopwatch.Stop();
+						string strResponse = MatchingGames.completedMatching(stopwatch.Elapsed, viewModel.propCurrentPoints, viewModel.propNumberCorrect, viewModel.propNumberAttempted);
+
+						switch (strResponse) {
+							case "Retry":
+								HebrewMatch pHebrewMatch = new HebrewMatch();
+								NavigationService.Navigate(pHebrewMatch);
+								break;
+							case "Main":
+								MainMenu pMainMenu = new MainMenu();
+								NavigationService.Navigate(pMainMenu);
+								break;
+							case "Exit":
+								Application.Current.Shutdown();
+								break;
+							default:
+								break;
+						}
+					}
+
+					break;
 				}
 			}
 
 			if (blnCorrect == false && blnAttemptedMatch == true) {
 				// Point penalty
-				intCurrentPoints -= 1;
-				Properties.Settings.Default.lngTotalPoints -= 1;
-				Properties.Settings.Default.Save();
-				intNumberAttempted += 1;
-				refreshPoints();
+				viewModel.AddIncorrectAttempt(); ;
 
 				// Label was moved from original position
 				if (dctTransform.ContainsKey(lblCh.Name) == false) {
@@ -417,51 +405,6 @@ namespace BibleBooksWPF
 		private async void incorrectFlash(Label lblIncorrectBook) {
 			await Task.Delay(900);
 			lblIncorrectBook.Background = (Brush)(new BrushConverter().ConvertFromString("#E6EBF3"));
-		}
-
-		private void refreshPoints() {
-			lblCurrentPoints.Content = intCurrentPoints.ToString();
-			lblTotalPoints.Content = Properties.Settings.Default.lngTotalPoints.ToString();
-			lblPercentageCorrect.Content = String.Format("{0:P2}", (double)intNumberCorrect / intNumberAttempted);
-			lblNumberAttempted.Content = intNumberAttempted.ToString();
-		}
-
-		private void completedMatching() {
-			stopwatch.Stop();
-			CustomMessageBox winMsgBox = new CustomMessageBox();
-
-			// Add the game data to statistics json file
-			TimeSpan time = new TimeSpan(stopwatch.Elapsed.Hours, stopwatch.Elapsed.Minutes, stopwatch.Elapsed.Seconds);
-			string strRecord = Statistics.AddStatistic("HebrewMatch", intCurrentPoints, time);
-
-			string strResponse = "";
-			if (strRecord != "") {
-				// Record set
-				strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
-							"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intNumberAttempted) + "\n" +
-							"Time Elapsed: " + lblTimeElapsed.Content, "Congratulations!", "congrats", strRecord, winMsgBox);
-			} else {
-				// No record set
-				strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
-							"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intNumberAttempted) + "\n" +
-							"Time Elapsed: " + lblTimeElapsed.Content, "Congratulations!", "congrats", winMsgBox);
-			}
-
-			switch (strResponse) {
-				case "Retry":
-					HebrewMatch pHebrewMatch = new HebrewMatch();
-					NavigationService.Navigate(pHebrewMatch);
-					break;
-				case "Main":
-					MainMenu pMainMenu = new MainMenu();
-					NavigationService.Navigate(pMainMenu);
-					break;
-				case "Exit":
-					Application.Current.Shutdown();
-					break;
-				default:
-					break;
-			}
 		}
 
 		private void btnPause_Click(object sender, RoutedEventArgs e) {

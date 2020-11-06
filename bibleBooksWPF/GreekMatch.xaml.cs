@@ -11,7 +11,7 @@ using System.Windows.Threading;
 using System.Diagnostics;
 
 using ExtensionMethods;
-using BibleBooksWPF.Classes;
+using BibleBooksWPF.ViewModels;
 
 namespace BibleBooksWPF {
 	/// <summary>
@@ -298,13 +298,29 @@ namespace BibleBooksWPF {
 				if (blnCorrect) {
 					// Add points
 					viewModel.AddCorrectAttempt();
-					//refreshPoints();
 
 					lstrBooksToComplete.Remove(lblCh.Name);
 
+					// Finished matching
 					if (lstrBooksToComplete.Count == 0) {
 						stopwatch.Stop();
-						MatchingGames.completedMatching(stopwatch.Elapsed, viewModel.propCurrentPoints, viewModel.propNumberCorrect, viewModel.propNumberAttempted);
+						string strResponse = MatchingGames.completedMatching(stopwatch.Elapsed, viewModel.propCurrentPoints, viewModel.propNumberCorrect, viewModel.propNumberAttempted);
+
+						switch (strResponse) {
+							case "Retry":
+								HebrewMatch pHebrewMatch = new HebrewMatch();
+								NavigationService.Navigate(pHebrewMatch);
+								break;
+							case "Main":
+								MainMenu pMainMenu = new MainMenu();
+								NavigationService.Navigate(pMainMenu);
+								break;
+							case "Exit":
+								Application.Current.Shutdown();
+								break;
+							default:
+								break;
+						}
 					}
 
 					break;
@@ -314,7 +330,6 @@ namespace BibleBooksWPF {
 			if (blnCorrect == false && blnAttemptedMatch == true) {
 				// Point penalty
 				viewModel.AddIncorrectAttempt();
-				//refreshPoints();
 
 				// Label was moved from original position
 				if (dctTransform.ContainsKey(lblCh.Name) == false) {
@@ -341,10 +356,6 @@ namespace BibleBooksWPF {
 		private async void incorrectFlash(Label lblIncorrectBook) {
 			await Task.Delay(900);
 			lblIncorrectBook.Background = (Brush)(new BrushConverter().ConvertFromString("#E6EBF3"));
-		}
-
-		private void refreshPoints() {
-			lblPercentageCorrect.Content = String.Format("{0:P2}", (double)viewModel.propNumberCorrect / viewModel.propNumberAttempted);
 		}
 
 		private void btnPause_Click(object sender, RoutedEventArgs e) {
