@@ -1,9 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace BibleBooksWPF.Classes {
+namespace BibleBooksWPF.ViewModels {
 	class MatchingGameViewModel : INotifyPropertyChanged {
 
 		private int intNumberAttempted = 0;
@@ -14,6 +13,7 @@ namespace BibleBooksWPF.Classes {
 			set { 
 				intNumberAttempted = value;
 				NotifyPropertyChanged();
+				propPercentageCorrect = (double)propNumberCorrect / propNumberAttempted;
 			}
 		}
 
@@ -64,18 +64,28 @@ namespace BibleBooksWPF.Classes {
 			}
 		}
 
+		private double dblPercentageCorrect = 0;
+		public double propPercentageCorrect {
+			get { 
+				return dblPercentageCorrect; 
+			}
+			set {
+				dblPercentageCorrect = value;
+				NotifyPropertyChanged();
+			}
+		}
+
 		internal void AddCorrectAttempt() {
-			propNumberAttempted += 1;
 			propNumberCorrect += 1;
 			propCurrentPoints += 1;
-			propTotalPoints += 1;	
+			propTotalPoints += 1;
+			propNumberAttempted += 1;
 		}
 
 		internal void AddIncorrectAttempt() {
 			propCurrentPoints -= 1;
+			propTotalPoints -= 1;
 			propNumberAttempted += 1;
-			Properties.Settings.Default.lngTotalPoints -= 1;
-			Properties.Settings.Default.Save();
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
