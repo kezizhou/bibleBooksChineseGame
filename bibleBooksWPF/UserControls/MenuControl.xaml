@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BibleBooksWPF.UserControls"
              xmlns:viewmodels="clr-namespace:BibleBooksWPF.ViewModels"
-             xmlns:models="clr-namespace:BibleBooksWPF.Models"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="UserControl_Loaded">
@@ -20,7 +19,7 @@
     </UserControl.Resources>
 
     <Menu Name="menTop" Grid.Column="0" Grid.Row="0" FontFamily="Tahoma" Background="#FFDFF2F7" Padding="2,5" FontSize="{DynamicResource ResourceKey=FontSize}" VerticalAlignment="Top">
-        <MenuItem x:Name="imenMainMenu" Header="{DynamicResource ResourceKey=MainMenu}" Command="{Binding Path=NavigateToMain}" IsEnabled="{Binding Path=propPageTitle, Converter={StaticResource menuConverter}, ConverterParameter='MainMenu'}"/>
+        <MenuItem x:Name="imenMainMenu" Header="{DynamicResource ResourceKey=MainMenu}" Click="imenMainMenu_Click" IsEnabled="{Binding Path=propPageTitle, Converter={StaticResource menuConverter}, ConverterParameter='MainMenu'}"/>
         <MenuItem x:Name="imenHebrew" Header="{DynamicResource ResourceKey=Hebrew}">
             <MenuItem x:Name="imenHebrewMatch" Header="{DynamicResource ResourceKey=Match}" Click="imenHebrewMatch_Click" IsEnabled="{Binding Path=propPageTitle, Converter={StaticResource menuConverter}, ConverterParameter='HebrewMatch'}"/>
             <MenuItem x:Name="imenHebrewReorder" Header="{DynamicResource ResourceKey=Reorder}" Click="imenHebrewReorder_Click" IsEnabled="{Binding Path=propPageTitle, Converter={StaticResource menuConverter}, ConverterParameter='HebrewReorder'}"/>
