@@ -31,6 +31,7 @@ namespace BibleBooksWPF {
 
 		public DiceBooksGreek() {
 			InitializeComponent();
+			LanguageResources.SetDefaultLanguage(this);
 
 			// Reset timer
 			timer1.Tick += new EventHandler(timer1_Tick);

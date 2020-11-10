@@ -25,7 +25,7 @@ namespace BibleBooksWPF {
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
-			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+			if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 				btnCancel.Content = "取消";
 			}
 		}

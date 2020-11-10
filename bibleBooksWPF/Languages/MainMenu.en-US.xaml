@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="ResourceDictionaryName">Loc-en-US</sys:String>
+
+    <sys:String x:Key="MainMenu">Main Menu</sys:String>
+    <sys:String x:Key="Welcome">Welcome</sys:String>
+    <sys:String x:Key="Description">Use the menu bar at the top to begin</sys:String>
+    <sys:String x:Key="ChangeUser">Change User</sys:String>
+    <sys:String x:Key="Help">Help</sys:String>
+</ResourceDictionary>

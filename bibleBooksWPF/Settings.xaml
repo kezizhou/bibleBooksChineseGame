@@ -3,11 +3,23 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:BibleBooksWPF"
+      xmlns:local="clr-namespace:BibleBooksWPF" 
+      xmlns:viewmodels="clr-namespace:BibleBooksWPF.ViewModels"
+      xmlns:control="clr-namespace:BibleBooksWPF.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="770" d:DesignWidth="1000"
-      Title="Settings" Loaded="Page_Loaded">
+      Title="{DynamicResource ResourceKey=Settings}" Loaded="Page_Loaded">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Languages/Settings.en-US.xaml"/>
+                <ResourceDictionary Source="Languages/MenuControl.en-US.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <viewmodels:EnumBooleanConverter x:Key="enumConverter"/>
+        </ResourceDictionary>
+    </Page.Resources>
+    
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Grid x:Name="grdSettings" Background="White">
             <Grid.ColumnDefinitions>
@@ -22,89 +34,97 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" FontFamily="Tahoma" Background="#FFDFF2F7" VerticalAlignment="Top" Margin="0,0,0,10" Padding="2,5" FontSize="14">
-                <MenuItem x:Name="imenMainMenu" Header="Main Menu" Click="ImenMainMenu_Click"/>
-                <MenuItem x:Name="imenHebrew" Header="Hebrew Scriptures">
-                    <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
-                    <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books" Click="ImenReorderHebrew_Click"/>
-                </MenuItem>
-                <MenuItem x:Name="imenGreek" Header="Greek Scriptures">
-                    <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English"  Click="ImenMatchGreek_Click"/>
-                    <MenuItem x:Name="imenReorderGreek" Header="Reorder Books" Click="ImenReorderGreek_Click"/>
-                </MenuItem>
-                <MenuItem x:Name="imenStatistics" Header="Statistics" Click="ImenStatistics_Click"/>
-                <MenuItem x:Name="imenSettings" Header="Settings" IsEnabled="False"/>
-                <MenuItem x:Name="imenExit" Header="Exit" Click="ImenExit_Click"/>
-            </Menu>
+            <control:MenuControl x:Name="menTop" Grid.ColumnSpan="3"/>
 
             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center">
-                <GroupBox x:Name="grpAudio" Header="Audio Pronunciation" FontSize="16" Margin="10,0,10,10" Height="100" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <GroupBox x:Name="grpAudio" Header="{DynamicResource ResourceKey=Audio}" FontSize="16" Margin="10,0,10,10" Height="100" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center">
                     <StackPanel Margin="5,5,0,0">
-                        <RadioButton x:Name="radAudioOn" GroupName="grpAudio" FontSize="14" Checked="RadAudioOn_Checked" Content="On"/>
-                        <RadioButton x:Name="radAudioOff" GroupName="grpAudio" FontSize="14" Checked="RadAudioOff_Checked" Content="Off"/>
+                        <RadioButton x:Name="radAudioOn" FontSize="14" Content="{DynamicResource ResourceKey=AudioOn}" IsChecked="{Binding Path=propAudioOn, Mode=TwoWay}"/>
+                        <RadioButton x:Name="radAudioOff" FontSize="14" Content="{DynamicResource ResourceKey=AudioOff}" IsChecked="{Binding Path=propAudioOff, Mode=TwoWay}"/>
                     </StackPanel>
                 </GroupBox>
 
-                <GroupBox x:Name="grpLanguage" Header="Main Language" FontSize="16" Margin="10,0,10,10" Height="100" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <GroupBox x:Name="grpLanguage" Header="{DynamicResource ResourceKey=Language}" FontSize="16" Margin="10,0,10,10" Height="100" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center">
                     <StackPanel Margin="5,5,0,0">
-                        <RadioButton x:Name="radEnglish" GroupName="grpLanguage" FontSize="14" Checked="radEnglish_Checked" Content="English" Unchecked="radEnglish_Unchecked"/>
-                        <RadioButton x:Name="radChinese" GroupName="grpLanguage" FontSize="14" Checked="radChinese_Checked" Content="Chinese" Unchecked="radChinese_Unchecked"/>
+                        <RadioButton x:Name="radEnglish" FontSize="14" Content="{DynamicResource ResourceKey=English}" IsChecked="{Binding Path=propEnglish, Mode=TwoWay}" Unchecked="radLanguage_Unchecked"/>
+                        <RadioButton x:Name="radChinese" FontSize="14" Content="{DynamicResource ResourceKey=Chinese}" IsChecked="{Binding Path=propChinese, Mode=TwoWay}" Unchecked="radLanguage_Unchecked"/>
                     </StackPanel>
                 </GroupBox>
 
-                <GroupBox x:Name="grpAbout" Header="About" FontSize="16" Height="100" Width="180" Margin="10,0,10,10" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <GroupBox x:Name="grpAbout" Header="{DynamicResource ResourceKey=About}" FontSize="16" Height="100" Width="180" Margin="10,0,10,10" VerticalAlignment="Top" HorizontalAlignment="Center">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
-                            <TextBlock x:Name="txbVersionDesc" FontSize="14" Margin="0,0,10,10">Version:</TextBlock>
-                            <TextBlock x:Name="txbVersion" FontSize="14">1.0.1</TextBlock>
+                            <TextBlock x:Name="txbVersionDesc" FontSize="14" Margin="0,0,10,10" Text="{DynamicResource ResourceKey=Version}"/>
+                            <TextBlock x:Name="txbVersion" FontSize="14" Text="{Binding Path=propVersion}"/>
                         </StackPanel>
-                        <Button x:Name="btnUpdate" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Padding="5" Click="BtnUpdate_Click" Style="{StaticResource DarkRoundedMessageButton}" Foreground="White">Check for Updates</Button>
+                        <Button x:Name="btnUpdate" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Padding="5" Click="BtnUpdate_Click" Style="{StaticResource DarkRoundedMessageButton}" Foreground="White" Content="{DynamicResource ResourceKey=Update}"/>
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
 
-            <GroupBox x:Name="grpUserSettings" Header="User Settings" FontSize="16" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <GroupBox x:Name="grpUserSettings" Header="{DynamicResource ResourceKey=UserSettings}" FontSize="16" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <StackPanel Margin="5,5,0,0">
                     <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
-                        <TextBlock x:Name="txbUsername" FontSize="16" Margin="10,10,10,10">Username:</TextBlock>
-                        <TextBox x:Name="txtInputText" Grid.Row="0" Grid.Column="1" Margin="10" />
-                        <TextBlock x:Name="txbValidation" HorizontalAlignment="Center" Foreground="Red" Visibility="Collapsed">Validation message here</TextBlock>
+                        <TextBlock x:Name="txbUsername" FontSize="16" Margin="10,10,10,10" Text="{DynamicResource ResourceKey=Username}"/>
+                        <TextBox x:Name="txtUsername" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource ErrorValidation}">
+                            <TextBox.Text>
+                                <Binding Path="propUsername">
+                                    <Binding.ValidationRules>
+                                        <viewmodels:UsernameValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
-                        <TextBlock x:Name="txbProfilePic" FontSize="16" Margin="10,10,10,10">Profile Image:</TextBlock>
+                        <TextBlock x:Name="txbProfilePic" FontSize="16" Margin="10,10,10,10" Text="{DynamicResource ResourceKey=ProfilePic}"/>
                         <StackPanel x:Name="stkProfilePic">
                             <WrapPanel x:Name="wrpMales">
-                                <RadioButton x:Name="boy1" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy1.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="boy2" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy2.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="boy3" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy3.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="boy4" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy4.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="boy5" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy5.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="boy6" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy6.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="boy7" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy7.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="boy8" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy8.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                                <RadioButton x:Name="boy1" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy1.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.boy1}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="boy2" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy2.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.boy2}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="boy3" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy3.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.boy3}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="boy4" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy4.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.boy4}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="boy5" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy5.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.boy5}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="boy6" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy6.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.boy6}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="boy7" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy7.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.boy7}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="boy8" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy8.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.boy8}, Mode=TwoWay}"></RadioButton>
                             </WrapPanel>
 
                             <WrapPanel x:Name="wrpFemales">
-                                <RadioButton x:Name="girl1" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl1.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="girl2" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl2.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="girl3" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl3.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="girl4" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl4.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="girl5" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl5.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="girl6" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl6.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="girl7" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl7.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                                <RadioButton x:Name="girl8" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl8.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                                <RadioButton x:Name="girl1" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl1.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.girl1}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="girl2" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl2.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.girl2}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="girl3" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl3.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.girl3}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="girl4" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl4.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.girl4}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="girl5" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl5.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.girl5}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="girl6" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl6.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.girl6}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="girl7" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl7.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.girl7}, Mode=TwoWay}"></RadioButton>
+                                <RadioButton x:Name="girl8" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl8.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static viewmodels:profilePic.girl8}, Mode=TwoWay}"></RadioButton>
                             </WrapPanel>
                         </StackPanel>
                     </StackPanel>
 
-                    <Button x:Name="btnSaveSettings" Margin="10,10,10,10" Padding="10,10,10,10" Style="{StaticResource DarkRoundedMessageButton}" Click="btnSaveSettings_Click" Foreground="White" Content="Save"/>
+                    <Button x:Name="btnSaveSettings" Margin="10,10,10,10" Padding="10,10,10,10" Click="btnSaveSettings_Click" Foreground="White" Content="{DynamicResource ResourceKey=Save}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource DarkRoundedMessageButton}">
+                                <Setter Property="IsEnabled" Value="False"/>
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding ElementName=txtUsername, Path=(Validation.HasError)}" Value="false"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="true"/>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
 
-                    <TextBlock x:Name="txbSaved" HorizontalAlignment="Center" Visibility="Collapsed">Changes Saved</TextBlock>
+                    <TextBlock x:Name="txbSaved" HorizontalAlignment="Center" Visibility="Collapsed" Text="{DynamicResource ResourceKey=Saved}"/>
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox x:Name="grpCredits" Header="Credits" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" FontSize="16" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Center" Width="{Binding ActualWidth, ElementName=grpUserSettings}">
+            <GroupBox x:Name="grpCredits" Header="{DynamicResource ResourceKey=Credits}" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" FontSize="16" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Center" Width="{Binding ActualWidth, ElementName=grpUserSettings}">
                 <StackPanel  Margin="10,10,10,10">
                     <TextBlock>
                     <Run FontWeight="SemiBold" Text="Code and Design: "/>https://github.com/kezizhou

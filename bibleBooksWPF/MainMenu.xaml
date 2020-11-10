@@ -4,10 +4,20 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BibleBooksWPF"
+      xmlns:control="clr-namespace:BibleBooksWPF.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="1200"
       Title="Bible Books Game - Main Menu" Loaded="Page_Loaded"
       Background="White">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Languages/MainMenu.en-US.xaml"/>
+                <ResourceDictionary Source="Languages/MenuControl.en-US.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Grid>
@@ -25,26 +35,7 @@
                 <RowDefinition Height="0.4*"/>
             </Grid.RowDefinitions>
 
-            <Menu Name="menTop" Grid.Column="0" Grid.Row="0" FontFamily="Tahoma" Background="#DFF2F7" VerticalAlignment="Top" Margin="0,0,0,10" Padding="2,5" FontSize="14">
-                <MenuItem x:Name="imenMain" Header="Main Menu" IsEnabled="False"/>
-                <MenuItem x:Name="imenHebrew" Header="Hebrew Scriptures">
-                    <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="ImenMatchHebrew_Click"/>
-                    <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books" Click="ImenReorderHebrew_Click"/>
-                </MenuItem>
-                <MenuItem x:Name="imenGreek" Header="Greek Scriptures">
-                    <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English" Click="ImenMatchGreek_Click"/>
-                    <MenuItem x:Name="imenReorderGreek" Header="Reorder Books" Click="ImenReorderGreek_Click"/>
-                </MenuItem>
-                <MenuItem x:Name="imenMultiplayer" Header="Multiplayer">
-                    <MenuItem x:Name="imenDice" Header="Dice Books">
-                        <MenuItem x:Name="imenDiceHebrew" Header="Hebrew Scriptures" Click="imenDiceHebrew_Click"></MenuItem>
-                        <MenuItem x:Name="imenDiceGreek" Header="Greek Scriptures" Click="imenDiceGreek_Click"></MenuItem>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem x:Name="imenStatistics" Header="Statistics" Click="ImenStatistics_Click"/>
-                <MenuItem x:Name="imenSettings" Header="Settings" Click="ImenSettings_Click"/>
-                <MenuItem x:Name="imenExit" Header="Exit" Click="ImenExit_Click"/>
-            </Menu>
+            <control:MenuControl x:Name="menTop" Grid.ColumnSpan="2"/>
 
             <Button x:Name="btnChangeUser" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" Padding="5" FontSize="18" Click="BtnChangeUser_Click" Style="{StaticResource RoundedChangeUserButton}">Change User</Button>
 
@@ -58,16 +49,14 @@
             <StackPanel Grid.Column="0" Grid.Row="4" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Label FontFamily="pack://application:,,,/BibleBooksWPF;component/Resources/Fonts/#Poppins" FontSize="30" Content="~ "/>
-                    <Label x:Name="lblWelcome" FontFamily="pack://application:,,,/BibleBooksWPF;component/Resources/Fonts/#Poppins" FontSize="30" Content="Welcome: userName"/>
+                    <Label x:Name="lblWelcome" FontFamily="pack://application:,,,/BibleBooksWPF;component/Resources/Fonts/#Poppins" FontSize="30" Content="{DynamicResource ResourceKey=Welcome}"/>
                     <Label FontFamily="pack://application:,,,/BibleBooksWPF;component/Resources/Fonts/#Poppins" FontSize="30" Content=" ~"/>
                 </StackPanel>
 
-                <TextBlock Name="txbDescription" FontFamily="pack://application:,,,/BibleBooksWPF;component/Resources/Fonts/#Poppins" TextAlignment="Center" FontSize="30" Margin="15">
-                Use the menu bar at the top to begin
-                </TextBlock>
+                <TextBlock Name="txbDescription" FontFamily="pack://application:,,,/BibleBooksWPF;component/Resources/Fonts/#Poppins" TextAlignment="Center" FontSize="30" Margin="15" Text="{DynamicResource ResourceKey=Description}"/>
             </StackPanel>
 
-            <Button x:Name="btnHelp" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,20,10,10" Padding="5" Background="Transparent" BorderThickness="0" MaxHeight="135" MinHeight="50" ToolTip="Help" Click="btnHelp_Click">
+            <Button x:Name="btnHelp" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,20,10,10" Padding="5" Background="Transparent" BorderThickness="0" MaxHeight="135" MinHeight="50" ToolTip="{DynamicResource ResourceKey=Help}" Click="btnHelp_Click">
                 <Image Name="imgInfo" Source="pack://application:,,,/BibleBooksWPF;component/Resources/info.png"/>
             </Button>
         </Grid>

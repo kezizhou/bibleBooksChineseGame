@@ -43,44 +43,12 @@ namespace BibleBooksWPF
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
-			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+			if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 				winNewUser.Title = "新用户";
 				txbUsernameDesc.Text = "用户名";
 				txbSelectProfile.Text = "选择头像";
 				btnCancel.Content = "取消";
 			}
-		}
-	}
-
-	public class UsernameRule : ValidationRule {
-		public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
-
-			try {
-				if (value == null) {
-					return new ValidationResult(false, "Username cannot be empty");
-				} else {
-					// Get the users from the file if not empty
-					if (new FileInfo(Globals.usersFilePath).Length != 0) {
-						RootUser lstUsers = new RootUser();
-
-						using (StreamReader file = File.OpenText(Globals.usersFilePath)) {
-							JsonSerializer serializer = new JsonSerializer();
-							lstUsers = serializer.Deserialize(file, typeof(RootUser)) as RootUser;
-						}
-
-						// Loop through users and check if it is a duplicate
-						foreach (User user in lstUsers.Users) {
-							if (value.ToString().Equals(user.username)) {
-								return new ValidationResult(false, "Please enter a unique username");
-							}
-						}
-					}
-				}
-			} catch (Exception ex) {
-				MessageBox.Show(ex.Message);
-			}
-
-			return ValidationResult.ValidResult;
 		}
 	}
 }

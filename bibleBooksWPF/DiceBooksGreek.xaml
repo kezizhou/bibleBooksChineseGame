@@ -4,9 +4,18 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BibleBooksWPF"
+      xmlns:control="clr-namespace:BibleBooksWPF.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="810" d:DesignWidth="1000"
       Title="Dice Books - Greek" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Languages/MenuControl.en-US.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Grid x:Name="grdGreekReorder" Background="White" Margin="0">
@@ -32,26 +41,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Menu Name="menTop" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" FontFamily="Tahoma" Background="#DFF2F7" Padding="2,5" FontSize="14" VerticalAlignment="Top">
-                <MenuItem x:Name="imenMainMenu" Header="Main Menu" Click="imenMainMenu_Click"/>
-                <MenuItem x:Name="imenHebrew" Header="Hebrew Scriptures">
-                    <MenuItem x:Name="imenMatchHebrew" Header="Match Chinese to English" Click="imenMatchHebrew_Click"/>
-                    <MenuItem x:Name="imenReorderHebrew" Header="Reorder Books" Click="imenReorderHebrew_Click"/>
-                </MenuItem>
-                <MenuItem x:Name="imenGreek" Header="Greek Scriptures">
-                    <MenuItem x:Name="imenMatchGreek" Header="Match Chinese to English" Click="imenMatchGreek_Click"/>
-                    <MenuItem x:Name="imenReorderGreek" Header="Reorder Books" Click="imenReorderGreek_Click"/>
-                </MenuItem>
-                <MenuItem x:Name="imenMultiplayer" Header="Multiplayer">
-                    <MenuItem x:Name="imenDice" Header="Dice Books">
-                        <MenuItem x:Name="imenDiceHebrew" Header="Hebrew Scriptures" Click="imenDiceHebrew_Click"></MenuItem>
-                        <MenuItem x:Name="imenDiceGreek" Header="Greek Scriptures" IsEnabled="False"></MenuItem>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem x:Name="imenStatistics" Header="Statistics" Click="imenStatistics_Click"/>
-                <MenuItem x:Name="imenSettings" Header="Settings" Click="imenSettings_Click"/>
-                <MenuItem x:Name="imenExit" Header="Exit" Click="imenExit_Click"/>
-            </Menu>
+            <control:MenuControl x:Name="menTop" Grid.ColumnSpan="5"/>
 
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button x:Name="btnRoll" Margin="0,0,10,0" Padding="5" Style="{StaticResource RoundedBlueButton}" FontSize="15" Click="btnRoll_Click">Roll Dice</Button>

@@ -25,7 +25,7 @@ namespace BibleBooksWPF {
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
-			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+			if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 				winConfirmMessageBox.Title = "确定删除用户";
 				btnYes.Content = "确定，删除";
 				btnCancel.Content = "取消";

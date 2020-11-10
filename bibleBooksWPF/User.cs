@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace BibleBooksWPF {
     class User {
-
 		public string username { get; set; }
 		public string profilePicture { get; set; }
 		public long lngTotalPoints { get; set; }
@@ -38,6 +40,41 @@ namespace BibleBooksWPF {
 
 		}
 
+		public static void UpdateUsernameInJson(string strNewUsername) {
+			// Get user from JSON file
+			JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
+			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+			User userCurrent = userToken.ToObject<User>();
+
+			// Update the json with new information
+			userCurrent.username = strNewUsername;
+			userToken.Replace(JToken.FromObject(userCurrent));
+			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+			File.WriteAllText(Globals.usersFilePath, newJson);
+		}
+
+		public static void UpdateProfilePicture(string strNewPic) {
+			// Get user from JSON file
+			JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
+			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+			User userCurrent = userToken.ToObject<User>();
+
+			// Update the json with new information
+			userCurrent.profilePicture = strNewPic;
+			userToken.Replace(JToken.FromObject(userCurrent));
+			string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+			File.WriteAllText(Globals.usersFilePath, newJson);
+		}
+
+		public static string GetProfilePicture() {
+			// Get user from JSON file
+			JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
+			JToken userToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')]");
+			User userCurrent = userToken.ToObject<User>();
+
+			// Load user settings
+			return userCurrent.profilePicture;
+		}
 	}
 
 	class RootUser {

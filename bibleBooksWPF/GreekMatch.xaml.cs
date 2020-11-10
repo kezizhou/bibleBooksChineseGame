@@ -42,6 +42,7 @@ namespace BibleBooksWPF {
 		public GreekMatch() {
 			try {
 				InitializeComponent();
+				LanguageResources.SetDefaultLanguage(this);
 
 				// Reset points
 				viewModel = new MatchingGameViewModel();
@@ -158,20 +159,7 @@ namespace BibleBooksWPF {
 
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
 			try {
-				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
-					// Menu bar
-					imenMainMenu.Header = "主菜单";
-					imenHebrew.Header = "希伯来语经卷";
-					imenMatchHebrew.Header = "中英文配对";
-					imenReorderHebrew.Header = "排序";
-					imenGreek.Header = "希腊语经卷";
-					imenMatchGreek.Header = "中英文配对";
-					imenReorderGreek.Header = "排序";
-					imenStatistics.Header = "成绩";
-					imenSettings.Header = "设置";
-					imenExit.Header = "退出";
-					menTop.FontSize = 16;
-
+				if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 					// Score labels
 					txbCurrentPoints.Text = "本次分数";
 					txbPercentageCorrect.Text = "本次正确率";
@@ -186,7 +174,7 @@ namespace BibleBooksWPF {
 					Label lblCh = this.FindName(strChLbl) as Label;
 
 					// Check main language
-					if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+					if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 						string strTemp = lblCh.Content.ToString();
 
 						Label lblEn = this.FindName(strChLbl.Remove(3, 2)) as Label;
@@ -247,7 +235,7 @@ namespace BibleBooksWPF {
 				synthesizer.SetOutputToDefaultAudioDevice();
 				PromptBuilder pBuilder = new PromptBuilder();
 
-				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+				if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 					pBuilder.Culture = CultureInfo.GetCultureInfo("en-US");
 
 					if (strRead.Contains("1")) {
@@ -264,7 +252,7 @@ namespace BibleBooksWPF {
 					} else {
 						pBuilder.AppendText(strRead);
 					}
-				} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
+				} else if (Properties.Settings.Default.strLanguage.Equals("en-US")) {
 					pBuilder.Culture = CultureInfo.GetCultureInfo("zh-CN");
 					pBuilder.AppendText(strRead);
 				}
@@ -378,64 +366,6 @@ namespace BibleBooksWPF {
 				default:
 					break;
 			}
-		}
-
-		private void ImenMainMenu_Click(object sender, RoutedEventArgs e) {
-			try {
-				MainMenu pMainMenu = new MainMenu();
-				NavigationService.Navigate(pMainMenu);
-			} catch (Exception ex) {
-				MessageBox.Show(ex.Message);
-			}
-		}
-
-		private void ImenMatchHebrew_Click(object sender, RoutedEventArgs e) {
-			try {
-				HebrewMatch pHebrewMatch = new HebrewMatch();
-				NavigationService.Navigate(pHebrewMatch);
-			} catch (Exception ex) {
-				MessageBox.Show(ex.Message);
-			}
-		}
-
-		private void ImenReorderHebrew_Click(object sender, RoutedEventArgs e) {
-			try {
-				HebrewReorder pHebrewReorder = new HebrewReorder();
-				NavigationService.Navigate(pHebrewReorder);
-			} catch (Exception ex) {
-				MessageBox.Show(ex.Message);
-			}
-		}
-
-		private void ImenReorderGreek_Click(object sender, RoutedEventArgs e) {
-			try {
-				GreekReorder pGreekReorder = new GreekReorder();
-				NavigationService.Navigate(pGreekReorder);
-			} catch (Exception ex) {
-				MessageBox.Show(ex.Message);
-			}
-		}
-
-		private void ImenStatistics_Click(object sender, RoutedEventArgs e) {
-			try {
-				StatisticsPage pStatistics = new StatisticsPage();
-				NavigationService.Navigate(pStatistics);
-			} catch (Exception ex) {
-				MessageBox.Show(ex.Message);
-			}
-		}
-
-		private void ImenSettings_Click(object sender, RoutedEventArgs e) {
-			try {
-				Settings pSettings = new Settings();
-				NavigationService.Navigate(pSettings);
-			} catch (Exception ex) {
-				MessageBox.Show(ex.Message);
-			}
-		}
-
-		private void ImenExit_Click(object sender, RoutedEventArgs e) {
-			Application.Current.Shutdown();
 		}
 	}
 }

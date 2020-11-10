@@ -14,7 +14,7 @@ namespace BibleBooksWPF {
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
-			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+			if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 				winNewBadgeMessage.Title = "新的奖章！";
 				txbMessageText.Text = "祝贺你得到这个新的奖章！";
 				txbDescription.Text = "说明: ";
