@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:BibleBooksWPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="ResourceDict.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDict.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

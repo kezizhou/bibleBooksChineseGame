@@ -29,11 +29,7 @@ namespace BibleBooksWPF {
 		private void Page_Loaded(object sender, RoutedEventArgs e) {
 			try {
 				// Language settings
-				if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
-					txbSelect.Text = "请选择用户:";
-					btnUser1.Content = "新用户";
-					btnUser2.Content = "新用户";
-					btnUser3.Content = "新用户";
+				if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 					btnLanguage.Content = "English";
 				}
 
@@ -144,7 +140,7 @@ namespace BibleBooksWPF {
 			newUser.Item1.Equals("新用户") )									// Is "新用户“
 			&& !newUser.Item1.Equals("Cancel") ) {                          // And is not the cancel button
 
-				if (Properties.Settings.Default.strLanguage.Equals("English")) {
+				if (Properties.Settings.Default.strLanguage.Equals("en-US")) {
 					switch (newUser.Item1) {
 						case "":
 							winNewUser = new NewUser();
@@ -163,7 +159,7 @@ namespace BibleBooksWPF {
 							newUser = CustomMessageBoxMethods.ShowMessage(winNewUser, "Please enter a unique username");
 							break;
 					}
-				} else if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+				} else if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 					switch (newUser.Item1) {
 						case "":
 							winNewUser = new NewUser();
@@ -211,7 +207,7 @@ namespace BibleBooksWPF {
 
 			App.Current.Properties["currentUsername"] = currentUser.username;
 			Properties.Settings.Default.blnAudio = true;
-			Properties.Settings.Default.strLanguage = "English";
+			Properties.Settings.Default.strLanguage = "en-US";
 
 			lstUsers.Users.Add(currentUser);
 
@@ -234,7 +230,21 @@ namespace BibleBooksWPF {
 
 			// Previous audio and language settings
 			Properties.Settings.Default.blnAudio = userCurrent.blnAudio;
+			if (userCurrent.strLanguage == "English") {
+				userCurrent.strLanguage = "en-US";
+				userToken.Replace(JToken.FromObject(userCurrent));
+
+				string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+				File.WriteAllText(Globals.usersFilePath, newJson);
+			} else {
+				userCurrent.strLanguage = "zh-CN";
+				userToken.Replace(JToken.FromObject(userCurrent));
+
+				string newJson = JsonConvert.SerializeObject(obj, Formatting.Indented);
+				File.WriteAllText(Globals.usersFilePath, newJson);
+			}
 			Properties.Settings.Default.strLanguage = userCurrent.strLanguage;
+
 			// Last total points setting
 			Properties.Settings.Default.lngTotalPoints = userCurrent.lngTotalPoints;
 		}
@@ -316,11 +326,11 @@ namespace BibleBooksWPF {
 		}
 
 		private void btnLanguage_Click(object sender, RoutedEventArgs e) {
-			if (Properties.Settings.Default.strLanguage == "English") {
-				Properties.Settings.Default.strLanguage = "Chinese";
+			if (Properties.Settings.Default.strLanguage == "en-US") {
+				Properties.Settings.Default.strLanguage = "zh-CN";
 				Properties.Settings.Default.Save();
-			} else if (Properties.Settings.Default.strLanguage == "Chinese") {
-				Properties.Settings.Default.strLanguage = "English";
+			} else if (Properties.Settings.Default.strLanguage == "zh-CN") {
+				Properties.Settings.Default.strLanguage = "en-US";
 				Properties.Settings.Default.Save();
 			}
 

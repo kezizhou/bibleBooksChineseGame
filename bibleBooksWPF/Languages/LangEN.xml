@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LangSettings>
+	<IsRtl>0</IsRtl>
+	<MinFontSize>11</MinFontSize>
+	<HeadingFontSize>16</HeadingFontSize>
+
+  <UIText>
+    <!-- Menu -->
+    <MainLabel>Main Menu</MainLabel>
+    <HebrewLabel>Hebrew Scriptures</HebrewLabel>
+    <GreekLabel>Greek Scriptures</GreekLabel>
+    <MatchLabel>Match Chinese to English</MatchLabel>
+    <ReorderLabel>Reorder Books</ReorderLabel>
+    <MultiplayerLabel>Multiplayer</MultiplayerLabel>
+    <DiceBooksLabel>Dice Books</DiceBooksLabel>
+    <StatisticsLabel>Statistics</StatisticsLabel>
+    <SettingsLabel>Settings</SettingsLabel>
+    <ExitLabel>Exit</ExitLabel>
+  </UIText>
+</LangSettings>

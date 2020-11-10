@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="ResourceDictionaryName">Loc-zh-CN</sys:String>
+
+    <!-- Menu -->
+    <sys:String x:Key="MainMenu">主菜单</sys:String>
+    <sys:String x:Key="Hebrew">希伯来语经卷</sys:String>
+    <sys:String x:Key="Greek">希腊语经卷</sys:String>
+    <sys:String x:Key="Match">中英文配对</sys:String>
+    <sys:String x:Key="Reorder">排序</sys:String>
+    <sys:String x:Key="Multiplayer">Multiplayer</sys:String>
+    <sys:String x:Key="DiceBooks">Dice Books</sys:String>
+    <sys:String x:Key="Statistics">成绩</sys:String>
+    <sys:String x:Key="Settings">设置</sys:String>
+    <sys:String x:Key="Exit">退出</sys:String>
+    <sys:Double x:Key="FontSize">16</sys:Double>
+    
+</ResourceDictionary>

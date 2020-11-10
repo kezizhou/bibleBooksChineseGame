@@ -30,7 +30,7 @@ namespace BibleBooksWPF {
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
-			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+			if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 				winPauseMenu.Title = "游戏暂停";
 				txbMessageText.Text = "游戏暂停";
 				btnResume.Content = "继续";
