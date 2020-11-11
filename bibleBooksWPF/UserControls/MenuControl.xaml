@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Languages/MenuControl.en-US.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Languages/MenuControl.en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <viewmodels:MenuConverter x:Key="menuConverter"/>
         </ResourceDictionary>

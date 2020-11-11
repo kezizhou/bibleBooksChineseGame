@@ -1,10 +1,5 @@
 ﻿using BibleBooksWPF.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -27,38 +22,31 @@ namespace BibleBooksWPF.UserControls {
 		}
 
 		private void imenMainMenu_Click(object sender, RoutedEventArgs e) {
-			MainMenu pMainMenu = new MainMenu();
-			mainWindow.Navigate(pMainMenu);
+			mainWindow.Navigate(new Uri("../Views/MainMenu.xaml", UriKind.Relative));
 		}
 
 		private void imenHebrewMatch_Click(object sender, RoutedEventArgs e) {
-			HebrewMatch pHebrewMatch = new HebrewMatch();
-			mainWindow.Navigate(pHebrewMatch);
+			mainWindow.Navigate(new Uri("../Views/HebrewMatch.xaml", UriKind.Relative));
 		}
 
 		private void imenHebrewReorder_Click(object sender, RoutedEventArgs e) {
-			HebrewReorder pHebrewReorder = new HebrewReorder();
-			mainWindow.Navigate(pHebrewReorder);
+			mainWindow.Navigate(new Uri("../Views/HebrewReorder.xaml", UriKind.Relative));
 		}
 
 		private void imenGreekReorder_Click(object sender, RoutedEventArgs e) {
-			GreekReorder pGreekReorder = new GreekReorder();
-			mainWindow.Navigate(pGreekReorder);
+			mainWindow.Navigate(new Uri("../Views/GreekReorder.xaml", UriKind.Relative));
 		}
 
 		private void imenGreekMatch_Click(object sender, RoutedEventArgs e) {
-			GreekMatch pGreekMatch = new GreekMatch();
-			mainWindow.Navigate(pGreekMatch);
+			mainWindow.Navigate(new Uri("../Views/GreekMatch.xaml", UriKind.Relative));
 		}
 
 		private void imenStatistics_Click(object sender, RoutedEventArgs e) {
-			StatisticsPage pStatistics = new StatisticsPage();
-			mainWindow.Navigate(pStatistics);
+			mainWindow.Navigate(new Uri("../Views/StatisticsPage.xaml", UriKind.Relative));
 		}
 
 		private void imenSettings_Click(object sender, RoutedEventArgs e) {
-			Settings pSettings = new Settings();
-			mainWindow.Navigate(pSettings);
+			mainWindow.Navigate(new Uri("../Views/Settings.xaml", UriKind.Relative));
 		}
 
 		private void imenExit_Click(object sender, RoutedEventArgs e) {
@@ -70,8 +58,7 @@ namespace BibleBooksWPF.UserControls {
 		}
 
 		private void imenDiceGreek_Click(object sender, RoutedEventArgs e) {
-			DiceBooksGreek pDiceBooksGreek = new DiceBooksGreek();
-			mainWindow.Navigate(pDiceBooksGreek);
+			mainWindow.Navigate(new Uri("../Views/DiceBooksGreek.xaml", UriKind.Relative));
 		}
 	}
 }

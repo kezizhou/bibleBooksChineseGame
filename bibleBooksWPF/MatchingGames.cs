@@ -1,14 +1,9 @@
-﻿using ExtensionMethods;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Markup.Localizer;
 using System.Windows.Media;
+
+using BibleBooksWPF.Helpers;
 
 namespace BibleBooksWPF {
 	public class MatchingGames {
@@ -50,7 +45,7 @@ namespace BibleBooksWPF {
 
 			// Add the game data to statistics json file
 			TimeSpan time = new TimeSpan(tsElapsed.Hours, tsElapsed.Minutes, tsElapsed.Seconds);
-			string strRecord = Statistics.AddStatistic("GreekMatch", intCurrentPoints, time);
+			string strRecord = StatisticMethods.AddStatistic("GreekMatch", intCurrentPoints, time);
 
 			string strResponse = "";
 			string strTime = String.Format("{0:00}:{1:00}:{2:00}", tsElapsed.Hours, tsElapsed.Minutes, tsElapsed.Seconds);
