@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Globalization;
 using System.IO;
 using System.Threading;
@@ -69,7 +68,15 @@ namespace BibleBooksWPF {
         /// <param name="inFiveCharLang"></param>  
         /// <returns></returns>  
         public static string GetLocXAMLFilePath(string element, string inFiveCharLang) {
-            string locXamlFile = element + "." + inFiveCharLang + ".xaml";
+            string locXamlFile = "";
+            if (element.Contains("Match") || element.Contains("Reorder")) {
+                locXamlFile = "MatchReorderGames" + "." + inFiveCharLang + ".xaml";
+            } else if (element.Contains("DiceBooks")) {
+                locXamlFile = "DiceBooks" + "." + inFiveCharLang + ".xaml";
+            } else {
+                locXamlFile = element + "." + inFiveCharLang + ".xaml";
+            }
+           
             string directory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             return Path.Combine(directory, "Languages", locXamlFile);
         }
