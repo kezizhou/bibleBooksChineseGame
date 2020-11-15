@@ -13,11 +13,11 @@ using System.Diagnostics;
 
 using BibleBooksWPF.Helpers;
 
-namespace BibleBooksWPF {
+namespace BibleBooksWPF.Views {
 	/// <summary>
 	/// Interaction logic for HebrewReorder.xaml
 	/// </summary>
-	public partial class HebrewReorder : Page {
+	public partial class HebrewReorder : ContentControl {
 
 		// Variables for moving labels
 		public bool blnDragging = false;
@@ -87,8 +87,8 @@ namespace BibleBooksWPF {
 				int intLabelWidth = Layout.TransformToPixels(grdHebrewReorder, lblActiveElement.ActualWidth);
 				int intLabelHeight = Layout.TransformToPixels(grdHebrewReorder, lblActiveElement.ActualHeight);
 
-				int intMenuWidth = Layout.TransformToPixels(grdHebrewReorder, menTop.ActualWidth);
-				int intMenuHeight = Layout.TransformToPixels(grdHebrewReorder, menTop.ActualHeight);
+				int intMenuWidth = Layout.TransformToPixels(grdHebrewReorder, ((MainWindow)App.Current.MainWindow).menTop.ActualWidth);
+				int intMenuHeight = Layout.TransformToPixels(grdHebrewReorder, ((MainWindow)App.Current.MainWindow).menTop.ActualHeight);
 
 				Point pntGrid = grdHebrewReorder.PointToScreen(grdHebrewReorder.TranslatePoint(new Point(0, 0), this));
 				mouseOnElement = new Point(Layout.TransformToPixels(grdHebrewReorder, mouseOnElement.X), Layout.TransformToPixels(grdHebrewReorder, mouseOnElement.Y));
@@ -445,12 +445,10 @@ namespace BibleBooksWPF {
 
 			switch (strResponse) {
 				case "Retry":
-					HebrewReorder pHebrewReorder = new HebrewReorder();
-					NavigationService.Navigate(pHebrewReorder);
+					ChangeViewMessage.Navigate("HebrewReorder");
 					break;
 				case "Main":
-					MainMenu pMainMenu = new MainMenu();
-					NavigationService.Navigate(pMainMenu);
+					ChangeViewMessage.Navigate("MainMenu");
 					break;
 				case "Exit":
 					Application.Current.Shutdown();
@@ -471,8 +469,7 @@ namespace BibleBooksWPF {
 					stopwatch.Start();
 					break;
 				case "Main":
-					MainMenu pMainMenu = new MainMenu();
-					NavigationService.Navigate(pMainMenu);
+					ChangeViewMessage.Navigate("MainMenu");
 					break;
 				case "Exit":
 					Application.Current.Shutdown();

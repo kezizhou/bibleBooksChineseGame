@@ -8,12 +8,13 @@ using System.Windows.Navigation;
 using System.Windows.Threading;
 
 using BibleBooksWPF.Helpers;
+using GalaSoft.MvvmLight.Messaging;
 
-namespace BibleBooksWPF {
+namespace BibleBooksWPF.Views {
 	/// <summary>
 	/// Interaction logic for DiceBooksGreek.xaml
 	/// </summary>
-	public partial class DiceBooksGreek : Page {
+	public partial class DiceBooksGreek : ContentControl {
 
 		List<string> lstBooks = new List<string>(){ "Matthew", "Mark", "Luke", "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
 													"Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus",
@@ -100,8 +101,7 @@ namespace BibleBooksWPF {
 
 		private void imenMainMenu_Click(object sender, RoutedEventArgs e) {
 			try {
-				MainMenu pMainMenu = new MainMenu();
-				NavigationService.Navigate(pMainMenu);
+				ChangeViewMessage.Navigate("MainMenu");
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -109,8 +109,7 @@ namespace BibleBooksWPF {
 
 		private void imenMatchHebrew_Click(object sender, RoutedEventArgs e) {
 			try {
-				HebrewMatch pHebrewMatch = new HebrewMatch();
-				NavigationService.Navigate(pHebrewMatch);
+				ChangeViewMessage.Navigate("HebrewMatch");
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -118,8 +117,7 @@ namespace BibleBooksWPF {
 
 		private void imenReorderHebrew_Click(object sender, RoutedEventArgs e) {
 			try {
-				HebrewReorder pHebrewReorder = new HebrewReorder();
-				NavigationService.Navigate(pHebrewReorder);
+				ChangeViewMessage.Navigate("HebrewReorder");
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -127,8 +125,7 @@ namespace BibleBooksWPF {
 
 		private void imenMatchGreek_Click(object sender, RoutedEventArgs e) {
 			try {
-				GreekMatch pGreekMatch = new GreekMatch();
-				NavigationService.Navigate(pGreekMatch);
+				ChangeViewMessage.Navigate("GreekMatch");
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -140,8 +137,7 @@ namespace BibleBooksWPF {
 
 		private void imenReorderGreek_Click(object sender, RoutedEventArgs e) {
 			try {
-				GreekReorder pGreekReorder = new GreekReorder();
-				NavigationService.Navigate(pGreekReorder);
+				ChangeViewMessage.Navigate("GreekReorder");
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -149,8 +145,7 @@ namespace BibleBooksWPF {
 
 		private void imenStatistics_Click(object sender, RoutedEventArgs e) {
 			try {
-				StatisticsPage pStatisticsPage = new StatisticsPage();
-				NavigationService.Navigate(pStatisticsPage);
+				ChangeViewMessage.Navigate("StatisticsPage");
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -158,8 +153,7 @@ namespace BibleBooksWPF {
 
 		private void imenSettings_Click(object sender, RoutedEventArgs e) {
 			try {
-				Settings pSettings = new Settings();
-				NavigationService.Navigate(pSettings);
+				ChangeViewMessage.Navigate("Settings");
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -181,8 +175,7 @@ namespace BibleBooksWPF {
 						stopwatch.Start();
 						break;
 					case "Main":
-						MainMenu pMainMenu = new MainMenu();
-						NavigationService.Navigate(pMainMenu);
+						ChangeViewMessage.Navigate("MainMenu");
 						break;
 					case "Exit":
 						Application.Current.Shutdown();
@@ -231,12 +224,10 @@ namespace BibleBooksWPF {
 
 							switch (strResponse) {
 								case "Retry":
-									DiceBooksGreek pDiceBooksGreek = new DiceBooksGreek();
-									NavigationService.Navigate(pDiceBooksGreek);
+									ChangeViewMessage.Navigate("DiceBooksGreek");
 									break;
 								case "Main":
-									MainMenu pMainMenu = new MainMenu();
-									NavigationService.Navigate(pMainMenu);
+									ChangeViewMessage.Navigate("MainMenu");
 									break;
 								case "Exit":
 									Application.Current.Shutdown();

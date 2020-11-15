@@ -13,11 +13,11 @@ using System.Diagnostics;
 using BibleBooksWPF.Helpers;
 using BibleBooksWPF.ViewModels;
 
-namespace BibleBooksWPF {
+namespace BibleBooksWPF.Views {
 	/// <summary>
 	/// Interaction logic for GreekMatch.xaml
 	/// </summary>
-	public partial class GreekMatch : Page {
+	public partial class GreekMatch : ContentControl {
 
 		// Variables for moving labels
 		public bool blnDragging = false;
@@ -126,8 +126,8 @@ namespace BibleBooksWPF {
 				int intLabelWidth = Layout.TransformToPixels(grdGreekMatch, lblActiveElement.ActualWidth);
 				int intLabelHeight = Layout.TransformToPixels(grdGreekMatch, lblActiveElement.ActualHeight);
 
-				int intMenuWidth = Layout.TransformToPixels(grdGreekMatch, menTop.ActualWidth);
-				int intMenuHeight = Layout.TransformToPixels(grdGreekMatch, menTop.ActualHeight);
+				int intMenuWidth = Layout.TransformToPixels(grdGreekMatch, ((MainWindow)App.Current.MainWindow).menTop.ActualWidth);
+				int intMenuHeight = Layout.TransformToPixels(grdGreekMatch, ((MainWindow)App.Current.MainWindow).menTop.ActualHeight);
 
 				Point pntGrid = grdGreekMatch.PointToScreen(grdGreekMatch.TranslatePoint(new Point(0, 0), this));
 				mouseOnElement = new Point(Layout.TransformToPixels(grdGreekMatch, mouseOnElement.X), Layout.TransformToPixels(grdGreekMatch, mouseOnElement.Y));
@@ -287,12 +287,10 @@ namespace BibleBooksWPF {
 
 						switch (strResponse) {
 							case "Retry":
-								HebrewMatch pHebrewMatch = new HebrewMatch();
-								NavigationService.Navigate(pHebrewMatch);
+								ChangeViewMessage.Navigate("HebrewMatch");
 								break;
 							case "Main":
-								MainMenu pMainMenu = new MainMenu();
-								NavigationService.Navigate(pMainMenu);
+								ChangeViewMessage.Navigate("MainMenu");
 								break;
 							case "Exit":
 								Application.Current.Shutdown();
@@ -348,8 +346,7 @@ namespace BibleBooksWPF {
 					stopwatch.Start();
 					break;
 				case "Main":
-					MainMenu pMainMenu = new MainMenu();
-					NavigationService.Navigate(pMainMenu);
+					ChangeViewMessage.Navigate("MainMenu");
 					break;
 				case "Exit":
 					Application.Current.Shutdown();

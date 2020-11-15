@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+using BibleBooksWPF.Views;
+
 namespace BibleBooksWPF {
-    class User {
+    public class User {
 		public string username { get; set; }
 		public string profilePicture { get; set; }
 		public long lngTotalPoints { get; set; }
@@ -75,9 +77,28 @@ namespace BibleBooksWPF {
 			// Load user settings
 			return userCurrent.profilePicture;
 		}
+
+		public static List<string> GetAllUsernames() {
+			RootUser rootUser = new RootUser();
+			List<string> lstUsernames = new List<string>();
+
+			// Get the users from the file if not empty
+			if (new FileInfo(Globals.usersFilePath).Length != 0) {
+				using (StreamReader file = File.OpenText(Globals.usersFilePath)) {
+					JsonSerializer serializer = new JsonSerializer();
+					rootUser = serializer.Deserialize(file, typeof(RootUser)) as RootUser;
+				}
+			}
+
+			foreach (User user in rootUser.Users) {
+				lstUsernames.Add(user.username);
+			}
+
+			return lstUsernames;
+		}
 	}
 
-	class RootUser {
+	public class RootUser {
 		public List<User> Users { get; set; }
 
 		public RootUser(IEnumerable<User> Users) {

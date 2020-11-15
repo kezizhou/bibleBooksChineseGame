@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 
 using BibleBooksWPF.Helpers;
+using BibleBooksWPF.Views;
 
 namespace BibleBooksWPF {
 	public class MatchingGames {

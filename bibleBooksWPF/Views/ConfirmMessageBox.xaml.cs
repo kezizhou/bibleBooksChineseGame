@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace BibleBooksWPF {
+namespace BibleBooksWPF.Views {
 	/// <summary>
 	/// Interaction logic for ConfirmMessageBox.xaml
 	/// </summary>
