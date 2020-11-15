@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using BibleBooksWPF.ViewModels;
 using System.Windows.Navigation;
 
-namespace BibleBooksWPF {
+namespace BibleBooksWPF.Views {
 	/// <summary>
 	/// Interaction logic for Settings.xaml
 	/// </summary>
-	public partial class Settings : Page {
+	public partial class Settings : ContentControl {
 		SettingsViewModel viewModel;
 
 		public Settings() {
@@ -105,8 +105,8 @@ namespace BibleBooksWPF {
 		}
 
 		private void radLanguage_Unchecked(object sender, RoutedEventArgs e) {
-			Settings pSettings = new Settings();
-			((MainWindow)Application.Current.MainWindow).Navigate(pSettings);
+			//Settings pSettings = new Settings();
+			//((MainWindow)Application.Current.MainWindow).Navigate("");
 		}
 	}
 }

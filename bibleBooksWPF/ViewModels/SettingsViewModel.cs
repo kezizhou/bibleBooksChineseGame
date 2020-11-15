@@ -10,6 +10,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
+using BibleBooksWPF.Views;
+
 namespace BibleBooksWPF.ViewModels {
 	public enum profilePic { boy1, boy2, boy3, boy4, boy5, boy6, boy7, boy8, girl1, girl2, girl3, girl4, girl5, girl6, girl7, girl8 };
 
@@ -154,7 +156,7 @@ namespace BibleBooksWPF.ViewModels {
 			}
 		}
 
-		private string strUsername = App.Current.Properties["currentUsername"].ToString();
+		private string strUsername = App.Current.Properties.Contains("currentUsername") ? App.Current.Properties["currentUsername"].ToString() : "";
 		public string propUsername {
 			get { 
 				return strUsername; 
@@ -167,7 +169,7 @@ namespace BibleBooksWPF.ViewModels {
 			}
 		}
 
-		private profilePic strProfilePic = (profilePic)Enum.Parse(typeof(profilePic), User.GetProfilePicture());
+		private profilePic strProfilePic = App.Current.Properties.Contains("currentUsername") ? (profilePic)Enum.Parse(typeof(profilePic), User.GetProfilePicture()) : new profilePic();
 
 		public profilePic propProfilePic {
 			get { 
@@ -227,8 +229,21 @@ namespace BibleBooksWPF.ViewModels {
 		public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
 			string strInput = value.ToString();
 
-			if (strInput == "" || strInput == "New User" || strInput == "新用户") {
-				return new ValidationResult(false, "Please enter a unique username");
+			if (strInput == "") {
+				if (Properties.Settings.Default.strLanguage == "en-US") {
+					return new ValidationResult(false, "Please enter a valid username");
+				} else if (Properties.Settings.Default.strLanguage == "zh-CN") {
+					return new ValidationResult(false, "请换一个用户名");
+				}
+			}
+			foreach (string strExistingUsername in User.GetAllUsernames()) {
+				if (strInput == strExistingUsername) {
+					if (Properties.Settings.Default.strLanguage == "en-US") {
+						return new ValidationResult(false, "Please enter a unique username");
+					} else if (Properties.Settings.Default.strLanguage == "zh-CN") {
+						return new ValidationResult(false, "用户名已经存在");
+					}
+				}
 			}
 
 			return ValidationResult.ValidResult;

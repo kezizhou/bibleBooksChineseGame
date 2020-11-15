@@ -9,11 +9,11 @@ using System.Windows.Controls;
 
 using BibleBooksWPF.Helpers;
 
-namespace BibleBooksWPF {
+namespace BibleBooksWPF.Views {
 	/// <summary>
 	/// Interaction logic for Statistics.xaml
 	/// </summary>
-	public partial class StatisticsPage : Page {
+	public partial class StatisticsPage : ContentControl {
         public StatisticsPage() {
             InitializeComponent();
 			LanguageResources.SetDefaultLanguage(this);

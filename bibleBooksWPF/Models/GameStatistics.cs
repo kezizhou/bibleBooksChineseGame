@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace BibleBooksWPF {
-	class GameStatistics {
+	public class GameStatistics {
 		public string strName { get; set; }
 		public List<int> lintPoints { get; set; }
 		public List<TimeSpan> ltsTimeElapsed { get; set; }
@@ -26,7 +26,7 @@ namespace BibleBooksWPF {
 		}
 	}
 
-	class RootGameStatistics {
+	public class RootGameStatistics {
 		public List<GameStatistics> GameStatistics { get; set; }
 
 		public RootGameStatistics(IEnumerable<GameStatistics> GameStatistics) {

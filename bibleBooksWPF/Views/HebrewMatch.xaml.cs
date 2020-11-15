@@ -14,12 +14,11 @@ using System.Globalization;
 using BibleBooksWPF.ViewModels;
 using BibleBooksWPF.Helpers;
 
-namespace BibleBooksWPF
-{
+namespace BibleBooksWPF.Views {
     /// <summary>
     /// Interaction logic for HebrewMatch.xaml
     /// </summary>
-    public partial class HebrewMatch : Page {
+    public partial class HebrewMatch : ContentControl {
 
 		// Variables for moving labels
 		public bool blnDragging = false;
@@ -83,8 +82,8 @@ namespace BibleBooksWPF
 				int intLabelWidth = Layout.TransformToPixels(grdHebrewMatch, lblActiveElement.ActualWidth);
 				int intLabelHeight = Layout.TransformToPixels(grdHebrewMatch, lblActiveElement.ActualHeight);
 
-				int intMenuWidth = Layout.TransformToPixels(grdHebrewMatch, menTop.ActualWidth);
-				int intMenuHeight = Layout.TransformToPixels(grdHebrewMatch, menTop.ActualHeight);
+				int intMenuWidth = Layout.TransformToPixels(grdHebrewMatch, ((MainWindow)App.Current.MainWindow).menTop.ActualWidth);
+				int intMenuHeight = Layout.TransformToPixels(grdHebrewMatch, ((MainWindow)App.Current.MainWindow).menTop.ActualHeight);
 
 				Point pntGrid = grdHebrewMatch.PointToScreen(grdHebrewMatch.TranslatePoint(new Point(0, 0), this));
 				mouseOnElement = new Point(Layout.TransformToPixels(grdHebrewMatch, mouseOnElement.X), Layout.TransformToPixels(grdHebrewMatch, mouseOnElement.Y));
@@ -343,12 +342,10 @@ namespace BibleBooksWPF
 
 						switch (strResponse) {
 							case "Retry":
-								HebrewMatch pHebrewMatch = new HebrewMatch();
-								NavigationService.Navigate(pHebrewMatch);
+								ChangeViewMessage.Navigate("HebrewMatch");
 								break;
 							case "Main":
-								MainMenu pMainMenu = new MainMenu();
-								NavigationService.Navigate(pMainMenu);
+								ChangeViewMessage.Navigate("MainMenu");
 								break;
 							case "Exit":
 								Application.Current.Shutdown();
@@ -406,8 +403,7 @@ namespace BibleBooksWPF
 					stopwatch.Start();
 					break;
 				case "Main":
-					MainMenu pMainMenu = new MainMenu();
-					NavigationService.Navigate(pMainMenu);
+					ChangeViewMessage.Navigate("MainMenu");
 					break;
 				case "Exit":
 					Application.Current.Shutdown();

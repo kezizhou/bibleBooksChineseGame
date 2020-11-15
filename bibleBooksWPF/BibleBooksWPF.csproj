@@ -118,15 +118,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers\INavigationService.cs" />
+    <Compile Include="Helpers\ChangeViewMessage.cs" />
     <Compile Include="Helpers\CustomMessageBoxMethods.cs" />
-    <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Helpers\StatisticMethods.cs" />
     <Compile Include="Languages\LanguageResources.cs" />
-    <Compile Include="UserControls\MenuControl.xaml.cs">
-      <DependentUpon>MenuControl.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModels\DiceBooksGreekViewModel.cs" />
+    <Compile Include="ViewModels\GreekMatchViewModel.cs" />
+    <Compile Include="ViewModels\GreekReorderViewModel.cs" />
+    <Compile Include="ViewModels\HebrewMatchViewModel.cs" />
+    <Compile Include="ViewModels\HebrewReorderViewModel.cs" />
+    <Compile Include="ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MatchingGameViewModel.cs" />
+    <Compile Include="ViewModels\NewUserViewModel.cs" />
+    <Compile Include="ViewModels\StatisticsPageViewModel.cs" />
     <Compile Include="Views\ConfirmMessageBox.xaml.cs">
       <DependentUpon>ConfirmMessageBox.xaml</DependentUpon>
     </Compile>
@@ -150,6 +155,9 @@
       <DependentUpon>HebrewReorder.xaml</DependentUpon>
     </Compile>
     <Compile Include="MatchingGames.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewBadgeMessage.xaml.cs">
       <DependentUpon>NewBadgeMessage.xaml</DependentUpon>
     </Compile>
@@ -174,7 +182,6 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\SelectUserViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\UserControlsViewModel.cs" />
     <Content Include="Languages\NewUser.en-US.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -275,10 +282,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -290,10 +293,10 @@
     <Compile Include="Views\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NewBadgeMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -323,10 +326,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StatisticsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\MenuControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

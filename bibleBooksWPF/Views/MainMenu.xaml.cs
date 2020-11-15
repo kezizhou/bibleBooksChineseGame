@@ -5,12 +5,13 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using BibleBooksWPF.Resources;
 using BibleBooksWPF.Helpers;
+using GalaSoft.MvvmLight.Messaging;
 
-namespace BibleBooksWPF {
+namespace BibleBooksWPF.Views {
 	/// <summary>
 	/// Interaction logic for MainMenu.xaml
 	/// </summary>
-	public partial class MainMenu : Page {
+	public partial class MainMenu : ContentControl {
 
 		public MainMenu() {
 			try {
@@ -53,7 +54,8 @@ namespace BibleBooksWPF {
 		private void BtnChangeUser_Click(object sender, RoutedEventArgs e) {
 			try {
 				SelectUser pSelectUser = new SelectUser();
-				NavigationService.Navigate(pSelectUser);
+				var navMessage = new NotificationMessage("SelectUser");
+				Messenger.Default.Send(navMessage);
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}

@@ -6,12 +6,11 @@ using System.IO;
 using System.Windows;
 using System.Windows.Navigation;
 
-namespace BibleBooksWPF {
+namespace BibleBooksWPF.Views {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : NavigationWindow {
-
+	public partial class MainWindow {
 		public MainWindow() {
 			InitializeComponent();
 		}

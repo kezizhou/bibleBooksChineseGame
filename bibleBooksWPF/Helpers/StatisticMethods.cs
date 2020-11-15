@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BibleBooksWPF.Views;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;

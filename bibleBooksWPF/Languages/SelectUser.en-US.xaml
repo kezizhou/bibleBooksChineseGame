@@ -6,4 +6,5 @@
 
     <sys:String x:Key="SelectUser">Please select the user:</sys:String>
     <sys:String x:Key="NewUser">New User</sys:String>
+    <sys:String x:Key="ChangeLanguage">中文</sys:String>
 </ResourceDictionary>

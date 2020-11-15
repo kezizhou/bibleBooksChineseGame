@@ -12,11 +12,11 @@ using System.Diagnostics;
 
 using BibleBooksWPF.Helpers;
 
-namespace BibleBooksWPF {
+namespace BibleBooksWPF.Views {
 	/// <summary>
 	/// Interaction logic for GreekReorder.xaml
 	/// </summary>
-	public partial class GreekReorder : Page {
+	public partial class GreekReorder : ContentControl {
 		// Variables for moving labels
 		public bool blnDragging = false;
 		private Point clickPosition;
@@ -80,8 +80,8 @@ namespace BibleBooksWPF {
 				int intLabelWidth = Layout.TransformToPixels(grdGreekReorder, lblActiveElement.ActualWidth);
 				int intLabelHeight = Layout.TransformToPixels(grdGreekReorder, lblActiveElement.ActualHeight);
 
-				int intMenuWidth = Layout.TransformToPixels(grdGreekReorder, menTop.ActualWidth);
-				int intMenuHeight = Layout.TransformToPixels(grdGreekReorder, menTop.ActualHeight);
+				int intMenuWidth = Layout.TransformToPixels(grdGreekReorder, ((MainWindow)App.Current.MainWindow).menTop.ActualWidth);
+				int intMenuHeight = Layout.TransformToPixels(grdGreekReorder, ((MainWindow)App.Current.MainWindow).menTop.ActualHeight);
 
 				Point pntGrid = grdGreekReorder.PointToScreen(grdGreekReorder.TranslatePoint(new Point(0, 0), this));
 				mouseOnElement = new Point(Layout.TransformToPixels(grdGreekReorder, mouseOnElement.X), Layout.TransformToPixels(grdGreekReorder, mouseOnElement.Y));
@@ -396,12 +396,10 @@ namespace BibleBooksWPF {
 
 			switch (strResponse) {
 				case "Retry":
-					GreekReorder pGreekReorder = new GreekReorder();
-					NavigationService.Navigate(pGreekReorder);
+					ChangeViewMessage.Navigate("GreekReorder");
 					break;
 				case "Main":
-					MainMenu pMainMenu = new MainMenu();
-					NavigationService.Navigate(pMainMenu);
+					ChangeViewMessage.Navigate("MainMenu");
 					break;
 				case "Exit":
 					Application.Current.Shutdown();
@@ -422,8 +420,7 @@ namespace BibleBooksWPF {
 					stopwatch.Start();
 					break;
 				case "Main":
-					MainMenu pMainMenu = new MainMenu();
-					NavigationService.Navigate(pMainMenu);
+					ChangeViewMessage.Navigate("MainMenu");
 					break;
 				case "Exit":
 					Application.Current.Shutdown();

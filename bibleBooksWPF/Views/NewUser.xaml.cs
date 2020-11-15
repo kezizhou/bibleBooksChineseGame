@@ -15,8 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BibleBooksWPF
-{
+namespace BibleBooksWPF.Views {
     /// <summary>
     /// Interaction logic for NewUser.xaml
     /// </summary>
