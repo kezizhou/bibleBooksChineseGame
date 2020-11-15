@@ -3,11 +3,22 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:BibleBooksWPF.ViewModels"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
       xmlns:local="clr-namespace:BibleBooksWPF"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="1200"
-      Loaded="Page_Loaded"
       Background="White">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding pageLoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>    
+    
+    <ContentControl.DataContext>
+        <vm:MainMenuViewModel/>
+    </ContentControl.DataContext>
 
     <ContentControl.Resources>
         <ResourceDictionary>
@@ -34,7 +45,7 @@
                 <RowDefinition Height="0.4*"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="btnChangeUser" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Padding="5" FontSize="18" Click="BtnChangeUser_Click" Style="{StaticResource RoundedChangeUserButton}">Change User</Button>
+            <Button x:Name="btnChangeUser" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Padding="5" FontSize="18" Style="{StaticResource RoundedChangeUserButton}" Command="{Binding changeUserCommand}" Content="{DynamicResource ResourceKey=ChangeUser}"/>
 
             <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Image Name="imgLogo" Source="pack://application:,,,/BibleBooksWPF;component/Resources/applicationBook.png"/>
@@ -54,7 +65,7 @@
                 <TextBlock Name="txbDescription" FontFamily="pack://application:,,,/BibleBooksWPF;component/Resources/Fonts/#Poppins" TextAlignment="Center" FontSize="30" Margin="15" Text="{DynamicResource ResourceKey=Description}"/>
             </StackPanel>
 
-            <Button x:Name="btnHelp" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,20,10,10" Padding="5" Background="Transparent" BorderThickness="0" MaxHeight="135" MinHeight="50" ToolTip="{DynamicResource ResourceKey=Help}" Click="btnHelp_Click">
+            <Button x:Name="btnHelp" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,20,10,10" Padding="5" Background="Transparent" BorderThickness="0" MaxHeight="135" MinHeight="50" ToolTip="{DynamicResource ResourceKey=Help}" Command="{Binding helpWindowCommand}">
                 <Image Name="imgInfo" Source="pack://application:,,,/BibleBooksWPF;component/Resources/info.png"/>
             </Button>
         </Grid>
