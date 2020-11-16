@@ -122,6 +122,10 @@
     <Compile Include="Helpers\CustomMessageBoxMethods.cs" />
     <Compile Include="Helpers\StatisticMethods.cs" />
     <Compile Include="Languages\LanguageResources.cs" />
+    <Compile Include="UserControls\BibleBook.xaml.cs">
+      <DependentUpon>BibleBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UniformGridWithOrientation.cs" />
     <Compile Include="ViewModels\DiceBooksGreekViewModel.cs" />
     <Compile Include="ViewModels\GreekMatchViewModel.cs" />
     <Compile Include="ViewModels\GreekReorderViewModel.cs" />
@@ -154,7 +158,6 @@
     <Compile Include="Views\HebrewReorder.xaml.cs">
       <DependentUpon>HebrewReorder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MatchingGames.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,10 @@
     <Page Include="Languages\NewUser.zh-CN.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\BibleBook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ConfirmMessageBox.xaml">
       <SubType>Designer</SubType>

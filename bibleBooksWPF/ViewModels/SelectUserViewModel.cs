@@ -216,6 +216,7 @@ namespace BibleBooksWPF.ViewModels {
 			App.Current.Properties["currentUsername"] = currentUser.username;
 			Properties.Settings.Default.blnAudio = true;
 			Properties.Settings.Default.strLanguage = "en-US";
+			Properties.Settings.Default.lngTotalPoints = 0;
 
 			propRootUser.Users.Add(currentUser);
 

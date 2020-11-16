@@ -4,11 +4,27 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
-using BibleBooksWPF.Helpers;
+using BibleBooksWPF.UserControls;
 
 namespace BibleBooksWPF.Helpers {
     public static class LabelExt {
 		public static void BringToFront(this Label lbl) {
+			try {
+				if (lbl == null) return;
+
+				Grid parent = lbl.Parent as Grid;
+				if (parent == null) return;
+
+				var maxZ = parent.Children.OfType<UIElement>()
+				  .Where(x => x != lbl)
+				  .Select(x => Grid.GetZIndex(x))
+				  .Max();
+				Grid.SetZIndex(lbl, maxZ + 1);
+			} catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
+		}
+		public static void BringToFront(this BibleBook lbl) {
 			try {
 				if (lbl == null) return;
 

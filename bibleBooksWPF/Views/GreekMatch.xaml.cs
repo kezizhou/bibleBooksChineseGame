@@ -5,13 +5,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Speech.Synthesis;
-using System.Globalization;
-using System.Windows.Threading;
-using System.Diagnostics;
 
 using BibleBooksWPF.Helpers;
 using BibleBooksWPF.ViewModels;
+using BibleBooksWPF.UserControls;
 
 namespace BibleBooksWPF.Views {
 	/// <summary>
@@ -22,7 +19,7 @@ namespace BibleBooksWPF.Views {
 		// Variables for moving labels
 		public bool blnDragging = false;
 		private Point clickPosition;
-		MatchingGameViewModel viewModel;
+		GreekMatchViewModel viewModel;
 		Dictionary<string, Point> dctTransform = new Dictionary<String, Point>();
 
 		List<Point> lpntChLabels = new List<Point>();
@@ -36,8 +33,6 @@ namespace BibleBooksWPF.Views {
 									"lblPhilemon", "lblHebrews", "lblJames", "lbl1Peter", "lbl2Peter", "lbl1John", "lbl2John", "lbl3John", "lblJude", "lblRevelation" };
 
 		List<String> lstrBooksToComplete = new List<String>(astrChGreek);
-		DispatcherTimer timer1 = new DispatcherTimer();
-		Stopwatch stopwatch = new Stopwatch();
 
 		public GreekMatch() {
 			try {
@@ -45,13 +40,8 @@ namespace BibleBooksWPF.Views {
 				LanguageResources.SetDefaultLanguage(this);
 
 				// Reset points
-				viewModel = new MatchingGameViewModel();
+				viewModel = new GreekMatchViewModel();
 				this.DataContext = viewModel;
-
-				// Reset timer
-				timer1.Tick += new EventHandler(timer1_Tick);
-				timer1.Interval = new TimeSpan(0, 0, 0, 1);
-				stopwatch.Reset();
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -62,13 +52,13 @@ namespace BibleBooksWPF.Views {
 				Random r = new Random();
 
 				foreach (String strChLbl in astrChGreek) {
-					Label lblCh = this.FindName(strChLbl) as Label;
+					BibleBook lblCh = this.FindName(strChLbl) as BibleBook;
 
 					// Check main language
 					if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 						string strTemp = lblCh.Content.ToString();
 
-						Label lblEn = this.FindName(strChLbl.Remove(3, 2)) as Label;
+						BibleBook lblEn = this.FindName(strChLbl.Remove(3, 2)) as BibleBook;
 						lblCh.Content = lblEn.Content;
 						lblEn.Content = strTemp;
 					}
@@ -88,7 +78,7 @@ namespace BibleBooksWPF.Views {
 
 				// Randomly shuffle all Chinese label locations
 				foreach (String strChLbl in astrChGreek) {
-					Label lblCh = this.FindName(strChLbl) as Label;
+					BibleBook lblCh = this.FindName(strChLbl) as BibleBook;
 
 					// Assign the label to a random grid position
 					int intRandom = r.Next(0, lpntChLabels.Count);
@@ -98,10 +88,6 @@ namespace BibleBooksWPF.Views {
 					// Remove the point so it is not assigned again
 					lpntChLabels.Remove(new Point(Grid.GetRow(lblCh), Grid.GetColumn(lblCh)));
 				}
-
-				// Start timer
-				stopwatch.Start();
-				timer1.Start();
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -110,7 +96,7 @@ namespace BibleBooksWPF.Views {
 		private void lblMouseLeftButtonDown(object sender, MouseEventArgs e) {
 			try {
 				blnDragging = true;
-				Label lblActiveElement = sender as Label;
+				BibleBook lblActiveElement = sender as BibleBook;
 				clickPosition = e.GetPosition(this.Parent as UIElement);
 				Point mouseOnElement = Mouse.GetPosition(lblActiveElement);
 
@@ -137,11 +123,6 @@ namespace BibleBooksWPF.Views {
 				// Height: Subtract height of menu bar and the label height
 				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y), intGridWidth - intLabelWidth, intGridHeight - intMenuHeight - intLabelHeight);
 				
-				// Check audio setting
-				// If on, play audio
-				if (Properties.Settings.Default.blnAudio == true) {
-					playAudio(sender);
-				}
 			} catch (Exception ex) {
 				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();
 				MessageBox.Show(ex.Message);
@@ -150,7 +131,7 @@ namespace BibleBooksWPF.Views {
 
 		private void lblMouseMove(object sender, MouseEventArgs e) {
 			try {
-				Label lblActiveElement = sender as Label;
+				BibleBook lblActiveElement = sender as BibleBook;
 
 				if (blnDragging && lblActiveElement != null) {
 					Point currentPosition = e.GetPosition(this.Parent as UIElement);
@@ -184,7 +165,7 @@ namespace BibleBooksWPF.Views {
 		private void lblMouseLeftButtonUp(object sender, MouseEventArgs e) {
 			try {
 				blnDragging = false;
-				Label lblActiveElement = sender as Label;
+				BibleBook lblActiveElement = sender as BibleBook;
 				TranslateTransform transform = lblActiveElement.RenderTransform as TranslateTransform;
 
 				// Check if it has been matched to an English book
@@ -207,55 +188,8 @@ namespace BibleBooksWPF.Views {
 			}
 		}
 
-		private void timer1_Tick(object sender, EventArgs e) {
-			try {
-				if (stopwatch.IsRunning) {
-					viewModel.propTimeElapsed = stopwatch.Elapsed;
-				}
-			} catch (Exception ex) {
-				MessageBox.Show(ex.Message);
-			}
-		}
-
-		private void playAudio(object sender) {
-			try {
-				Label lblBook = sender as Label;
-				string strRead = lblBook.Content.ToString();
-
-				SpeechSynthesizer synthesizer = new SpeechSynthesizer();
-				synthesizer.SetOutputToDefaultAudioDevice();
-				PromptBuilder pBuilder = new PromptBuilder();
-
-				if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
-					pBuilder.Culture = CultureInfo.GetCultureInfo("en-US");
-
-					if (strRead.Contains("1")) {
-						strRead = strRead.Replace("1", "First");
-						pBuilder.AppendText(strRead);
-					} else if (strRead.Contains("2")) {
-						strRead = strRead.Replace("2", "Second");
-						pBuilder.AppendText(strRead);
-					} else if (strRead.Contains("3")) {
-						strRead = strRead.Replace("3", "Third");
-						pBuilder.AppendText(strRead);
-					} else if (strRead == "Philemon") {
-						pBuilder.AppendTextWithPronunciation("Philemon", "faɪlimən");
-					} else {
-						pBuilder.AppendText(strRead);
-					}
-				} else if (Properties.Settings.Default.strLanguage.Equals("en-US")) {
-					pBuilder.Culture = CultureInfo.GetCultureInfo("zh-CN");
-					pBuilder.AppendText(strRead);
-				}
-
-				synthesizer.SpeakAsync(pBuilder);
-			} catch (Exception ex) {
-				MessageBox.Show(ex.Message);
-			}
-		}
-
 		private bool checkLabelsTouching(object sender) {
-			Label lblCh = sender as Label;
+			BibleBook lblCh = sender as BibleBook;
 			Boolean blnCorrect = false;
 			Boolean blnAttemptedMatch = false;
 
@@ -268,9 +202,9 @@ namespace BibleBooksWPF.Views {
 			// Check each English book to see if touching
 			foreach (String strLbl in astrGreek) {
 				// Get the label from the string name
-				Label lbl = this.FindName(strLbl) as Label;
+				BibleBook lbl = this.FindName(strLbl) as BibleBook;
 
-				var tpMatchReturn = MatchingGames.checkTouchingLabelsCorrect(lbl, lblCh, rctChLbl, astrGreek, astrChGreek);
+				var tpMatchReturn = viewModel.checkTouchingLabelsCorrect(lbl, lblCh, rctChLbl, astrGreek, astrChGreek);
 				if (tpMatchReturn.Item1) blnCorrect = true;
 				if (tpMatchReturn.Item2) blnAttemptedMatch = true;
 
@@ -282,22 +216,7 @@ namespace BibleBooksWPF.Views {
 
 					// Finished matching
 					if (lstrBooksToComplete.Count == 0) {
-						stopwatch.Stop();
-						string strResponse = MatchingGames.completedMatching(stopwatch.Elapsed, viewModel.propCurrentPoints, viewModel.propNumberCorrect, viewModel.propNumberAttempted);
-
-						switch (strResponse) {
-							case "Retry":
-								ChangeViewMessage.Navigate("HebrewMatch");
-								break;
-							case "Main":
-								ChangeViewMessage.Navigate("MainMenu");
-								break;
-							case "Exit":
-								Application.Current.Shutdown();
-								break;
-							default:
-								break;
-						}
+						viewModel.completedMatching(viewModel.propCurrentPoints, viewModel.propNumberCorrect, viewModel.propNumberAttempted);
 					}
 
 					break;
@@ -330,30 +249,9 @@ namespace BibleBooksWPF.Views {
 			return true;
 		}
 
-		private async void incorrectFlash(Label lblIncorrectBook) {
+		private async void incorrectFlash(BibleBook lblIncorrectBook) {
 			await Task.Delay(900);
 			lblIncorrectBook.Background = (Brush)(new BrushConverter().ConvertFromString("#E6EBF3"));
-		}
-
-		private void btnPause_Click(object sender, RoutedEventArgs e) {
-			stopwatch.Stop();
-			PauseMenu winPause = new PauseMenu();
-
-			string strResponse = CustomMessageBoxMethods.ShowMessage(winPause);
-
-			switch (strResponse) {
-				case "Resume":
-					stopwatch.Start();
-					break;
-				case "Main":
-					ChangeViewMessage.Navigate("MainMenu");
-					break;
-				case "Exit":
-					Application.Current.Shutdown();
-					break;
-				default:
-					break;
-			}
 		}
 	}
 }
