@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BibleBooksWPF.ViewModels {
-	class HebrewMatchViewModel {
+	public class HebrewMatchViewModel : MatchingGameViewModel {
+
 	}
 }

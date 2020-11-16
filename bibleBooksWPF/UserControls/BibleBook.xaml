@@ -8,6 +8,6 @@
              d:DesignHeight="300" d:DesignWidth="600">
     <Grid>
         <Label x:Name="lblBook" FontSize="17" FontFamily="DengXian" Padding="5" Background="#FF9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"
-               MouseLeftButtonDown="Label_MouseLeftButtonDown" MouseMove="Label_MouseMove" MouseLeftButtonUp="Label_MouseLeftButtonUp"/>
+               MouseDown="lblBook_MouseDown"/>
     </Grid>
 </UserControl>
