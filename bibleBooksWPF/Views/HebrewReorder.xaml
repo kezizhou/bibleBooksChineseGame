@@ -3,11 +3,17 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:BibleBooksWPF.ViewModels"
+      xmlns:control="clr-namespace:BibleBooksWPF.UserControls"
       xmlns:local="clr-namespace:BibleBooksWPF"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1380"
       Loaded="Page_Loaded">
 
+    <ContentControl.DataContext>
+        <vm:HebrewReorderViewModel/>
+    </ContentControl.DataContext>
+    
     <ContentControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -31,7 +37,6 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.75*"/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -49,29 +54,29 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Label x:Name="lblGenesis" Content="Genesis" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="1" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblExodus" Content="Exodus" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="2" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblLeviticus" Content="Leviticus" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="3" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblNumbers" Content="Numbers" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="4" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblDeuteronomy" Content="Deuteronomy" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="5" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblJoshua" Content="Joshua" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="6" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblJudges" Content="Judges" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="7" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblRuth" Content="Ruth" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="8" Padding="5"  Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lbl1Samuel" Content="1 Samuel" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="9" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lbl2Samuel" Content="2 Samuel" FontSize="18" FontFamily="DengXian" Grid.Column="0" Grid.Row="10" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+            <control:BibleBook x:Name="lblGenesis" SetText="Genesis" Grid.Column="0" Grid.Row="0" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblExodus" SetText="Exodus" Grid.Column="0" Grid.Row="1" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblLeviticus" SetText="Leviticus" Grid.Column="0" Grid.Row="2" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblNumbers" SetText="Numbers" Grid.Column="0" Grid.Row="3" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblDeuteronomy" SetText="Deuteronomy" Grid.Column="0" Grid.Row="4" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblJoshua" SetText="Joshua" Grid.Column="0" Grid.Row="5"  SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblJudges" SetText="Judges" Grid.Column="0" Grid.Row="6" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblRuth" SetText="Ruth" Grid.Column="0" Grid.Row="7" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lbl1Samuel" SetText="1 Samuel" Grid.Column="0" Grid.Row="8" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lbl2Samuel" SetText="2 Samuel" Grid.Column="0" Grid.Row="9" SetBackground="#9BC1FF" SetAudio="On"/>
 
-            <Label x:Name="lbl1Kings" Content="1 Kings" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="1" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lbl2Kings" Content="2 Kings" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="2" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lbl1Chronicles" Content="1 Chronicles" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="3" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lbl2Chronicles" Content="2 Chronicles" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="4" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblEzra" Content="Ezra" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="5" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblNehemiah" Content="Nehemiah" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="6" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblEsther" Content="Esther" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="7" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblJob" Content="Job" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="8" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblPsalms" Content="Psalms" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="9" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblProverbs" Content="Proverbs" FontSize="18" FontFamily="DengXian" Grid.Column="1" Grid.Row="10" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+            <control:BibleBook x:Name="lbl1Kings" SetText="1 Kings" Grid.Column="1" Grid.Row="0" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lbl2Kings" SetText="2 Kings" Grid.Column="1" Grid.Row="1" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lbl1Chronicles" SetText="1 Chronicles" Grid.Column="1" Grid.Row="2" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lbl2Chronicles" SetText="2 Chronicles" Grid.Column="1" Grid.Row="3" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblEzra" SetText="Ezra" Grid.Column="1" Grid.Row="4" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblNehemiah" SetText="Nehemiah" Grid.Column="1" Grid.Row="5" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblEsther" SetText="Esther" Grid.Column="1" Grid.Row="6" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblJob" SetText="Job" Grid.Column="1" Grid.Row="7" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblPsalms" SetText="Psalms" Grid.Column="1" Grid.Row="8" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblProverbs" SetText="Proverbs" Grid.Column="1" Grid.Row="9" SetBackground="#9BC1FF" SetAudio="On"/>
 
-            <Grid x:Name="grdReordered" Background="White" Margin="0,0,10,15" Grid.Row="1" Grid.Column="3" Grid.RowSpan="14" Grid.ColumnSpan="3" ShowGridLines="True">
+            <Grid x:Name="grdReordered" Background="White" Margin="0,0,10,15" Grid.Row="0" Grid.Column="3" Grid.RowSpan="14" Grid.ColumnSpan="3" ShowGridLines="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -94,71 +99,71 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="lbl1" Grid.Column="0" Grid.Row="0" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl2" Grid.Column="0" Grid.Row="1" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl3" Grid.Column="0" Grid.Row="2" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl4" Grid.Column="0" Grid.Row="3" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl5" Grid.Column="0" Grid.Row="4" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl6" Grid.Column="0" Grid.Row="5" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl7" Grid.Column="0" Grid.Row="6" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl8" Grid.Column="0" Grid.Row="7" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl9" Grid.Column="0" Grid.Row="8" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl10" Grid.Column="0" Grid.Row="9" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl11" Grid.Column="0" Grid.Row="10" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl12" Grid.Column="0" Grid.Row="11" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl13" Grid.Column="0" Grid.Row="12" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
+                <control:BibleBook x:Name="lbl1" Grid.Column="0" Grid.Row="0" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl2" Grid.Column="0" Grid.Row="1" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl3" Grid.Column="0" Grid.Row="2" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl4" Grid.Column="0" Grid.Row="3" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl5" Grid.Column="0" Grid.Row="4" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl6" Grid.Column="0" Grid.Row="5" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl7" Grid.Column="0" Grid.Row="6" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl8" Grid.Column="0" Grid.Row="7" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl9" Grid.Column="0" Grid.Row="8" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl10" Grid.Column="0" Grid.Row="9" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl11" Grid.Column="0" Grid.Row="10" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl12" Grid.Column="0" Grid.Row="11" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl13" Grid.Column="0" Grid.Row="12" SetBackground="#F0F3F5"/>
 
-                <Label x:Name="lbl14" Grid.Column="1" Grid.Row="0" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl15" Grid.Column="1" Grid.Row="1" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl16" Grid.Column="1" Grid.Row="2" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl17" Grid.Column="1" Grid.Row="3" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl18" Grid.Column="1" Grid.Row="4" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl19" Grid.Column="1" Grid.Row="5" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl20" Grid.Column="1" Grid.Row="6" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl21" Grid.Column="1" Grid.Row="7" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl22" Grid.Column="1" Grid.Row="8" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl23" Grid.Column="1" Grid.Row="9" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl24" Grid.Column="1" Grid.Row="10" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl25" Grid.Column="1" Grid.Row="11" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl26" Grid.Column="1" Grid.Row="12" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
+                <control:BibleBook x:Name="lbl14" Grid.Column="1" Grid.Row="0" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl15" Grid.Column="1" Grid.Row="1" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl16" Grid.Column="1" Grid.Row="2" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl17" Grid.Column="1" Grid.Row="3" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl18" Grid.Column="1" Grid.Row="4" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl19" Grid.Column="1" Grid.Row="5" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl20" Grid.Column="1" Grid.Row="6" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl21" Grid.Column="1" Grid.Row="7" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl22" Grid.Column="1" Grid.Row="8" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl23" Grid.Column="1" Grid.Row="9" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl24" Grid.Column="1" Grid.Row="10" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl25" Grid.Column="1" Grid.Row="11" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl26" Grid.Column="1" Grid.Row="12" SetBackground="#F0F3F5"/>
 
-                <Label x:Name="lbl27" Grid.Column="2" Grid.Row="0" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl28" Grid.Column="2" Grid.Row="1" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl29" Grid.Column="2" Grid.Row="2" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl30" Grid.Column="2" Grid.Row="3" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl31" Grid.Column="2" Grid.Row="4" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl32" Grid.Column="2" Grid.Row="5" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl33" Grid.Column="2" Grid.Row="6" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl34" Grid.Column="2" Grid.Row="7" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl35" Grid.Column="2" Grid.Row="8" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl36" Grid.Column="2" Grid.Row="9" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl37" Grid.Column="2" Grid.Row="10" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl38" Grid.Column="2" Grid.Row="11" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
-                <Label x:Name="lbl39" Grid.Column="2" Grid.Row="12" Padding="5" Background="#F0F3F5" Margin="10,5,10,10"  Style="{StaticResource RoundedCornerLabel}"/>
+                <control:BibleBook x:Name="lbl27" Grid.Column="2" Grid.Row="0" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl28" Grid.Column="2" Grid.Row="1" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl29" Grid.Column="2" Grid.Row="2" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl30" Grid.Column="2" Grid.Row="3" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl31" Grid.Column="2" Grid.Row="4" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl32" Grid.Column="2" Grid.Row="5" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl33" Grid.Column="2" Grid.Row="6" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl34" Grid.Column="2" Grid.Row="7" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl35" Grid.Column="2" Grid.Row="8" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl36" Grid.Column="2" Grid.Row="9" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl37" Grid.Column="2" Grid.Row="10" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl38" Grid.Column="2" Grid.Row="11" SetBackground="#F0F3F5"/>
+                <control:BibleBook x:Name="lbl39" Grid.Column="2" Grid.Row="12" SetBackground="#F0F3F5"/>
             </Grid>
 
-            <Label x:Name="lblEcclesiastes" Content="Ecclesiastes" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="1" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblSongofSolomon" Content="Song of Solomon" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="2" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblIsaiah" Content="Isaiah" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="3" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblJeremiah" Content="Jeremiah" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="4" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblLamentations" Content="Lamentations" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="5" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblEzekiel" Content="Ezekiel" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="6" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblDaniel" Content="Daniel" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="7" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblHosea" Content="Hosea" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="8" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblJoel" Content="Joel" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="9" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblAmos" Content="Amos" FontSize="18" FontFamily="DengXian" Grid.Column="7" Grid.Row="10" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+            <control:BibleBook x:Name="lblEcclesiastes" SetText="Ecclesiastes" Grid.Column="7" Grid.Row="0" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblSongofSolomon" SetText="Song of Solomon" Grid.Column="7" Grid.Row="1" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblIsaiah" SetText="Isaiah" Grid.Column="7" Grid.Row="2" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblJeremiah" SetText="Jeremiah" Grid.Column="7" Grid.Row="3" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblLamentations" SetText="Lamentations" Grid.Column="7" Grid.Row="4" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblEzekiel" SetText="Ezekiel" Grid.Column="7" Grid.Row="5" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblDaniel" SetText="Daniel" Grid.Column="7" Grid.Row="6" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblHosea" SetText="Hosea" Grid.Column="7" Grid.Row="7" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblJoel" SetText="Joel" Grid.Column="7" Grid.Row="8" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblAmos" SetText="Amos" Grid.Column="7" Grid.Row="9" SetBackground="#9BC1FF" SetAudio="On"/>
 
-            <Label x:Name="lblObadiah" Content="Obadiah" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="1" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblJonah" Content="Jonah" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="2" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblMicah" Content="Micah" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="3" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblNahum" Content="Nahum" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="4" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblHabakkuk" Content="Habakkuk" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="5" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblZephaniah" Content="Zephaniah" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="6" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblHaggai" Content="Haggai" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="7" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblZechariah" Content="Zechariah" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="8" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
-            <Label x:Name="lblMalachi" Content="Malachi" FontSize="18" FontFamily="DengXian" Grid.Column="8" Grid.Row="9" Padding="5" Background="#9BC1FF" Margin="10,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource RoundedCornerLabel}"/>
+            <control:BibleBook x:Name="lblObadiah" SetText="Obadiah" Grid.Column="8" Grid.Row="0" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblJonah" SetText="Jonah" Grid.Column="8" Grid.Row="1" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblMicah" SetText="Micah" Grid.Column="8" Grid.Row="2" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblNahum" SetText="Nahum" Grid.Column="8" Grid.Row="3" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblHabakkuk" SetText="Habakkuk" Grid.Column="8" Grid.Row="4" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblZephaniah" SetText="Zephaniah" Grid.Column="8" Grid.Row="5" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblHaggai" SetText="Haggai" Grid.Column="8" Grid.Row="6" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblZechariah" SetText="Zechariah" Grid.Column="8" Grid.Row="7" SetBackground="#9BC1FF" SetAudio="On"/>
+            <control:BibleBook x:Name="lblMalachi" SetText="Malachi" Grid.Column="8" Grid.Row="8" SetBackground="#9BC1FF" SetAudio="On"/>
 
-            <Grid x:Name="grdStatistics" Grid.Column="2" Grid.Row="14" Grid.RowSpan="2" Grid.ColumnSpan="5" Background="#FFD3DAF5" VerticalAlignment="Center">
+            <Grid x:Name="grdStatistics" Grid.Column="2" Grid.Row="13" Grid.RowSpan="2" Grid.ColumnSpan="5" Background="#FFD3DAF5" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2.5*"/>
                     <ColumnDefinition/>
@@ -183,7 +188,8 @@
                 <Label x:Name="lblTimeElapsed" Content="00:00:00" Grid.Column="3" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Padding="5,5,10,5"></Label>
             </Grid>
 
-            <Button x:Name="btnPause" Click="btnPause_Click" Grid.Row="14" Grid.Column="0" Grid.RowSpan="2" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Background="White" BorderThickness="0">
+            <Button x:Name="btnPause" Grid.Row="14" Grid.Column="0" Grid.RowSpan="2" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" 
+                    Background="White" BorderThickness="0" Command="{Binding Path=pauseButtonCommand}">
                 <Image x:Name="imgPause" Source="pack://application:,,,/BibleBooksWPF;component/Resources/pause.png"></Image>
             </Button>
         </Grid>

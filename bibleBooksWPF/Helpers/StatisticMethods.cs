@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows;
 
 namespace BibleBooksWPF.Helpers {
-	public static class StatisticMethods {
+	public class StatisticMethods {
 		public static string AddStatistic(string strGameName, int intPoints, TimeSpan tsTimeElapsed) {
 			string strRecord = "";
 
@@ -21,6 +21,10 @@ namespace BibleBooksWPF.Helpers {
 				JToken userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 
 				GameStatistics gsTotalGames = userGameToken.ToObject<GameStatistics>();
+
+				// Get the current user's existing badges
+				JToken userBadgesToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstBadges");
+				List<string> lstBadges = userBadgesToken.ToObject<List<string>>();
 
 				// Check if this is the first game
 				if (gsTotalGames.lintPoints.Count == 0) {
@@ -44,7 +48,7 @@ namespace BibleBooksWPF.Helpers {
 				}
 
 				// Exodus badge
-				if (App.Current.Properties["exodusBadge"].ToString() == "both") {
+				if (App.Current.Properties["exodusBadge"].ToString() == "both" && !lstBadges.Contains("imgBadgeExodus")) {
 					AddBadge("imgBadgeExodus");
 					winBadgeBox = new NewBadgeMessage();
 					CustomMessageBoxMethods.ShowMessage("imgBadgeExodus", winBadgeBox);
@@ -52,7 +56,7 @@ namespace BibleBooksWPF.Helpers {
 				}
 
 				// Ruth badge
-				if (App.Current.Properties["ruthBadge"].ToString() == "both") {
+				if (App.Current.Properties["ruthBadge"].ToString() == "both" && !lstBadges.Contains("imgBadgeRuth")) {
 					AddBadge("imgBadgeRuth");
 					winBadgeBox = new NewBadgeMessage();
 					CustomMessageBoxMethods.ShowMessage("imgBadgeRuth", winBadgeBox);
@@ -60,80 +64,24 @@ namespace BibleBooksWPF.Helpers {
 				}
 
 				if (strGameName.Equals("HebrewMatch")) {
-					if (tsTimeElapsed <= new TimeSpan(0, 1, 15)) {
-						AddBadge("imgHebrewMatchTime");
-						winBadgeBox = new NewBadgeMessage();
-						CustomMessageBoxMethods.ShowMessage("imgHebrewMatchTime", winBadgeBox);
-
+					if (CheckHebrewMatchBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
-						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
-					}
-					if (intPoints == 39) {
-						AddBadge("imgHebrewMatch100");
-						winBadgeBox = new NewBadgeMessage();
-						CustomMessageBoxMethods.ShowMessage("imgHebrewMatch100", winBadgeBox);
-
-						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
-						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
+						userGameToken = RefreshJObject(obj, "HebrewMatch");
 					}
 				} else if (strGameName.Equals("HebrewReorder")) {
-					if (tsTimeElapsed <= new TimeSpan(0, 2, 15)) {
-						AddBadge("imgHebrewReorderTime");
-						winBadgeBox = new NewBadgeMessage();
-						CustomMessageBoxMethods.ShowMessage("imgHebrewReorderTime", winBadgeBox);
-
+					if (CheckHebrewReorderBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
-						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
-					}
-					if (intPoints == 39) {
-						AddBadge("imgHebrewReorder100");
-						winBadgeBox = new NewBadgeMessage();
-						CustomMessageBoxMethods.ShowMessage("imgHebrewReorder100", winBadgeBox);
-
-						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
-						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
+						userGameToken = RefreshJObject(obj, "HebrewReorder");
 					}
 				} else if (strGameName.Equals("GreekMatch")) {
-					if (tsTimeElapsed <= new TimeSpan(0, 0, 45)) {
-						AddBadge("imgGreekMatchTime");
-						winBadgeBox = new NewBadgeMessage();
-						CustomMessageBoxMethods.ShowMessage("imgGreekMatchTime", winBadgeBox);
-
+					if (CheckGreekMatchBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
-						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
-					}
-					if (intPoints == 27) {
-						AddBadge("imgGreekMatch100");
-						winBadgeBox = new NewBadgeMessage();
-						CustomMessageBoxMethods.ShowMessage("imgGreekMatch100", winBadgeBox);
-
-						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
-						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
+						userGameToken = RefreshJObject(obj, "GreekMatch");
 					}
 				} else if (strGameName.Equals("GreekReorder")) {
-					if (tsTimeElapsed <= new TimeSpan(0, 0, 50)) {
-						AddBadge("imgGreekReorderTime");
-						winBadgeBox = new NewBadgeMessage();
-						CustomMessageBoxMethods.ShowMessage("imgGreekReorderTime", winBadgeBox);
-
+					if (CheckGreekReorderBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
-						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
-					}
-					if (intPoints == 27) {
-						AddBadge("imgGreekReorder100");
-						winBadgeBox = new NewBadgeMessage();
-						CustomMessageBoxMethods.ShowMessage("imgGreekReorder100", winBadgeBox);
-
-						// Refresh json object
-						obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
-						userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
+						userGameToken = RefreshJObject(obj, "GreekReorder");
 					}
 				}
 
@@ -151,6 +99,88 @@ namespace BibleBooksWPF.Helpers {
 			}
 
 			return strRecord;
+		}
+
+		public static bool CheckHebrewMatchBadges(List<string> lstBadges, TimeSpan tsTimeElapsed, int intPoints) {
+			bool blnBadgeAdded = false;
+			NewBadgeMessage winBadgeBox;
+
+			if (tsTimeElapsed <= new TimeSpan(0, 1, 15) && !lstBadges.Contains("imgHebrewMatchTime")) {
+				AddBadge("imgHebrewMatchTime");
+				winBadgeBox = new NewBadgeMessage();
+				CustomMessageBoxMethods.ShowMessage("imgHebrewMatchTime", winBadgeBox);
+			}
+			if (intPoints == 39 && !lstBadges.Contains("imgHebrewMatch100")) {
+				AddBadge("imgHebrewMatch100");
+				winBadgeBox = new NewBadgeMessage();
+				CustomMessageBoxMethods.ShowMessage("imgHebrewMatch100", winBadgeBox);
+			}
+
+			return blnBadgeAdded;
+		}
+
+		public static bool CheckHebrewReorderBadges(List<string> lstBadges, TimeSpan tsTimeElapsed, int intPoints) {
+			bool blnBadgeAdded = false;
+			NewBadgeMessage winBadgeBox;
+
+			if (tsTimeElapsed <= new TimeSpan(0, 2, 15) && !lstBadges.Contains("imgHebrewReorderTime")) {
+				AddBadge("imgHebrewReorderTime");
+				winBadgeBox = new NewBadgeMessage();
+				CustomMessageBoxMethods.ShowMessage("imgHebrewReorderTime", winBadgeBox);
+			}
+			if (intPoints == 39 && !lstBadges.Contains("imgHebrewReorder100")) {
+				AddBadge("imgHebrewReorder100");
+				winBadgeBox = new NewBadgeMessage();
+				CustomMessageBoxMethods.ShowMessage("imgHebrewReorder100", winBadgeBox);
+			}
+
+			return blnBadgeAdded;
+		}
+
+		public static bool CheckGreekMatchBadges(List<string> lstBadges, TimeSpan tsTimeElapsed, int intPoints) {
+			bool blnBadgeAdded = false;
+			NewBadgeMessage winBadgeBox;
+
+			if (tsTimeElapsed <= new TimeSpan(0, 0, 45) && !lstBadges.Contains("imgGreekMatchTime")) {
+				AddBadge("imgGreekMatchTime");
+				winBadgeBox = new NewBadgeMessage();
+				CustomMessageBoxMethods.ShowMessage("imgGreekMatchTime", winBadgeBox);
+				blnBadgeAdded = true;
+			}
+			if (intPoints == 27 && !lstBadges.Contains("imgGreekMatch100")) {
+				AddBadge("imgGreekMatch100");
+				winBadgeBox = new NewBadgeMessage();
+				CustomMessageBoxMethods.ShowMessage("imgGreekMatch100", winBadgeBox);
+				blnBadgeAdded = true;
+			}
+
+			return blnBadgeAdded;
+		}
+
+		public static bool CheckGreekReorderBadges(List<string> lstBadges, TimeSpan tsTimeElapsed, int intPoints) {
+			bool blnBadgeAdded = false;
+			NewBadgeMessage winBadgeBox;
+
+			if (tsTimeElapsed <= new TimeSpan(0, 0, 50) && !lstBadges.Contains("imgGreekReorderTime")) {
+				AddBadge("imgGreekReorderTime");
+				winBadgeBox = new NewBadgeMessage();
+				CustomMessageBoxMethods.ShowMessage("imgGreekReorderTime", winBadgeBox);
+				blnBadgeAdded = true;
+			}
+			if (intPoints == 27 && !lstBadges.Contains("imgGreekReorder100")) {
+				AddBadge("imgGreekReorder100");
+				winBadgeBox = new NewBadgeMessage();
+				CustomMessageBoxMethods.ShowMessage("imgGreekReorder100", winBadgeBox);
+				blnBadgeAdded = true;
+			}
+
+			return blnBadgeAdded;
+		}
+
+		public static JToken RefreshJObject(JObject obj, string strGameName) {
+			obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
+
+			return obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
 		}
 
 		public static void AddBadge(string strBadgeName) {
