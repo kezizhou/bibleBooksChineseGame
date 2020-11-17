@@ -126,6 +126,7 @@
       <DependentUpon>BibleBook.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UniformGridWithOrientation.cs" />
+    <Compile Include="ViewModels\BaseGameViewModel.cs" />
     <Compile Include="ViewModels\DiceBooksGreekViewModel.cs" />
     <Compile Include="ViewModels\GreekMatchViewModel.cs" />
     <Compile Include="ViewModels\GreekReorderViewModel.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MatchingGameViewModel.cs" />
     <Compile Include="ViewModels\NewUserViewModel.cs" />
+    <Compile Include="ViewModels\ReorderGameViewModel.cs" />
     <Compile Include="ViewModels\StatisticsPageViewModel.cs" />
     <Compile Include="Views\ConfirmMessageBox.xaml.cs">
       <DependentUpon>ConfirmMessageBox.xaml</DependentUpon>

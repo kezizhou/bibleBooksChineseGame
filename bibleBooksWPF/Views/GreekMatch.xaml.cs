@@ -39,9 +39,7 @@ namespace BibleBooksWPF.Views {
 				InitializeComponent();
 				LanguageResources.SetDefaultLanguage(this);
 
-				// Reset points
-				viewModel = new GreekMatchViewModel();
-				this.DataContext = viewModel;
+				viewModel = this.DataContext as GreekMatchViewModel;
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -216,7 +214,7 @@ namespace BibleBooksWPF.Views {
 
 					// Finished matching
 					if (lstrBooksToComplete.Count == 0) {
-						viewModel.completedMatching(viewModel.propCurrentPoints, viewModel.propNumberCorrect, viewModel.propNumberAttempted);
+						viewModel.completedMatching("GreekMatch", viewModel.propCurrentPoints, viewModel.propNumberCorrect, viewModel.propNumberAttempted);
 					}
 
 					break;
@@ -239,7 +237,7 @@ namespace BibleBooksWPF.Views {
 				}
 
 				lblCh.Background = Brushes.Salmon;
-				incorrectFlash(lblCh);
+				viewModel.incorrectFlash(lblCh);
 			} else if(blnCorrect == false && blnAttemptedMatch == false) {
 				// No match attempted
 				return false;
@@ -247,11 +245,6 @@ namespace BibleBooksWPF.Views {
 
 			// Match was attempted, whether correct or not
 			return true;
-		}
-
-		private async void incorrectFlash(BibleBook lblIncorrectBook) {
-			await Task.Delay(900);
-			lblIncorrectBook.Background = (Brush)(new BrushConverter().ConvertFromString("#E6EBF3"));
 		}
 	}
 }
