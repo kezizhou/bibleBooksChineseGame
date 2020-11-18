@@ -8,6 +8,7 @@ using System.Windows;
 using BibleBooksWPF.Helpers;
 using BibleBooksWPF.Views;
 using BibleBooksWPF.Resources;
+using BibleBooksWPF.Models;
 
 namespace BibleBooksWPF.ViewModels {
 	public class MainMenuViewModel : INotifyPropertyChanged {
@@ -23,18 +24,18 @@ namespace BibleBooksWPF.ViewModels {
 
 		public void PageLoaded() {
 			try {
-				List<string> lstBadges = StatisticMethods.GetBadges();
+				List<string> lstBadges = Badge.GetObtainedBadgeNames();
 				NewBadgeMessage winBadgeBox = new NewBadgeMessage();
 
 				TimeSpan tsMorning = new TimeSpan(8, 30, 0);
 				TimeSpan tsNight = new TimeSpan(21, 0, 0);
 				if (DateTime.Now.TimeOfDay < tsMorning && !lstBadges.Contains("imgBadgeMorning")) {
 					// Morning badge earned
-					StatisticMethods.AddBadge("imgBadgeMorning");
+					Badge.AddBadgeForCurrentUser("imgBadgeMorning");
 					CustomMessageBoxMethods.ShowMessage("imgBadgeMorning", winBadgeBox);
 				} else if (DateTime.Now.TimeOfDay > tsNight && !lstBadges.Contains("imgBadgeNight")) {
 					// Night badge earned
-					StatisticMethods.AddBadge("imgBadgeNight");
+					Badge.AddBadgeForCurrentUser("imgBadgeNight");
 					CustomMessageBoxMethods.ShowMessage("imgBadgeNight", winBadgeBox);
 				}
 				App.Current.Properties["exodusBadge"] = "";

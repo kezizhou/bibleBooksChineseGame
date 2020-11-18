@@ -122,6 +122,8 @@
     <Compile Include="Helpers\CustomMessageBoxMethods.cs" />
     <Compile Include="Helpers\StatisticMethods.cs" />
     <Compile Include="Languages\LanguageResources.cs" />
+    <Compile Include="Models\Badge.cs" />
+    <Compile Include="Models\BaseStatistic.cs" />
     <Compile Include="UserControls\BibleBook.xaml.cs">
       <DependentUpon>BibleBook.xaml</DependentUpon>
     </Compile>
