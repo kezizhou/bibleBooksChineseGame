@@ -1,9 +1,7 @@
-﻿using BibleBooksWPF.Views;
-using GalaSoft.MvvmLight.CommandWpf;
+﻿using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.ComponentModel;
-using System.Configuration;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Windows;

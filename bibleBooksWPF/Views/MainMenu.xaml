@@ -24,7 +24,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Languages/MainMenu.en-US.xaml"/>
-                <ResourceDictionary Source="../Languages/MenuControl.en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentControl.Resources>

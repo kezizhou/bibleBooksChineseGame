@@ -17,7 +17,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Languages/StatisticsPage.en-US.xaml"/>
-                <ResourceDictionary Source="../Languages/MenuControl.en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <vm:BadgeImgConverter x:Key="badgeImgConverter"/>
             <vm:BadgeOpacityConverter x:Key="badgeOpacityConverter"/>

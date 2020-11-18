@@ -120,6 +120,7 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\ChangeViewMessage.cs" />
     <Compile Include="Helpers\CustomMessageBoxMethods.cs" />
+    <Compile Include="Helpers\RefreshPageMessage.cs" />
     <Compile Include="Helpers\StatisticMethods.cs" />
     <Compile Include="Languages\LanguageResources.cs" />
     <Compile Include="Models\Badge.cs" />
@@ -265,11 +266,11 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Languages\MenuControl.en-US.xaml">
+    <Content Include="Languages\MainWindow.en-US.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Languages\MenuControl.zh-CN.xaml">
+    <Content Include="Languages\MainWindow.zh-CN.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

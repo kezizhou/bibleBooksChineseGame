@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Deployment.Application;
 using System.IO;
 using System.Windows;
-using System.Windows.Navigation;
 
 namespace BibleBooksWPF.Views {
 	/// <summary>
@@ -13,6 +11,7 @@ namespace BibleBooksWPF.Views {
 	public partial class MainWindow {
 		public MainWindow() {
 			InitializeComponent();
+			LanguageResources.SetDefaultLanguage(this);
 		}
 
 		protected override void OnClosed(EventArgs e) {
