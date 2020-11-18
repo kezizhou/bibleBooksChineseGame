@@ -12,7 +12,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Languages/DiceBooks.en-US.xaml"/>
-                <ResourceDictionary Source="../Languages/MenuControl.en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentControl.Resources>

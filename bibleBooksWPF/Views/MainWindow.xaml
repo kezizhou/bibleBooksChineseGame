@@ -16,7 +16,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Languages/MenuControl.en-US.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Languages/MainWindow.en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <vm:MenuConverter x:Key="menuConverter"/>
 
