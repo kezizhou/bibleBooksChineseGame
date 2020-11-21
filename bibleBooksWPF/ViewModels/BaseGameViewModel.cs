@@ -135,12 +135,8 @@ namespace BibleBooksWPF.ViewModels {
 		}
 
 		private void timer1_Tick(object sender, EventArgs e) {
-			try {
-				if (stopwatch.IsRunning) {
-					propTimeElapsed = stopwatch.Elapsed;
-				}
-			} catch (Exception ex) {
-				MessageBox.Show(ex.Message);
+			if (stopwatch.IsRunning) {
+				propTimeElapsed = stopwatch.Elapsed;
 			}
 		}
 
