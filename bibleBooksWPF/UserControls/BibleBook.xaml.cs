@@ -7,8 +7,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-using BibleBooksWPF.Helpers;
-
 namespace BibleBooksWPF.UserControls {
 	/// <summary>
 	/// Interaction logic for BibleBook.xaml
