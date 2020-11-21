@@ -276,7 +276,7 @@ namespace BibleBooksWPF.ViewModels {
 			CustomMessageBox winMsgBox = new CustomMessageBox();
 			string strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
 								"Points Earned: " + propPoints + "\n" +
-								"Time Elapsed: " + propTimeElapsed, "Congratulations!", "congrats", winMsgBox);
+								"Time Elapsed: " + String.Format("{0:00}:{1:00}.{2:0000}", propTimeElapsed.Minutes, propTimeElapsed.Seconds, propTimeElapsed.Milliseconds), "Congratulations!", "congrats", winMsgBox);
 
 			switch (strResponse) {
 				case "Retry":
