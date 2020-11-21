@@ -1,8 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-
-using GalaSoft.MvvmLight.Messaging;
+﻿using System.Windows.Controls;
 
 namespace BibleBooksWPF.Views {
 	/// <summary>
@@ -10,11 +6,7 @@ namespace BibleBooksWPF.Views {
 	/// </summary>
 	public partial class SelectUser : ContentControl {
 		public SelectUser() {
-			try {
-				InitializeComponent();
-			} catch (Exception ex) {
-				MessageBox.Show(ex.Message);
-			}
+			InitializeComponent();
 		}
 	}
 }
