@@ -120,6 +120,7 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\ChangeViewMessage.cs" />
     <Compile Include="Helpers\CustomMessageBoxMethods.cs" />
+    <Compile Include="Helpers\NotificationMessageAction.cs" />
     <Compile Include="Helpers\RefreshPageMessage.cs" />
     <Compile Include="Helpers\StatisticMethods.cs" />
     <Compile Include="Helpers\ObservableCollectionPropertyNotify.cs" />

@@ -39,6 +39,20 @@ namespace BibleBooksWPF.Views {
 				LanguageResources.SetDefaultLanguage(this);
 
 				viewModel = this.DataContext as GreekMatchViewModel;
+
+				//Messenger.Default.Register<NotificationMessageAction<Label, bool>>(this,
+				//	(message) => {
+				//		Label lblBook = message.Content;
+
+				//		switch (message.Notification) {
+				//			case "CheckTouching":
+				//				checkLabelsTouching(lblBook);
+				//				message.Execute(true);
+				//				break;
+				//			default:
+				//				break;
+				//	}
+				//});
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -235,7 +249,7 @@ namespace BibleBooksWPF.Views {
 					transform.Y = dctTransform[lblCh.Name].Y;
 				}
 
-				lblCh.Background = Brushes.Salmon;
+				lblCh.SetBackground = Brushes.Salmon;
 				viewModel.incorrectFlash(lblCh);
 			} else if(blnCorrect == false && blnAttemptedMatch == false) {
 				// No match attempted

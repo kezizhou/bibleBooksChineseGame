@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Speech.Synthesis;
 using System.Windows;
@@ -7,15 +8,22 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
+using BibleBooksWPF.Helpers;
+using GalaSoft.MvvmLight.CommandWpf;
+
 namespace BibleBooksWPF.UserControls {
 	/// <summary>
 	/// Interaction logic for BibleBook.xaml
 	/// </summary>
 	public partial class BibleBook : UserControl {
+
+		public bool blnDragging = false;
+		private Point clickPosition;
+		Dictionary<string, Point> dctTransform = new Dictionary<String, Point>();
+
 		public BibleBook() {
 			InitializeComponent();
 		}
-
 
 		// Text Content
 		public static readonly DependencyProperty SetTextProperty = DependencyProperty.Register("SetText", typeof(string), typeof(BibleBook),
@@ -62,10 +70,10 @@ namespace BibleBooksWPF.UserControls {
 						new PropertyMetadata("", new PropertyChangedCallback(OnSetAudioChanged)));
 		public string SetAudio {
 			get { 
-				return (string)GetValue(SetTextProperty); 
+				return (string)GetValue(SetAudioProperty); 
 			}
 			set { 
-				SetValue(SetTextProperty, value); 
+				SetValue(SetAudioProperty, value); 
 			}
 		}
 		private static void OnSetAudioChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
@@ -113,9 +121,9 @@ namespace BibleBooksWPF.UserControls {
 		}
 
 		private void lblBook_MouseDown(object sender, MouseButtonEventArgs e) {
-			if (Properties.Settings.Default.blnAudio == true && lblBook.Tag.ToString() == "AudioOn") {
-				playAudio(sender);
-			}
+				if (Properties.Settings.Default.blnAudio == true && lblBook.Tag.ToString() == "AudioOn") {
+					playAudio(sender);
+				}
 		}
 	}
 
@@ -129,12 +137,12 @@ namespace BibleBooksWPF.UserControls {
 		}
 	}
 
-	public class CheckLabelsTouchingMessage {
-		public Label sender { get; set; }
+	//public class CheckLabelsTouchingMessage {
+	//	public Label sender { get; set; }
 
-		public static void Check(Label _sender) {
-			var checkTouchingMessage = new CheckLabelsTouchingMessage() { sender = _sender };
-			Messenger.Default.Send<CheckLabelsTouchingMessage>(checkTouchingMessage);
-		}
-	}
+	//	public static void Check(Label _sender) {
+	//		var checkTouchingMessage = new CheckLabelsTouchingMessage() { sender = _sender };
+	//		Messenger.Default.Send<CheckLabelsTouchingMessage>(checkTouchingMessage);
+	//	}
+	//}
 }
