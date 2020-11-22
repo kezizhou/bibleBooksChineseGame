@@ -40,19 +40,8 @@
             <Button x:Name="btnLanguage" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,15,0" Padding="20,5,20,5" FontSize="18" 
                     Command="{Binding changeLanguageCommand}" Style="{StaticResource RoundedChangeUserButton}" Content="{DynamicResource ResourceKey=ChangeLanguage}"/>
 
-            <ListBox x:Name="lstBox" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding propUsers}" Margin="10" HorizontalAlignment="Center">
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <ContentPresenter/>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListBox.ItemContainerStyle>
+            <ListBox x:Name="lstBox" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding propUsers}"
+                     Margin="10" HorizontalAlignment="Center" ItemContainerStyle="{StaticResource ListBoxItem}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
