@@ -40,19 +40,6 @@ namespace BibleBooksWPF.Views {
 
 				viewModel = this.DataContext as GreekMatchViewModel;
 
-				//Messenger.Default.Register<NotificationMessageAction<Label, bool>>(this,
-				//	(message) => {
-				//		Label lblBook = message.Content;
-
-				//		switch (message.Notification) {
-				//			case "CheckTouching":
-				//				checkLabelsTouching(lblBook);
-				//				message.Execute(true);
-				//				break;
-				//			default:
-				//				break;
-				//	}
-				//});
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -123,16 +110,13 @@ namespace BibleBooksWPF.Views {
 				int intLabelWidth = Layout.TransformToPixels(grdGreekMatch, lblActiveElement.ActualWidth);
 				int intLabelHeight = Layout.TransformToPixels(grdGreekMatch, lblActiveElement.ActualHeight);
 
-				int intMenuWidth = Layout.TransformToPixels(grdGreekMatch, ((MainWindow)App.Current.MainWindow).menTop.ActualWidth);
-				int intMenuHeight = Layout.TransformToPixels(grdGreekMatch, ((MainWindow)App.Current.MainWindow).menTop.ActualHeight);
-
 				Point pntGrid = grdGreekMatch.PointToScreen(grdGreekMatch.TranslatePoint(new Point(0, 0), this));
 				mouseOnElement = new Point(Layout.TransformToPixels(grdGreekMatch, mouseOnElement.X), Layout.TransformToPixels(grdGreekMatch, mouseOnElement.Y));
-				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y + intMenuHeight);
+				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y);
 
 				// Width: Subtract the label width
 				// Height: Subtract height of menu bar and the label height
-				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y), intGridWidth - intLabelWidth, intGridHeight - intMenuHeight - intLabelHeight);
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y), intGridWidth - intLabelWidth, intGridHeight - intLabelHeight);
 				
 			} catch (Exception ex) {
 				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();

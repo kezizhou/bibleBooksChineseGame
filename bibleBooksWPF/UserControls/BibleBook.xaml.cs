@@ -1,6 +1,4 @@
-﻿using GalaSoft.MvvmLight.Messaging;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
 using System.Speech.Synthesis;
 using System.Windows;
@@ -8,18 +6,11 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-using BibleBooksWPF.Helpers;
-using GalaSoft.MvvmLight.CommandWpf;
-
 namespace BibleBooksWPF.UserControls {
 	/// <summary>
 	/// Interaction logic for BibleBook.xaml
 	/// </summary>
 	public partial class BibleBook : UserControl {
-
-		public bool blnDragging = false;
-		private Point clickPosition;
-		Dictionary<string, Point> dctTransform = new Dictionary<String, Point>();
 
 		public BibleBook() {
 			InitializeComponent();
@@ -121,19 +112,9 @@ namespace BibleBooksWPF.UserControls {
 		}
 
 		private void lblBook_MouseDown(object sender, MouseButtonEventArgs e) {
-				if (Properties.Settings.Default.blnAudio == true && lblBook.Tag.ToString() == "AudioOn") {
-					playAudio(sender);
-				}
-		}
-	}
-
-	public class MoveLabelMessage {
-		public Point pntMouseOnElement { get; set; }
-		public Point pntActiveElement { get; set; }
-
-		public static void Move(Point _pntMouseOnElement, Point _pntActiveElement) {
-			var moveMessage = new MoveLabelMessage() { pntMouseOnElement = _pntMouseOnElement, pntActiveElement = _pntActiveElement };
-			Messenger.Default.Send<MoveLabelMessage>(moveMessage);
+			if (Properties.Settings.Default.blnAudio == true && lblBook.Tag.ToString() == "AudioOn") {
+				playAudio(sender);
+			}
 		}
 	}
 

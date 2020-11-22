@@ -136,16 +136,13 @@ namespace BibleBooksWPF.Views {
 				int intLabelWidth = Layout.TransformToPixels(grdHebrewMatch, lblActiveElement.ActualWidth);
 				int intLabelHeight = Layout.TransformToPixels(grdHebrewMatch, lblActiveElement.ActualHeight);
 
-				int intMenuWidth = Layout.TransformToPixels(grdHebrewMatch, ((MainWindow)App.Current.MainWindow).menTop.ActualWidth);
-				int intMenuHeight = Layout.TransformToPixels(grdHebrewMatch, ((MainWindow)App.Current.MainWindow).menTop.ActualHeight);
-
 				Point pntGrid = grdHebrewMatch.PointToScreen(grdHebrewMatch.TranslatePoint(new Point(0, 0), this));
 				mouseOnElement = new Point(Layout.TransformToPixels(grdHebrewMatch, mouseOnElement.X), Layout.TransformToPixels(grdHebrewMatch, mouseOnElement.Y));
-				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y + intMenuHeight);
+				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y);
 
 				// Width: Subtract the label width
 				// Height: Subtract height of menu bar and the label height
-				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y), intGridWidth - intLabelWidth, intGridHeight - intMenuHeight - intLabelHeight);
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y), intGridWidth - intLabelWidth, intGridHeight - intLabelHeight);
 			
 			} catch (Exception ex) {
 				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();
