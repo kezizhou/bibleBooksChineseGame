@@ -201,7 +201,7 @@ namespace BibleBooksWPF.ViewModels {
 
 		public async void incorrectFlash(BibleBook lblIncorrectBook) {
 			await Task.Delay(900);
-			lblIncorrectBook.SetBackground = (SolidColorBrush)new BrushConverter().ConvertFrom("#9BC1FF");
+			lblIncorrectBook.SetBackground = (SolidColorBrush)new BrushConverter().ConvertFrom("#E6EBF3");
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
