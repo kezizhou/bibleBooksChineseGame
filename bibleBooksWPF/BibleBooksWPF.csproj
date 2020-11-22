@@ -72,6 +72,18 @@
     <ApplicationIcon>applicationBook.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -83,7 +95,11 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -102,107 +118,206 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ConfirmMessageBox.xaml.cs">
+    <Compile Include="Helpers\ChangeViewMessage.cs" />
+    <Compile Include="Helpers\CustomMessageBoxMethods.cs" />
+    <Compile Include="Helpers\RefreshPageMessage.cs" />
+    <Compile Include="Helpers\StatisticMethods.cs" />
+    <Compile Include="Languages\LanguageResources.cs" />
+    <Compile Include="Models\Badge.cs" />
+    <Compile Include="Models\BaseStatistic.cs" />
+    <Compile Include="UserControls\BibleBook.xaml.cs">
+      <DependentUpon>BibleBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UniformGridWithOrientation.cs" />
+    <Compile Include="ViewModels\BaseGameViewModel.cs" />
+    <Compile Include="ViewModels\DiceBooksGreekViewModel.cs" />
+    <Compile Include="ViewModels\GreekMatchViewModel.cs" />
+    <Compile Include="ViewModels\GreekReorderViewModel.cs" />
+    <Compile Include="ViewModels\HebrewMatchViewModel.cs" />
+    <Compile Include="ViewModels\HebrewReorderViewModel.cs" />
+    <Compile Include="ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MatchingGameViewModel.cs" />
+    <Compile Include="ViewModels\NewUserViewModel.cs" />
+    <Compile Include="ViewModels\ReorderGameViewModel.cs" />
+    <Compile Include="ViewModels\StatisticsPageViewModel.cs" />
+    <Compile Include="Views\ConfirmMessageBox.xaml.cs">
       <DependentUpon>ConfirmMessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomInputBox.xaml.cs">
+    <Compile Include="Views\CustomInputBox.xaml.cs">
       <DependentUpon>CustomInputBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomMessageBox.xaml.cs">
+    <Compile Include="Views\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="gameStatistic.cs" />
-    <Compile Include="GreekReorder.xaml.cs">
+    <Compile Include="Views\DiceBooksGreek.xaml.cs">
+      <DependentUpon>DiceBooksGreek.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameStatistics.cs" />
+    <Compile Include="Views\GreekReorder.xaml.cs">
       <DependentUpon>GreekReorder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HebrewMatch.xaml.cs">
+    <Compile Include="Views\HebrewMatch.xaml.cs">
       <DependentUpon>HebrewMatch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HebrewReorder.xaml.cs">
+    <Compile Include="Views\HebrewReorder.xaml.cs">
       <DependentUpon>HebrewReorder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewBadgeMessage.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewBadgeMessage.xaml.cs">
       <DependentUpon>NewBadgeMessage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewUser.xaml.cs">
+    <Compile Include="Views\NewUser.xaml.cs">
       <DependentUpon>NewUser.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PauseMenu.xaml.cs">
+    <Compile Include="Views\PauseMenu.xaml.cs">
       <DependentUpon>PauseMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SelectUser.xaml.cs">
+    <Compile Include="Views\SelectUser.xaml.cs">
       <DependentUpon>SelectUser.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings.xaml.cs">
+    <Compile Include="Views\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StatisticsPage.xaml.cs">
+    <Compile Include="Views\StatisticsPage.xaml.cs">
       <DependentUpon>StatisticsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
-    <Page Include="ConfirmMessageBox.xaml">
+    <Compile Include="Models\User.cs" />
+    <Compile Include="ViewModels\SelectUserViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Content Include="Languages\NewUser.en-US.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\DiceBooks.en-US.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\DiceBooks.zh-CN.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Page Include="Languages\NewUser.zh-CN.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomInputBox.xaml">
+    <Page Include="UserControls\BibleBook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ConfirmMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomMessageBox.xaml">
+    <Page Include="Views\CustomInputBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GreekMatch.xaml">
+    <Page Include="Views\CustomMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GreekReorder.xaml">
+    <Content Include="Languages\MatchReorderGames.en-US.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\MatchReorderGames.zh-CN.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\MessageBox.en-US.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Page Include="Languages\MessageBox.zh-CN.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HebrewMatch.xaml">
+    <Page Include="Views\DiceBooksGreek.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HebrewReorder.xaml">
+    <Page Include="Views\GreekMatch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainMenu.xaml">
+    <Page Include="Views\GreekReorder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\HebrewMatch.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HebrewReorder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Content Include="Languages\Settings.en-US.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\Settings.zh-CN.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\MainWindow.en-US.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\MainWindow.zh-CN.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\StatisticsPage.en-US.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\MainMenu.en-US.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Languages\SelectUser.en-US.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Page Include="Languages\SelectUser.zh-CN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="GreekMatch.xaml.cs">
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Views\GreekMatch.xaml.cs">
       <DependentUpon>GreekMatch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainMenu.xaml.cs">
+    <Compile Include="Views\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="NewBadgeMessage.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NewUser.xaml">
+    <Page Include="Views\NewBadgeMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PauseMenu.xaml">
+    <Page Include="Views\NewUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PauseMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,15 +329,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SelectUser.xaml">
+    <Page Include="Views\SelectUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Settings.xaml">
+    <Page Include="Views\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StatisticsPage.xaml">
+    <Page Include="Views\StatisticsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,6 +362,14 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="bibleBooksCert.pfx" />
+    <Content Include="Languages\StatisticsPage.zh-CN.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Languages\MainMenu.zh-CN.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -313,25 +436,11 @@
     <Resource Include="Resources\Badges\imgGreekReorder100.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial3.png" />
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Badges\imgBadgeRuth.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Badges\imgBadgeMorning.png" />
     <Resource Include="Resources\Badges\imgBadgeNight.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial4.png" />
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Badges\SpecialBadges\imgBadgeSpecial6.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Badges\imgBadgeExodus.png" />
@@ -418,6 +527,7 @@
     <Resource Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\correct.png" />
     <Content Include="Resources\HelpVideos\MainMenu.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -439,6 +549,8 @@
     <Content Include="Resources\HelpVideos\Statistics.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\incorrect.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
