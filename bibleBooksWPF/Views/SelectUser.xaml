@@ -1,0 +1,75 @@
+﻿<ContentControl x:Class="BibleBooksWPF.Views.SelectUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:vm="clr-namespace:BibleBooksWPF.ViewModels"
+      xmlns:local="clr-namespace:BibleBooksWPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1200"
+      Background="White">
+
+    <ContentControl.DataContext>
+        <vm:SelectUserViewModel/>
+    </ContentControl.DataContext>
+
+    <ContentControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Languages/SelectUser.en-US.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <vm:ProfilePicConverter x:Key="profilePicConverter"/>
+        </ResourceDictionary>
+    </ContentControl.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="pack://application:,,,/BibleBooksWPF;component/Resources/mainMenu.jpg" Stretch="UniformToFill" Opacity="0.5"></ImageBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.20*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="txbSelect" Grid.Column="0" Grid.Row="0" Margin="20" FontSize="30" FontFamily="pack://application:,,,/BibleBooksWPF;component/Resources/Fonts/#Poppins" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="{DynamicResource ResourceKey=SelectUser}"/>
+
+            <Button x:Name="btnLanguage" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,15,0" Padding="20,5,20,5" FontSize="18" 
+                    Command="{Binding changeLanguageCommand}" Style="{StaticResource RoundedChangeUserButton}" Content="{DynamicResource ResourceKey=ChangeLanguage}"/>
+
+            <ListBox x:Name="lstBox" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding propUsers}" Margin="10" HorizontalAlignment="Center">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <ContentPresenter/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                                <Image x:Name="imgUser" Width="100" Height="100" HorizontalAlignment="Right"
+                                    Source="{Binding Path=profilePicture, Converter={StaticResource profilePicConverter}, TargetNullValue=''}"/>
+                            <Button x:Name="btnUser" Margin="20" Content="{Binding Path=username, TargetNullValue='New User'}" FontSize="22" 
+                                    Style="{StaticResource RoundedUserButton}" Width="400" Height="150" Foreground="White" 
+                                    Command="{Binding Path=DataContext.selectUserCommand, ElementName=lstBox}" CommandParameter="{Binding}"/>
+                                <Button x:Name="btnDelete" Width="60" Height="60" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" 
+                                        Command="{Binding Path=DataContext.deleteUserCommand, ElementName=lstBox}" CommandParameter="{Binding}" 
+                                        Visibility="{Binding Path=DataContext.propAbleToDelete, ElementName=lstBox}">
+                                    <Image x:Name="imgDelete" Source="pack://application:,,,/BibleBooksWPF;component/Resources/delete.png"></Image>
+                                </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </ScrollViewer>
+</ContentControl>

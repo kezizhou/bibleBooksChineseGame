@@ -49,10 +49,10 @@ namespace BibleBooksWPF.Resources {
 		private void LoadPage() {
 			video.Source = new Uri(@"Resources\HelpVideos\" + astrVideos[intPage], UriKind.Relative);
 
-			if (Properties.Settings.Default.strLanguage.Equals("Chinese")) {
+			if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
 				txbTitle.Text = astrChTitles[intPage];
 				txbDescription.Text = astrChDescriptions[intPage];
-			} else if (Properties.Settings.Default.strLanguage.Equals("English")) {
+			} else if (Properties.Settings.Default.strLanguage.Equals("en-US")) {
 				txbTitle.Text = astrTitles[intPage];
 				txbDescription.Text = astrDescriptions[intPage];
 			}
