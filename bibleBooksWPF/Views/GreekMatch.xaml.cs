@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -40,6 +39,7 @@ namespace BibleBooksWPF.Views {
 				LanguageResources.SetDefaultLanguage(this);
 
 				viewModel = this.DataContext as GreekMatchViewModel;
+
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
@@ -110,16 +110,13 @@ namespace BibleBooksWPF.Views {
 				int intLabelWidth = Layout.TransformToPixels(grdGreekMatch, lblActiveElement.ActualWidth);
 				int intLabelHeight = Layout.TransformToPixels(grdGreekMatch, lblActiveElement.ActualHeight);
 
-				int intMenuWidth = Layout.TransformToPixels(grdGreekMatch, ((MainWindow)App.Current.MainWindow).menTop.ActualWidth);
-				int intMenuHeight = Layout.TransformToPixels(grdGreekMatch, ((MainWindow)App.Current.MainWindow).menTop.ActualHeight);
-
 				Point pntGrid = grdGreekMatch.PointToScreen(grdGreekMatch.TranslatePoint(new Point(0, 0), this));
 				mouseOnElement = new Point(Layout.TransformToPixels(grdGreekMatch, mouseOnElement.X), Layout.TransformToPixels(grdGreekMatch, mouseOnElement.Y));
-				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y + intMenuHeight);
+				Point pntClip = new Point(pntGrid.X + mouseOnElement.X, pntGrid.Y + mouseOnElement.Y);
 
 				// Width: Subtract the label width
 				// Height: Subtract height of menu bar and the label height
-				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y), intGridWidth - intLabelWidth, intGridHeight - intMenuHeight - intLabelHeight);
+				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle((int)(pntClip.X), (int)(pntClip.Y), intGridWidth - intLabelWidth, intGridHeight - intLabelHeight);
 				
 			} catch (Exception ex) {
 				System.Windows.Forms.Cursor.Clip = new System.Drawing.Rectangle();
@@ -236,7 +233,7 @@ namespace BibleBooksWPF.Views {
 					transform.Y = dctTransform[lblCh.Name].Y;
 				}
 
-				lblCh.Background = Brushes.Salmon;
+				lblCh.SetBackground = Brushes.Salmon;
 				viewModel.incorrectFlash(lblCh);
 			} else if(blnCorrect == false && blnAttemptedMatch == false) {
 				// No match attempted
