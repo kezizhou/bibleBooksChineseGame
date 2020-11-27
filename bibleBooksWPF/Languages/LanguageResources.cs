@@ -73,6 +73,8 @@ namespace BibleBooksWPF {
                 locXamlFile = "MatchReorderGames" + "." + inFiveCharLang + ".xaml";
             } else if (element.Contains("DiceBooks")) {
                 locXamlFile = "DiceBooks" + "." + inFiveCharLang + ".xaml";
+            } else if (element.Contains("Message")) { 
+                locXamlFile = "MessageBox" + "." + inFiveCharLang + ".xaml";
             } else {
                 locXamlFile = element + "." + inFiveCharLang + ".xaml";
             }

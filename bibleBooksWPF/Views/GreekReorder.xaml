@@ -144,16 +144,16 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock x:Name="txbCurrentPoints" Grid.Column="0" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Padding="10,0" Text="{DynamicResource ResourceKey=CurrentPoints}"/>
-                <Label x:Name="lblCurrentPoints" Content="0" Grid.Column="1" Grid.Row="0" FontSize="16"/>
+                <Label x:Name="lblCurrentPoints" Content="{Binding propCurrentPoints}" Grid.Column="1" Grid.Row="0" FontSize="16"/>
 
                 <TextBlock x:Name="txbPercentageCorrect" Grid.Column="2" Grid.Row="0" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0" Text="{DynamicResource ResourceKey=PercentCorrect}"/>
-                <Label x:Name="lblPercentageCorrect" Content="0 %" Grid.Column="4" Grid.Row="0" FontSize="16"/>
+                <Label x:Name="lblPercentageCorrect" Content="{Binding Path=propPercentageCorrect}" ContentStringFormat="{}{0:P2}" Grid.Column="4" Grid.Row="0" FontSize="16"/>
 
                 <TextBlock x:Name="txbTimeElapsed" Grid.Column="2" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0" Text="{DynamicResource ResourceKey=TimeElapsed}"/>
-                <Label x:Name="lblTimeElapsed" Content="00:00:00" Grid.Column="4" Grid.Row="1" FontSize="16" Padding="5,5,10,5"></Label>
+                <Label x:Name="lblTimeElapsed" Content="{Binding Path=propTimeElapsed}" ContentStringFormat="hh\:mm\:ss" Grid.Column="4" Grid.Row="1" FontSize="16" Padding="5,5,10,5"></Label>
 
                 <TextBlock x:Name="txbTotalPoints" Grid.Column="0" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Padding="10,0" Text="{DynamicResource ResourceKey=TotalPoints}"/>
-                <Label x:Name="lblTotalPoints" Content="0" Grid.Column="1" Grid.Row="1" FontSize="16"></Label>
+                <Label x:Name="lblTotalPoints" Content="{Binding Path=propTotalPoints}" Grid.Column="1" Grid.Row="1" FontSize="16"></Label>
             </Grid>
 
             <Button x:Name="btnPause" Grid.Row="12" Grid.Column="0" Grid.RowSpan="2" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" 

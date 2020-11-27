@@ -38,6 +38,9 @@
             <DataTemplate DataType="{x:Type vm:GreekReorderViewModel}">
                 <local:GreekReorder/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:DiceBooksHebrewViewModel}">
+                <local:DiceBooksHebrew/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vm:DiceBooksGreekViewModel}">
                 <local:DiceBooksGreek/>
             </DataTemplate>
@@ -111,7 +114,7 @@
                             Command="{Binding navCommand}" CommandParameter="Settings"
                             IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='Settings'}"/>
                     <MenuItem x:Name="imenExit" Header="{DynamicResource ResourceKey=Exit}" 
-                            Command="{Binding navCommand}" CommandParameter="GreekMatch"/>
+                            Command="{Binding navCommand}" CommandParameter="Exit"/>
                 </Menu>
 
                 <ContentControl Content="{Binding propCurrentViewModel}" Grid.Row="1"/>

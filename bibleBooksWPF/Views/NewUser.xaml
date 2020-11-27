@@ -20,6 +20,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Languages/NewUser.en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <vm:EnumBooleanConverter x:Key="enumConverter"/>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -56,24 +57,56 @@
                 <TextBlock x:Name="txbSelectProfile" Grid.Row="1" Grid.Column="0" FontSize="16" Margin="10,10,10,10" Text="{DynamicResource ResourceKey=SelectProfileImg}"/>
                 <StackPanel x:Name="stkProfilePic">
                     <WrapPanel x:Name="wrpMales">
-                        <RadioButton x:Name="boy1" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy1.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" IsChecked="True" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="boy2" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy2.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="boy3" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy3.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="boy4" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy4.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="boy5" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy5.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="boy6" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy6.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="boy7" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy7.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="boy8" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy8.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="boy1" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy1.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" 
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.boy1}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="boy2" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy2.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" 
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.boy2}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="boy3" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy3.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" 
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.boy3}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="boy4" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy4.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" 
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.boy4}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="boy5" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy5.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" 
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.boy5}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="boy6" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy6.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" 
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.boy6}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="boy7" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy7.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" 
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.boy7}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="boy8" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/boy8.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5" 
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.boy8}, Mode=TwoWay}"/>
                     </WrapPanel>
                     <WrapPanel x:Name="wrpFemales">
-                        <RadioButton x:Name="girl1" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl1.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="girl2" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl2.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="girl3" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl3.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="girl4" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl4.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="girl5" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl5.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="girl6" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl6.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="girl7" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl7.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
-                        <RadioButton x:Name="girl8" GroupName="grpProfilePic" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl8.png" Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"></RadioButton>
+                        <RadioButton x:Name="girl1" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl1.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.girl1}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="girl2" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl2.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.girl2}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="girl3" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl3.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.girl3}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="girl4" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl4.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.girl4}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="girl5" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl5.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.girl5}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="girl6" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl6.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.girl6}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="girl7" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl7.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.girl7}, Mode=TwoWay}"/>
+                        <RadioButton x:Name="girl8" Content="pack://application:,,,/BibleBooksWPF;component/Resources/ProfileImages/girl8.png" 
+                                     Style="{StaticResource ImageRadio}" Width="100" Height="100" BorderThickness="0" Margin="5,5,5,5"
+                                     IsChecked="{Binding Path=propProfilePic, Converter={StaticResource enumConverter}, ConverterParameter={x:Static vm:profilePic.girl8}, Mode=TwoWay}"/>
                     </WrapPanel>
                 </StackPanel>
             </StackPanel>
