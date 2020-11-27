@@ -54,11 +54,11 @@ namespace BibleBooksWPF.Views {
 
 					// Check main language
 					if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
-						string strTemp = lblCh.Content.ToString();
+						string strTemp = lblCh.SetText.ToString();
 
 						BibleBook lblEn = this.FindName(strChLbl.Remove(3, 2)) as BibleBook;
-						lblCh.Content = lblEn.Content;
-						lblEn.Content = strTemp;
+						lblCh.SetText = lblEn.SetText;
+						lblEn.SetText = strTemp;
 					}
 
 					// Add draggable label methods
@@ -234,7 +234,7 @@ namespace BibleBooksWPF.Views {
 				}
 
 				lblCh.SetBackground = Brushes.Salmon;
-				viewModel.incorrectFlash(lblCh);
+				viewModel.incorrectFlash(lblCh, "#E6EBF3");
 			} else if(blnCorrect == false && blnAttemptedMatch == false) {
 				// No match attempted
 				return false;

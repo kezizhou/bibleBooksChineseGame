@@ -120,7 +120,6 @@ namespace BibleBooksWPF.ViewModels {
 			}
 		}
 
-
 		internal void AddCorrectAttempt() {
 			propNumberCorrect += 1;
 			propCurrentPoints += 1;
@@ -143,8 +142,9 @@ namespace BibleBooksWPF.ViewModels {
 		private void Pause() {
 			stopwatch.Stop();
 			PauseMenu winPause = new PauseMenu();
+			winPause.ShowDialog();
 
-			string strResponse = CustomMessageBoxMethods.ShowMessage(winPause);
+			string strResponse = winPause.strMsgReturn;
 
 			switch (strResponse) {
 				case "Resume":
@@ -172,16 +172,19 @@ namespace BibleBooksWPF.ViewModels {
 
 			string strResponse = "";
 			string strTime = String.Format("{0:00}:{1:00}:{2:00}", time.Hours, time.Minutes, time.Seconds);
+
 			if (strRecord != "") {
 				// Record set
-				strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
-							"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intNumberAttempted) + "\n" +
-							"Time Elapsed: " + strTime, "Congratulations!", "congrats", strRecord, winMsgBox);
+				CustomMessageBox msgBox = new CustomMessageBox("Congratulations! You have finished. Try again?\n" +
+						"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intNumberAttempted) + "\n" +
+						"Time Elapsed: " + strTime, strRecord);
+				strResponse = msgBox.strMsgReturn;
 			} else {
 				// No record set
-				strResponse = CustomMessageBoxMethods.ShowMessage("Congratulations! You have finished. Try again?\n" +
-							"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intNumberAttempted) + "\n" +
-							"Time Elapsed: " + strTime, "Congratulations!", "congrats", winMsgBox);
+				CustomMessageBox msgBox = new CustomMessageBox("Congratulations! You have finished. Try again?\n" +
+						"Percentage Correct: " + String.Format("{0:P2}", (double)intNumberCorrect / intNumberAttempted) + "\n" +
+						"Time Elapsed: " + strTime, null);
+				strResponse = msgBox.strMsgReturn;
 			}
 
 			switch (strResponse) {
@@ -199,9 +202,9 @@ namespace BibleBooksWPF.ViewModels {
 			}
 		}
 
-		public async void incorrectFlash(BibleBook lblIncorrectBook) {
+		public async void incorrectFlash(BibleBook lblIncorrectBook, string strBackground) {
 			await Task.Delay(900);
-			lblIncorrectBook.SetBackground = (SolidColorBrush)new BrushConverter().ConvertFrom("#E6EBF3");
+			lblIncorrectBook.SetBackground = (SolidColorBrush)new BrushConverter().ConvertFrom(strBackground);
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

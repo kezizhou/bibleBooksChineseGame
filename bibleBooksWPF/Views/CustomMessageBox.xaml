@@ -3,19 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:BibleBooksWPF.ViewModels"
         xmlns:local="clr-namespace:BibleBooksWPF"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Custom Message Box Title" Height="235" Width="530">
+        Title="Congratualations!" Height="235" Width="530">
 
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Languages/MessageBox.en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <vm:RecordTimeConverter x:Key="recordTimeConverter"/>
+            <vm:RecordPointConverter x:Key="recordPointConverter"/>
+            <vm:NewRecordTextConverter x:Key="newRecordTextConverter"/>
+            <vm:NewRecordVisConverter x:Key="newRecordVisConverter"/>
         </ResourceDictionary>
     </Window.Resources>
 
+    <Window.DataContext>
+        <vm:CustomMessageBoxViewModel/>
+    </Window.DataContext>    
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -28,17 +37,15 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" >
-            <Image x:Name="imgIcon" Width="100" Height="83"></Image>
+            <Image x:Name="imgIcon" Width="100" Height="83" Source="pack://application:,,,/BibleBooksWPF;component/Resources/congrats.png"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image x:Name="imgPointRecord" Width="25" Height="25" Margin="5" Source="pack://application:,,,/BibleBooksWPF;component/Resources/pointRecord.png" Visibility="Collapsed"></Image>
-                <Image x:Name="imgTimeRecord" Width="25" Height="25" Source="pack://application:,,,/BibleBooksWPF;component/Resources/timeRecord.png" Visibility="Collapsed"></Image>
-                <TextBlock x:Name="txbRecord" Padding="5" Foreground="red" VerticalAlignment="Center" Visibility="Collapsed">New Record!</TextBlock>
+                <Image x:Name="imgPointRecord" Width="25" Height="25" Margin="5" Source="pack://application:,,,/BibleBooksWPF;component/Resources/pointRecord.png" Visibility="{Binding propRecord, Converter={StaticResource recordPointConverter}}"/>
+                <Image x:Name="imgTimeRecord" Width="25" Height="25" Source="pack://application:,,,/BibleBooksWPF;component/Resources/timeRecord.png" Visibility="{Binding propRecord, Converter={StaticResource recordTimeConverter}}"/>
+                <TextBlock x:Name="txbRecord" Padding="5" Foreground="red" VerticalAlignment="Center" Visibility="{Binding propRecord, Converter={StaticResource newRecordVisConverter}}" Text="{Binding propRecord, Converter={StaticResource newRecordTextConverter}}"/>
             </StackPanel>
         </StackPanel>
 
-        <TextBlock x:Name="txbMessageText" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center">
-            Message text goes here
-        </TextBlock>
+        <TextBlock x:Name="txbMessageText" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding propMessage}"/>
         <Button x:Name="btnRetry" Content="{DynamicResource ResourceKey=Retry}" Grid.Row="1" Grid.Column="0" Width="103" Height="40" Click="BtnRetry_Click" Margin="0,0,0,20" Style="{StaticResource RoundedMessageButton}"></Button>
         <Button x:Name="btnMain" Content="{DynamicResource ResourceKey=BacktoMain}" Grid.Row="1" Grid.Column="1" Width="103" Height="40" Click="BtnMain_Click" Margin="0,0,0,20" Style="{StaticResource RoundedMessageButton}"></Button>
         <Button x:Name="btnExit" Content="{DynamicResource ResourceKey=Exit}" Grid.Row="1" Grid.Column="2" Width="103" Height="40" Click="BtnExit_Click" Margin="0,0,0,20" Style="{StaticResource RoundedMessageButton}"></Button>
