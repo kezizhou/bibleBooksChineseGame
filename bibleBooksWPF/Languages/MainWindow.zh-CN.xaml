@@ -10,8 +10,8 @@
     <sys:String x:Key="Greek">希腊语经卷</sys:String>
     <sys:String x:Key="Match">中英文配对</sys:String>
     <sys:String x:Key="Reorder">排序</sys:String>
-    <sys:String x:Key="Multiplayer">Multiplayer</sys:String>
-    <sys:String x:Key="DiceBooks">Dice Books</sys:String>
+    <sys:String x:Key="Multiplayer">多人游戏</sys:String>
+    <sys:String x:Key="DiceBooks">筛子游戏</sys:String>
     <sys:String x:Key="Statistics">成绩</sys:String>
     <sys:String x:Key="Settings">设置</sys:String>
     <sys:String x:Key="Exit">退出</sys:String>

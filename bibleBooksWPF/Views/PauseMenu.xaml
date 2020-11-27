@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BibleBooksWPF"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen" Closing="winPauseMenu_Closing"
         Title="{DynamicResource ResourceKey=PauseTitle}" Height="550" Width="1000">
 
     <Window.Resources>

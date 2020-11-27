@@ -44,7 +44,7 @@ namespace BibleBooksWPF.Views {
 
 					// Check main language
 					if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
-						lbl.Content = viewModel.propChinese[i];
+						lbl.SetText = viewModel.propChinese[i];
 						lbl.FontSize = 19;
 					}
 
@@ -234,7 +234,7 @@ namespace BibleBooksWPF.Views {
 				}
 
 				lblDragged.SetBackground = Brushes.Salmon;
-				viewModel.incorrectFlash(lblDragged);
+				viewModel.incorrectFlash(lblDragged, "#E6EBF3");
 			} else if (blnCorrect == false && blnAttemptedMatch == false) {
 				// No match attempted
 				return false;

@@ -183,7 +183,6 @@ namespace BibleBooksWPF.ViewModels {
 		}
 
 		private profilePic strProfilePic = App.Current.Properties.Contains("currentUsername") ? (profilePic)Enum.Parse(typeof(profilePic), User.GetProfilePicture()) : new profilePic();
-
 		public profilePic propProfilePic {
 			get { 
 				return strProfilePic; 

@@ -14,29 +14,25 @@ namespace BibleBooksWPF.Helpers {
 			string strRecord = "";
 
 			try {
-
-				NewBadgeMessage winBadgeBox;
-
 				// Get the current user's statistics for this game
 				JObject obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
-				JToken userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
+				JToken userGameToken = obj.SelectToken($"$.Users[?(@.username == '{App.Current.Properties["currentUsername"]}')].lstGameStatistics.GameStatistics[?(@.strName == '{strGameName}')]");
 
 				GameStatistics gsTotalGames = userGameToken.ToObject<GameStatistics>();
 
 				// Get the current user's existing badges
-				JToken userBadgesToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstBadges");
+				JToken userBadgesToken = obj.SelectToken($"$.Users[?(@.username == '{App.Current.Properties["currentUsername"]}')].lstBadges");
 				List<string> lstBadges = userBadgesToken.ToObject<List<string>>();
 
 				// Check if this is the first game
 				if (gsTotalGames.lintPoints.Count == 0) {
 					// Add new badge
 					Badge.AddBadgeForCurrentUser("imgFirst" + strGameName);
-					winBadgeBox = new NewBadgeMessage();
-					CustomMessageBoxMethods.ShowMessage("imgFirst" + strGameName, winBadgeBox);
+					NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgFirst" + strGameName);
 
 					// Refresh json object
 					obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
-					userGameToken = obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
+					userGameToken = obj.SelectToken($"$.Users[?(@.username == '{App.Current.Properties["currentUsername"]}')].lstGameStatistics.GameStatistics[?(@.strName == '{strGameName}')]");
 				} else {
 					// Check if this is a new high score
 					if ((intPoints > gsTotalGames.lintPoints.Max()) && (tsTimeElapsed < gsTotalGames.ltsTimeElapsed.Min())) {
@@ -51,38 +47,36 @@ namespace BibleBooksWPF.Helpers {
 				// Exodus badge
 				if (App.Current.Properties["exodusBadge"].ToString() == "both" && !lstBadges.Contains("imgBadgeExodus")) {
 					Badge.AddBadgeForCurrentUser("imgBadgeExodus");
-					winBadgeBox = new NewBadgeMessage();
-					CustomMessageBoxMethods.ShowMessage("imgBadgeExodus", winBadgeBox);
+					NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgBadgeExodus");
 					App.Current.Properties["exodusBadge"] = "added";
 				}
 
 				// Ruth badge
 				if (App.Current.Properties["ruthBadge"].ToString() == "both" && !lstBadges.Contains("imgBadgeRuth")) {
 					Badge.AddBadgeForCurrentUser("imgBadgeRuth");
-					winBadgeBox = new NewBadgeMessage();
-					CustomMessageBoxMethods.ShowMessage("imgBadgeRuth", winBadgeBox);
+					NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgBadgeRuth");
 					App.Current.Properties["ruthBadge"] = "added";
 				}
 
 				if (strGameName.Equals("HebrewMatch")) {
 					if (CheckHebrewMatchBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						userGameToken = RefreshJObject(obj, "HebrewMatch");
+						userGameToken = RefreshJObject(ref obj, "HebrewMatch");
 					}
 				} else if (strGameName.Equals("HebrewReorder")) {
 					if (CheckHebrewReorderBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						userGameToken = RefreshJObject(obj, "HebrewReorder");
+						userGameToken = RefreshJObject(ref obj, "HebrewReorder");
 					}
 				} else if (strGameName.Equals("GreekMatch")) {
 					if (CheckGreekMatchBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						userGameToken = RefreshJObject(obj, "GreekMatch");
+						userGameToken = RefreshJObject(ref obj, "GreekMatch");
 					}
 				} else if (strGameName.Equals("GreekReorder")) {
 					if (CheckGreekReorderBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						userGameToken = RefreshJObject(obj, "GreekReorder");
+						userGameToken = RefreshJObject(ref obj, "GreekReorder");
 					}
 				}
 
@@ -104,17 +98,14 @@ namespace BibleBooksWPF.Helpers {
 
 		public static bool CheckHebrewMatchBadges(List<string> lstBadges, TimeSpan tsTimeElapsed, int intPoints) {
 			bool blnBadgeAdded = false;
-			NewBadgeMessage winBadgeBox;
 
 			if (tsTimeElapsed <= new TimeSpan(0, 1, 15) && !lstBadges.Contains("imgHebrewMatchTime")) {
 				Badge.AddBadgeForCurrentUser("imgHebrewMatchTime");
-				winBadgeBox = new NewBadgeMessage();
-				CustomMessageBoxMethods.ShowMessage("imgHebrewMatchTime", winBadgeBox);
+				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgHebrewMatchTime");
 			}
 			if (intPoints == 39 && !lstBadges.Contains("imgHebrewMatch100")) {
 				Badge.AddBadgeForCurrentUser("imgHebrewMatch100");
-				winBadgeBox = new NewBadgeMessage();
-				CustomMessageBoxMethods.ShowMessage("imgHebrewMatch100", winBadgeBox);
+				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgHebrewMatch100");
 			}
 
 			return blnBadgeAdded;
@@ -122,17 +113,14 @@ namespace BibleBooksWPF.Helpers {
 
 		public static bool CheckHebrewReorderBadges(List<string> lstBadges, TimeSpan tsTimeElapsed, int intPoints) {
 			bool blnBadgeAdded = false;
-			NewBadgeMessage winBadgeBox;
 
 			if (tsTimeElapsed <= new TimeSpan(0, 2, 15) && !lstBadges.Contains("imgHebrewReorderTime")) {
 				Badge.AddBadgeForCurrentUser("imgHebrewReorderTime");
-				winBadgeBox = new NewBadgeMessage();
-				CustomMessageBoxMethods.ShowMessage("imgHebrewReorderTime", winBadgeBox);
+				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgHebrewReorderTime");
 			}
 			if (intPoints == 39 && !lstBadges.Contains("imgHebrewReorder100")) {
 				Badge.AddBadgeForCurrentUser("imgHebrewReorder100");
-				winBadgeBox = new NewBadgeMessage();
-				CustomMessageBoxMethods.ShowMessage("imgHebrewReorder100", winBadgeBox);
+				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgHebrewReorder100");
 			}
 
 			return blnBadgeAdded;
@@ -140,18 +128,15 @@ namespace BibleBooksWPF.Helpers {
 
 		public static bool CheckGreekMatchBadges(List<string> lstBadges, TimeSpan tsTimeElapsed, int intPoints) {
 			bool blnBadgeAdded = false;
-			NewBadgeMessage winBadgeBox;
 
 			if (tsTimeElapsed <= new TimeSpan(0, 0, 45) && !lstBadges.Contains("imgGreekMatchTime")) {
 				Badge.AddBadgeForCurrentUser("imgGreekMatchTime");
-				winBadgeBox = new NewBadgeMessage();
-				CustomMessageBoxMethods.ShowMessage("imgGreekMatchTime", winBadgeBox);
+				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgGreekMatchTime");
 				blnBadgeAdded = true;
 			}
 			if (intPoints == 27 && !lstBadges.Contains("imgGreekMatch100")) {
 				Badge.AddBadgeForCurrentUser("imgGreekMatch100");
-				winBadgeBox = new NewBadgeMessage();
-				CustomMessageBoxMethods.ShowMessage("imgGreekMatch100", winBadgeBox);
+				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgGreekMatch100");
 				blnBadgeAdded = true;
 			}
 
@@ -160,28 +145,25 @@ namespace BibleBooksWPF.Helpers {
 
 		public static bool CheckGreekReorderBadges(List<string> lstBadges, TimeSpan tsTimeElapsed, int intPoints) {
 			bool blnBadgeAdded = false;
-			NewBadgeMessage winBadgeBox;
 
 			if (tsTimeElapsed <= new TimeSpan(0, 0, 50) && !lstBadges.Contains("imgGreekReorderTime")) {
 				Badge.AddBadgeForCurrentUser("imgGreekReorderTime");
-				winBadgeBox = new NewBadgeMessage();
-				CustomMessageBoxMethods.ShowMessage("imgGreekReorderTime", winBadgeBox);
+				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgGreekReorderTime");
 				blnBadgeAdded = true;
 			}
 			if (intPoints == 27 && !lstBadges.Contains("imgGreekReorder100")) {
 				Badge.AddBadgeForCurrentUser("imgGreekReorder100");
-				winBadgeBox = new NewBadgeMessage();
-				CustomMessageBoxMethods.ShowMessage("imgGreekReorder100", winBadgeBox);
+				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgGreekReorder100");
 				blnBadgeAdded = true;
 			}
 
 			return blnBadgeAdded;
 		}
 
-		public static JToken RefreshJObject(JObject obj, string strGameName) {
+		public static JToken RefreshJObject(ref JObject obj, string strGameName) {
 			obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
 
-			return obj.SelectToken("$.Users[?(@.username == '" + App.Current.Properties["currentUsername"] + "')].lstGameStatistics.GameStatistics[?(@.strName == '" + strGameName + "')]");
+			return obj.SelectToken($"$.Users[?(@.username == '{App.Current.Properties["currentUsername"]}')].lstGameStatistics.GameStatistics[?(@.strName == '{strGameName}')]");
 		}
 	}
 }

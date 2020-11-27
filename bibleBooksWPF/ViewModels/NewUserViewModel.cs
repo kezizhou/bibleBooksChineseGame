@@ -1,8 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace BibleBooksWPF.ViewModels {
 	public class NewUserViewModel : INotifyPropertyChanged {
+
 		private string strUsername;
 		public string propUsername {
 			get {
@@ -10,6 +12,17 @@ namespace BibleBooksWPF.ViewModels {
 			}
 			set {
 				strUsername = value;
+				NotifyPropertyChanged();
+			}
+		}
+
+		private profilePic enumProfilePic = profilePic.boy1;
+		public profilePic propProfilePic {
+			get {
+				return enumProfilePic;
+			}
+			set {
+				enumProfilePic = value;
 				NotifyPropertyChanged();
 			}
 		}

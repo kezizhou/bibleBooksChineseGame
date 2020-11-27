@@ -26,6 +26,7 @@ namespace BibleBooksWPF.ViewModels {
 			changeLanguageCommand = new RelayCommand(ChangeLanguage);
 
 			propRootUser = LoadRootUser();
+			UpdateJSONUsers();
 		}
 
 		private ObservableCollection<User> _users;
@@ -72,6 +73,12 @@ namespace BibleBooksWPF.ViewModels {
 				}
 			}
 
+			foreach (User user in rootUser.Users.ToArray()) {
+				if (user.username == null) {
+					rootUser.Users.Remove(user);
+				}
+			}
+
 			if (rootUser.Users.Count < 3) {
 				for(int i = rootUser.Users.Count; i < 3; i++) {
 					rootUser.Users.Add(new User());
@@ -82,7 +89,6 @@ namespace BibleBooksWPF.ViewModels {
 		}
 
 		private Visibility visAbleToDelete = Visibility.Visible;
-
 		public Visibility propAbleToDelete {
 			get {
 				return visAbleToDelete;
@@ -97,27 +103,28 @@ namespace BibleBooksWPF.ViewModels {
 			User user = sender as User;
 
 			// Confirm message box
-			ConfirmMessageBox winConfirm = new ConfirmMessageBox();
-			string strText = "Are you sure you want to delete user: " + user.username + "?" + System.Environment.NewLine + "This cannot be undone.";
-			string strResult = CustomMessageBoxMethods.ShowMessage(strText, winConfirm);
+			ConfirmMessageBox winConfirm = new ConfirmMessageBox($"Are you sure you want to delete user: {user.username}?" + Environment.NewLine + "This cannot be undone.");
 
-			switch (strResult) {
+			switch (winConfirm.strMsgReturn) {
 				case "Yes":
 					propRootUser.Users.Remove(user);
 
 					// Update JSON file
-					using (StreamWriter file = File.CreateText(Globals.usersFilePath)) {
-						JsonSerializer serializer = new JsonSerializer();
-						serializer.Formatting = Formatting.Indented;
-						serializer.Serialize(file, propRootUser);
+					UpdateJSONUsers();
+
+					// Add blank new user to replace deleted
+					if (propRootUser.Users.Count < 3) {
+						for (int i = rootUser.Users.Count; i < 3; i++) {
+							rootUser.Users.Add(new User());
+						}
 					}
+					propUsers = new ObservableCollection<User>(rootUser.Users);
+					App.Current.Properties["currentUsername"] = null;
+
 					break;
 				default:
 					break;
 			}
-
-			propUsers = new ObservableCollection<User>(rootUser.Users);
-			ChangeViewMessage.Navigate("SelectUser");
 		}
 
 		private void SelectUser(object sender) {
@@ -145,26 +152,18 @@ namespace BibleBooksWPF.ViewModels {
 				Properties.Settings.Default.strLanguage = "en-US";
 				Properties.Settings.Default.Save();
 			}
+
+			RefreshPageMessage.Refresh("SelectUser");
 		}
 
 		private void NewUser() {
 			NewUser winNewUser = new NewUser();
+			winNewUser.ShowDialog();
 
-			var newUser = CustomMessageBoxMethods.ShowMessage(winNewUser);
-			string[] astrUsernames = new string[3];
-
-			// Create an array of usernames
-			for (int i = 0; i < 3; i++) {
-				astrUsernames[i] = propRootUser.Users[i].username;
-			}
-
-			switch (newUser.Item1) {
-				case "Cancel":
-					break;
-				default:
-					CreateUserData(newUser.Item1, newUser.Item2);
-					ChangeViewMessage.Navigate("MainMenu");
-					break;
+			if (winNewUser.strMsgReturn == "") {
+				NewUserViewModel viewModel = winNewUser.DataContext as NewUserViewModel;
+				CreateUserData(viewModel.propUsername, viewModel.propProfilePic.ToString());
+				ChangeViewMessage.Navigate("MainMenu");
 			}
 		}
 
@@ -220,13 +219,17 @@ namespace BibleBooksWPF.ViewModels {
 			propRootUser.Users.Add(currentUser);
 
 			// Add to JSON file
+			UpdateJSONUsers();
+
+			propUsers = new ObservableCollection<User>(rootUser.Users);
+		}
+
+		private void UpdateJSONUsers() {
 			using (StreamWriter file = File.CreateText(Globals.usersFilePath)) {
 				JsonSerializer serializer = new JsonSerializer();
 				serializer.Formatting = Formatting.Indented;
 				serializer.Serialize(file, propRootUser);
 			}
-
-			propUsers = new ObservableCollection<User>(rootUser.Users);
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
