@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using BibleBooksWPF.Helpers;
+using GalaSoft.MvvmLight.Messaging;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
@@ -11,6 +13,10 @@ namespace BibleBooksWPF.Views {
 	public partial class MainWindow {
 		public MainWindow() {
 			InitializeComponent();
+			LanguageResources.SetDefaultLanguage(this);
+			Messenger.Default.Register<ChangeViewMessage>(this, (message) => OnNavigate(message));
+		}
+		private void OnNavigate(ChangeViewMessage message) {
 			LanguageResources.SetDefaultLanguage(this);
 		}
 

@@ -25,18 +25,17 @@ namespace BibleBooksWPF.ViewModels {
 		public void PageLoaded() {
 			try {
 				List<string> lstBadges = Badge.GetObtainedBadgeNames();
-				NewBadgeMessage winBadgeBox = new NewBadgeMessage();
 
 				TimeSpan tsMorning = new TimeSpan(8, 30, 0);
 				TimeSpan tsNight = new TimeSpan(21, 0, 0);
 				if (DateTime.Now.TimeOfDay < tsMorning && !lstBadges.Contains("imgBadgeMorning")) {
 					// Morning badge earned
 					Badge.AddBadgeForCurrentUser("imgBadgeMorning");
-					CustomMessageBoxMethods.ShowMessage("imgBadgeMorning", winBadgeBox);
+					NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgBadgeMorning");
 				} else if (DateTime.Now.TimeOfDay > tsNight && !lstBadges.Contains("imgBadgeNight")) {
 					// Night badge earned
 					Badge.AddBadgeForCurrentUser("imgBadgeNight");
-					CustomMessageBoxMethods.ShowMessage("imgBadgeNight", winBadgeBox);
+					NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgBadgeNight");
 				}
 				App.Current.Properties["exodusBadge"] = "";
 				App.Current.Properties["ruthBadge"] = "";

@@ -11,7 +11,8 @@ using BibleBooksWPF.Helpers;
 
 namespace BibleBooksWPF.ViewModels {
 	public class MainWindowViewModel : INotifyPropertyChanged {
-		private DiceBooksGreekViewModel diceBooksVM = new DiceBooksGreekViewModel();
+		private DiceBooksHebrewViewModel diceBooksHebrewVM = new DiceBooksHebrewViewModel();
+		private DiceBooksGreekViewModel diceBooksGreekVM = new DiceBooksGreekViewModel();
 		private GreekMatchViewModel greekMatchVM = new GreekMatchViewModel();
 		private GreekReorderViewModel greekReorderVM = new GreekReorderViewModel();
 		private HebrewMatchViewModel hebrewMatchVM = new HebrewMatchViewModel();
@@ -68,8 +69,11 @@ namespace BibleBooksWPF.ViewModels {
 
 		private void OnNavigate(string strDestination) {
 			switch (strDestination) {
+				case "DiceBooksHebrew":
+					propCurrentViewModel = diceBooksHebrewVM;
+					break;
 				case "DiceBooksGreek":
-					propCurrentViewModel = diceBooksVM;
+					propCurrentViewModel = diceBooksGreekVM;
 					break;
 				case "GreekMatch":
 					propCurrentViewModel = greekMatchVM;
