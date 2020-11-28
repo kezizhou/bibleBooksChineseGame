@@ -26,7 +26,7 @@ You may see an error like this that blocks the install:
 
 If you are the administrator account and are able to change computer settings:  
 * Search for "Registry Editor" or "regedit" on your computer.  
-* Find the Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\Security\TrustManager\PromptingLevel security settings as shown below.  
+* Find the Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\Security\TrustManager\PromptingLevel security settings as shown below.  
 * Ensure that "Internet" is set to "Enabled". If it is disabled, double click "Internet" and change the data to be set to "Enabled".  
 ![Change the "Internet" security setting](documentation/changeSecuritySettings.png)  
 * Note: Changing this setting will still allow you to decide whether or not to install applications from unknown publishers. You will still be warned, but you will be allowed to install if you choose to.  
