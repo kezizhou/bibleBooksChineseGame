@@ -8,6 +8,7 @@ using System.Windows.Media;
 using BibleBooksWPF.Helpers;
 using BibleBooksWPF.ViewModels;
 using BibleBooksWPF.UserControls;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BibleBooksWPF.Views {
 	/// <summary>
@@ -39,7 +40,6 @@ namespace BibleBooksWPF.Views {
 				LanguageResources.SetDefaultLanguage(this);
 
 				viewModel = this.DataContext as GreekMatchViewModel;
-
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}

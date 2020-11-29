@@ -85,14 +85,14 @@
             <StackPanel Grid.Row="7" Grid.Column="0">
                 <TextBlock x:Name="txbTimeUp" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="red" 
                            FontFamily="pack://application:,,,/BibleBooksWPF;component/Resources/Fonts/#Poppins" 
-                           Visibility="{Binding propTurnTimeRemaining, Converter={StaticResource timesUpConverter}}">Time's Up!</TextBlock>
+                           Visibility="{Binding propTurnTimeRemaining, Converter={StaticResource timesUpConverter}}" Text="{DynamicResource ResourceKey=TimesUp}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock FontSize="20" Text="{DynamicResource ResourceKey=TimeRemaining}" FontWeight="SemiBold" Margin="10,0,0,0"></TextBlock>
                     <TextBlock x:Name="txbTurnTime" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="20" Text="{Binding Path=propTurnTimeRemaining, StringFormat={}{0:ss}:{0:ffff}}"/>
                 </StackPanel>
             </StackPanel>
 
-            <Button x:Name="btnSubmit" Grid.Row="8" Grid.Column="0" Width="103" Height="40" IsDefault="True" 
+            <Button x:Name="btnSubmit" Grid.Row="8" Grid.Column="0" Width="103" Height="40" IsDefault="True" FontSize="15" 
                     Style="{StaticResource RoundedBlueButton}" Content="{DynamicResource ResourceKey=Submit}"
                     Command="{Binding submitButtonCommand}" IsEnabled="{Binding propSubmitEnabled}"/>
 

@@ -49,66 +49,66 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <control:BibleBook x:Name="lblChMatthew" SetText="马太福音" Grid.Column="0" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChMark" SetText="马可福音" Grid.Column="0" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChLuke" SetText="路加福音" Grid.Column="0" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChJohn" SetText="约翰福音" Grid.Column="0" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChActs" SetText="使徒行传" Grid.Column="0" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChRomans" SetText="罗马书" Grid.Column="0" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh1Corinthians" SetText="哥林多前书" Grid.Column="0" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
+            <control:BibleBook x:Name="lblChMatthew" SetText="马太福音" Grid.Column="0" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChMark" SetText="马可福音" Grid.Column="0" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChLuke" SetText="路加福音" Grid.Column="0" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChJohn" SetText="约翰福音" Grid.Column="0" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChActs" SetText="使徒行传" Grid.Column="0" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChRomans" SetText="罗马书" Grid.Column="0" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh1Corinthians" SetText="哥林多前书" Grid.Column="0" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="Match"/>
 
-            <control:BibleBook x:Name="lblCh2Corinthians" SetText="哥林多后书" Grid.Column="1" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChGalatians" SetText="加拉太书" Grid.Column="1" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChEphesians" SetText="以弗所书" Grid.Column="1" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChPhilippians" SetText="腓立比书" Grid.Column="1" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChColossians" SetText="歌罗西书" Grid.Column="1" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh1Thessalonians" SetText="帖撒罗尼迦前书" Grid.Column="1" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh2Thessalonians" SetText="帖撒罗尼迦后书" Grid.Column="1" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
+            <control:BibleBook x:Name="lblCh2Corinthians" SetText="哥林多后书" Grid.Column="1" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChGalatians" SetText="加拉太书" Grid.Column="1" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChEphesians" SetText="以弗所书" Grid.Column="1" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChPhilippians" SetText="腓立比书" Grid.Column="1" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChColossians" SetText="歌罗西书" Grid.Column="1" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh1Thessalonians" SetText="帖撒罗尼迦前书" Grid.Column="1" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh2Thessalonians" SetText="帖撒罗尼迦后书" Grid.Column="1" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="Match"/>
 
-            <control:BibleBook x:Name="lblMatthew" SetText="Matthew" Grid.Column="3" Grid.Row="0" SetBackground="#FF9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblMark" SetText="Mark" Grid.Column="3" Grid.Row="1" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblLuke" SetText="Luke" Grid.Column="3" Grid.Row="2" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblJohn" SetText="John" Grid.Column="3" Grid.Row="3" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblActs" SetText="Acts" Grid.Column="3" Grid.Row="4" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblRomans" SetText="Romans" Grid.Column="3" Grid.Row="5" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl1Corinthians" SetText="1 Corinthians" Grid.Column="3" Grid.Row="6" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl2Corinthians" SetText="2 Corinthians" Grid.Column="3" Grid.Row="7" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblGalatians" SetText="Galatians" Grid.Column="3" Grid.Row="8" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
+            <control:BibleBook x:Name="lblMatthew" SetText="Matthew" Grid.Column="3" Grid.Row="0" SetBackground="#FF9BC1FF"/>
+            <control:BibleBook x:Name="lblMark" SetText="Mark" Grid.Column="3" Grid.Row="1" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblLuke" SetText="Luke" Grid.Column="3" Grid.Row="2" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblJohn" SetText="John" Grid.Column="3" Grid.Row="3" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblActs" SetText="Acts" Grid.Column="3" Grid.Row="4" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblRomans" SetText="Romans" Grid.Column="3" Grid.Row="5" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl1Corinthians" SetText="1 Corinthians" Grid.Column="3" Grid.Row="6" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl2Corinthians" SetText="2 Corinthians" Grid.Column="3" Grid.Row="7" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblGalatians" SetText="Galatians" Grid.Column="3" Grid.Row="8" SetBackground="#9BC1FF"/>
 
-            <control:BibleBook x:Name="lblEphesians" SetText="Ephesians" Grid.Column="4" Grid.Row="0" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblPhilippians" SetText="Philippians" Grid.Column="4" Grid.Row="1" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblColossians" SetText="Colossians" Grid.Column="4" Grid.Row="2" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl1Thessalonians" SetText="1 Thessalonians" Grid.Column="4" Grid.Row="3" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl2Thessalonians" SetText="2 Thessalonians" Grid.Column="4" Grid.Row="4" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl1Timothy" SetText="1 Timothy" Grid.Column="4" Grid.Row="5" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl2Timothy" SetText="2 Timothy" Grid.Column="4" Grid.Row="6" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblTitus" SetText="Titus" Grid.Column="4" Grid.Row="7" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblPhilemon" SetText="Philemon" Grid.Column="4" Grid.Row="8" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
+            <control:BibleBook x:Name="lblEphesians" SetText="Ephesians" Grid.Column="4" Grid.Row="0" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblPhilippians" SetText="Philippians" Grid.Column="4" Grid.Row="1" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblColossians" SetText="Colossians" Grid.Column="4" Grid.Row="2" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl1Thessalonians" SetText="1 Thessalonians" Grid.Column="4" Grid.Row="3" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl2Thessalonians" SetText="2 Thessalonians" Grid.Column="4" Grid.Row="4" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl1Timothy" SetText="1 Timothy" Grid.Column="4" Grid.Row="5" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl2Timothy" SetText="2 Timothy" Grid.Column="4" Grid.Row="6" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblTitus" SetText="Titus" Grid.Column="4" Grid.Row="7" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblPhilemon" SetText="Philemon" Grid.Column="4" Grid.Row="8" SetBackground="#9BC1FF"/>
 
-            <control:BibleBook x:Name="lblHebrews" SetText="Hebrews" Grid.Column="5" Grid.Row="0" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblJames" SetText="James" Grid.Column="5" Grid.Row="1" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl1Peter" SetText="1 Peter" Grid.Column="5" Grid.Row="2" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl2Peter" SetText="2 Peter" Grid.Column="5" Grid.Row="3" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl1John" SetText="1 John" Grid.Column="5" Grid.Row="4" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl2John" SetText="2 John" Grid.Column="5" Grid.Row="5" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl3John" SetText="3 John" Grid.Column="5" Grid.Row="6" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblJude" SetText="Jude" Grid.Column="5" Grid.Row="7" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblRevelation" SetText="Revelation" Grid.Column="5" Grid.Row="8" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
+            <control:BibleBook x:Name="lblHebrews" SetText="Hebrews" Grid.Column="5" Grid.Row="0" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblJames" SetText="James" Grid.Column="5" Grid.Row="1" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl1Peter" SetText="1 Peter" Grid.Column="5" Grid.Row="2" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl2Peter" SetText="2 Peter" Grid.Column="5" Grid.Row="3" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl1John" SetText="1 John" Grid.Column="5" Grid.Row="4" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl2John" SetText="2 John" Grid.Column="5" Grid.Row="5" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl3John" SetText="3 John" Grid.Column="5" Grid.Row="6" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblJude" SetText="Jude" Grid.Column="5" Grid.Row="7" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblRevelation" SetText="Revelation" Grid.Column="5" Grid.Row="8" SetBackground="#9BC1FF"/>
 
-            <control:BibleBook x:Name="lblCh1Timothy" SetText="提摩太前书" Grid.Column="7" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh2Timothy" SetText="提摩太后书" Grid.Column="7" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChTitus" SetText="提多书" Grid.Column="7" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChPhilemon" SetText="腓利门书" Grid.Column="7" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChHebrews" SetText="希伯来书" Grid.Column="7" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChJames" SetText="雅各书" Grid.Column="7" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh1Peter" SetText="彼得前书" Grid.Column="7" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
+            <control:BibleBook x:Name="lblCh1Timothy" SetText="提摩太前书" Grid.Column="7" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh2Timothy" SetText="提摩太后书" Grid.Column="7" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChTitus" SetText="提多书" Grid.Column="7" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChPhilemon" SetText="腓利门书" Grid.Column="7" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChHebrews" SetText="希伯来书" Grid.Column="7" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChJames" SetText="雅各书" Grid.Column="7" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh1Peter" SetText="彼得前书" Grid.Column="7" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="Match"/>
 
-            <control:BibleBook x:Name="lblCh2Peter" SetText="彼得后书" Grid.Column="8" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh1John" SetText="约翰一书" Grid.Column="8" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh2John" SetText="约翰二书" Grid.Column="8" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh3John" SetText="约翰三书" Grid.Column="8" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChJude" SetText="犹大书" Grid.Column="8" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChRevelation" SetText="启示录" Grid.Column="8" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
+            <control:BibleBook x:Name="lblCh2Peter" SetText="彼得后书" Grid.Column="8" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh1John" SetText="约翰一书" Grid.Column="8" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh2John" SetText="约翰二书" Grid.Column="8" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh3John" SetText="约翰三书" Grid.Column="8" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChJude" SetText="犹大书" Grid.Column="8" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChRevelation" SetText="启示录" Grid.Column="8" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="Match"/>
 
             <Grid x:Name="grdStatistics" Grid.Column="1" Grid.Row="9" Grid.RowSpan="2" Grid.ColumnSpan="7" Background="#FFD3DAF5" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>

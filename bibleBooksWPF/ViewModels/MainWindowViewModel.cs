@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Data;
 
 using BibleBooksWPF.Helpers;
+using System.Threading.Tasks;
 
 namespace BibleBooksWPF.ViewModels {
 	public class MainWindowViewModel : INotifyPropertyChanged {

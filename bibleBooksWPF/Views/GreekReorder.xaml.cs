@@ -186,7 +186,7 @@ namespace BibleBooksWPF.Views {
 			// Loop through the container labels to see if the moved label is touching one of them
 			foreach (String strContainerName in viewModel.propReorderLbls) {
 				// Get the label from the string name
-				Label lblReorderMatch = (Label)this.FindName(strContainerName);
+				BibleBook lblReorderMatch = (BibleBook)this.FindName(strContainerName);
 
 				var tpMatchReturn = viewModel.checkTouchingLabelsCorrect(lblReorderMatch, lblDragged, rectMovedLbl, viewModel.propReorderLbls, viewModel.propGreek);
 				if (tpMatchReturn.Item1) blnCorrect = true;

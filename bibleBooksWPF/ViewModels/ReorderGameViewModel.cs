@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
-
 using BibleBooksWPF.UserControls;
 
 namespace BibleBooksWPF.ViewModels {
 	public abstract class ReorderGameViewModel : BaseGameViewModel {
-		internal Tuple<bool, bool> checkTouchingLabelsCorrect(Label lblReorderMatch, BibleBook lblDragged, Rect rctDragLbl, string[] astrMatchLblNames, string[] astrDragLblNames) {
+		internal Tuple<bool, bool> checkTouchingLabelsCorrect(BibleBook lblReorderMatch, BibleBook lblDragged, Rect rctDragLbl, string[] astrMatchLblNames, string[] astrDragLblNames) {
 			Boolean blnCorrect = false;
 			Boolean blnAttemptedMatch = false;
 

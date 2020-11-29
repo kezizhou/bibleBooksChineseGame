@@ -52,90 +52,90 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <control:BibleBook x:Name="lblChGenesis" SetText="创世记" Grid.Column="0" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChExodus" SetText="出埃及记" Grid.Column="0" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChLeviticus" SetText="利未记" Grid.Column="0" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChNumbers" SetText="民数记" Grid.Column="0" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChDeuteronomy" SetText="申命记" Grid.Column="0" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChJoshua" SetText="约书亚记" Grid.Column="0" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChJudges" SetText="士师记" Grid.Column="0" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChRuth" SetText="路得记" Grid.Column="0" Grid.Row="7" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh1Samuel" SetText="撒母耳记上" Grid.Column="0" Grid.Row="8" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh2Samuel" SetText="撒母耳记下" Grid.Column="0" Grid.Row="9" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
+            <control:BibleBook x:Name="lblChGenesis" SetText="创世记" Grid.Column="0" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChExodus" SetText="出埃及记" Grid.Column="0" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChLeviticus" SetText="利未记" Grid.Column="0" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChNumbers" SetText="民数记" Grid.Column="0" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChDeuteronomy" SetText="申命记" Grid.Column="0" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChJoshua" SetText="约书亚记" Grid.Column="0" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChJudges" SetText="士师记" Grid.Column="0" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChRuth" SetText="路得记" Grid.Column="0" Grid.Row="7" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh1Samuel" SetText="撒母耳记上" Grid.Column="0" Grid.Row="8" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh2Samuel" SetText="撒母耳记下" Grid.Column="0" Grid.Row="9" SetBackground="#E6EBF3" SetAudio="Match"/>
 
-            <control:BibleBook x:Name="lblCh1Kings" SetText="列王纪上" Grid.Column="1" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh2Kings" SetText="列王纪下" Grid.Column="1" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh1Chronicles" SetText="历代志上" Grid.Column="1" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblCh2Chronicles" SetText="历代志下" Grid.Column="1" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChEzra" SetText="以斯拉记" Grid.Column="1" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChNehemiah" SetText="尼希米记" Grid.Column="1" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChEsther" SetText="以斯帖记" Grid.Column="1" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChJob" SetText="约伯记" Grid.Column="1" Grid.Row="7" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChPsalms" SetText="诗篇" Grid.Column="1" Grid.Row="8" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChProverbs" SetText="箴言" Grid.Column="1" Grid.Row="9" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
+            <control:BibleBook x:Name="lblCh1Kings" SetText="列王纪上" Grid.Column="1" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh2Kings" SetText="列王纪下" Grid.Column="1" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh1Chronicles" SetText="历代志上" Grid.Column="1" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblCh2Chronicles" SetText="历代志下" Grid.Column="1" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChEzra" SetText="以斯拉记" Grid.Column="1" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChNehemiah" SetText="尼希米记" Grid.Column="1" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChEsther" SetText="以斯帖记" Grid.Column="1" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChJob" SetText="约伯记" Grid.Column="1" Grid.Row="7" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChPsalms" SetText="诗篇" Grid.Column="1" Grid.Row="8" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChProverbs" SetText="箴言" Grid.Column="1" Grid.Row="9" SetBackground="#E6EBF3" SetAudio="Match"/>
 
-            <control:BibleBook x:Name="lblGenesis" SetText="Genesis" Grid.Column="3" Grid.Row="0" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblExodus" SetText="Exodus" Grid.Column="3" Grid.Row="1" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblLeviticus" SetText="Leviticus" Grid.Column="3" Grid.Row="2" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblNumbers" SetText="Numbers" Grid.Column="3" Grid.Row="3" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblDeuteronomy" SetText="Deuteronomy" Grid.Column="3" Grid.Row="4" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblJoshua" SetText="Joshua" Grid.Column="3" Grid.Row="5" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblJudges" SetText="Judges" Grid.Column="3" Grid.Row="6" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblRuth" SetText="Ruth" Grid.Column="3" Grid.Row="7" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl1Samuel" SetText="1 Samuel" Grid.Column="3" Grid.Row="8" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl2Samuel" SetText="2 Samuel" Grid.Column="3" Grid.Row="9" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl1Kings" SetText="1 Kings" Grid.Column="3" Grid.Row="10" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl2Kings" SetText="2 Kings" Grid.Column="3" Grid.Row="11" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lbl1Chronicles" SetText="1 Chronicles" Grid.Column="3" Grid.Row="12" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
+            <control:BibleBook x:Name="lblGenesis" SetText="Genesis" Grid.Column="3" Grid.Row="0" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblExodus" SetText="Exodus" Grid.Column="3" Grid.Row="1" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblLeviticus" SetText="Leviticus" Grid.Column="3" Grid.Row="2" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblNumbers" SetText="Numbers" Grid.Column="3" Grid.Row="3" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblDeuteronomy" SetText="Deuteronomy" Grid.Column="3" Grid.Row="4" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblJoshua" SetText="Joshua" Grid.Column="3" Grid.Row="5" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblJudges" SetText="Judges" Grid.Column="3" Grid.Row="6" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblRuth" SetText="Ruth" Grid.Column="3" Grid.Row="7" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl1Samuel" SetText="1 Samuel" Grid.Column="3" Grid.Row="8" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl2Samuel" SetText="2 Samuel" Grid.Column="3" Grid.Row="9" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl1Kings" SetText="1 Kings" Grid.Column="3" Grid.Row="10" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl2Kings" SetText="2 Kings" Grid.Column="3" Grid.Row="11" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lbl1Chronicles" SetText="1 Chronicles" Grid.Column="3" Grid.Row="12" SetBackground="#9BC1FF"/>
 
-            <control:BibleBook x:Name="lbl2Chronicles" SetText="2 Chronicles" Grid.Column="4" Grid.Row="0" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblEzra" SetText="Ezra" Grid.Column="4" Grid.Row="1" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblNehemiah" SetText="Nehemiah" Grid.Column="4" Grid.Row="2" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblEsther" SetText="Esther" Grid.Column="4" Grid.Row="3" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblJob" SetText="Job" Grid.Column="4" Grid.Row="4" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblPsalms" SetText="Psalms" Grid.Column="4" Grid.Row="5" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblProverbs" SetText="Proverbs" Grid.Column="4" Grid.Row="6" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblEcclesiastes" SetText="Ecclesiastes" Grid.Column="4" Grid.Row="7" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblSongofSolomon" SetText="Song of Solomon" Grid.Column="4" Grid.Row="8" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblIsaiah" SetText="Isaiah" Grid.Column="4" Grid.Row="9" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblJeremiah" SetText="Jeremiah" Grid.Column="4" Grid.Row="10" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblLamentations" SetText="Lamentations" Grid.Column="4" Grid.Row="11" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblEzekiel" SetText="Ezekiel" Grid.Column="4" Grid.Row="12" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
+            <control:BibleBook x:Name="lbl2Chronicles" SetText="2 Chronicles" Grid.Column="4" Grid.Row="0" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblEzra" SetText="Ezra" Grid.Column="4" Grid.Row="1" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblNehemiah" SetText="Nehemiah" Grid.Column="4" Grid.Row="2" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblEsther" SetText="Esther" Grid.Column="4" Grid.Row="3" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblJob" SetText="Job" Grid.Column="4" Grid.Row="4" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblPsalms" SetText="Psalms" Grid.Column="4" Grid.Row="5" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblProverbs" SetText="Proverbs" Grid.Column="4" Grid.Row="6" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblEcclesiastes" SetText="Ecclesiastes" Grid.Column="4" Grid.Row="7" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblSongofSolomon" SetText="Song of Solomon" Grid.Column="4" Grid.Row="8" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblIsaiah" SetText="Isaiah" Grid.Column="4" Grid.Row="9" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblJeremiah" SetText="Jeremiah" Grid.Column="4" Grid.Row="10" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblLamentations" SetText="Lamentations" Grid.Column="4" Grid.Row="11" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblEzekiel" SetText="Ezekiel" Grid.Column="4" Grid.Row="12" SetBackground="#9BC1FF"/>
 
-            <control:BibleBook x:Name="lblDaniel" SetText="Daniel" Grid.Column="5" Grid.Row="0" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblHosea" SetText="Hosea" Grid.Column="5" Grid.Row="1" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblJoel" SetText="Joel" Grid.Column="5" Grid.Row="2" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblAmos" SetText="Amos" Grid.Column="5" Grid.Row="3" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblObadiah" SetText="Obadiah" Grid.Column="5" Grid.Row="4" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblJonah" SetText="Jonah" Grid.Column="5" Grid.Row="5" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblMicah" SetText="Micah" Grid.Column="5" Grid.Row="6" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblNahum" SetText="Nahum" Grid.Column="5" Grid.Row="7" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblHabakkuk" SetText="Habakkuk" Grid.Column="5" Grid.Row="8" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblZephaniah" SetText="Zephaniah" Grid.Column="5" Grid.Row="9" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblHaggai" SetText="Haggai" Grid.Column="5" Grid.Row="10" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblZechariah" SetText="Zechariah" Grid.Column="5" Grid.Row="11" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
-            <control:BibleBook x:Name="lblMalachi" SetText="Malachi" Grid.Column="5" Grid.Row="12" SetBackground="#9BC1FF" SetAudio="AudioOff"/>
+            <control:BibleBook x:Name="lblDaniel" SetText="Daniel" Grid.Column="5" Grid.Row="0" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblHosea" SetText="Hosea" Grid.Column="5" Grid.Row="1" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblJoel" SetText="Joel" Grid.Column="5" Grid.Row="2" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblAmos" SetText="Amos" Grid.Column="5" Grid.Row="3" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblObadiah" SetText="Obadiah" Grid.Column="5" Grid.Row="4" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblJonah" SetText="Jonah" Grid.Column="5" Grid.Row="5" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblMicah" SetText="Micah" Grid.Column="5" Grid.Row="6" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblNahum" SetText="Nahum" Grid.Column="5" Grid.Row="7" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblHabakkuk" SetText="Habakkuk" Grid.Column="5" Grid.Row="8" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblZephaniah" SetText="Zephaniah" Grid.Column="5" Grid.Row="9" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblHaggai" SetText="Haggai" Grid.Column="5" Grid.Row="10" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblZechariah" SetText="Zechariah" Grid.Column="5" Grid.Row="11" SetBackground="#9BC1FF"/>
+            <control:BibleBook x:Name="lblMalachi" SetText="Malachi" Grid.Column="5" Grid.Row="12" SetBackground="#9BC1FF"/>
 
-            <control:BibleBook x:Name="lblChEcclesiastes" SetText="传道书" Grid.Column="7" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChSongofSolomon" SetText="雅歌" Grid.Column="7" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChIsaiah" SetText="以赛亚书" Grid.Column="7" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChJeremiah" SetText="耶利米书" Grid.Column="7" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChLamentations" SetText="耶利米哀歌" Grid.Column="7" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChEzekiel" SetText="以西结书" Grid.Column="7" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChDaniel" SetText="但以理书" Grid.Column="7" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChHosea" SetText="何西阿书" Grid.Column="7" Grid.Row="7" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChJoel" SetText="约珥书" Grid.Column="7" Grid.Row="8" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChAmos" SetText="阿摩司书" Grid.Column="7" Grid.Row="9" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
+            <control:BibleBook x:Name="lblChEcclesiastes" SetText="传道书" Grid.Column="7" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChSongofSolomon" SetText="雅歌" Grid.Column="7" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChIsaiah" SetText="以赛亚书" Grid.Column="7" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChJeremiah" SetText="耶利米书" Grid.Column="7" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChLamentations" SetText="耶利米哀歌" Grid.Column="7" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChEzekiel" SetText="以西结书" Grid.Column="7" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChDaniel" SetText="但以理书" Grid.Column="7" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChHosea" SetText="何西阿书" Grid.Column="7" Grid.Row="7" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChJoel" SetText="约珥书" Grid.Column="7" Grid.Row="8" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChAmos" SetText="阿摩司书" Grid.Column="7" Grid.Row="9" SetBackground="#E6EBF3" SetAudio="Match"/>
 
-            <control:BibleBook x:Name="lblChObadiah" SetText="俄巴底亚书" Grid.Column="8" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChJonah" SetText="约拿书" Grid.Column="8" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChMicah" SetText="弥迦书" Grid.Column="8" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChNahum" SetText="那鸿书" Grid.Column="8" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChHabakkuk" SetText="哈巴谷书" Grid.Column="8" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChZephaniah" SetText="西番雅书" Grid.Column="8" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChHaggai" SetText="哈该书" Grid.Column="8" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChZechariah" SetText="撒迦利亚书" Grid.Column="8" Grid.Row="7" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
-            <control:BibleBook x:Name="lblChMalachi" SetText="玛拉基书" Grid.Column="8" Grid.Row="8" SetBackground="#E6EBF3" SetAudio="AudioOn"/>
+            <control:BibleBook x:Name="lblChObadiah" SetText="俄巴底亚书" Grid.Column="8" Grid.Row="0" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChJonah" SetText="约拿书" Grid.Column="8" Grid.Row="1" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChMicah" SetText="弥迦书" Grid.Column="8" Grid.Row="2" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChNahum" SetText="那鸿书" Grid.Column="8" Grid.Row="3" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChHabakkuk" SetText="哈巴谷书" Grid.Column="8" Grid.Row="4" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChZephaniah" SetText="西番雅书" Grid.Column="8" Grid.Row="5" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChHaggai" SetText="哈该书" Grid.Column="8" Grid.Row="6" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChZechariah" SetText="撒迦利亚书" Grid.Column="8" Grid.Row="7" SetBackground="#E6EBF3" SetAudio="Match"/>
+            <control:BibleBook x:Name="lblChMalachi" SetText="玛拉基书" Grid.Column="8" Grid.Row="8" SetBackground="#E6EBF3" SetAudio="Match"/>
 
             <Grid x:Name="grdStatistics" Grid.Column="1" Grid.Row="13" Grid.RowSpan="2" Grid.ColumnSpan="7" Background="#FFD3DAF5" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
