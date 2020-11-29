@@ -58,7 +58,7 @@ namespace BibleBooksWPF.UserControls {
 
 		// Audio
 		public static readonly DependencyProperty SetAudioProperty = DependencyProperty.Register("SetAudio", typeof(string), typeof(BibleBook),
-						new PropertyMetadata("", new PropertyChangedCallback(OnSetAudioChanged)));
+						new PropertyMetadata("AudioOff", new PropertyChangedCallback(OnSetAudioChanged)));
 		public string SetAudio {
 			get { 
 				return (string)GetValue(SetAudioProperty); 
@@ -75,55 +75,60 @@ namespace BibleBooksWPF.UserControls {
 			lblBook.Tag = e.NewValue.ToString();
 		}
 
-		private void playAudio(object sender) {
-			try {
-				string strRead = SetText;
+		private string GetAudioLanguage(string strGame) {
+			if (strGame == "Match" && Properties.Settings.Default.strLanguage == "zh-CN") {
+				return "en-US";
+			} else if (strGame == "Reorder" && Properties.Settings.Default.strLanguage == "zh-CN") {
+				return "zh-CN";
+			} else if (strGame == "Match" && Properties.Settings.Default.strLanguage == "en-US") {
+				return "zh-CN";
+			} else if (strGame == "Reorder" && Properties.Settings.Default.strLanguage == "en-US") {
+				return "en-US";
+			}
 
-				SpeechSynthesizer synthesizer = new SpeechSynthesizer();
-				synthesizer.SetOutputToDefaultAudioDevice();
-				PromptBuilder pBuilder = new PromptBuilder();
+			return null;
+		}
 
-				if (Properties.Settings.Default.strLanguage.Equals("zh-CN")) {
-					pBuilder.Culture = CultureInfo.GetCultureInfo("en-US");
+		private void PlayAudio(object sender, string strLanguage) {
+			string strRead = SetText;
 
-					if (strRead.Contains("1")) {
-						strRead = strRead.Replace("1", "First");
-						pBuilder.AppendText(strRead);
-					} else if (strRead.Contains("2")) {
-						strRead = strRead.Replace("2", "Second");
-						pBuilder.AppendText(strRead);
-					} else if (strRead.Contains("3")) {
-						strRead = strRead.Replace("3", "Third");
-						pBuilder.AppendText(strRead);
-					} else if (strRead == "Philemon") {
-						pBuilder.AppendTextWithPronunciation("Philemon", "faɪlimən");
-					} else {
-						pBuilder.AppendText(strRead);
-					}
-				} else if (Properties.Settings.Default.strLanguage.Equals("en-US")) {
-					pBuilder.Culture = CultureInfo.GetCultureInfo("zh-CN");
+			SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+			synthesizer.SetOutputToDefaultAudioDevice();
+			PromptBuilder pBuilder = new PromptBuilder();
+
+			if (strLanguage == "en-US") {
+				pBuilder.Culture = CultureInfo.GetCultureInfo("en-US");
+
+				if (strRead.Contains("1")) {
+					strRead = strRead.Replace("1", "First");
+					pBuilder.AppendText(strRead);
+				} else if (strRead.Contains("2")) {
+					strRead = strRead.Replace("2", "Second");
+					pBuilder.AppendText(strRead);
+				} else if (strRead.Contains("3")) {
+					strRead = strRead.Replace("3", "Third");
+					pBuilder.AppendText(strRead);
+				} else if (strRead == "Philemon") {
+					pBuilder.AppendTextWithPronunciation("Philemon", "faɪlimən");
+				} else {
 					pBuilder.AppendText(strRead);
 				}
+			} else if (strLanguage == "zh-CN") {
+				pBuilder.Culture = CultureInfo.GetCultureInfo("zh-CN");
+				pBuilder.AppendText(strRead);
+			}
 
-				synthesizer.SpeakAsync(pBuilder);
+			synthesizer.SpeakAsync(pBuilder);
+		}
+
+		private void lblBook_MouseDown(object sender, MouseButtonEventArgs e) {
+			try {
+				if (Properties.Settings.Default.blnAudio == true && SetAudio != "AudioOff") {
+					PlayAudio(sender, GetAudioLanguage(lblBook.Tag.ToString()));
+				}
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
 		}
-
-		private void lblBook_MouseDown(object sender, MouseButtonEventArgs e) {
-			if (Properties.Settings.Default.blnAudio == true && lblBook.Tag.ToString() == "AudioOn") {
-				playAudio(sender);
-			}
-		}
 	}
-
-	//public class CheckLabelsTouchingMessage {
-	//	public Label sender { get; set; }
-
-	//	public static void Check(Label _sender) {
-	//		var checkTouchingMessage = new CheckLabelsTouchingMessage() { sender = _sender };
-	//		Messenger.Default.Send<CheckLabelsTouchingMessage>(checkTouchingMessage);
-	//	}
-	//}
 }

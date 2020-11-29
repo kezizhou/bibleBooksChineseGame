@@ -83,7 +83,7 @@ namespace BibleBooksWPF.Views {
 		private void lblMouseLeftButtonDown(object sender, MouseEventArgs e) {
 			try {
 				blnDragging = true;
-				Label lblActiveElement = sender as Label;
+				BibleBook lblActiveElement = sender as BibleBook;
 				clickPosition = e.GetPosition(this.Parent as UIElement);
 				Point mouseOnElement = Mouse.GetPosition(lblActiveElement);
 
@@ -186,7 +186,7 @@ namespace BibleBooksWPF.Views {
 			// Loop through the container labels to see if the moved label is touching one of them
 			foreach (String strContainerName in viewModel.propReorderLbls) {
 				// Get the label from the string name
-				Label lblReorderMatch = (Label)this.FindName(strContainerName);
+				BibleBook lblReorderMatch = (BibleBook)this.FindName(strContainerName);
 
 				var tpMatchReturn = viewModel.checkTouchingLabelsCorrect(lblReorderMatch, lblDragged, rectMovedLbl, viewModel.propReorderLbls, viewModel.propHebrew);
 				if (tpMatchReturn.Item1) blnCorrect = true;
@@ -206,8 +206,6 @@ namespace BibleBooksWPF.Views {
 					grdReordered.Children.Add(lblDragged);
 					Grid.SetRow(lblDragged, Grid.GetRow(lblReorderMatch));
 					Grid.SetColumn(lblDragged, Grid.GetColumn(lblReorderMatch));
-
-					viewModel.propBooksRemaining.Remove(lblDragged.Name);
 
 					viewModel.propBooksRemaining.Remove(lblDragged.Name);
 

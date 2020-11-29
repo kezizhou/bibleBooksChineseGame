@@ -9,5 +9,6 @@
     <sys:String x:Key="RollDice">掷筛子</sys:String>
     <sys:String x:Key="Rolled" xml:space="preserve">数字: </sys:String>
     <sys:String x:Key="TimeRemaining" xml:space="preserve">剩余时间: </sys:String>
+    <sys:String x:Key="TimesUp">时间到！</sys:String>
     <sys:String x:Key="Submit">递交</sys:String>
 </ResourceDictionary>

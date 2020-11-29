@@ -189,7 +189,7 @@ namespace BibleBooksWPF.ViewModels {
 
 			switch (strResponse) {
 				case "Retry":
-					ChangeViewMessage.Navigate(strGame);
+					retryGame(strGame);
 					break;
 				case "Main":
 					ChangeViewMessage.Navigate("MainMenu");
@@ -200,6 +200,12 @@ namespace BibleBooksWPF.ViewModels {
 				default:
 					break;
 			}
+		}
+
+		public async void retryGame(string strGame) {
+			ChangeViewMessage.Navigate("MainMenu");
+			await Task.Delay(100);
+			ChangeViewMessage.Navigate(strGame);
 		}
 
 		public async void incorrectFlash(BibleBook lblIncorrectBook, string strBackground) {

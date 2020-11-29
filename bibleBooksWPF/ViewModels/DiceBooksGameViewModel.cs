@@ -151,7 +151,7 @@ namespace BibleBooksWPF.ViewModels {
 		private void timerTurn_Tick(object sender, EventArgs e) {
 			try {
 				if (stopwatchTurn.IsRunning) {
-					propTurnTimeRemaining = TimeSpan.FromSeconds(6 * propRoll) - stopwatch.Elapsed;
+					propTurnTimeRemaining = TimeSpan.FromSeconds(6 * propRoll) - stopwatchTurn.Elapsed;
 
 					if (propTurnTimeRemaining <= TimeSpan.Zero) {
 						timerTurn.Stop();
@@ -200,14 +200,16 @@ namespace BibleBooksWPF.ViewModels {
 					propEntries[i].blnCorrect = CheckIfCorrect(strBook);
 					if (propEntries[i].blnCorrect == true) {
 						// Get name of Bible book
-						if (Char.IsLetter(strBook[0])) {
-							if (strBook.ToLower() == "song of solomon") {
-								strBook = "Song of Solomon";
+						if (Properties.Settings.Default.strLanguage == "en-US") {
+							if (Char.IsLetter(strBook[0])) {
+								if (strBook.ToLower() == "song of solomon") {
+									strBook = "Song of Solomon";
+								} else {
+									strBook = strBook[0] + strBook.Substring(1).ToLower();
+								}
 							} else {
-								strBook = strBook[0] + strBook.Substring(1).ToLower();
+								strBook = strBook[0] + " " + strBook[2] + strBook.Substring(3).ToLower();
 							}
-						} else {
-							strBook = strBook[0] + " " + strBook[2] + strBook.Substring(3).ToLower();
 						}
 
 						// Add to grid

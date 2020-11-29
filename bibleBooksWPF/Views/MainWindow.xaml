@@ -19,37 +19,6 @@
                 <ResourceDictionary Source="pack://application:,,,/Languages/MainWindow.en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <vm:MenuConverter x:Key="menuConverter"/>
-
-            <DataTemplate DataType="{x:Type vm:SelectUserViewModel}">
-                <local:SelectUser/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:MainMenuViewModel}">
-                <local:MainMenu/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:HebrewMatchViewModel}">
-                <local:HebrewMatch/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:HebrewReorderViewModel}">
-                <local:HebrewReorder/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:GreekMatchViewModel}">
-                <local:GreekMatch/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:GreekReorderViewModel}">
-                <local:GreekReorder/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:DiceBooksHebrewViewModel}">
-                <local:DiceBooksHebrew/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:DiceBooksGreekViewModel}">
-                <local:DiceBooksGreek/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:StatisticsPageViewModel}">
-                <local:StatisticsPage/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
-                <local:Settings/>
-            </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -75,49 +44,82 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-                <Menu Name="menTop" Grid.Column="0" Grid.Row="0" FontFamily="Tahoma" Background="#FFDFF2F7" Padding="2,5" 
-                FontSize="{DynamicResource ResourceKey=FontSize}" VerticalAlignment="Top"
-                Visibility="{Binding propShowMenu}">
-                    <MenuItem x:Name="imenMainMenu" Header="{DynamicResource ResourceKey=MainMenu}" 
-                            Command="{Binding navCommand}" CommandParameter="MainMenu"
-                            IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='MainMenu'}"/>
-                    <MenuItem x:Name="imenHebrew" Header="{DynamicResource ResourceKey=Hebrew}">
-                        <MenuItem x:Name="imenHebrewMatch" Header="{DynamicResource ResourceKey=Match}" 
-                                Command="{Binding navCommand}" CommandParameter="HebrewMatch"
-                                IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='HebrewMatch'}"/>
-                        <MenuItem x:Name="imenHebrewReorder" Header="{DynamicResource ResourceKey=Reorder}" 
-                                Command="{Binding navCommand}" CommandParameter="HebrewReorder"
-                                IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='HebrewReorder'}"/>
+            <Menu Name="menTop" Grid.Column="0" Grid.Row="0" FontFamily="Tahoma" Background="#FFDFF2F7" Padding="2,5" 
+            FontSize="{DynamicResource ResourceKey=FontSize}" VerticalAlignment="Top"
+            Visibility="{Binding propShowMenu}">
+                <MenuItem x:Name="imenMainMenu" Header="{DynamicResource ResourceKey=MainMenu}" 
+                        Command="{Binding navCommand}" CommandParameter="MainMenu"
+                        IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='MainMenu'}"/>
+                <MenuItem x:Name="imenHebrew" Header="{DynamicResource ResourceKey=Hebrew}">
+                    <MenuItem x:Name="imenHebrewMatch" Header="{DynamicResource ResourceKey=Match}" 
+                            Command="{Binding navCommand}" CommandParameter="HebrewMatch"
+                            IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='HebrewMatch'}"/>
+                    <MenuItem x:Name="imenHebrewReorder" Header="{DynamicResource ResourceKey=Reorder}" 
+                            Command="{Binding navCommand}" CommandParameter="HebrewReorder"
+                            IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='HebrewReorder'}"/>
+                </MenuItem>
+                <MenuItem x:Name="imenGreek" Header="{DynamicResource ResourceKey=Greek}">
+                    <MenuItem x:Name="imenGreekMatch" Header="{DynamicResource ResourceKey=Match}" 
+                            Command="{Binding navCommand}" CommandParameter="GreekMatch"
+                            IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='GreekMatch'}"/>
+                    <MenuItem x:Name="imenGreekReorder" Header="{DynamicResource ResourceKey=Reorder}" 
+                            Command="{Binding navCommand}" CommandParameter="GreekReorder"
+                            IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='GreekReorder'}"/>
+                </MenuItem>
+                <MenuItem x:Name="imenMultiplayer" Header="{DynamicResource ResourceKey=Multiplayer}">
+                    <MenuItem x:Name="imenDice" Header="{DynamicResource ResourceKey=DiceBooks}">
+                        <MenuItem x:Name="imenDiceHebrew" Header="{DynamicResource ResourceKey=Hebrew}" 
+                                Command="{Binding navCommand}" CommandParameter="DiceBooksHebrew"
+                                IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='DiceBooksHebrew'}"/>
+                        <MenuItem x:Name="imenDiceGreek" Header="{DynamicResource ResourceKey=Greek}" 
+                                Command="{Binding navCommand}" CommandParameter="DiceBooksGreek"
+                                IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='DiceBooksGreek'}"/>
                     </MenuItem>
-                    <MenuItem x:Name="imenGreek" Header="{DynamicResource ResourceKey=Greek}">
-                        <MenuItem x:Name="imenGreekMatch" Header="{DynamicResource ResourceKey=Match}" 
-                                Command="{Binding navCommand}" CommandParameter="GreekMatch"
-                                IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='GreekMatch'}"/>
-                        <MenuItem x:Name="imenGreekReorder" Header="{DynamicResource ResourceKey=Reorder}" 
-                                Command="{Binding navCommand}" CommandParameter="GreekReorder"
-                                IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='GreekReorder'}"/>
-                    </MenuItem>
-                    <MenuItem x:Name="imenMultiplayer" Header="{DynamicResource ResourceKey=Multiplayer}">
-                        <MenuItem x:Name="imenDice" Header="{DynamicResource ResourceKey=DiceBooks}">
-                            <MenuItem x:Name="imenDiceHebrew" Header="{DynamicResource ResourceKey=Hebrew}" 
-                                    Command="{Binding navCommand}" CommandParameter="DiceBooksHebrew"
-                                    IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='DiceBooksHebrew'}"/>
-                            <MenuItem x:Name="imenDiceGreek" Header="{DynamicResource ResourceKey=Greek}" 
-                                    Command="{Binding navCommand}" CommandParameter="DiceBooksGreek"
-                                    IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='DiceBooksGreek'}"/>
-                        </MenuItem>
-                    </MenuItem>
-                    <MenuItem x:Name="imenStatistics" Header="{DynamicResource ResourceKey=Statistics}" 
-                            Command="{Binding navCommand}" CommandParameter="Statistics"
-                            IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='StatisticsPage'}"/>
-                    <MenuItem x:Name="imenSettings" Header="{DynamicResource ResourceKey=Settings}" 
-                            Command="{Binding navCommand}" CommandParameter="Settings"
-                            IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='Settings'}"/>
-                    <MenuItem x:Name="imenExit" Header="{DynamicResource ResourceKey=Exit}" 
-                            Command="{Binding navCommand}" CommandParameter="Exit"/>
-                </Menu>
+                </MenuItem>
+                <MenuItem x:Name="imenStatistics" Header="{DynamicResource ResourceKey=Statistics}" 
+                        Command="{Binding navCommand}" CommandParameter="Statistics"
+                        IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='StatisticsPage'}"/>
+                <MenuItem x:Name="imenSettings" Header="{DynamicResource ResourceKey=Settings}" 
+                        Command="{Binding navCommand}" CommandParameter="Settings"
+                        IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='Settings'}"/>
+                <MenuItem x:Name="imenExit" Header="{DynamicResource ResourceKey=Exit}" 
+                        Command="{Binding navCommand}" CommandParameter="Exit"/>
+            </Menu>
 
-                <ContentControl Content="{Binding propCurrentViewModel}" Grid.Row="1"/>
+            <ContentControl x:Name="contentControl" Content="{Binding propCurrentViewModel}" Grid.Row="1">
+                <ContentControl.Resources>
+                    <DataTemplate DataType="{x:Type vm:SelectUserViewModel}">
+                        <local:SelectUser/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:MainMenuViewModel}">
+                        <local:MainMenu/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:HebrewMatchViewModel}">
+                        <local:HebrewMatch/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:HebrewReorderViewModel}">
+                        <local:HebrewReorder/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:GreekMatchViewModel}">
+                        <local:GreekMatch/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:GreekReorderViewModel}">
+                        <local:GreekReorder/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:DiceBooksHebrewViewModel}">
+                        <local:DiceBooksHebrew/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:DiceBooksGreekViewModel}">
+                        <local:DiceBooksGreek/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:StatisticsPageViewModel}">
+                        <local:StatisticsPage/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+                        <local:Settings/>
+                    </DataTemplate>
+                </ContentControl.Resources>
+            </ContentControl>
         </Grid>
 
     </ScrollViewer>
