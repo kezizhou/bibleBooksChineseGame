@@ -140,6 +140,10 @@ namespace BibleBooksWPF.ViewModels {
 				return $"pack://application:,,,/BibleBooksWPF;component/Resources/Badges/AnimalBadges/{value}.png";
 			}
 
+			if (value.ToString().Contains("Special")) {
+				return $"pack://application:,,,/BibleBooksWPF;component/Resources/Badges/SpecialBadges/{value}.png";
+			}
+
 			return $"pack://application:,,,/BibleBooksWPF;component/Resources/Badges/{value}.png";
 		}
 

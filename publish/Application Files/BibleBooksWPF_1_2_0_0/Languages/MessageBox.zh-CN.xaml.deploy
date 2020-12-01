@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="ResourceDictionaryName">Loc-zh-CN</sys:String>
+
+    <sys:String x:Key="YesDelete">确定，删除</sys:String>
+    <sys:String x:Key="OK">OK</sys:String>
+    <sys:String x:Key="Cancel">取消</sys:String>
+    <sys:String x:Key="ConfirmDeleteTitle">确定删除用户</sys:String>
+    <sys:String x:Key="Retry">从新开始</sys:String>
+    <sys:String x:Key="BacktoMain">回到主菜单</sys:String>
+    <sys:String x:Key="Exit">退出</sys:String>
+    <sys:String x:Key="NewBadgeTitle">新的奖章！</sys:String>
+    <sys:String x:Key="BadgeCongrats">祝贺你得到这个新的奖章！</sys:String>
+    <sys:String x:Key="Description">说明: </sys:String>
+    <sys:String x:Key="PauseTitle">游戏暂停</sys:String>
+    <sys:String x:Key="Resume">继续</sys:String>
+</ResourceDictionary>
