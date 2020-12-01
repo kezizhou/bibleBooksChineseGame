@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="ResourceDictionaryName">Loc-en-US</sys:String>
+
+    <sys:String x:Key="HebrewStatistic">Hebrew Scriptures</sys:String>
+    <sys:String x:Key="Matching">Matching</sys:String>
+    <sys:String x:Key="RecordPoint">Record Point Score:</sys:String>
+    <sys:String x:Key="RecordTime">Record Time:</sys:String>
+    <sys:String x:Key="AveragePoint">Average Point Score:</sys:String>
+    <sys:String x:Key="AverageTime">Average Time:</sys:String>
+    <sys:String x:Key="ReorderStatistic">Reorder Books</sys:String>
+    <sys:String x:Key="GreekStatistic">Greek Scriptures</sys:String>
+    <sys:String x:Key="Achievements">Achievements</sys:String>
+    <sys:String x:Key="TotalPoints">Total Points Earned</sys:String>
+    <sys:String x:Key="Badges">Badges</sys:String>
+    <sys:String x:Key="EnterCode">Enter a Code</sys:String>
+    <sys:String x:Key="Submit">Submit</sys:String>
+    <sys:String x:Key="Invalid">Invalid code entered.</sys:String>
+    
+    <!-- Badges -->
+    <sys:String x:Key="FirstHebrewMatch">Play a Hebrew Match game</sys:String>
+    <sys:String x:Key="FirstHebrewReorder">"Play a Hebrew Reorder game"</sys:String>
+    <sys:String x:Key="FirstGreekMatch">Play a Greek Match game</sys:String>
+    <sys:String x:Key="FirstGreekReorder">Play a Greek Reorder game</sys:String>
+    <sys:String x:Key="HebrewMatchTime">Hebrew Match time less than 00:01:15</sys:String>
+    <sys:String x:Key="HebrewReorderTime">Hebrew Reorder time less than 00:02:15</sys:String>
+    <sys:String x:Key="GreekMatchTime">Greek Match time less than 00:00:45</sys:String>
+    <sys:String x:Key="GreekReorderTime">Greek Reorder time less than 00:00:50</sys:String>
+    <sys:String x:Key="HebrewMatch100">Hebrew Match 100% accuracy</sys:String>
+    <sys:String x:Key="HebrewReorder100">Hebrew Reorder 100% accuracy</sys:String>
+    <sys:String x:Key="GreekMatch100">Greek Match 100% accuracy</sys:String>
+    <sys:String x:Key="GreekReorder100">Greek Reorder 100% accuracy</sys:String>
+    <sys:String x:Key="Morning">Play before 8:30am</sys:String>
+    <sys:String x:Key="Night">Play after 9:00pm</sys:String>
+    <sys:String x:Key="BookBadge">Get this book right twice, different games, one session</sys:String>
+</ResourceDictionary>
