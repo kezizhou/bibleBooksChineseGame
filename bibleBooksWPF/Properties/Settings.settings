@@ -6,7 +6,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="strLanguage" Type="System.String" Scope="User">
-      <Value Profile="(Default)">English</Value>
+      <Value Profile="(Default)">en-US</Value>
     </Setting>
     <Setting Name="lngTotalPoints" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">0</Value>

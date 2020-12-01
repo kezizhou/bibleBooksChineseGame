@@ -37,6 +37,13 @@ namespace BibleBooksWPF {
         /// <param name="element"></param>  
         /// <returns></returns>  
         public static string GetCurrentCultureName(FrameworkElement element) {
+            // If on old language setting, before version 1.2.0
+            if (Properties.Settings.Default.strLanguage.ToString() == "Chinese") {
+                Properties.Settings.Default.strLanguage = "zh-CN";
+            } else if (Properties.Settings.Default.strLanguage.ToString() == "English") {
+                Properties.Settings.Default.strLanguage = "en-US";
+            }
+
             string cultureName = Properties.Settings.Default.strLanguage.ToString();
 
             return cultureName;
