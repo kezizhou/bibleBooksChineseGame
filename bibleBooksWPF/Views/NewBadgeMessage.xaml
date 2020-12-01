@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:BibleBooksWPF"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="{DynamicResource ResourceKey=NewBadgeTitle}" Height="235" Width="505">
+        Title="{DynamicResource ResourceKey=NewBadgeTitle}" Height="235" Width="550">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -26,24 +26,25 @@
     
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="165"/>
-            <ColumnDefinition Width="330"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="imgBadge" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="0,0,0,15" Width="100" Height="83" Source="{Binding propBadgeName, Converter={StaticResource badgeImgConverter}}"/>
-        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
-            <TextBlock x:Name="txbMessageText" TextWrapping="Wrap" FontSize="16" Margin="15" TextAlignment="Center" Text="{DynamicResource ResourceKey=BadgeCongrats}"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,15">
-                <TextBlock x:Name="txbDescription" Text="{DynamicResource ResourceKey=Description}" Margin="0,0,5,0" FontWeight="DemiBold"/>
-                <TextBlock Text="{Binding propBadgeName, Converter={StaticResource badgeDescConverter}}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"/>
-            </StackPanel>
+        <Image x:Name="imgBadge" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Margin="15,0,0,0"  Source="{Binding propBadgeName, Converter={StaticResource badgeImgConverter}}"/>
+        
+        <TextBlock x:Name="txbMessageText" Grid.Row="0" Grid.Column="1" TextAlignment="Center" FontSize="16" Text="{DynamicResource ResourceKey=BadgeCongrats}" VerticalAlignment="Bottom" Margin="0,0,0,15" TextWrapping="WrapWithOverflow"/>
 
-            <Button x:Name="btnOK" Content="OK" Grid.Row="1" Grid.Column="1" Width="103" Height="40" IsDefault="True" Margin="0,0,0,20" Click="BtnOK_Click" Background="#DFF2F7" Style="{StaticResource RoundedCornerButton}" VerticalAlignment="Top"></Button>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock x:Name="txbDescription" Text="{DynamicResource ResourceKey=Description}" FontWeight="DemiBold" TextAlignment="Center"/>
+            <TextBlock Text="{Binding propBadgeName, Converter={StaticResource badgeDescConverter}}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
         </StackPanel>
+        <Button x:Name="btnOK" Content="OK" Grid.Row="2" Grid.Column="1" Width="103" Height="40" IsDefault="True" Click="BtnOK_Click" Background="#DFF2F7" Style="{StaticResource RoundedCornerButton}"/>
+
 
     </Grid>
 </Window>

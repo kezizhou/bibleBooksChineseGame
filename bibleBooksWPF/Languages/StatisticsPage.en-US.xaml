@@ -32,7 +32,7 @@
     <sys:String x:Key="HebrewReorder100">Hebrew Reorder 100% accuracy</sys:String>
     <sys:String x:Key="GreekMatch100">Greek Match 100% accuracy</sys:String>
     <sys:String x:Key="GreekReorder100">Greek Reorder 100% accuracy</sys:String>
-    <sys:String x:Key="Morning">Play before 8:30am</sys:String>
-    <sys:String x:Key="Night">Play after 9:00pm</sys:String>
+    <sys:String x:Key="BadgeMorning">Play before 8:30am</sys:String>
+    <sys:String x:Key="BadgeNight">Play after 9:00pm</sys:String>
     <sys:String x:Key="BookBadge">Get this book right twice, different games, one session</sys:String>
 </ResourceDictionary>

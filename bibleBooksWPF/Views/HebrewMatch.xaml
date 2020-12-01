@@ -168,7 +168,7 @@
 
             </Grid>
 
-            <Button x:Name="btnPause" Grid.Row="13" Grid.Column="8" Grid.RowSpan="2" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderThickness="0" Command="{Binding Path=pauseButtonCommand}">
+            <Button x:Name="btnPause" Grid.Row="13" Grid.Column="0" Grid.RowSpan="2" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderThickness="0" Command="{Binding Path=pauseButtonCommand}">
                 <Image x:Name="imgPause" Source="pack://application:,,,/BibleBooksWPF;component/Resources/pause.png"></Image>
             </Button>
 

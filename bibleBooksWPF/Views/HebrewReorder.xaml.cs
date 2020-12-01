@@ -268,7 +268,7 @@ namespace BibleBooksWPF.Views {
 				}
 
 				lblDragged.SetBackground = Brushes.Salmon;
-				viewModel.incorrectFlash(lblDragged, "#E6EBF3");
+				viewModel.incorrectFlash(lblDragged, "#9BC1FF");
 			}
 			else if (blnCorrect == false && blnAttemptedMatch == false) {
 				// No match attempted

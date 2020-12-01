@@ -25,14 +25,15 @@ namespace BibleBooksWPF.ViewModels {
 		public override List<string> lstCompleted { get; set; } = new List<string>();
 
 		public override void CompletedGame() {
+			stopwatch.Stop();
 			CustomMessageBox winMsgBox = new CustomMessageBox("Congratulations! You have finished. Try again?\n" +
 								"Points Earned: " + propPoints + "\n" +
-								"Time Elapsed: " + String.Format("{0:00}:{1:00}.{2:0000}", propTimeElapsed.Minutes, propTimeElapsed.Seconds, propTimeElapsed.Milliseconds), null);
+								"Time Elapsed: " + String.Format("{0:00}:{1:00}.{2:00}", propTimeElapsed.Hours, propTimeElapsed.Minutes, propTimeElapsed.Seconds), null);
 			string strResponse = winMsgBox.strMsgReturn;
 
 			switch (strResponse) {
 				case "Retry":
-					ChangeViewMessage.Navigate("DiceBooksHebrew");
+					retryGame("DiceBooksHebrew");
 					break;
 				case "Main":
 					ChangeViewMessage.Navigate("MainMenu");

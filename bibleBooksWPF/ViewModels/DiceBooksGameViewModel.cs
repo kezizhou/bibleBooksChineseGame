@@ -13,6 +13,7 @@ using System.Windows.Threading;
 using BibleBooksWPF.Helpers;
 using BibleBooksWPF.Models;
 using BibleBooksWPF.Views;
+using System.Threading.Tasks;
 
 namespace BibleBooksWPF.ViewModels {
 	public abstract class DiceBooksGameViewModel : INotifyPropertyChanged {
@@ -279,6 +280,12 @@ namespace BibleBooksWPF.ViewModels {
 			} catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
+		}
+
+		public async void retryGame(string strGame) {
+			ChangeViewMessage.Navigate("MainMenu");
+			await Task.Delay(100);
+			ChangeViewMessage.Navigate(strGame);
 		}
 
 		public abstract void CompletedGame();
