@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="ResourceDictionaryName">Loc-zh-CN</sys:String>
+
+    <sys:String x:Key="HebrewStatistic">希伯来语经卷</sys:String>
+    <sys:String x:Key="Matching">配对</sys:String>
+    <sys:String x:Key="RecordPoint">最高分数:</sys:String>
+    <sys:String x:Key="RecordTime">最快时间:</sys:String>
+    <sys:String x:Key="AveragePoint">平均分数:</sys:String>
+    <sys:String x:Key="AverageTime">平均时间:</sys:String>
+    <sys:String x:Key="ReorderStatistic">排序</sys:String>
+    <sys:String x:Key="GreekStatistic">希腊语经卷</sys:String>
+    <sys:String x:Key="Achievements">成绩</sys:String>
+    <sys:String x:Key="TotalPoints">总分</sys:String>
+    <sys:String x:Key="Badges">奖章</sys:String>
+    <sys:String x:Key="EnterCode">输入密码</sys:String>
+    <sys:String x:Key="Submit">递交</sys:String>
+    <sys:String x:Key="Invalid">密码无效。</sys:String>
+
+    <!-- Badges -->
+    <sys:String x:Key="FirstHebrewMatch">玩一次希伯来语经卷配对</sys:String>
+    <sys:String x:Key="FirstHebrewReorder">"玩一次希伯来语经卷排序"</sys:String>
+    <sys:String x:Key="FirstGreekMatch">玩一次希腊语经卷配对</sys:String>
+    <sys:String x:Key="FirstGreekReorder">玩一次希腊语经卷排序</sys:String>
+    <sys:String x:Key="HebrewMatchTime">希伯来语经卷配对时间少于00:01:15</sys:String>
+    <sys:String x:Key="HebrewReorderTime">希伯来语经卷排序时间少于00:02:15</sys:String>
+    <sys:String x:Key="GreekMatchTime">希腊语经卷配对时间少于00:00:45</sys:String>
+    <sys:String x:Key="GreekReorderTime">希腊语经卷排序时间少于00:00:50</sys:String>
+    <sys:String x:Key="HebrewMatch100">希伯来语经卷配对100%准确率</sys:String>
+    <sys:String x:Key="HebrewReorder100">希伯来语经卷排序100%准确率</sys:String>
+    <sys:String x:Key="GreekMatch100">希腊语经卷配对100%准确率</sys:String>
+    <sys:String x:Key="GreekReorder100">希腊语经卷排序100%准确率</sys:String>
+    <sys:String x:Key="BadgeMorning">8:30am 之前玩</sys:String>
+    <sys:String x:Key="BadgeNight">9:00pm 以后玩</sys:String>
+    <sys:String x:Key="BookBadge">把这本书在两个不同的游戏中答对</sys:String>
+    </ResourceDictionary>

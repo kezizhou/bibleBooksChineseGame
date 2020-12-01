@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+  <sys:String x:Key="ResourceDictionaryName">Loc-zh-CN</sys:String>
+
+  <sys:String x:Key="MainMenu">Main Menu</sys:String>
+  <sys:String x:Key="Welcome">欢迎</sys:String>
+  <sys:String x:Key="Description">点击以上的链接选择游戏</sys:String>
+  <sys:String x:Key="ChangeUser">改变用户</sys:String>
+  <sys:String x:Key="Help">帮助</sys:String>
+</ResourceDictionary>

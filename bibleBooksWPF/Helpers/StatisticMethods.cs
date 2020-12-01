@@ -31,8 +31,7 @@ namespace BibleBooksWPF.Helpers {
 					NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgFirst" + strGameName);
 
 					// Refresh json object
-					obj = JObject.Parse(File.ReadAllText(Globals.usersFilePath));
-					userGameToken = obj.SelectToken($"$.Users[?(@.username == '{App.Current.Properties["currentUsername"]}')].lstGameStatistics.GameStatistics[?(@.strName == '{strGameName}')]");
+					userGameToken = RefreshJObject(ref obj, strGameName);
 				} else {
 					// Check if this is a new high score
 					if ((intPoints > gsTotalGames.lintPoints.Max()) && (tsTimeElapsed < gsTotalGames.ltsTimeElapsed.Min())) {
@@ -61,22 +60,22 @@ namespace BibleBooksWPF.Helpers {
 				if (strGameName.Equals("HebrewMatch")) {
 					if (CheckHebrewMatchBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						userGameToken = RefreshJObject(ref obj, "HebrewMatch");
+						userGameToken = RefreshJObject(ref obj, strGameName);
 					}
 				} else if (strGameName.Equals("HebrewReorder")) {
 					if (CheckHebrewReorderBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						userGameToken = RefreshJObject(ref obj, "HebrewReorder");
+						userGameToken = RefreshJObject(ref obj, strGameName);
 					}
 				} else if (strGameName.Equals("GreekMatch")) {
 					if (CheckGreekMatchBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						userGameToken = RefreshJObject(ref obj, "GreekMatch");
+						userGameToken = RefreshJObject(ref obj, strGameName);
 					}
 				} else if (strGameName.Equals("GreekReorder")) {
 					if (CheckGreekReorderBadges(lstBadges, tsTimeElapsed, intPoints)) {
 						// Refresh json object
-						userGameToken = RefreshJObject(ref obj, "GreekReorder");
+						userGameToken = RefreshJObject(ref obj, strGameName);
 					}
 				}
 
@@ -102,10 +101,12 @@ namespace BibleBooksWPF.Helpers {
 			if (tsTimeElapsed <= new TimeSpan(0, 1, 15) && !lstBadges.Contains("imgHebrewMatchTime")) {
 				Badge.AddBadgeForCurrentUser("imgHebrewMatchTime");
 				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgHebrewMatchTime");
+				blnBadgeAdded = true;
 			}
 			if (intPoints == 39 && !lstBadges.Contains("imgHebrewMatch100")) {
 				Badge.AddBadgeForCurrentUser("imgHebrewMatch100");
 				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgHebrewMatch100");
+				blnBadgeAdded = true;
 			}
 
 			return blnBadgeAdded;
@@ -117,10 +118,12 @@ namespace BibleBooksWPF.Helpers {
 			if (tsTimeElapsed <= new TimeSpan(0, 2, 15) && !lstBadges.Contains("imgHebrewReorderTime")) {
 				Badge.AddBadgeForCurrentUser("imgHebrewReorderTime");
 				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgHebrewReorderTime");
+				blnBadgeAdded = true;
 			}
 			if (intPoints == 39 && !lstBadges.Contains("imgHebrewReorder100")) {
 				Badge.AddBadgeForCurrentUser("imgHebrewReorder100");
 				NewBadgeMessage winBadgeBox = new NewBadgeMessage("imgHebrewReorder100");
+				blnBadgeAdded = true;
 			}
 
 			return blnBadgeAdded;

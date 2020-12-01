@@ -32,7 +32,7 @@
     <sys:String x:Key="HebrewReorder100">希伯来语经卷排序100%准确率</sys:String>
     <sys:String x:Key="GreekMatch100">希腊语经卷配对100%准确率</sys:String>
     <sys:String x:Key="GreekReorder100">希腊语经卷排序100%准确率</sys:String>
-    <sys:String x:Key="Morning">8:30am 之前玩</sys:String>
-    <sys:String x:Key="Night">9:00pm 以后玩</sys:String>
+    <sys:String x:Key="BadgeMorning">8:30am 之前玩</sys:String>
+    <sys:String x:Key="BadgeNight">9:00pm 以后玩</sys:String>
     <sys:String x:Key="BookBadge">把这本书在两个不同的游戏中答对</sys:String>
     </ResourceDictionary>

@@ -31,13 +31,19 @@ namespace BibleBooksWPF.ViewModels {
 				return null;
 			}
 
-			string strValue = value.ToString().Substring(3);
+			string strBadge = value.ToString();
+			if (strBadge.Contains("Exodus") || strBadge.Contains("Ruth")) {
+				strBadge = "BookBadge";
+			}  else {
+				strBadge = strBadge.Substring(3);
+			}
+
 			if (Properties.Settings.Default.strLanguage == "en-US") {
 				ResourceDictionary dictionary = new ResourceDictionary { Source = new Uri("pack://application:,,,/BibleBooksWPF;component/Languages/StatisticsPage.en-US.xaml") };
-				return dictionary[strValue];
+				return dictionary[strBadge];
 			} else if (Properties.Settings.Default.strLanguage == "zh-CN") {
 				ResourceDictionary dictionary = new ResourceDictionary { Source = new Uri("pack://application:,,,/BibleBooksWPF;component/Languages/StatisticsPage.zh-CN.xaml") };
-				return dictionary[strValue];
+				return dictionary[strBadge];
 			}
 
 			return null;
