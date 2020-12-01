@@ -14,7 +14,7 @@
                 <value>True</value>
             </setting>
             <setting name="strLanguage" serializeAs="String">
-                <value>English</value>
+                <value>en-US</value>
             </setting>
             <setting name="lngTotalPoints" serializeAs="String">
                 <value>0</value>
