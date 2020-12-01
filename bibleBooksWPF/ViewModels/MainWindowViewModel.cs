@@ -97,7 +97,7 @@ namespace BibleBooksWPF.ViewModels {
 				case "Settings":
 					propCurrentViewModel = settingsVM;
 					break;
-				case "Statistics":
+				case "StatisticsPage":
 					propCurrentViewModel = statisticsPageVM;
 					break;
 				case "Exit":

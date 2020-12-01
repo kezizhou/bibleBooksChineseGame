@@ -77,7 +77,7 @@
                     </MenuItem>
                 </MenuItem>
                 <MenuItem x:Name="imenStatistics" Header="{DynamicResource ResourceKey=Statistics}" 
-                        Command="{Binding navCommand}" CommandParameter="Statistics"
+                        Command="{Binding navCommand}" CommandParameter="StatisticsPage"
                         IsEnabled="{Binding Path=propPage, Converter={StaticResource menuConverter}, ConverterParameter='StatisticsPage'}"/>
                 <MenuItem x:Name="imenSettings" Header="{DynamicResource ResourceKey=Settings}" 
                         Command="{Binding navCommand}" CommandParameter="Settings"
