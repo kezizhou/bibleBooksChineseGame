@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## Unreleased
+
+
+## Releases and Prereleases
+## [1.2.2](https://github.com/kezizhou/bibleBooksChineseGame/releases/tag/v1.2.2) - 2020-12-01
+### Changed
+- Moved pause button on Hebrew and Greek match pages to left corner for consistency
+- Time Elapsed format on Dice Books Hebrew and Greek
+### Fixed
+- Retry button on Dice Books Hebrew and Greek
+- Badges no longer being overridden on Hebrew Match and Reorder games
+- Description for Morning and Night badges on message box pop-up
+- Exodus and Ruth badges
+- New badge message box no longer cuts off long descriptions
+
+## [1.2.1](https://github.com/kezizhou/bibleBooksChineseGame/releases/tag/v1.2.1) - 2020-11-26
+### Fixed
+- Bug fix with default language as 'English' instead of 'en-US'
+
 ## [1.2.0](https://github.com/kezizhou/bibleBooksChineseGame/releases/tag/v1.2.0) - 2020-11-26
 ### Added
 - Dice Books Hebrew and Greek
@@ -13,14 +31,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixed
 - Minor bug fixes
 
-## Releases and Prereleases
-
 ## [1.1.10](https://github.com/kezizhou/bibleBooksChineseGame/releases/tag/v1.1.10) - 2020-08-17
 ### Fixed
 - Audio pronunciation
 - Cursor clip size across dpi percentages
-
-## Releases and Prereleases
 
 ## [1.1.10](https://github.com/kezizhou/bibleBooksChineseGame/releases/tag/v1.1.10) - 2020-08-17
 ### Fixed
